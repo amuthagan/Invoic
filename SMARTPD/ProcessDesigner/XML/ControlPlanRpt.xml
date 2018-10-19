@@ -1,0 +1,57 @@
+﻿<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="RptControlPlanModel" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="PartNo" type="xs:string"/>
+                <xs:element name="ProcessNo" type="xs:string"/>
+                <xs:element name="ControlPlanType" type="xs:string"/>
+                <xs:element name="ControlPlanNo" type="xs:string"/>
+                <xs:element name="Fax" type="xs:string"/>
+                <xs:element name="Phone" type="xs:string"/>
+                <xs:element name="Ctm1" type="xs:string"/>
+                <xs:element name="Ctm2" type="xs:string"/>
+                <xs:element name="Ctm3" type="xs:string"/>
+                <xs:element name="Ctm4" type="xs:string"/>
+                <xs:element name="Ctm5" type="xs:string"/>
+                <xs:element name="Ctm6" type="xs:string"/>
+                <xs:element name="Ctm7" type="xs:string"/>
+                <xs:element name="SupplierPartNo" type="xs:string"/>
+                <xs:element name="CustomerPartNo" type="xs:string"/>
+                <xs:element name="PartNameDesc" type="xs:string"/>
+                <xs:element name="SupplierCode" type="xs:string"/>
+                <xs:element name="SupplierLocation" type="xs:string"/>
+                <xs:element name="PreparedBy" type="xs:string"/>
+                <xs:element name="ApprovedBy" type="xs:string"/>
+                <xs:element name="DateOrg" type="xs:string"/>
+                <xs:element name="DateRev" type="xs:string"/>
+                <xs:element name="SupplierApprDate" type="xs:string"/>
+                <xs:element name="OtherApprDate" type="xs:string"/>
+                <xs:element name="ContactPerson" type="xs:string"/>
+                <xs:element name="CustomerEnggApprov" type="xs:string"/>
+                <xs:element name="CustomerQualityApprov" type="xs:string"/>
+                <xs:element name="OtherApprovalcustomer" type="xs:string"/>
+                <xs:element name="PartProcessNo" type="xs:string"/>
+                <xs:element name="ProcessNameOperationDesc" type="xs:string"/>
+                <xs:element name="MachineDevice" type="xs:string"/>
+                <xs:element name="IsrNo" type="xs:string"/>
+                <xs:element name="Product" type="xs:string"/>
+                <xs:element name="Process" type="xs:string"/>
+                <xs:element name="SplChar" type="xs:string"/>
+                <xs:element name="ProcessSpec" type="xs:string"/>
+                <xs:element name="Gauges_Used" type="xs:string"/>
+                <xs:element name="SampleSize" type="xs:string"/>
+                <xs:element name="SampleFreq" type="xs:string"/>
+                <xs:element name="ControlMethod" type="xs:string"/>
+                <xs:element name="ReactionPlan" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>

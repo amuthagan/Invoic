@@ -1,0 +1,356 @@
+﻿<Window x:Class="ProcessDesigner.frmControlPlanGeneration"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:Enterkey="clr-namespace:ProcessDesigner.Common"
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:vm="clr-namespace:ProcessDesigner.Model" 
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon"
+
+
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+         xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions" Title="Specification Entry"
+        xmlns:local="clr-namespace:ProcessDesigner"  Width="1000" MinWidth="800" Height="600" Background="{StaticResource WindowBackground}" Icon="Images/logo.ico" >
+    <Window.Resources>
+        <CollectionViewSource x:Key="SplCharViewSource" Source="{Binding Path=CPGModel.SplChar}"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--Grid 1 -AvailableChar-->
+
+        <Border BorderThickness="1" Margin="10,10,10,10" CornerRadius="10"   Grid.Row="0">
+            <Grid Name="Grd1_AvailableChar">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="87*"></RowDefinition>
+                    <RowDefinition Height="10*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="70*"></ColumnDefinition>
+                    <ColumnDefinition Width="36*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Grid.Row="1" Header="Available Characteristics" Margin="3,3,3,3"  Visibility="{Binding VisibilityPage1,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"  >
+                    <DataGrid Name="dgvAvailableCharacteristcsDetails" IsReadOnly="True"  SelectionMode="Extended"  ItemsSource="{Binding CPGModel.AvailableCharacteristcsDetails,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeColumns="False" Margin="0,-1,-0.434,0" Height="434" VerticalAlignment="Top" UICommon:ScrollToTopBehavior.ScrollToTop="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="50" Header="Sno" Binding="{Binding SNO,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="2"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="*" Header="Available Characteristics" Binding="{Binding FEATURE_DESC,UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+                <Grid Grid.Column="0" Grid.Row="2" Visibility="{Binding VisibilityPageBtn1,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Previous" Width="70" Height="35" Grid.Column="1" IsEnabled="False" Margin="-25,0,0,0"  Command="{Binding OnAvailPreviousCommand}" ></Button>
+                    <Button Content="Next" Width="70" Height="35" Grid.Column="1" Margin="120,0,0,0"  Command="{Binding OnAvailNextCommand}"  CommandParameter="{Binding ElementName=dgvAvailableCharacteristcsDetails}" ></Button>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="1"  Visibility="{Binding VisibilityPage1,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"></ColumnDefinition>
+                        <ColumnDefinition Width="70*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40*"></RowDefinition>
+                        <RowDefinition Height="7*"></RowDefinition>
+                        <RowDefinition Height="7*"></RowDefinition>
+                        <RowDefinition Height="7*"></RowDefinition>
+                        <RowDefinition Height="32*"></RowDefinition>
+                        <RowDefinition Height="8*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Name="lblPartNo" Text="Part No : " TextAlignment="Right" Grid.Row="1"  Grid.Column="0" Width="90"></TextBlock>
+                    <TextBlock Name="lblRouteNo" TextAlignment="Right" Text="Process No : " Grid.Row="2"  Grid.Column="0" Width="90"></TextBlock>
+                    <TextBlock Name="lblSeqNo" TextAlignment="Right" Text="Seq No : " Grid.Row="3"  Grid.Column="0" Width="90" ></TextBlock>
+                    <TextBlock Name="lblPartNoValue" TextAlignment="Left" Text="{Binding CPGModel.PartNo ,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontWeight="Bold"  Grid.Row="1" Margin="5,0,5,0" Grid.Column="1"/>
+                    <TextBlock Name="lblRouteNoValue" TextAlignment="Left" Text="{Binding CPGModel.RouteNo ,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontWeight="Bold"  Grid.Row="2" Margin="5,0,5,0"  Grid.Column="1"></TextBlock>
+                    <TextBlock Name="lblSeqNoValue" TextAlignment="Left" Text="{Binding CPGModel.SeqNo,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontWeight="Bold" Grid.Row="3" Margin="5,0,5,0" Grid.Column="1"></TextBlock>
+                    <CheckBox Grid.Column="0" Grid.Row="7"  VerticalAlignment="Bottom" IsChecked="{Binding CPGModel.SelectAll,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Content="Select All"  Command="{Binding OnAvailChkCommand}"  CommandParameter="{Binding ElementName=dgvAvailableCharacteristcsDetails}"  Margin="5,5,5,5">
+                    </CheckBox>
+                </Grid>
+
+            </Grid>
+        </Border>
+
+        <!--End Grid 1 -AvailableChar 
+
+        Grid 2 -SplChar-->
+
+
+        <Border BorderThickness="1" Margin="10,10,10,10" CornerRadius="10"  Visibility="{Binding VisibilityPage2,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }">
+            <Grid Name="Grd1_SplChar">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="87*"></RowDefinition>
+                    <RowDefinition Height="10*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="70*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Grid.Row="1" Header="Special Characteristics" Margin="3,3,3,3" >
+                    <DataGrid Name="dgvSpl" ItemsSource="{Binding CPGModel.SplCharacteristcsDetails,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"  CanUserResizeColumns="False">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="RowEditEnding">
+                                <i:InvokeCommandAction  Command="{Binding RowEditEndingSplCommand}" CommandParameter="{Binding ElementName=dgvSpl, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="50" Header="Sno" Binding="{Binding SNO,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="2"/>
+                                        <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="*" Header="Characteristics" Binding="{Binding FEATURE,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="49"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="*" Header="Drg No Ref" Binding="{Binding ISR_NO,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="4"/>
+                                        <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+
+                            <!--<DataGridTextColumn Width="*" Header="Special Character" Binding="{Binding SPEC_CHAR,UpdateSourceTrigger=PropertyChanged}"/>-->
+
+                            <DataGridTemplateColumn Header="Special Character"  Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding SPEC_CHAR}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <bhCustCtrl:CustComboBox IsReadOnly="False" IsSynchronizedWithCurrentItem="False"   
+                                             ItemsSource="{Binding Source={StaticResource SplCharViewSource}}"  
+                                             Text="{Binding SPEC_CHAR,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                SelectedValuePath="SPEC_CHAR" 
+                                             DisplayMemberPath="SPEC_CHAR"   
+                                             IsEditable="True"
+                                             VerticalContentAlignment="Center" >
+                                            <toolKit:DataGridTextColumn Header="SPECIAL CHAR"  Binding="{Binding SPEC_CHAR}" />
+                                        </bhCustCtrl:CustComboBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+                <Grid Grid.Column="0" Grid.Row="2" Visibility="{Binding VisibilityPageBtn2,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Previous" Width="70" Height="35" Grid.Column="1" Margin="-25,0,0,0"  Command="{Binding OnSplPreviousCommand}" CommandParameter="{Binding ElementName=dgvSpl}"></Button>
+                    <Button Content="Next" Width="70" Height="35" Grid.Column="1" Margin="120,0,0,0"  Command="{Binding OnSplNextCommand}" CommandParameter="{Binding ElementName=dgvSpl}" ></Button>
+                </Grid>
+            </Grid>
+        </Border>
+
+
+        <!--End Grid 2 -SplChar 
+
+        Grid 3 -All Grids-->
+
+
+        <Border BorderThickness="1" Margin="10,10,10,10" CornerRadius="10" Visibility="{Binding VisibilityPage3,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }">
+            <Grid Name="Grd3_AllGrds" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="45*"></RowDefinition>
+                    <RowDefinition Height="45*"></RowDefinition>
+                    <RowDefinition Height="9*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="30*"></ColumnDefinition>
+                    <ColumnDefinition Width="70*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Grid.Row="1" Header="Characteristics" Margin="3,3,3,3" Grid.RowSpan="2" >
+                    <DataGrid Name="dgvGrd3Chara" IsReadOnly="True" ItemsSource="{Binding CPGModel.Grd3CharacteristcsDetails,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"  CanUserResizeColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="50" Header="Sno" Binding="{Binding SNO,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="2"/>
+                                        <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="*" Header="Characteristics" Binding="{Binding FEATURE,UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeGrdCommandFeatureDetails}" CommandParameter="{Binding ElementName=dgvGrd3Chara, Path=SelectedItem}" />
+                            </i:EventTrigger>
+
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeGrdCommandFeatureDetails}" CommandParameter="{Binding ElementName=dgvGrd3Chara, Path=SelectedItem}" />
+                            </i:EventTrigger>
+
+                        </i:Interaction.Triggers>
+                    </DataGrid>
+                </GroupBox>
+                <GroupBox Grid.Column="1" Grid.Row="1" Header="Measuring Technique" Margin="3,3,3,3" >
+                    <DataGrid Name="dgvGrd3Meas" SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" ItemsSource="{Binding CPGModel.Grd3MeasuringTechniquesDetails,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"  CanUserResizeColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="50" Header="Sno" Binding="{Binding SNO,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="2"/>
+                                        <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="130" Header="Measuring&#x0a;Technique" Binding="{Binding MEASURING_TECHNIQUE,UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <!--<DataGridTextColumn   Width="50" Header="Sno"/>
+                            <DataGridTextColumn Width="130" Header="Measuring&#x0a;Technique"/>-->
+
+                            <DataGridTextColumn Width="70"  Header="Sample&#x0a;Size"  Binding="{Binding SAMPLE_SIZE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <DataGridTextColumn  Width="90" Header="Sample&#x0a;Frequency" Binding="{Binding SAMPLE_FREQUENCY,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <DataGridTextColumn  Width="*" Header="Control Method" Binding="{Binding CONTROL_METHOD,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn  Width="*" Header="Reaction Plan"  Binding="{Binding REACTION_PLAN,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding MouseDoubleClickGrdMeasuringDetails}" CommandParameter="{Binding ElementName=dgvGrd3Meas, Path=SelectedItem}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </DataGrid>
+                </GroupBox>
+                <GroupBox Grid.Column="1" Grid.Row="2" Header="Selected Measuring Technique" Margin="3,3,3,3" >
+                    <DataGrid  Name="dgvGrd3SelectMeas"  SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" ItemsSource="{Binding CPGModel.Grd3SelectedMeasuringTechniquesDetails,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"  CanUserResizeColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="50" Header="Sno" Binding="{Binding SNO,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="2"/>
+                                        <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="120" Header="Characteristics" Binding="{Binding FEATURE,UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Width="120" Header="Measuring&#x0a;Technique" Binding="{Binding GAUGES_USED,UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <!--<DataGridTextColumn   Width="50" Header="Sno"/>
+                            <DataGridTextColumn  Width="120"  Header="Characteristics"/>
+                            <DataGridTextColumn Width="100" Header="Measuring&#x0a;Technique"/>-->
+
+                            <DataGridTextColumn Width="70"  Header="Sample&#x0a;Size"  Binding="{Binding SAMPLE_SIZE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <DataGridTextColumn  Width="90" Header="Sample&#x0a;Frequency" Binding="{Binding FREQ_OF_INSP,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <DataGridTextColumn  Width="*" Header="Control Method" Binding="{Binding CONTROL_METHOD,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn  Width="*" Header="Reaction Plan"  Binding="{Binding REACTION_PLAN,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding MouseDoubleClickGrdSelectedMeasuringDetails}" CommandParameter="{Binding ElementName=dgvGrd3SelectMeas, Path=SelectedItem}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </DataGrid>
+                </GroupBox>
+                <Grid Grid.Column="2" Grid.Row="3"  Visibility="{Binding VisibilityPageBtn3,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Previous" Width="70" Height="35" Grid.Column="1" Margin="-150,0,0,0"  Command="{Binding OnGrd3PreviousCommand}" CommandParameter="{Binding ElementName=dgvSpl}" ></Button>
+                    <Button Content="Next" Width="70" Height="35" Grid.Column="1" Margin="0,0,0,0"  Command="{Binding OnGrd3NextCommand}" CommandParameter="{Binding ElementName=dgvGrd3SelectMeas}" ></Button>
+                </Grid>
+
+            </Grid>
+        </Border>
+
+
+
+        <!--End Grid 3 -All Grids
+
+        Grid 4 -Pccs Details-->
+
+
+
+        <Border BorderThickness="1" Margin="5,5,0,5" CornerRadius="10"  Visibility="{Binding VisibilityPage4,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }">
+            <Grid Name="Grd4_Characteristics">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="87*"></RowDefinition>
+                    <RowDefinition Height="10*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="70*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Grid.Row="1" Header="Special Characteristics" Margin="3,3,3,3" >
+                    <DataGrid Name="dgvPccs" AutoGenerateColumns="False" SelectionUnit="FullRow" CanUserAddRows="False" Margin="2" HorizontalScrollBarVisibility="Visible" ItemsSource="{Binding CPGModel.Grd4CharacteristcsDetails,UpdateSourceTrigger=PropertyChanged}" CanUserSortColumns="False" CanUserDeleteRows="False" UICommon:ScrollToTopBehavior.ScrollToTop="True">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="Sno" Binding="{Binding SNO,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Width="50"/>
+                            <DataGridTextColumn Header="ISR&#x0a;No" Binding="{Binding ISR_NO,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <DataGridTextColumn  Header="Characteristics"  Binding="{Binding FEATURE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <DataGridTextColumn  Header="Proc&#x0a;Chars"  Binding="{Binding PROCESS_FEATURE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="60"/>
+                            <DataGridTextColumn Header="Spec&#x0a;Min" Binding="{Binding SPEC_MIN,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="30"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Spec&#x0a;Max" Binding="{Binding SPEC_MAX,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="30"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Ctrl Spec&#x0a;Min" Binding="{Binding CTRL_SPEC_MIN,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <DataGridTextColumn Header="Ctrl Spec&#x0a;Max" Binding="{Binding CTRL_SPEC_MAX,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <DataGridTextColumn Header="Spcl&#x0a;Chars" Binding="{Binding SPEC_CHAR,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="60"/>
+                            <DataGridTextColumn Header="Dept Resp" Binding="{Binding DEPT_RESP,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <DataGridTextColumn Header="Measuring&#x0a;Technique" Binding="{Binding GAUGES_USED,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <DataGridTextColumn Header="Sample&#x0a;Size"  Binding="{Binding SAMPLE_SIZE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <DataGridTextColumn Header="Sample&#x0a;Frequency" Binding="{Binding FREQ_OF_INSP,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <DataGridTextColumn Header="Control Method" Binding="{Binding CONTROL_METHOD,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Header="Reaction Plan"  Binding="{Binding REACTION_PLAN,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+                <Grid Grid.Column="0" Grid.Row="2"  Visibility="{Binding VisibilityPageBtn4,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Previous"  Width="70" Height="35" Grid.Column="1" Margin="-150,0,0,0"  Command="{Binding OnGrd4PreviousCommand}" CommandParameter="{Binding ElementName=dgvGrd3SelectMeas}" ></Button>
+                    <Button Content="Next"  IsEnabled="False" Width="70" Height="35" Grid.Column="1" Margin="10,0,0,0"  Command="{Binding OnGrd4NextCommand}" ></Button>
+                    <Button Content="Finish" Width="70" Height="35" Grid.Column="1" Margin="170,0,0,0"  Command="{Binding OnGrd4FinishCommand}" ></Button>
+                </Grid>
+            </Grid>
+        </Border>
+
+
+        <!--End Grid 4 -Pccs Details-->
+
+    </Grid>
+</Window>

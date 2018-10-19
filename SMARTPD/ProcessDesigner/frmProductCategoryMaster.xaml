@@ -1,0 +1,308 @@
+﻿<UserControl x:Class="ProcessDesigner.frmProductCategoryMaster"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+             xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+             xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+              xmlns:Common="clr-namespace:ProcessDesigner.UICommon"
+             mc:Ignorable="d" 
+             Height="350" Width="600"  Background="{StaticResource WindowBackground}" Loaded="UserControl_Loaded" Unloaded="UserControl_Unloaded">
+    <UserControl.InputBindings>
+        <KeyBinding Key="F3" Command="{Binding AddCommand}" />
+        <KeyBinding Key="F5" Command="{Binding EditCommand}" />
+        <KeyBinding  Modifiers="Control" Key="S" Command="{Binding SaveCommand}" />
+        <KeyBinding Key="F9" Command="{Binding CloseCommand}" />
+    </UserControl.InputBindings>
+    <Grid KeyboardNavigation.TabNavigation ="Cycle">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ToolBar Grid.ColumnSpan="2" IsTabStop="False" >
+            <Button Content="Add F3" IsTabStop="False" Grid.Row="0" Grid.Column="0" Height="40" Width="50" IsEnabled="{Binding AddButtonIsEnable}" Command="{Binding AddCommand}" ToolTip="Add New Record" Lookup:AddedProperty.Image="Images/Add.png" />
+            <Button Content="Edit/View F5" IsTabStop="False" Grid.Row="0" Grid.Column="1" x:Name="Btn_Edit" Height="40" Width="80" IsEnabled="{Binding EditButtonIsEnable}" Command="{Binding EditCommand}" ToolTip="Edit or View Record" Lookup:AddedProperty.Image="Images/Edit.png"/>
+            <Button Content="Delete F6" IsTabStop="False" Grid.Row="0" Grid.Column="2" x:Name="Btn_Delete" Height="40" Visibility="Collapsed" Width="70"  IsEnabled="False" Command="{Binding DeleteCommand}" ToolTip="Delete a Record" Lookup:AddedProperty.Image="Images/Delete.png" />
+            <Button Content="Save Ctrl+S" IsTabStop="False" Grid.Row="0" Grid.Column="3" x:Name="Btn_Save" Height="40" Width="70" IsEnabled="{Binding SaveButtonIsEnable}"  Command="{Binding SaveCommand}" ToolTip="Save Record" Lookup:AddedProperty.Image="Images/Save.png" />
+            <Button x:Name="Btn_Close" IsTabStop="False" Content="Close F9" Grid.Row="0" Grid.Column="4" Height="40"  Width="60" Command="{Binding CloseCommand}" ToolTip="Close Form" Lookup:AddedProperty.Image="Images/Close.png"/>
+        </ToolBar>
+
+        <Border Grid.Row="1"  BorderThickness="1" Margin="5">
+            <Grid Height="30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0"/>
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="350" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Visibility="Collapsed" VerticalAlignment="Center"  Text="Product Code :"  HorizontalAlignment="Right" Margin="0,0,10,0"  Grid.Row="0" />
+                <TextBox Visibility="Collapsed" Name="txtProductCode"  Grid.Column="1" Width="80" CharacterCasing="Upper" IsReadOnly="{Binding IsPrdCodeReadOnly}" MaxLength="10" HorizontalAlignment="Left" 
+                         Text="{Binding ProductCategory.PRD_CODE,UpdateSourceTrigger=PropertyChanged}" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PreviewLostKeyboardFocus">
+                            <si:CallMethodAction MethodName="CodePreviewLostKeyboardFocus" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+                <TextBlock Grid.Column="2"  VerticalAlignment="Center"  Text="Product Category :"  HorizontalAlignment="Right" Margin="0,0,10,0"  Grid.Row="0" />
+                <TextBox Grid.Column="3" Visibility="Collapsed" Grid.Row ="0" Width="170" HorizontalAlignment="Left" Common:FocusExtension.IsFocused="{Binding CategoryIsFocused,UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+                <Lookup:ComboBoxCus Tag="Please enter/select Product Category" DropDownCusWidth="390" Grid.Column="3" Grid.Row ="0" IsReadOnly="{Binding IsPrdCategoryReadOnly}" x:Name="cmbPrdCategory" ColumnsHeader="{Binding DropdownHeaders}"  Margin="3,0,20,0"
+					DataSource="{Binding ProductCategory.DVCategory,UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding SelectedRow,UpdateSourceTrigger=PropertyChanged}" 
+                                   Width="171" HorizontalAlignment="Left" SelectedValuePath="PRODUCT_CATEGORY" SelectedValue="{Binding ProductCategory.PRODUCT_CATEGORY,UpdateSourceTrigger=PropertyChanged}" MaxLength="20" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectedItemChanged">
+                            <i:InvokeCommandAction Command="{Binding OnSelectionChanged}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="GotFocus">
+                            <si:CallMethodAction MethodName="PrdCategory_GotFocus" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="TextBox_LostFocus">
+                            <si:CallMethodAction MethodName="CategoryPreviewLostKeyboardFocus" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Lookup:ComboBoxCus>
+            </Grid>
+        </Border>
+
+
+        <TabControl Margin="5"  Grid.Row="2" SelectedIndex="{Binding TabItemIndex,UpdateSourceTrigger=PropertyChanged}" >
+            <TabItem Header="Product Type" Height="30"  Focusable="True" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Name="dgrdType" ItemsSource="{Binding ProductCategory.DVType,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"
+                      CanUserDeleteRows="False" RowHeaderWidth="20" SelectedItem="{Binding ProductCategory.TypeSelectedItem,UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single">
+                        <DataGrid.ContextMenu>
+                            <ContextMenu >
+                                <MenuItem Header="Delete" IsEnabled="{Binding DeleteButtonIsEnable}" Command="{Binding DeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.InputBindings>
+                            <KeyBinding  Key="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=dgrdType, Path=SelectedItem}" />
+                        </DataGrid.InputBindings>
+                        <i:Interaction.Triggers>
+
+                            <i:EventTrigger EventName="RowEditEnding">
+                                <i:InvokeCommandAction  Command="{Binding RowEditEndingTypeCommand}" CommandParameter="{Binding ElementName=dgrdType, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectionChangedTypeCommand}" CommandParameter="{Binding ElementName=dgrdType, Path=SelectedItem}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="BeginningEdit">
+                                <si:CallMethodAction MethodName="OnBeginningEdit" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="OnCellEditEnding" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="Product Code" Visibility="Collapsed" Width="4*" Binding="{Binding PRD_CODE,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="10"/>
+                                        <Setter Property="CharacterCasing" Value="Upper" />
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Type" Width="6*" Binding="{Binding TYPE,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="40"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid Grid.Column="1" Name="dgrdTypeNew" ItemsSource="{Binding ProductCategory.DVAllSubType,UpdateSourceTrigger=PropertyChanged,BindsDirectlyToSource=True}" AutoGenerateColumns="False" CanUserAddRows="False"
+                      CanUserDeleteRows="False" RowHeaderWidth="20" SelectionMode="Single">
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Delete" IsEnabled="{Binding DeleteButtonIsEnable}" Command="{Binding DeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.InputBindings>
+                            <KeyBinding  Key="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=dgrdTypeNew, Path=SelectedItem}" />
+                        </DataGrid.InputBindings>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="RowEditEnding">
+                                <i:InvokeCommandAction  Command="{Binding RowEditEndingProSubTypeCommand}" CommandParameter="{Binding ElementName=dgrdTypeNew, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="BeginningEdit">
+                                <si:CallMethodAction MethodName="OnBeginningEdit" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="OnCellEditEnding" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="Product Code" Visibility="Collapsed" Width="4*" Binding="{Binding PRD_CODE,UpdateSourceTrigger=PropertyChanged}" >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="10"/>
+                                        <Setter Property="CharacterCasing" Value="Upper" />
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Sub Type"  Width="6*" Binding="{Binding SUBTYPE,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="40"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Linked With" Height="30"  Focusable="True">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Name="dgrdSubType" ItemsSource="{Binding ProductCategory.DVSubType,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"
+                       CanUserDeleteRows="False" RowHeaderWidth="20" SelectedItem="{Binding ProductCategory.SubTypeSelectedItem,UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single">
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Delete" IsEnabled="{Binding DeleteButtonIsEnable}" Command="{Binding DeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.InputBindings>
+                            <KeyBinding  Key="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=dgrdSubType, Path=SelectedItem}" />
+                        </DataGrid.InputBindings>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="RowEditEnding">
+                                <i:InvokeCommandAction  Command="{Binding RowEditEndingSubTypeCommand}" CommandParameter="{Binding ElementName=dgrdSubType, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectionChangedSubTypeCommand}" CommandParameter="{Binding ElementName=dgrdSubType, Path=SelectedItem}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="BeginningEdit">
+                                <si:CallMethodAction MethodName="OnBeginningEdit"  TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="OnCellEditEnding" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="Product Code" Visibility="Collapsed" Width="4*"   Binding="{Binding PRD_CODE,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="10"/>
+                                        <Setter Property="CharacterCasing" Value="Upper" />
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Type" Width="6*" Binding="{Binding SUBTYPE,UpdateSourceTrigger=PropertyChanged}" >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="40"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Name="dgrdSubTypeNew" Grid.Column="1" ItemsSource="{Binding ProductCategory.DVAllLinkSubType,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"
+                       CanUserDeleteRows="False" RowHeaderWidth="20" SelectionMode="Single">
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Delete" IsEnabled="{Binding DeleteButtonIsEnable}" Command="{Binding DeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.InputBindings>
+                            <KeyBinding  Key="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=dgrdSubTypeNew, Path=SelectedItem}" />
+                        </DataGrid.InputBindings>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="RowEditEnding">
+                                <i:InvokeCommandAction  Command="{Binding RowEditEndingLinkSubTypeCommand}" CommandParameter="{Binding ElementName=dgrdSubTypeNew, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="BeginningEdit">
+                                <si:CallMethodAction MethodName="OnBeginningEdit" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="OnCellEditEnding" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="Product Code" Visibility="Collapsed" Width="4*"  Binding="{Binding PRD_CODE,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="10"/>
+                                        <Setter Property="CharacterCasing" Value="Upper" />
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Sub Type" Width="6*" Binding="{Binding SUBTYPE,UpdateSourceTrigger=PropertyChanged}" >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="40"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+
+
+
+
+    </Grid>
+</UserControl>

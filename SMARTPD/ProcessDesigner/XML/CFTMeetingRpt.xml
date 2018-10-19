@@ -1,0 +1,99 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="CFTMeetingRpt" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="CFTMeetingRpt" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CFTMeetingModel">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DtCtm1" msdata:DataType="System.Data.DataView, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="DtCtm2" msdata:DataType="System.Data.DataView, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="DtCtm3" msdata:DataType="System.Data.DataView, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="DtCtm4" msdata:DataType="System.Data.DataView, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="DtCtm5" msdata:DataType="System.Data.DataView, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="DtCtm6" msdata:DataType="System.Data.DataView, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="DtCtm7" msdata:DataType="System.Data.DataView, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="DtPartNumber" msdata:DataType="System.Data.DataView, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="DtSpecialCharacteristics" msdata:DataType="System.Data.DataView, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="DtTimigChart" msdata:DataType="System.Data.DataView, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="DtMidGrid" msdata:DataType="System.Data.DataView, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="Ctm1" type="xs:string" minOccurs="0" />
+              <xs:element name="Ctm2" type="xs:string" minOccurs="0" />
+              <xs:element name="Ctm3" type="xs:string" minOccurs="0" />
+              <xs:element name="Ctm4" type="xs:string" minOccurs="0" />
+              <xs:element name="Ctm5" type="xs:string" minOccurs="0" />
+              <xs:element name="Ctm6" type="xs:string" minOccurs="0" />
+              <xs:element name="Ctm7" type="xs:string" minOccurs="0" />
+              <xs:element name="PartNo" type="xs:string" minOccurs="0" />
+              <xs:element name="PartDesc" type="xs:string" minOccurs="0" />
+              <xs:element name="RMSpec" type="xs:string" minOccurs="0" />
+              <xs:element name="PackingSpec" type="xs:string" minOccurs="0" />
+              <xs:element name="CheesWt" type="xs:string" minOccurs="0" />
+              <xs:element name="FinishWt" type="xs:string" minOccurs="0" />
+              <xs:element name="Customer" type="xs:string" minOccurs="0" />
+              <xs:element name="AnnualRequirments" type="xs:string" minOccurs="0" />
+              <xs:element name="PPAPProductionQty" type="xs:string" minOccurs="0" />
+              <xs:element name="PPAPSampleQty" type="xs:string" minOccurs="0" />
+              <xs:element name="Remarks" type="xs:string" minOccurs="0" />
+              <xs:element name="CustPartNo" type="xs:string" minOccurs="0" />
+              <xs:element name="CustRequiredDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CustPartName" type="xs:string" minOccurs="0" />
+              <xs:element name="Location" type="xs:string" minOccurs="0" />
+              <xs:element name="CFTMeetingIssueDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CFTMeetingIssueNo" type="xs:string" minOccurs="0" />
+              <xs:element name="CFTMeetingDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Application" type="xs:string" minOccurs="0" />
+              <xs:element name="PG" type="xs:string" minOccurs="0" />
+              <xs:element name="IsSafetyPart" type="xs:string" minOccurs="0" />
+              <xs:element name="IsProtoType" type="xs:string" minOccurs="0" />
+              <xs:element name="rbtnMIsChecked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="rbtnKIsChecked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="rbtnYIsChecked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ChkSPYesIsChecked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ChkSPNoIsChecked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ChkPTYesIsChecked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ChkPTNoIsChecked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Part_No" type="xs:string" minOccurs="0" />
+              <xs:element name="HasErrors" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Error" type="xs:string" minOccurs="0" />
+              <xs:element name="Item" type="xs:string" minOccurs="0" />
+              <xs:element name="PropertyInfos" msdata:DataType="System.Collections.Generic.List`1[[System.Reflection.PropertyInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable0" >
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="seq_no" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cc_code" type="xs:string" minOccurs="0" />
+              <xs:element name="opn_desc" type="xs:string" minOccurs="0" />
+              <xs:element name="Part_No" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Table1" >
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FEATURE" type="xs:string" minOccurs="0" />
+              <xs:element name="SPEC_MINMAX" type="xs:string" minOccurs="0" />
+              <xs:element name="Part_No" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Table2">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Phase" type="xs:string" minOccurs="0" />
+              <xs:element name="Activity" type="xs:string" minOccurs="0" />
+              <xs:element name="Actual_Finish_Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Planned_Start_Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Planned_End_Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Revised_Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Part_No" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

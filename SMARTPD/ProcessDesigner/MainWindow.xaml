@@ -1,0 +1,178 @@
+﻿<Window x:Class="ProcessDesigner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mdi="clr-namespace:WPF.MDI;assembly=WPF.MDI"
+        Title="SmartPD" Width="1024" WindowState="Maximized" WindowStartupLocation="CenterScreen" Icon="Images/logo.ico" Closing="Window_Closing" >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="560*"/>
+            <ColumnDefinition Width="381*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions >
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <mdi:MdiContainer x:Name="Container" Grid.ColumnSpan="3">
+            <mdi:MdiContainer.Menu>
+                <Menu Height="30"  VerticalContentAlignment="Center" >
+                    <MenuItem Header="_Masters" >
+                        <MenuItem Name="miOperationMaster" Header="Operation Master" Click="MenuItem_Click" />
+                        <MenuItem Name="miFinishMast" Header="Base Coat Finish Master" Click="MenuItem_Click" />
+                        <MenuItem Name="miCoatingMast" Header="Top Coating Master" Click="MenuItem_Click" />
+                        <Separator />
+                        <MenuItem Name="miRawMaterial" Header="Raw Material Master" Click="MenuItem_Click" />
+
+                        <MenuItem Name="miCustomer" Header="Customer Master" Click="MenuItem_Click" />
+                        <MenuItem Name="miCCMaster" Header="Cost Centre Master" Click="MenuItem_Click" />
+                        <Separator />
+                        <MenuItem Name="miUnitMaster" Header="Unit Master"  Click="MenuItem_Click" />
+                        <MenuItem Name="miLocationMaster" Header="Location Master" Click="MenuItem_Click" />
+                        <MenuItem Name="miCategoryMaster" Header="Category Master" Click="MenuItem_Click" />
+                        <MenuItem Name="miApplicationMaster" Header="PSW Application Master" Click="MenuItem_Click" />
+                        <MenuItem Name="miUpdateFeature" Header="Update Features" Click="MenuItem_Click" />
+                        <Separator />
+                        <MenuItem Name="miPartNumberConfiguration" Header="Part Number Configuration" Click="MenuItem_Click" />
+                        <MenuItem Name="miProductCategoryMaster" Header="Product Category Master" Click="MenuItem_Click" />
+                        <MenuItem Header="Control Plan Master" >
+                            <MenuItem Name="miFeatureUpdationMaster" Header="Feature Master"  Click="MenuItem_Click" />
+                            <MenuItem Name="miCharacteristicMaster" Header="Characteristics Grouping Master" Click="MenuItem_Click" />
+                            <MenuItem Name="miCPMMaster" Header="Control Plan Member" Click="MenuItem_Click" />
+                            <MenuItem Name="miPSWMaster" Header="PSW Name Master" Click="MenuItem_Click" />
+                        </MenuItem>
+
+                        <Separator />
+                        <MenuItem Name="miExhibit" Header="Exhibit" Click="MenuItem_Click" />
+                        <MenuItem Name="miToolAdmin" Header="Tool Family Administration" Click="MenuItem_Click" />
+
+                        <MenuItem Header="Change Password" Name="miChangePassword" Click="MenuItem_Click" />
+
+                        <MenuItem Header="Exit" Name="miExit" Click="MenuItem_Click" />
+                    </MenuItem>
+                    <MenuItem Header="_Cost Sheet" >
+                        <MenuItem Name="miFRCS" Header="_Cost Sheet Preparation" Click="MenuItem_Click"  />
+                        <MenuItem Name="miRequestDevelopment" Header="_Request for Product Development" Click="MenuItem_Click"  />
+                        <MenuItem Header="Cost Sheet _Search" Click="MenuItem_Click" Name="miCostSheetSearch"/>
+                    </MenuItem>
+                    <MenuItem Header="_Product Information" >
+                        <MenuItem Name="miProductInformation" Header="Product _Master" Click="MenuItem_Click" />
+                        <MenuItem Name="miProcessSheet" Header="Process _Sheet" Click="MenuItem_Click" />
+                        <Separator />
+                        <MenuItem Name="miToolSchedule"  Header="_Tool Schedule" Click="MenuItem_Click"/>
+                        <MenuItem Name="miControlPlanPI"  Header="_Control Plan" Click="MenuItem_Click"/>
+                        <Separator />
+                        <MenuItem Name="miDrawings" Header="D_rawings" Click="MenuItem_Click"/>
+                        <MenuItem Name="miDevelopmentReport" Header="Development Report" Click="MenuItem_Click" />
+                        <MenuItem Name="miManufacturingReport" Header="Manufacturing Report" Click="MenuItem_Click" />
+                        <Separator />
+                        <MenuItem Name="miProductSearch" Header="Product Search" Click="MenuItem_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="_Tools Information" Name="miTollInfo" Click="MenuItem_Click" />
+                    <MenuItem Header="_Tech Lib Info" Visibility="Collapsed">
+                        <MenuItem Name="miHardnessConversion" Header="_Hardness Conversion" Click="MenuItem_Click"/>
+                        <MenuItem Name="miThreadDetails" Header="_Thread Details" Click="MenuItem_Click" />
+                        <Separator />
+                        <MenuItem Name="miChemicalComposition" Header="_Chemical Composition" Click="MenuItem_Click" />
+                        <MenuItem Name="miSurfaceFinish" Header="_Surface Finish" Click="MenuItem_Click"/>
+                        <Separator />
+                        <MenuItem Name="miLibrarySearch" Header="_Literature Search" Click="MenuItem_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="_Reports" >
+                        <MenuItem Name="miDDPerformance"  Header="D_D Performance Details" Click="MenuItem_Click"/>
+                        <MenuItem Name="miMFMPlanDetails" Header="MFM Details" Click="MenuItem_Click"/>
+                        <MenuItem Header="Audit Report">
+                            <MenuItem Name="miAuditReportAll" Header="All" Click="MenuItem_Click"/>
+                            <MenuItem Header="Special Characteristics">
+                                <MenuItem Name="miSpecialCharacteristicsReport" Header="Print" Click="MenuItem_Click"/>
+                                <MenuItem Name="miSpecialCharacteristicsExcel" Header="Export to Excel" Click="MenuItem_Click"/>
+                            </MenuItem>
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem Header="Quality Standards">
+                            <MenuItem Name="miCFTMeet" Header="_CFT Meeting" Click="MenuItem_Click"/>
+                            <MenuItem Header="_APQP" Name="miAPQP" Click="MenuItem_Click"/>
+                            <MenuItem Header="_Team Feasibility Commitment">
+                                <MenuItem Name="miTFCNPD" Header="_Team Feasibility Commitment NPD" Click="MenuItem_Click"/>
+                                <MenuItem Name="miTFCECN" Header="_Team Feasibility Commitment ECN" Click="MenuItem_Click"/>
+                                <MenuItem Name="miTFCPCR" Header="_Team Feasibility Commitment PCR" Click="MenuItem_Click"/>
+                            </MenuItem>
+                            <MenuItem Name="miQCP" Header="_Quality Planning Sign off" Click="MenuItem_Click"/>
+                            <MenuItem Name="miEcnPcnCFT" Header="ECN-CFT Meeting" Click="MenuItem_Click"/>
+                        </MenuItem>
+
+                        <MenuItem Header="MIS Reports">
+                            <MenuItem Name="miMISCustomerPartNos" Header="Customer PartNos" Click="MenuItem_Click" />
+                            <MenuItem Name="miMISFeatureWise" Header="Feature Wise" Click="MenuItem_Click" />
+                            <Separator />
+                            <MenuItem Name="miMISMFMReport" Header="MFM Report" Click="MenuItem_Click" />
+                            <MenuItem Name="miMISPartNos" Header="Part Nos" Click="MenuItem_Click" />
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem Name="miOTPMChart" Header="_OTPM Chart" Click="MenuItem_Click" />
+                        <MenuItem Header="_KaizenIdeaSheet" Visibility="Collapsed"/>
+                        <MenuItem Name="miMachineBooking" Header="_Machine Booking" Click="MenuItem_Click"/>
+                        <MenuItem Name="miPendingPartStatus" Header="_Pending Parts Status" Click="MenuItem_Click"/>
+                        <Separator />
+                        <MenuItem Name="miAllFeature" Header="_All Features" Click="MenuItem_Click"/>
+                        <MenuItem Header="PFD Show" Visibility="Collapsed">
+                            <MenuItem Header="Show Process Flow Diagram"/>
+                        </MenuItem>
+                        <MenuItem Header="Flow chart" Visibility="Collapsed"/>
+                        <MenuItem Header="Hide Process Flow Diagram" Visibility="Collapsed"/>
+                        <MenuItem Header="Generate Process Flow Diagram" Visibility="Collapsed"/>
+                        <MenuItem Header="Delete Process Flow Diagram" Visibility="Collapsed"/>
+                        <!--<MenuItem Name="miBaseCoatFinish" Header="_Base Coat Finish" Click="MenuItem_Click"/>
+                        <MenuItem Name="miTopCoatFinish" Header="_Top Coat Finish" Click="MenuItem_Click"/>-->
+                    </MenuItem>
+                    <MenuItem Name="miSecurity" Header="_Security" Click="MenuItem_Click" />
+                    <MenuItem Header="_SAP Conversion" >
+                        <MenuItem Name="miSapHalb" Header="_Halb"  Click="MenuItem_Click"/>
+                        <MenuItem Name="miSapFert" Header="_Fert" Click="MenuItem_Click"/>
+                        <MenuItem Name="miSapBom" Header="_Bom" Click="MenuItem_Click" />
+                        <MenuItem Name="miSapRouting" Header="_Routing" Click="MenuItem_Click"/>
+                        <MenuItem Name="miSapProductVersion" Header="_ProductionVersion" Click="MenuItem_Click"/>
+                        <Separator />
+                        <MenuItem Name="miSapImport" Header="_Import to PD" Click="MenuItem_Click" />
+                    </MenuItem>
+                    <MenuItem Header="_OQA" Name="miOqa"  Click="MenuItem_Click"/>
+                    <MenuItem Name="miWindows" Header="_Windows" >
+                        <MenuItem Name="miTileHorizontally" Header="Tile _Horizontally" Click="MenuItem_Click" />
+                        <MenuItem Name="miTileVertically" Header="Tile _Vertically" Click="MenuItem_Click"/>
+                        <MenuItem Name="miTileCascade" Header="_Cascade" Click="MenuItem_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="_Log" Name="miLog"  Click="MenuItem_Click"/>
+                    <MenuItem Header="_Testing" Name="miTesting"  Click="MenuItem_Click" Visibility="Collapsed"/>
+                </Menu>
+            </mdi:MdiContainer.Menu>
+        </mdi:MdiContainer>
+
+        <StatusBar Grid.Row="1" Height="30" Name="stMain" Grid.ColumnSpan="3"  >
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem >
+                <TextBlock Text="{Binding StatusMessage}"  />
+            </StatusBarItem>
+            <Separator  Grid.Column="1" />
+            <StatusBarItem Grid.Column="2" >
+                <TextBlock Text="{Binding UserName}"    />
+            </StatusBarItem>
+            <Separator Grid.Column="3"  />
+            <StatusBarItem Grid.Column="4" >
+                <TextBlock  Text="{Binding CurrentStatus}"  />
+            </StatusBarItem>
+        </StatusBar>
+
+    </Grid>
+</Window>

@@ -1,0 +1,39 @@
+﻿<Window x:Class="ProcessDesigner.frmSurfaceFinish"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Surface Finish Standards" Height="400" Width="500" MinWidth="500"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{StaticResource WindowBackground}">
+    <Border  BorderThickness="1" BorderBrush="Black"  Margin="10,10,10,10" CornerRadius="10">
+        <Grid>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="40*" ></ColumnDefinition>
+                <ColumnDefinition Width="60*"  ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="13*"></RowDefinition>
+                <RowDefinition Height="13*"></RowDefinition>
+                <RowDefinition Height="13*"></RowDefinition>
+                <RowDefinition Height="13*"></RowDefinition>
+                <RowDefinition Height="13*"></RowDefinition>
+                <RowDefinition Height="13*"></RowDefinition>
+                <RowDefinition Height="13*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Name="lblReferenceNo"  Text="Reference No : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+            <TextBlock Name="lblSpecification"  Text="Specification / Desc : " Grid.Row="2"  Grid.Column="0" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+            <TextBlock  Name="lblAppearance" Text="Appearance : " Grid.Row="3"  Grid.Column="0" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+            <TextBlock Name="lblCoatingThickness"  Text="Coating Thickness : " Grid.Row="4"  Grid.Column="0" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+            <TextBlock Name="lblServiceTemp"  Text="Service Temp : " Grid.Row="5"  Grid.Column="0" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+            <TextBlock  Name="lblSaltSprayWR" Text="Salt Spray (W.R) : " Grid.Row="6"  Grid.Column="0" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+            <TextBlock Name="lblSaltSpray"  Text="Salt Spray (R.R) : " Grid.Row="7"  Grid.Column="0" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+
+            <ComboBox Tag="Please select Reference No" Name="cmbReferenceNo"   Height="25" Grid.Row="1"  Grid.Column="1" Margin="0,0,10,0"></ComboBox>
+            <TextBlock  Name="lbltSpecification"  Height="25" Grid.Row="2"  Grid.Column="1" Margin="0,0,10,0" ></TextBlock>
+            <TextBlock  Name="lbltAppearance"  Height="25" Grid.Row="3"  Grid.Column="1"  Margin="0,0,10,0"></TextBlock>
+            <TextBlock Name="lbltCoatingThickness"   Height="25" Grid.Row="4"  Grid.Column="1" Margin="0,0,10,0" ></TextBlock>
+            <TextBlock  Name="lbltServiceTemp"  Height="25" Grid.Row="5"  Grid.Column="1" Margin="0,0,10,0" ></TextBlock>
+            <TextBlock  Name="lbltSaltSprayWR"  Height="25" Grid.Row="6"  Grid.Column="1" Margin="0,0,10,0" ></TextBlock>
+            <TextBlock  Name="lbltSaltSprayRR"  Height="25" Grid.Row="7"  Grid.Column="1"  Margin="0,0,10,0"></TextBlock>
+        </Grid>
+    </Border>
+</Window>

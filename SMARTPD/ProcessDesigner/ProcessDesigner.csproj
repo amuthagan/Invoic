@@ -1,0 +1,2148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B6E5C4C7-5853-42F0-A924-1B3198201842}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProcessDesigner</RootNamespace>
+    <AssemblyName>ProcessDesigner</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>a26deb6f</NuGetPackageImportStamp>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>E:\AllBackUp\pd publish 28sep\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>FEA72F3187598DAF60C231128599DA8BEA776DFA</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ProcessDesigner_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxInterop.ACCTRLLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\AxInterop.ACCTRLLib.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CrystalDecisions.CrystalReports.Engine.1.0.0\lib\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Excel.4.5, Version=2.1.2.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\Excel.4.5.dll</HintPath>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.ACCTRLLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>Dll\Interop.ACCTRLLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Visio, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Dll\Microsoft.Office.Interop.Visio.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Composition">
+      <HintPath>..\packages\Prism.Composition.5.0.0\lib\NET45\Microsoft.Practices.Prism.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\packages\Prism.Interactivity.5.0.0\lib\NET45\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.MefExtensions">
+      <HintPath>..\packages\Prism.MEFExtensions.5.0.0\lib\NET45\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm">
+      <HintPath>..\packages\Prism.Mvvm.1.0.0\lib\net45\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm.Desktop">
+      <HintPath>..\packages\Prism.Mvvm.1.0.0\lib\net45\Microsoft.Practices.Prism.Mvvm.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.PubSubEvents">
+      <HintPath>..\packages\Prism.PubSubEvents.1.0.0\lib\portable-sl4+wp7+windows8+net40\Microsoft.Practices.Prism.PubSubEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.SharedInterfaces">
+      <HintPath>..\packages\Prism.Mvvm.1.0.0\lib\net45\Microsoft.Practices.Prism.SharedInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="SAPBusinessObjects.WPF.Viewer, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BootStrapper.cs" />
+    <Compile Include="frmApplication.xaml.cs">
+      <DependentUpon>frmApplication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCategory.xaml.cs">
+      <DependentUpon>frmCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmControlPlan.xaml.cs">
+      <DependentUpon>frmControlPlan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmControlPlanGeneration.xaml.cs">
+      <DependentUpon>frmControlPlanGeneration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCopyCIReference.xaml.cs">
+      <DependentUpon>frmCopyCIReference.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCopyStatus.xaml.cs">
+      <DependentUpon>frmCopyStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCostSheet.xaml.cs">
+      <DependentUpon>frmCostSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCustomerReference.xaml.cs">
+      <DependentUpon>frmCustomerReference.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCoatingMaster.xaml.cs">
+      <DependentUpon>frmCoatingMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmMISInputBox.xaml.cs">
+      <DependentUpon>frmMISInputBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmManufacturingReport.xaml.cs">
+      <DependentUpon>frmManufacturingReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDummy.xaml.cs">
+      <DependentUpon>frmDummy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmInputBox.xaml.cs">
+      <DependentUpon>frmInputBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmMachineBooking.xaml.cs">
+      <DependentUpon>frmMachineBooking.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="frmOperationMain.xaml.cs">
+      <DependentUpon>frmOperationMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmFinishMaster.xaml.cs">
+      <DependentUpon>frmFinishMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOperatorQualityAssurance.xaml.cs">
+      <DependentUpon>frmOperatorQualityAssurance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPartNumberConfig.xaml.cs">
+      <DependentUpon>frmPartNumberConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmProductReleaseDate.xaml.cs">
+      <DependentUpon>frmProductReleaseDate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportViewer.xaml.cs">
+      <DependentUpon>frmReportViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSeqDwgIssue.xaml.cs">
+      <DependentUpon>frmSeqDwgIssue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmTfcECN.xaml.cs">
+      <DependentUpon>frmTfcECN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmTfcPCR.xaml.cs">
+      <DependentUpon>frmTfcPCR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ManuFactDifficulties.cs">
+      <DependentUpon>ManuFactDifficulties.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\ManuFactOutput.cs">
+      <DependentUpon>ManuFactOutput.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ManuFactPreQual.cs">
+      <DependentUpon>ManuFactPreQual.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\ManuFactProcess.cs">
+      <DependentUpon>ManuFactProcess.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ManuFactDesign.cs">
+      <DependentUpon>ManuFactDesign.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\ManufacturingReport.cs">
+      <DependentUpon>ManufacturingReport.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\rptTopCoatFinish.cs">
+      <DependentUpon>rptTopCoatFinish.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptECNCFTMeet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptECNCFTMeet.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptBaseCoatFinish.cs">
+      <DependentUpon>rptBaseCoatFinish.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptTfcECN.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTfcECN.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptTfcPCR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTfcPCR.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Testing.xaml.cs">
+      <DependentUpon>Testing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UICommon\ScrollToTopBehavior.cs" />
+    <Compile Include="ViewModel\TfcECNViewModel.cs" />
+    <Compile Include="UICommon\DataGridBehaviorToolkit.cs" />
+    <Compile Include="UICommon\DataGridBehavior.cs" />
+    <Compile Include="ViewModel\CategoryViewModel.cs" />
+    <Compile Include="ViewModel\EcnCftMeetingRptviewModel.cs" />
+    <Compile Include="ViewModel\ManufacReportViewModel.cs" />
+    <Compile Include="ViewModel\ApplicationViewModel.cs" />
+    <Compile Include="ViewModel\ReportPendingPartNumberStatusViewModel.cs" />
+    <Compile Include="Reports\FeatureWiseExport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeatureWiseExport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\rptAuditReport.cs">
+      <DependentUpon>rptAuditReport.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptToolsandShifts.cs">
+      <DependentUpon>rptToolsandShifts.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPSWApproved.cs">
+      <DependentUpon>rptPSWApproved.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAwaitingTools.cs">
+      <DependentUpon>rptAwaitingTools.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptCustPartNo1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCustPartNo.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAwaitingdocumentation.cs">
+      <DependentUpon>rptAwaitingdocumentation.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptLeadTime.cs">
+      <DependentUpon>rptLeadTime.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptOQA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptOQA.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPSWApp.cs">
+      <DependentUpon>rptPSWApp.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPSW.cs">
+      <DependentUpon>rptPSW.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPerformanceList1.cs">
+      <DependentUpon>rptPerformanceList1.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UICommon\EnumBooleanConverter.cs" />
+    <Compile Include="ViewModel\APQPViewModel.cs" />
+    <Compile Include="ViewModel\AuditReportViewModel.cs" />
+    <Compile Include="ViewModel\CFTMeetingReportViewModel.cs" />
+    <Compile Include="ViewModel\DDPerformanceSummaryViewModel.cs" />
+    <Compile Include="ViewModel\ECNPCNViewModel.cs" />
+    <Compile Include="ViewModel\FlxReportsViewModel.cs" />
+    <Compile Include="ViewModel\LogViewModel.cs" />
+    <Compile Include="ViewModel\MachineBookingViewModel.cs" />
+    <Compile Include="ViewModel\MFMDevelopmentViewModel.cs" />
+    <Compile Include="ViewModel\MFMPlanViewModel.cs" />
+    <Compile Include="ViewModel\MOPGraphViewModel.cs" />
+    <Compile Include="ViewModel\OperatorQualityAssuranceViewModel.cs" />
+    <Compile Include="ViewModel\QcpViewModel.cs" />
+    <Compile Include="ViewModel\ReportMISProductInformationViewModel.cs" />
+    <Compile Include="ViewModel\ReportOTPMChartsViewModel.cs" />
+    <Compile Include="Reports\AccCostSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccCostSheet.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptInitialSampleInspection.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptInitialSampleInspection.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Cust_Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cust_Report.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DevDesignAssumptions.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DevDesignAssumptions.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DevelopmentReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DevelopmentReport.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DevLog.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DevLog.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DevShortClosure.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DevShortClosure.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ECNPCNSheet.cs">
+      <DependentUpon>ECNPCNSheet.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FeatureWise.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeatureWise.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptCostSearchlist.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCostSearchlist.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptCustom.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCustom.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\rptDimensionalResults.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDimensionalResults.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptFeatures.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptFeatures.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptFlowChart.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptFlowChart.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\rptKaizenSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptKaizenSheet.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPerfomanceResults.cs">
+      <DependentUpon>rptPerfomanceResults.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptMaterialResults.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptMaterialResults.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\rptMPSP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptMPSP.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\rptMPSP1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptMPSP1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\rptPendingStatusReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPendingStatusReport.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptRPD.cs">
+      <DependentUpon>rptRPD.rpt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UICommon\AutoCadUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UICommon\AutoCadUserControl.Designer.cs">
+      <DependentUpon>AutoCadUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UICommon\BooleanConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UICommon\ControlStyles.cs" />
+    <Compile Include="UICommon\CurrencyConverter.cs" />
+    <Compile Include="UICommon\DateTimeConverter.cs" />
+    <Compile Include="UICommon\DecimalConverter.cs" />
+    <Compile Include="UICommon\ExtendedMethods.cs" />
+    <Compile Include="UICommon\EnteKeyTab.cs" />
+    <Compile Include="UICommon\FocusExtension.cs" />
+    <Compile Include="UICommon\IntegerConverter.cs" />
+    <Compile Include="UICommon\TabOnEnterCheckBoxBehavior.cs" />
+    <Compile Include="UICommon\TabOnEnterComboBoxBehavior.cs" />
+    <Compile Include="UICommon\TabOnEnterComboBoxCusBehavior.cs" />
+    <Compile Include="UICommon\TabOnEnterDatePickerBehavior.cs" />
+    <Compile Include="UICommon\TabOnEnterListBoxBehavior.cs" />
+    <Compile Include="UICommon\TabOnEnterTextBoxBehavior.cs" />
+    <Compile Include="CoreModule.cs" />
+    <Compile Include="frmAddCIReference.xaml.cs">
+      <DependentUpon>frmAddCIReference.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCostSheetSearch.xaml.cs">
+      <DependentUpon>frmCostSheetSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDDPerformance.xaml.cs">
+      <DependentUpon>frmDDPerformance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDevelopmentReport.xaml.cs">
+      <DependentUpon>frmDevelopmentReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDDPerformanceSummary.xaml.cs">
+      <DependentUpon>frmDDPerformanceSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDrawings.xaml.cs">
+      <DependentUpon>frmDrawings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmECNCFTMeet.xaml.cs">
+      <DependentUpon>frmECNCFTMeet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmECNPCN.xaml.cs">
+      <DependentUpon>frmECNPCN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmflxReports.xaml.cs">
+      <DependentUpon>frmflxReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmForgingCalc.xaml.cs">
+      <DependentUpon>frmForgingCalc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmForm2.xaml.cs">
+      <DependentUpon>frmForm2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmISIR.xaml.cs">
+      <DependentUpon>frmISIR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmKaizenIdeaSheet.xaml.cs">
+      <DependentUpon>frmKaizenIdeaSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmLocationMasterRange.xaml.cs">
+      <DependentUpon>frmLocationMasterRange.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogView.xaml.cs">
+      <DependentUpon>frmLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmMcBookReport.xaml.cs">
+      <DependentUpon>frmMcBookReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmMfmDevelopment.xaml.cs">
+      <DependentUpon>frmMfmDevelopment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmMFMPlan.xaml.cs">
+      <DependentUpon>frmMFMPlan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmMfmPlanDetails.xaml.cs">
+      <DependentUpon>frmMfmPlanDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmMOPgraph.xaml.cs">
+      <DependentUpon>frmMOPgraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOTPMCharts.xaml.cs">
+      <DependentUpon>frmOTPMCharts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPartSubmissionWarrant.xaml.cs">
+      <DependentUpon>frmPartSubmissionWarrant.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPCCS.xaml.cs">
+      <DependentUpon>frmPCCS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPendingPartStatus.xaml.cs">
+      <DependentUpon>frmPendingPartStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmProductCategoryMaster.xaml.cs">
+      <DependentUpon>frmProductCategoryMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmProductSearch.xaml.cs">
+      <DependentUpon>frmProductSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmProductWeight.xaml.cs">
+      <DependentUpon>frmProductWeight.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmQcp.xaml.cs">
+      <DependentUpon>frmQcp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmRawMaterial.xaml.cs">
+      <DependentUpon>frmRawMaterial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmRPD.xaml.cs">
+      <DependentUpon>frmRPD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptCustpartNo.xaml.cs">
+      <DependentUpon>frmRptCustpartNo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptFeatureWise.xaml.cs">
+      <DependentUpon>frmRptFeatureWise.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmrptMFM.xaml.cs">
+      <DependentUpon>frmrptMFM.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmrptPartNos.xaml.cs">
+      <DependentUpon>frmrptPartNos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSimiliarProduct.xaml.cs">
+      <DependentUpon>frmSimiliarProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmTfc.xaml.cs">
+      <DependentUpon>frmTfc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmToolSchedule_new.xaml.cs">
+      <DependentUpon>frmToolSchedule_new.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmToolsInfo.xaml.cs">
+      <DependentUpon>frmToolsInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmToolsQuickView.xaml.cs">
+      <DependentUpon>frmToolsQuickView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\APQP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>APQP.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\CFTMeeting.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CFTMeeting.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InitialSampleSubmissionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InitialSampleSubmissionReport.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ISIR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ISIR.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\PartSubmissionWarrant.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PartSubmissionWarrant.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PPApprDimensionalResult.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPApprDimensionalResult.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PPApprMateTestResult.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPApprMateTestResult.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PPApprPerfTestResult.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPApprPerfTestResult.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ProcessControllerCapabilitySheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProcessControllerCapabilitySheet.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAuxillaryToolSchedule.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptAuxillaryToolSchedule.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptCheckList.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCheckList.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptControlPlan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptControlPlan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\rptCostSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCostSheet.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptMasterSampleLabel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptMasterSampleLabel.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPerformanceList.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPerformanceList.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptProcessSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptProcessSheet.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptProductSearch.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptProductSearch.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptQcp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptQcp.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptsubFlowChart1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptsubFlowChart1.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptsubFlowChart2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptsubFlowChart2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\rptTfc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTfc.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptToolDrawing.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptToolDrawing.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\rptToolschedule.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptToolschedule.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmAPQP.xaml.cs">
+      <DependentUpon>frmAPQP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCCMaster.xaml.cs">
+      <DependentUpon>frmCCMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCFTMeet.xaml.cs">
+      <DependentUpon>frmCFTMeet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePassword.xaml.cs">
+      <DependentUpon>frmChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCharacteristicMaster.xaml.cs">
+      <DependentUpon>frmCharacteristicMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmFeatureMaster.xaml.cs">
+      <DependentUpon>frmFeatureMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmChemicalComposition.xaml.cs">
+      <DependentUpon>frmChemicalComposition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCircularRolling.xaml.cs">
+      <DependentUpon>frmCircularRolling.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCopyCIRefNum.xaml.cs">
+      <DependentUpon>frmCopyCIRefNum.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCopyTurningMac.xaml.cs">
+      <DependentUpon>frmCopyTurningMac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCPMMaster.xaml.cs">
+      <DependentUpon>frmCPMMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmExhibit.xaml.cs">
+      <DependentUpon>frmExhibit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmFlatRollMac.xaml.cs">
+      <DependentUpon>frmFlatRollMac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmFeatureUpdationMaster.xaml.cs">
+      <DependentUpon>frmFeatureUpdationMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmForging.xaml.cs">
+      <DependentUpon>frmForging.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmGrinmac.xaml.cs">
+      <DependentUpon>frmGrinmac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmNylocmac.xaml.cs">
+      <DependentUpon>frmNylocmac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOptimalCondition.xaml.cs">
+      <DependentUpon>frmOptimalCondition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPointmac.xaml.cs">
+      <DependentUpon>frmPointmac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmProcessSheet.xaml.cs">
+      <DependentUpon>frmProcessSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmProductInformation.xaml.cs">
+      <DependentUpon>frmProductInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmFRCS.xaml.cs">
+      <DependentUpon>frmFRCS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmHardnessConversion.xaml.cs">
+      <DependentUpon>frmHardnessConversion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmLibrarySearch.xaml.cs">
+      <DependentUpon>frmLibrarySearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmLookUp.xaml.cs">
+      <DependentUpon>frmLookUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOperationMaster.xaml.cs">
+      <DependentUpon>frmOperationMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPermissions.xaml.cs">
+      <DependentUpon>frmPermissions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPSWTitleMaster.xaml.cs">
+      <DependentUpon>frmPSWTitleMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmRolesInfo.xaml.cs">
+      <DependentUpon>frmRolesInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSapBom.xaml.cs">
+      <DependentUpon>frmSapBom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSapFert.xaml.cs">
+      <DependentUpon>frmSapFert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSapHalb.xaml.cs">
+      <DependentUpon>frmSapHalb.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSapImport.xaml.cs">
+      <DependentUpon>frmSapImport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSapProductVersion.xaml.cs">
+      <DependentUpon>frmSapProductVersion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSapRouting.xaml.cs">
+      <DependentUpon>frmSapRouting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSapSub.xaml.cs">
+      <DependentUpon>frmSapSub.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSecurity.xaml.cs">
+      <DependentUpon>frmSecurity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSecurityUserRoles.xaml.cs">
+      <DependentUpon>frmSecurityUserRoles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSecurityUsers.xaml.cs">
+      <DependentUpon>frmSecurityUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSNO.xaml.cs">
+      <DependentUpon>frmSNO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmStandardCondition.xaml.cs">
+      <DependentUpon>frmStandardCondition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSurfaceFinish.xaml.cs">
+      <DependentUpon>frmSurfaceFinish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmTapmac.xaml.cs">
+      <DependentUpon>frmTapmac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmThreadDetails.xaml.cs">
+      <DependentUpon>frmThreadDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmToolAdmin.xaml.cs">
+      <DependentUpon>frmToolAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmTrimmac.xaml.cs">
+      <DependentUpon>frmTrimmac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmUnitMaster.xaml.cs">
+      <DependentUpon>frmUnitMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UICommon\TextBoxInputBehavior.cs" />
+    <Compile Include="UICommon\TextBoxIntsOnly.cs" />
+    <Compile Include="ViewModel\CCMasterViewModel.cs" />
+    <Compile Include="ViewModel\CircularRollingViewModel.cs" />
+    <Compile Include="ViewModel\ControlPlanRptViewModel.cs" />
+    <Compile Include="ViewModel\CopyCIReferenceViewModel.cs" />
+    <Compile Include="ViewModel\CopyProcess.cs" />
+    <Compile Include="ViewModel\CopyStatusViewModel.cs" />
+    <Compile Include="ViewModel\CopyTurningMacViewModel.cs" />
+    <Compile Include="ViewModel\CostSheetSearchViewModel.cs" />
+    <Compile Include="ViewModel\CostSheetViewModel.cs" />
+    <Compile Include="ViewModel\CPMMasterViewModel.cs" />
+    <Compile Include="ViewModel\CrossLinkingViewModel.cs" />
+    <Compile Include="ViewModel\CustomerReferenceViewModel.cs" />
+    <Compile Include="ViewModel\DDPerformanceViewModel.cs" />
+    <Compile Include="ViewModel\DevReportViewModel.cs" />
+    <Compile Include="ViewModel\DrawingViewModel.cs" />
+    <Compile Include="ViewModel\FeasibleReportAndCostSheetViewModel.cs" />
+    <Compile Include="ViewModel\FeatureMasterViewModel.cs" />
+    <Compile Include="ViewModel\FeatureUpdateViewModel.cs" />
+    <Compile Include="ViewModel\FlowChartReportViewModel.cs" />
+    <Compile Include="ViewModel\ForgingMachineViewModel.cs" />
+    <Compile Include="ViewModel\frmCPGViewModel.cs" />
+    <Compile Include="ViewModel\GrinmachineViewModel.cs" />
+    <Compile Include="ViewModel\ExhibitViewModel.cs" />
+    <Compile Include="ViewModel\ISIRViewModel.cs" />
+    <Compile Include="ViewModel\LocationMasterViewModel.cs" />
+    <Compile Include="ViewModel\MFMPlanDetailsViewModel.cs" />
+    <Compile Include="ViewModel\NylocmacViewModel.cs" />
+    <Compile Include="ViewModel\OperationMasterViewModel.cs" />
+    <Compile Include="ViewModel\OptimalCondtionViewModel.cs" />
+    <Compile Include="ViewModel\PartNumberConfigViewModel.cs" />
+    <Compile Include="ViewModel\PartSubmissionWarrantViewModel.cs" />
+    <Compile Include="ViewModel\PCCSViewModel.cs" />
+    <Compile Include="ViewModel\PermissionViewModel.cs" />
+    <Compile Include="ViewModel\PointMachineViewModel.cs" />
+    <Compile Include="ViewModel\ProcessSheetViewModel.cs" />
+    <Compile Include="ViewModel\ProductCategoryViewModel.cs" />
+    <Compile Include="ViewModel\ProductInformationViewModel.cs" />
+    <Compile Include="ViewModel\ProductReleaseDateViewModel.cs" />
+    <Compile Include="ViewModel\ProductSearchViewModel.cs" />
+    <Compile Include="ViewModel\ProductWeightViewModel.cs" />
+    <Compile Include="ViewModel\PSWTitleMasterViewModel.cs" />
+    <Compile Include="ViewModel\RawMaterialViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\ReportMISCustomerPartNoWiseViewModel.cs" />
+    <Compile Include="ViewModel\ReportMISFeatureWiseViewModel.cs" />
+    <Compile Include="ViewModel\ReportMISMFMViewModel.cs" />
+    <Compile Include="ViewModel\RolesInfoViewModel.cs" />
+    <Compile Include="ViewModel\RPDViewModel.cs" />
+    <Compile Include="ViewModel\SapExportToPd.cs" />
+    <Compile Include="ViewModel\SapViewModel.cs" />
+    <Compile Include="ViewModel\SecurityUserRolesViewModel.cs" />
+    <Compile Include="ViewModel\SecurityUsersViewModel.cs" />
+    <Compile Include="ViewModel\SecurityViewModel.cs" />
+    <Compile Include="ViewModel\SeqDwgIssueViewmodel.cs" />
+    <Compile Include="ViewModel\StatndardConditionViewModel.cs" />
+    <Compile Include="ViewModel\TapmacViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\TempViewModel.cs" />
+    <Compile Include="ViewModel\TfcPCRViewModel.cs" />
+    <Compile Include="ViewModel\TfcViewModel.cs" />
+    <Compile Include="ViewModel\ThreadRollingVieModel.cs" />
+    <Compile Include="ViewModel\ToolAdminViewModel.cs" />
+    <Compile Include="ViewModel\ToolInfoViewModel.cs" />
+    <Compile Include="ViewModel\ToolScheduleViewModel.cs" />
+    <Compile Include="ViewModel\ToolsQuickViewViewModel.cs" />
+    <Compile Include="ViewModel\TrimmacViewModel.cs" />
+    <Page Include="AppResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmApplication.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmCopyCIReference.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmAddCIReference.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmControlPlan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmControlPlanGeneration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmCopyStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmCostSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmCostSheetSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCustomerReference.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDDPerformance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmCoatingMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmMISInputBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmManufacturingReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmDevelopmentReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmDDPerformanceSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDrawings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDummy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmECNCFTMeet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmECNPCN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmflxReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmForgingCalc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmForm2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmInputBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmISIR.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmKaizenIdeaSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmLocationMasterRange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmMachineBooking.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmMcBookReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmMfmDevelopment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmMFMPlan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmMfmPlanDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmMOPgraph.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmOperationMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmFinishMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmOperatorQualityAssurance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmOTPMCharts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmPartNumberConfig.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPartSubmissionWarrant.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPCCS.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPendingPartStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmProductCategoryMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmProductReleaseDate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmProductSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmProductWeight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmQcp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmRawMaterial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmReportViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmRPD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmRptCustpartNo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmRptFeatureWise.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmrptMFM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmrptPartNos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmSeqDwgIssue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmSimiliarProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmTfc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmTfcECN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmTfcPCR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmToolSchedule_new.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmToolsInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmToolsQuickView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmAPQP.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCCMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCFTMeet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmChangePassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCharacteristicMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmFeatureMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmChemicalComposition.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCircularRolling.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCopyCIRefNum.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCopyTurningMac.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCPMMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmExhibit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmFlatRollMac.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmFeatureUpdationMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmForging.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmGrinmac.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmNylocmac.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmOptimalCondition.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPointmac.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmProcessSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmProductInformation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmFRCS.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmHardnessConversion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmLibrarySearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmLogin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmLookUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmOperationMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPermissions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPSWTitleMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmRolesInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSapBom.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSapFert.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSapHalb.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSapImport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSapProductVersion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSapRouting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSapSub.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSecurity.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSecurityUserRoles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSecurityUsers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSNO.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmStandardCondition.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSurfaceFinish.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmTapmac.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmThreadDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmToolAdmin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmTrimmac.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmUnitMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="frmLogin.xaml.cs">
+      <DependentUpon>frmLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="SplashScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Testing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Reports\AccCostSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AccCostSheet.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ManuFactDifficulties.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ManuFactDifficulties.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ManuFactOutput.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ManuFactOutput.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ManuFactPreQual.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ManuFactPreQual.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ManuFactProcess.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ManuFactProcess.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ManuFactDesign.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ManuFactDesign.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ManufacturingReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ManufacturingReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FeatureWiseExport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FeatureWiseExport.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAuditReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAuditReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptTopCoatFinish.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTopCoatFinish.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptECNCFTMeet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptECNCFTMeet.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptBaseCoatFinish.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBaseCoatFinish.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptTfcECN.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTfcECN.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptTfcPCR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTfcPCR.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptToolsandShifts.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToolsandShifts.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPSWApproved.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPSWApproved.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAwaitingTools.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAwaitingTools.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptCustPartNo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCustPartNo1.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptInitialSampleInspection.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptInitialSampleInspection.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Cust_Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Cust_Report.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DevDesignAssumptions.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DevDesignAssumptions.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DevelopmentReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DevelopmentReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DevLog.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DevLog.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DevShortClosure.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DevShortClosure.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ECNPCNSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ECNPCNSheet.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FeatureWise.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FeatureWise.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptCostSearchlist.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCostSearchlist.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptCustom.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCustom.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptDimensionalResults.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDimensionalResults.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptFeatures.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptFeatures.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptFlowChart.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptFlowChart.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptKaizenSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptKaizenSheet.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAwaitingdocumentation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAwaitingdocumentation.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptOQA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptOQA.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPerfomanceResults.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPerfomanceResults.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptMaterialResults.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptMaterialResults.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptMPSP.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptMPSP.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptMPSP1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptMPSP1.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPendingStatusReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPendingStatusReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptLeadTime.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLeadTime.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPSWApp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPSWApp.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPSW.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPSW.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPerformanceList1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPerformanceList1.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptProductSearch.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptProductSearch.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptQcp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptQcp.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptRPD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptRPD.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptsubFlowChart1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptsubFlowChart1.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptsubFlowChart2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptsubFlowChart2.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptTfc.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTfc.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptToolDrawing.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToolDrawing.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptToolschedule.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToolschedule.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UICommon\AutoCadUserControl.resx">
+      <DependentUpon>AutoCadUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <EmbeddedResource Include="Reports\rptCheckList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCheckList.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptMasterSampleLabel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptMasterSampleLabel.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPerformanceList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPerformanceList.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptProcessSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptProcessSheet.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\APQP.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>APQP.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CFTMeeting.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CFTMeeting.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InitialSampleSubmissionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InitialSampleSubmissionReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ISIR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ISIR.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PartSubmissionWarrant.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PartSubmissionWarrant.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PPApprDimensionalResult.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PPApprDimensionalResult.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PPApprMateTestResult.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PPApprMateTestResult.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PPApprPerfTestResult.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PPApprPerfTestResult.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ProcessControllerCapabilitySheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProcessControllerCapabilitySheet.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAuxillaryToolSchedule.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAuxillaryToolSchedule.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptControlPlan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptControlPlan.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptCostSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCostSheet.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="ProcessDesigner_TemporaryKey.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Settings.StyleCop" />
+    <None Include="VSDFiles\PCCS\FLOW.VSD" />
+    <None Include="VSDFiles\PCCS\F_ASS_2.VSD" />
+    <None Include="VSDFiles\PCCS\F_ASS_3.VSD" />
+    <None Include="VSDFiles\PCCS\F_ASS_4.VSD" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BHCustCtrl\BHCustCtrl\BHCustCtrl.csproj">
+      <Project>{f1a58222-2e9d-42cc-8b98-5cf80e6be50a}</Project>
+      <Name>BHCustCtrl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PreviewHandlers\PreviewHandlers.csproj">
+      <Project>{18400af3-1b79-479b-87d0-ad54a5e55059}</Project>
+      <Name>PreviewHandlers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcessDesigner.BLL\ProcessDesigner.BLL.csproj">
+      <Project>{6071e46e-4a58-4edd-bc8d-e80f008a2009}</Project>
+      <Name>ProcessDesigner.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcessDesigner.Common\ProcessDesigner.Common.csproj">
+      <Project>{e161c3f4-22a5-4219-a6a6-66bacc385fe8}</Project>
+      <Name>ProcessDesigner.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcessDesigner.DAL\ProcessDesigner.DAL.csproj">
+      <Project>{ea4966c7-fee4-4e4c-8c2e-b05b025038de}</Project>
+      <Name>ProcessDesigner.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcessDesigner.ExceptionHandler\ProcessDesigner.ExceptionHandler.csproj">
+      <Project>{2e40917d-c63b-4b14-b5ca-8b8a4df6369b}</Project>
+      <Name>ProcessDesigner.ExceptionHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcessDesigner.Model\ProcessDesigner.Model.csproj">
+      <Project>{55a70d55-e57c-4a99-b882-d39bd3f776ce}</Project>
+      <Name>ProcessDesigner.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcessDesigner.UserControls\ProcessDesigner.UserControls.csproj">
+      <Project>{00ffebf1-e0db-4046-84ce-b6433f9c83a0}</Project>
+      <Name>ProcessDesigner.UserControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WPF.MDI\WPF.MDI.csproj">
+      <Project>{be1ed569-5e0b-4df0-8964-33ad2aae4c4a}</Project>
+      <Name>WPF.MDI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dll\AxInterop.ACCTRLLib.dll" />
+    <Content Include="Dll\Excel.4.5.dll" />
+    <Content Include="Dll\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="Dll\Interop.ACCTRLLib.dll" />
+    <Content Include="Dll\Interop.AXDBLib.dll" />
+    <Content Include="Dll\Microsoft.Office.Interop.Visio.dll" />
+    <Content Include="Dll\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+    <Content Include="Dll\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
+    <Content Include="Dll\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll" />
+    <Content Include="Dll\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll" />
+    <Content Include="Dll\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll" />
+    <Content Include="Dll\Microsoft.Practices.EnterpriseLibrary.Logging.dll" />
+    <Content Include="Dll\Newtonsoft.Json.dll" />
+    <Content Include="Dll\System.Windows.Controls.DataVisualization.Toolkit.dll" />
+    <Content Include="Dll\WPF.MDI.dll" />
+    <Content Include="Dll\Xceed.Wpf.Toolkit.dll" />
+    <Resource Include="Images\logo-04.png" />
+    <Resource Include="XML\TopCoatFinishXML.xml" />
+    <Resource Include="XML\BaseCoatFinishXML.xml" />
+    <Resource Include="XML\TFC_ECN.xml" />
+    <Resource Include="XML\ToolSchedule.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="XML\TFC_PCR.xml" />
+    <Resource Include="Images\notepad.png" />
+    <Resource Include="XML\ManufactDesign.xml" />
+    <Resource Include="XML\ManufactDifficulties.xml" />
+    <Resource Include="XML\ManufactMain.xml" />
+    <Resource Include="XML\ManufactOutput.xml" />
+    <Resource Include="XML\ManufactPreQual.xml" />
+    <Resource Include="XML\ManufactProcess.xml" />
+    <Resource Include="XML\EcnCftMeetingRpt.xml" />
+    <Resource Include="XML\CFTMeetingRpt.xml" />
+    <Resource Include="XML\AuditReport.xml" />
+    <Resource Include="XML\TFC.xml" />
+    <Resource Include="XML\OPERATOR_QUALITY_ASSURANCE_CHART_REPORT.xml" />
+    <Resource Include="XML\NoOfShifts.xml" />
+    <Resource Include="XML\FirstTimeRight.xml" />
+    <Resource Include="XML\AwaitingTools.xml" />
+    <Resource Include="XML\AwaitingDoc.xml" />
+    <Resource Include="XML\LeadTime.xml" />
+    <Resource Include="XML\PSW.xml" />
+    <Resource Include="XML\PerformanceReport.xml" />
+    <Resource Include="XML\SpecialCharacteristics.xml" />
+    <Resource Include="XML\Qcp.xml" />
+    <Resource Include="XML\AllFeatures.xml" />
+    <Resource Include="VSDFiles\PCCS\images.png" />
+    <Resource Include="VSDFiles\PCCS\PCCSExport.bmp" />
+    <Resource Include="XML\InitialInspection.xml" />
+    <None Include="Resources\Blank_Image.jpg" />
+    <Resource Include="XML\DevelopmentReportMain.xml" />
+    <Resource Include="XML\DevelopmentReport_DesignAss.xml" />
+    <Resource Include="XML\DevelopmentReport_Log.xml" />
+    <Resource Include="XML\DevelopmentReport_ShortClouser.xml" />
+    <Resource Include="XML\CheckList.xml" />
+    <Resource Include="XML\AuxToolSchedule.xml" />
+    <Resource Include="XML\PerfomanceTestResults.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="XML\MaterialTestResults.xml" />
+    <Resource Include="XML\CostSheet.xml" />
+    <Resource Include="XML\ECNPCNSheet.xml" />
+    <Resource Include="XML\ControlPlanRpt.xml" />
+    <Resource Include="XML\DimensionalResults.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Images\RelProcess.png" />
+    <Resource Include="XML\ProcessSheet.xml" />
+    <Resource Include="Images\CHECKMRK.ICO" />
+    <Resource Include="XML\PartSubmissionWarrant.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="XML\ISIR.xml" />
+    <Resource Include="Images\Renumber.png" />
+    <Resource Include="Images\ShowRelated.png" />
+    <Resource Include="Images\Undo.png" />
+    <Resource Include="Images\CloseLogin.png" />
+    <Resource Include="Images\CloseHover.png" />
+    <Resource Include="Images\PDF.png" />
+    <Resource Include="Images\Refresh.png" />
+    <Resource Include="Images\Add.png" />
+    <Resource Include="Images\AddFile.png" />
+    <Resource Include="Images\AddImage.png" />
+    <Resource Include="Images\AddUserGroup.png" />
+    <Resource Include="Images\Close.png" />
+    <Resource Include="Images\Copy.png" />
+    <Resource Include="Images\Delete.png" />
+    <Resource Include="Images\DownArrow.png" />
+    <Resource Include="Images\Edit.png" />
+    <Resource Include="Images\ExcelExport.png" />
+    <Resource Include="Images\logo New.jpg" />
+    <Resource Include="Images\logo.ico" />
+    <Resource Include="Images\Note.png" />
+    <Resource Include="Images\Print.png" />
+    <Resource Include="Images\Save.png" />
+    <Resource Include="Images\Search.png" />
+    <Resource Include="Images\sfl.jpg" />
+    <Resource Include="Images\Show.png" />
+    <Resource Include="Images\UpArrow.png" />
+    <Resource Include="XML\ProductSearch.xml" />
+    <Resource Include="XML\CostSheetSearch.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\Reports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

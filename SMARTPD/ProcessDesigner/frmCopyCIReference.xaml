@@ -1,0 +1,193 @@
+﻿<UserControl x:Class="ProcessDesigner.frmCopyCIReference"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"            
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+            xmlns:ic="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions" 
+            xmlns:il="clr-namespace:Microsoft.Expression.Interactivity.Layout;assembly=Microsoft.Expression.Interactions"       
+            xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls" 
+            xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"             
+            xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+            xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+            Height="205" Width="380"  
+            Background="{StaticResource WindowBackground}">
+    <UserControl.InputBindings >
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveClickCommand}"/>
+        <KeyBinding Key="F9" Command="{Binding CloseClickCommand}"/>
+    </UserControl.InputBindings>
+    <UserControl.Resources>
+        <UICommon:DateTimeConverter x:Key="DateTimeConverter"/>
+    </UserControl.Resources>
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="7*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border BorderThickness="1" Grid.Row="1" Grid.Column="1" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="13*" ></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="25*" ></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="5" ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Old CI Reference :" Name ="lblOldCIReference" TextAlignment="Right" FontWeight="Bold" Grid.Row="1" Grid.Column="1"></TextBlock>
+                    <Control:ComboBoxCus x:Name="ltbOldCIReference" Tag="Please select Old CI Reference Number"  HorizontalAlignment="Left" IsReadOnly="True"
+                                         Grid.Row="1"  Grid.Column="3" TabIndex="1" Width="100" MaxLength="10"
+                                         SelectedValuePath="CI_REFERENCE" 
+                                         SelectedValue="{Binding OldActiveEntity.CI_REFERENCE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                         DataSource="{Binding OldCIReferenceDataSource}"
+                                         SelectedItem="{Binding OldCIReferenceSelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                         ButtonVisibility="{Binding OldCIReferenceHasDropDownVisibility}" 
+                                         ColumnsHeader="{Binding OldCIReferenceDropDownItems}"
+                                         >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding OldCIReferenceSelectedItemChangedCommand}"/>
+                            </i:EventTrigger>
+
+                            <!--<i:EventTrigger EventName="DropdownPreviewKeyDown">
+                                <i:InvokeCommandAction Command="{Binding CIReferencePreviewKeyDownCommand}"/>
+                            </i:EventTrigger>-->
+
+                        </i:Interaction.Triggers>
+                        <Control:ComboBoxCus.InputBindings>
+                            <KeyBinding  Key="Enter" Command="{Binding CIReferenceEndEditCommand}"  />
+                            <KeyBinding  Key="Tab" Command="{Binding CIReferenceEndEditCommand}"  />
+                        </Control:ComboBoxCus.InputBindings>
+
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterComboBoxCusBehavior />
+                        </i:Interaction.Behaviors>
+
+                    </Control:ComboBoxCus>
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" Grid.Row="5" Grid.Column="1" >
+                <Grid Grid.ColumnSpan="2" Margin="0,0,5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button  Height="30" Width="80" HorizontalAlignment="Right" Content="_Save" Command="{Binding SaveClickCommand}" Margin="0,0,10,0"/>
+                    <Button Grid.Column="1" Height="30" Width="80"  HorizontalAlignment="Right" Content="_Cancel" Command="{Binding CloseClickCommand}" />
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" Grid.Row="3" Grid.Column="1" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="13*" ></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="25*" ></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="5" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="5" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="5" ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="3" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="45*"></ColumnDefinition>
+                            <ColumnDefinition Width="25*"></ColumnDefinition>
+                            <ColumnDefinition Width="30*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Control:DatePickerCus   Name ="dtpDateRecd" Height="25" Grid.Row="0" Grid.Column="0" TabIndex="12"
+                                         SelectedDate="{Binding NewActiveEntity.ENQU_RECD_ON,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                         Tag="Please select Enquired Received Date">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedDateChanged">
+                                    <i:InvokeCommandAction Command="{Binding EnquiryReceivedOnChangedCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <!--<i:Interaction.Behaviors >
+                                <UICommon:TabOnEnterDatePickerBehavior />
+                            </i:Interaction.Behaviors>-->
+                        </Control:DatePickerCus>
+                        <TextBlock Text="Zone : " Name ="lblZone" TextAlignment="Right"  Grid.Row="0" Grid.Column="1" Visibility="{Binding ZoneVisibility}" ></TextBlock>
+                        <Control:ComboBoxCus x:Name="ltbZone" Tag="Please select Zone" 
+                                             HorizontalAlignment="Left" IsReadOnly="True"
+                                         Grid.Row="0"  Grid.Column="2" TabIndex="1" Width="50" MaxLength="1"
+                                         SelectedValuePath="CODE" 
+                                         SelectedValue="{Binding NewActiveEntity.ZONE_CODE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                         DataSource="{Binding CIReferenceZoneDataSource}"
+                                         SelectedItem="{Binding CiReferenceZoneSelectedRow}" 
+                                         ButtonVisibility="{Binding CIReferenceZoneHasDropDownVisibility}" 
+                                         ColumnsHeader="{Binding CiReferenceZoneDropDownItems}"
+                                         Visibility="{Binding ZoneVisibility}"
+                                         >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedItemChanged">
+                                    <i:InvokeCommandAction Command="{Binding CIReferenceZoneSelectedItemChangedCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <i:Interaction.Behaviors >
+                                <UICommon:TabOnEnterComboBoxCusBehavior/>
+                            </i:Interaction.Behaviors>
+                        </Control:ComboBoxCus>
+                    </Grid>
+
+                    <TextBlock Text="Date Received :" Name ="lblDateRecd" TextAlignment="Right"  Grid.Row="1" Grid.Column="1"></TextBlock>
+                    <TextBlock Text="New CI Reference :" Name ="lblCIReference" TextAlignment="Right" FontWeight="Bold" Grid.Row="3" Grid.Column="1"></TextBlock>
+                    <Control:ComboBoxCus x:Name="ltbCIReference"  HorizontalAlignment="Left" IsReadOnly="False"
+                                         Grid.Row="3"  Grid.Column="3" TabIndex="1" Width="90" MaxLength="10"
+                                         Tag="Please enter New CI Reference" SelectedValuePath="CI_REFERENCE" 
+                                         SelectedValue="{Binding NewActiveEntity.CI_REFERENCE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                         DataSource="{Binding NewCIReferenceDataSource}"
+                                         SelectedItem="{Binding NewCIReferenceDropDownItems, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                         ButtonVisibility="{Binding NewCIReferenceHasDropDownVisibility}" 
+                                         ColumnsHeader="{Binding NewCIReferenceDropDownItems}"
+                                         >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding NewCIReferenceSelectedItemChangedCommand}"/>
+                            </i:EventTrigger>
+
+                            <!--<i:EventTrigger EventName="DropdownPreviewKeyDown">
+                                <i:InvokeCommandAction Command="{Binding CIReferencePreviewKeyDownCommand}"/>
+                            </i:EventTrigger>-->
+
+                        </i:Interaction.Triggers>
+                        <Control:ComboBoxCus.InputBindings>
+                            <KeyBinding  Key="Enter" Command="{Binding CIReferenceEndEditCommand}"  />
+                            <KeyBinding  Key="Tab" Command="{Binding CIReferenceEndEditCommand}"  />
+                        </Control:ComboBoxCus.InputBindings>
+
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterComboBoxCusBehavior />
+                        </i:Interaction.Behaviors>
+                    </Control:ComboBoxCus>
+                    <TextBlock TextWrapping="Wrap" x:Name="lblNewCiRefNum"  Text="Format : X 02 07 01 001" Grid.Row="5" Grid.Column="3"></TextBlock>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

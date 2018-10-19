@@ -1,0 +1,408 @@
+﻿<Window x:Class="ProcessDesigner.frmPermissions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon"
+
+
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"  
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        Title="Set Permissions for the Role" Height="450" Width="750" ResizeMode="NoResize" Background="{StaticResource WindowBackground}" WindowStartupLocation="CenterScreen" Icon="Images/logo.ico" >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <si:CallMethodAction MethodName="LoadMethod" TargetObject="{Binding}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Window.Resources>
+        <Style x:Key="DataGridColumnHeaderNew" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="FontWeight" Value="ExtraBold" />
+            <Setter Property="SeparatorBrush" Value="{DynamicResource GlyphBrush}" />
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="MinHeight" Value="30"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridColumnHeader">
+                        <Grid Name="Root">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0" Storyboard.TargetName="BackgroundRectangle" Storyboard.TargetProperty="(Fill).Color" To="#FFFFF300"/>
+                                            <ColorAnimation Duration="0" Storyboard.TargetName="BackgroundGradient" Storyboard.TargetProperty="(Fill).(GradientStops)[3].Color" To="#7FFFFFFF"/>
+                                            <ColorAnimation Duration="0" Storyboard.TargetName="BackgroundGradient" Storyboard.TargetProperty="(Fill).(GradientStops)[2].Color" To="#CCFFFFFF"/>
+                                            <ColorAnimation Duration="0" Storyboard.TargetName="BackgroundGradient" Storyboard.TargetProperty="(Fill).(GradientStops)[1].Color" To="#F2FFFFFF"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0" Storyboard.TargetName="BackgroundRectangle" Storyboard.TargetProperty="(Fill).Color" To="#FFF3B27B"/>
+                                            <ColorAnimation Duration="0" Storyboard.TargetName="BackgroundGradient" Storyboard.TargetProperty="(Fill).(GradientStops)[0].Color" To="#D8FFFFFF"/>
+                                            <ColorAnimation Duration="0" Storyboard.TargetName="BackgroundGradient" Storyboard.TargetProperty="(Fill).(GradientStops)[1].Color" To="#C6FFFFFF"/>
+                                            <ColorAnimation Duration="0" Storyboard.TargetName="BackgroundGradient" Storyboard.TargetProperty="(Fill).(GradientStops)[2].Color" To="#8CFFFFFF"/>
+                                            <ColorAnimation Duration="0" Storyboard.TargetName="BackgroundGradient" Storyboard.TargetProperty="(Fill).(GradientStops)[3].Color" To="#3FFFFFFF"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SortStates">
+                                    <VisualState x:Name="Unsorted" />
+                                    <VisualState x:Name="SortAscending">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="SortIcon" Storyboard.TargetProperty="Opacity" Duration="0" To="1.0"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SortDescending">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="SortIcon" Storyboard.TargetProperty="Opacity" Duration="0" To="1.0"/>
+                                            <DoubleAnimation Storyboard.TargetName="SortIcon" Storyboard.TargetProperty="(RenderTransform).ScaleY" Duration="0" To="-.9"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Rectangle x:Name="BackgroundRectangle" Stretch="Fill" Fill="{DynamicResource GlyphBrush}" Grid.ColumnSpan="2" />
+
+                            <Rectangle x:Name="BackgroundGradient" Stretch="Fill" Grid.ColumnSpan="2" >
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint=".7,0" EndPoint=".7,1">
+                                        <GradientStop Color="#FCFFFFFF" Offset="0.015" />
+                                        <GradientStop Color="#F7FFFFFF" Offset="0.375" />
+                                        <GradientStop Color="#E5FFFFFF" Offset="0.6" />
+                                        <GradientStop Color="#D1FFFFFF" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <ContentPresenter x:Name="contentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" />
+                                
+                                <Path Grid.Column="1" Name="SortIcon" Fill="#FF444444" RenderTransformOrigin=".5,.5" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0" Stretch="Uniform" Width="8" Margin="4,0,0,0" Data="F1 M -5.215,6.099L 5.215,6.099L 0,0L -5.215,6.099 Z ">
+                                    <Path.RenderTransform>
+                                        <ScaleTransform ScaleX=".9" ScaleY=".9" />
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Grid>
+
+                            <Rectangle Name="VerticalSeparator" Grid.Column="1" Width="1" VerticalAlignment="Stretch" Fill="{TemplateBinding SeparatorBrush}" Visibility="{TemplateBinding SeparatorVisibility}" />
+
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Border >
+        <Grid Margin="4,4,4,4" KeyboardNavigation.TabNavigation ="Cycle">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Name="lblRole">
+                <Run Text="Permission for the Role : "></Run>
+                <Run Text="{Binding Role_Name}"></Run>
+            </TextBlock>
+            <DataGrid Grid.Row="1" Grid.Column="0" Name="grdPermission" AutoGenerateColumns="False" ItemsSource="{Binding Permission}"  
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False"    
+                      SelectedItem="{Binding SelectedRow}" SelectionChanged="grdPermission_SelectionChanged" SelectionMode="Single" UICommon:ScrollToTopBehavior.ScrollToTop="True"
+>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Object Name" Width="*" Binding="{Binding OBJECT_NAME}" IsReadOnly="True">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn  Width="90" >
+                        <DataGridTemplateColumn.HeaderStyle >
+                            <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridColumnHeaderNew}" >
+                                
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.Header>                            
+                            <CheckBox Name="chkSelectAllShow" TextBlock.Foreground="SteelBlue" FontWeight="Bold"  IsChecked="{Binding CheckedShow, Mode=TwoWay}"  >
+                                Show
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandShowAll}" 
+                                                           CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnUnCheckChangeCommandShowAll}" 
+                                                           CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox x:Name="chkShow"  IsChecked="{Binding Path=PERM_SHOW,UpdateSourceTrigger=PropertyChanged}"
+                                          HorizontalAlignment="Center" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandShow}" 
+                                                           CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="Unchecked">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandShow}" 
+                                                           CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                </CheckBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  Width="80">
+                        <DataGridTemplateColumn.HeaderStyle >
+                            <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridColumnHeaderNew}" >
+
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.Header>
+                            <CheckBox Name="chkSelectAllAdd" FontWeight="Bold" Foreground="SteelBlue" IsChecked="{Binding CheckedAdd, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  >
+                                Add
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandAddAll}" 
+                                                           CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnUnCheckChangeCommandAddAll}" 
+                                                           CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox x:Name="chkAdd"  IsChecked="{Binding Path=PERM_ADD,UpdateSourceTrigger=PropertyChanged}"
+                                          HorizontalAlignment="Center" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandAdd}" 
+                                                           CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="Unchecked">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandAdd}" 
+                                                           CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </CheckBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  Width="100">
+                        <DataGridTemplateColumn.HeaderStyle >
+                            <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridColumnHeaderNew}" >
+
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.Header>
+                            <CheckBox x:Name="chkSelectAllModify" FontWeight="Bold" Foreground="SteelBlue" IsChecked="{Binding CheckedModify, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                Modify
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandModifyAll}" 
+                                                           CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnUnCheckChangeCommandModifyAll}" 
+                                                           CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox x:Name="chkModify" IsChecked="{Binding Path=PERM_EDIT, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandModify}" 
+                                                           CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="Unchecked">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandModify}" 
+                                                           CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </CheckBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  Width="80">
+                        <DataGridTemplateColumn.HeaderStyle >
+                            <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridColumnHeaderNew}" >
+
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.Header>
+                            <CheckBox x:Name="chkSelectAllView" FontWeight="Bold" Foreground="SteelBlue"  IsChecked="{Binding CheckedView, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">View
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandViewAll}" 
+                                                           CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnUnCheckChangeCommandViewAll}" 
+                                                           CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox x:Name="chkView" IsChecked="{Binding Path=PERM_VIEW, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandView}" 
+                                                           CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="Unchecked">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandView}" 
+                                                           CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </CheckBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  Width="90">
+                        <DataGridTemplateColumn.HeaderStyle >
+                            <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridColumnHeaderNew}" >
+
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.Header>
+                            <CheckBox x:Name="chkSelectAllDelete" FontWeight="Bold" Foreground="SteelBlue" IsChecked="{Binding CheckedDelete, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                Delete
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandDeleteAll}" 
+                                                           CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnUnCheckChangeCommandDeleteAll}" 
+                                                           CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox x:Name="chkDelete" IsChecked="{Binding Path=PERM_DELETE, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandDelete}" 
+                                                           CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="Unchecked">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandDelete}" 
+                                                           CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </CheckBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  Width="90">
+                        <DataGridTemplateColumn.HeaderStyle >
+                            <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridColumnHeaderNew}" >
+
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.Header>
+                            <CheckBox x:Name="chkSelectAllPrint" FontWeight="Bold" Foreground="SteelBlue" IsChecked="{Binding CheckedPrint, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                Print
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandPrintAll}" 
+                                                           CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnUnCheckChangeCommandPrintAll}" 
+                                                           CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox x:Name="chkPrint" IsChecked="{Binding Path=PERM_PRINT, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandPrint}" 
+                                                           CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="Unchecked">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OnCheckChangeCommandPrint}" 
+                                                           CommandParameter="{Binding}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </CheckBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+
+                    <!--<DataGridCheckBoxColumn Header="Add" Width="10*" Binding="{Binding PERM_ADD}"></DataGridCheckBoxColumn>
+                    <DataGridCheckBoxColumn Header="Modify" Width="10*" Binding="{Binding PERM_EDIT}"></DataGridCheckBoxColumn>
+                    <DataGridCheckBoxColumn Header="View" Width="10*" Binding="{Binding PERM_VIEW}"></DataGridCheckBoxColumn>
+                    <DataGridCheckBoxColumn Header="Delete" Width="10*" Binding="{Binding PERM_DELETE}"></DataGridCheckBoxColumn>
+                    <DataGridCheckBoxColumn Header="Print" Width="10*" Binding="{Binding PERM_PRINT}"></DataGridCheckBoxColumn>-->
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid Grid.Row="2" Grid.Column="0" Name="grdRow2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"></ColumnDefinition>
+                    <ColumnDefinition Width="30*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Name="chkAll" Content="Select A_ll" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="0,10,48,10" Width="88" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Checked">
+                                <si:CallMethodAction MethodName="CheckAll" TargetObject="{Binding}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Unchecked">
+                                <si:CallMethodAction MethodName="CheckAll" TargetObject="{Binding}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                    </CheckBox>
+                </Grid>
+                <Grid Grid.Row="0" Grid.Column="1">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Name="btnSave"  Content="_Save" Grid.Row="0" Grid.Column="0" Height="30" Command="{Binding OnSaveCommand}" ToolTip="Save"></Button>
+                    <Button Name="btnCancel" Content="_Cancel" Grid.Row="0" Grid.Column="1" Height="30" Command="{Binding OnCancelCommand}" ToolTip="Cancel"></Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

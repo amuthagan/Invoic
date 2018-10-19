@@ -1,0 +1,294 @@
+﻿<UserControl x:Class="ProcessDesigner.frmMfmDevelopment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uc="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon"
+             Height="550" Width="600" Background="{StaticResource WindowBackground}" Loaded="UserControl_Loaded" >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding WindowLoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderThickness="1" Margin="0,2" Visibility="{Binding PlantVisibility}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="100"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock  Text="PLANT : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right"/>
+                <uc:ComboBoxWithSearch Tag="Please select Plant"  Name="cmbPlant" Grid.Column="1" DataSource="{Binding MFMDevelopment.DVLocation}"   Margin="0,0,20,0" DropDownWidth="300" 
+                                             SelectedValue="{Binding MFMDevelopment.LOC_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding MFMDevelopment.LOC_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="LOC_CODE"  DisplayValuePath="LOC_CODE"   IsReadOnly="False"                                             
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownHeaderLoc}">
+                </uc:ComboBoxWithSearch>
+                <TextBlock  Text="CUSTOMER : " Grid.Row="0"  Grid.Column="2" TextAlignment="Right"/>
+                <uc:ComboBoxWithSearch Tag="Please select Customer"  Grid.Column="3" DataSource="{Binding MFMDevelopment.DVCustomer}"  Margin="0,0,20,0" DropDownWidth="300"
+                                             SelectedValue="{Binding MFMDevelopment.CUST_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding MFMDevelopment.CUST_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="CUST_CODE"  DisplayValuePath="CUST_CODE"   IsReadOnly="False"                                             
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownHeaderCust}">
+                </uc:ComboBoxWithSearch>
+            </Grid>
+        </Border>
+        
+        <GroupBox Grid.Row="1"  Header="Development Reports" Margin="0,2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <RadioButton Name="rbtnAwaitingDocumentation" Grid.Column="0" Grid.Row="0" Content ="Awaiting Documentation" IsChecked="{Binding MFMDevelopment.AwaitingDoc,UpdateSourceTrigger=PropertyChanged}" Margin="20,0" HorizontalAlignment="Left">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OptionButtonClickCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Name="rbtnAwaitingPSWApproval"  Grid.Column="1" Grid.Row="0"  Content ="Awaiting PSW Approval" IsChecked="{Binding MFMDevelopment.AwaitingPSWApproval,UpdateSourceTrigger=PropertyChanged}" Margin="20,0" HorizontalAlignment="Left">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OptionButtonClickCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Name="rbtnAwaitingTools"  Grid.Column="0"  Grid.Row="1" Content ="Awaiting Tools" IsChecked="{Binding MFMDevelopment.AwaitingTools,UpdateSourceTrigger=PropertyChanged}" Margin="20,0" HorizontalAlignment="Left">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OptionButtonClickCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Name="rbtnPSWApproved" Grid.Column="1"   Grid.Row="1" Content ="PSW Approved" IsChecked="{Binding MFMDevelopment.PSWApproved,UpdateSourceTrigger=PropertyChanged}" Margin="20,0" HorizontalAlignment="Left">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OptionButtonClickCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Name="rbtnAwaitingForging"  Grid.Column="0"  Grid.Row="2" Content ="Awaiting Forging" IsChecked="{Binding MFMDevelopment.AwaitingForging,UpdateSourceTrigger=PropertyChanged}" Margin="20,0" HorizontalAlignment="Left">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OptionButtonClickCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Name="rbtnNoofShiftsandTools"  Grid.Column="1"   Grid.Row="2"  Content ="No of Shifts and Tools" IsChecked="{Binding MFMDevelopment.NoOfShifts,UpdateSourceTrigger=PropertyChanged}" Margin="20,0" HorizontalAlignment="Left">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OptionButtonClickCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Name="rbtnAwaitingSecondary" Grid.Column="0"  Grid.Row="3"    Content ="Awaiting Secondary" IsChecked="{Binding MFMDevelopment.AwaitingSecondary,UpdateSourceTrigger=PropertyChanged}" Margin="20,0" HorizontalAlignment="Left">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OptionButtonClickCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Name="rbtnFirstTimeRight"  Grid.Column="1"   Grid.Row="3"  Content ="First Time Right" IsChecked="{Binding MFMDevelopment.FirstTimeRight,UpdateSourceTrigger=PropertyChanged}" Margin="20,0" HorizontalAlignment="Left">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OptionButtonClickCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Name="rbtnAwaitingPPAP"  Grid.Column="0"  Grid.Row="4"   Content ="Awaiting PPAP" IsChecked="{Binding MFMDevelopment.AwaitingPPAP,UpdateSourceTrigger=PropertyChanged}" Margin="20,0" HorizontalAlignment="Left">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OptionButtonClickCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Name="rbtnCustomerComplaints"  Grid.Column="1"  Grid.Row="4"   Content ="Customer Complaints" IsChecked="{Binding MFMDevelopment.CustomerComp,UpdateSourceTrigger=PropertyChanged}" Margin="20,0" HorizontalAlignment="Left">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OptionButtonClickCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Name="rbtnLeadtimeforDevelopment"  Grid.Column="0"   Grid.Row="5" Grid.ColumnSpan="2"  Content ="Lead time for Development" IsChecked="{Binding MFMDevelopment.LeadTime,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="20,0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OptionButtonClickCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+            </Grid>
+        </GroupBox>
+
+        <Border Grid.Row="2"  BorderThickness="1" Margin="0,2" Padding="20,0" Visibility="{Binding DateRangeVisibility}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"></ColumnDefinition>
+                    <ColumnDefinition Width="25*"></ColumnDefinition>
+                    <ColumnDefinition Width="25*"></ColumnDefinition>
+                    <ColumnDefinition Width="25*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock  Text="Start Date : " Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <uc:DatePickerCus Tag="Please select Start Date"  Grid.Column="1" SelectedDate="{Binding MFMDevelopment.START_DATE,UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock  Text="End Date : " Grid.Column="2" TextAlignment="Right"></TextBlock>
+                <uc:DatePickerCus Tag="Please select End Date"   Grid.Column="3" SelectedDate="{Binding MFMDevelopment.END_DATE,UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+        </Border>
+        <Border Grid.Row="3"  Margin="0,2" Padding="0,5"  BorderThickness="1" >
+            <Button Content="_Print" Height="40" Width="100" Command="{Binding PrintCommand}" />
+        </Border>
+
+        <!--Visibility="{Binding LeadVisibility}"-->
+        <GroupBox Grid.Row="3"  Margin="0,2,0,0" Padding="0,5"  Header="Activity Lead Time" Visibility="{Binding LeadVisibility}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition />
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+                <TextBlock  Text="From Activity : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right"/>
+                <ComboBox Tag="Please select From Activity" Grid.Row="0" Grid.Column="1"  Name="cmbFromActivity" IsEditable="False" ItemsSource="{Binding FROM_ACTIVITY}" Text="{Binding MFMDevelopment.STAGE_START}"/>
+                <TextBlock  Text="To Activity : " Grid.Row="0"  Grid.Column="2" TextAlignment="Right" />
+                <ComboBox Tag="Please select To Activity" Grid.Row="0" Grid.Column="3"  Name="cmbToActivity" IsEditable="False" ItemsSource="{Binding TO_ACTIVITY}" Text="{Binding MFMDevelopment.STAGE_END}"/>
+                <StackPanel  Grid.Row="1"  Grid.Column="0">
+                    <TextBlock  Text=""  TextAlignment="Right" Height="3"/>
+                    <TextBlock  Text="Taget Time : "  TextAlignment="Right"/>
+                    <TextBlock  Text="(No. of Days)  "  TextAlignment="Right"/>
+                </StackPanel>
+
+                <TextBox Tag="Please enter Target Time" Name="txtTagetTime" Text="{Binding MFMDevelopment.TARGET_TIME,UpdateSourceTrigger=PropertyChanged,StringFormat=F0}" 
+                         Height="20" Grid.Row="1"  Grid.Column="1" MaxLength="4" uc:TextBoxIntsOnly.Mask="UnSignedInt" />
+                <TextBlock  Text=" Days" Grid.Row="1"  Grid.Column="2" />
+
+                <TextBlock  Text="{Binding LeadTimeText}" Grid.Row="2"  Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="WrapWithOverflow" />
+
+                <TextBlock  Text="Warning :- Some of the MFM DATA Fields are empty Check out" Grid.Row="3"  Grid.Column="0" TextWrapping="WrapWithOverflow" FontWeight="Bold" />
+
+                <DataGrid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Height="106" ItemsSource="{Binding MFMDevelopment.DVLeadTime,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"
+                      CanUserDeleteRows="False" RowHeaderWidth="0" SelectionUnit="FullRow" FrozenColumnCount="1" AlternationCount="0" CanUserSortColumns="False" UICommon:ScrollToTopBehavior.ScrollToTop="True" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="BeginningEdit">
+                            <si:CallMethodAction MethodName="OnBeginningEdit" TargetObject="{Binding}"/>
+                        </i:EventTrigger>                                           
+                    </i:Interaction.Triggers>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn  Header="Category" Width="80" Binding="{Binding CATEGORY,UpdateSourceTrigger=PropertyChanged}" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="HorizontalAlignment" Value="Center" />                                    
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn  Header="Parts Qualified" Width="115" Binding="{Binding PARTS_QUALIFIED,UpdateSourceTrigger=PropertyChanged}"  >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn  Header="Total Parts" Width="92" Binding="{Binding TOTAL_PARTS,UpdateSourceTrigger=PropertyChanged}"  >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button Name="btnLeadRefresh" Grid.Row="3" Grid.Column="3" Content="_Refresh" Height="40"  Width="100" Command="{Binding LeadTimeRefreshCommand}" />
+                <Button Name="btnLeadPrint"  Grid.Row="4" Grid.Column="1" Content="_Print" Height="40"  Width="100" Command="{Binding LeadTimePrintCommand}" />
+            </Grid>
+        </GroupBox>
+        <!--Visibility="{Binding PSWVisibility}"-->
+        <Border Grid.Row="3"  Margin="0,2,0,0" Padding="0,5"  BorderThickness="1" Visibility="{Binding PSWVisibility}" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition />
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="{Binding PSWHeading}" Grid.RowSpan="2" Grid.ColumnSpan="4" Style="{StaticResource HeaderText}" Background="Transparent" Foreground="Black" TextAlignment="Center" />
+                <TextBlock  Text="{Binding PSWText}" Grid.Row="2"  Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="WrapWithOverflow" />
+
+                <DataGrid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Height="106"  ItemsSource="{Binding MFMDevelopment.DVPSW,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"
+                      CanUserDeleteRows="False" RowHeaderWidth="0" SelectionUnit="FullRow" FrozenColumnCount="1" AlternationCount="0" CanUserSortColumns="False" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="BeginningEdit">
+                            <si:CallMethodAction MethodName="OnBeginningEdit" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn  Header="Category" Width="80" Binding="{Binding CATEGORY,UpdateSourceTrigger=PropertyChanged}" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn  Header="Parts Qualified" Width="115" Binding="{Binding PARTS_QUALIFIED,UpdateSourceTrigger=PropertyChanged}"  >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn  Header="Total Parts" Width="95" Binding="{Binding TOTAL_PARTS,UpdateSourceTrigger=PropertyChanged}"  >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Grid  Grid.Row="3" Grid.Column="3" Height="106" >
+                    <Button Name="btnPSWRefresh" Content="_Refresh" Height="40"  Width="100" Command="{Binding PSWRefreshCommand}" VerticalAlignment="Top" />
+                    <TextBox VerticalAlignment="Bottom" Width="100" IsReadOnly="True" Text="{Binding MFMDevelopment.PSWCount}"/>
+                </Grid>
+               
+                <Button Name="btnPSWPrint"  Grid.Row="4" Grid.Column="1" Content="_Print" Height="40"  Width="100" Command="{Binding PSWPrintCommand}" ></Button>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

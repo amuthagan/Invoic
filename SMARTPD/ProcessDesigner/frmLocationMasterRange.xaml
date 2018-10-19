@@ -1,0 +1,65 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:Enterkey="clr-namespace:ProcessDesigner.Common"
+        xmlns:vm="clr-namespace:ProcessDesigner.Model" 
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"       
+        x:Class="ProcessDesigner.frmLocationMasterRange"
+        xmlns:local="clr-namespace:ProcessDesigner.UICommon"
+        Height="140" Width="370" Loaded="frmLocationMasterRange_Loaded" >
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" >
+                <ToolBar >
+                    <Button Content="Add F3"   ToolTip="Add New Record" Grid.Row="0" Grid.Column="0" Height="40" Width="60" x:Name="Btn_Add" Command="{Binding AddClickCommand}"    IsEnabled="{Binding AddEnable,UpdateSourceTrigger=PropertyChanged }"   RenderTransformOrigin="0.5,0.583" Lookup:AddedProperty.Image="Images/Add.png" />
+                    <Button Content="Edit/View F5" Padding="1" ToolTip="Edit or View Record" Grid.Row="0" Grid.Column="1" x:Name="Btn_Edit" Height="40" Command="{Binding EditClickCommand}" Width="75" IsEnabled="{Binding EditEnable, UpdateSourceTrigger=PropertyChanged }"  Lookup:AddedProperty.Image="Images/Edit.png" />
+                    <Button Content="Save Ctrl+S"  ToolTip="Save Record" Grid.Row="0" Grid.Column="3" x:Name="Btn_Save" Height="40" Width="70"  Command="{Binding UpdateLocCommand}"  IsEnabled="{Binding SaveEnable, UpdateSourceTrigger=PropertyChanged }" Lookup:AddedProperty.Image="Images/Save.png" />
+                    <Button x:Name="Btn_Close" ToolTip="Close Form" Content="Close F9" Grid.Row="0" Grid.Column="4"  Height="40" Width="60" Command="{Binding OnCloseCommand}" Lookup:AddedProperty.Image="Images/Close.png" />
+                    <Button Visibility="Collapsed" Content="Delete F6" ToolTip="Delete a Record"  Grid.Row="0" Grid.Column="2" x:Name="Btn_Delete"  Height="40" Width="60"  Command="{Binding DeleteClickCommand}"  IsEnabled="{Binding DeleteEnable, UpdateSourceTrigger=PropertyChanged }"  Lookup:AddedProperty.Image="Images/Delete.png" />
+                </ToolBar>
+            </Grid>
+            <Border BorderThickness="2" Grid.Row="1" Margin="5" KeyboardNavigation.TabNavigation ="Cycle">
+                <Grid  x:Name="GrdOperation">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="140"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="lbl_locationName"  Grid.Column="0" VerticalAlignment="Bottom"  Text="Location Code : "  HorizontalAlignment="Right" Margin="0,0,2,5"  Grid.Row="0" />
+                    <TextBlock x:Name="lbl_rangeFrom" Grid.Column="0" VerticalAlignment="Top" Text="Location Name : " HorizontalAlignment="Right" Margin="0,2,2,0" Grid.Row="1" />
+                    <Lookup:ComboBoxCus Tag="Please enter/select Location Code" IsStatusBoxVisible="Visible" Width="45" HorizontalAlignment="Left" MaxLength="2" VerticalAlignment="Bottom" IsReadOnly="{Binding TxtReadOnly}" Grid.Column="1" Grid.Row ="0" x:Name="cmbLocMaster"   ButtonVisibility="{Binding ButtonEnable}"
+					DataSource="{Binding DtDataview,UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding SelectedRow}"  SelectedValuePath="LOC_CODE" SelectedValue="{Binding LocCode}"  ColumnsHeader="{Binding DropDownItems}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeComboCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Lookup:ComboBoxCus>
+                    <TextBox Tag="Please enter Location Name" Grid.Column="1" VerticalAlignment="Top" local:FocusExtension.IsFocused="{Binding FocusButton}" x:Name="txt_rangeFrom" IsReadOnly="{Binding TxtDecReadOnly}" MaxLength="30" Text="{Binding LocName,UpdateSourceTrigger=PropertyChanged}" Margin="0,2,0,0"   Grid.Row="1"/>
+                    <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Center" Margin="0,3,0,0" Width="140" HorizontalAlignment="Left" Visibility="{Binding IsVisibilityDelete,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" IsEnabled="{Binding IsDeleteEnable ,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                        <RadioButton IsChecked="{Binding IsActive,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Content="Active" Width="60" ></RadioButton>
+                        <RadioButton IsChecked="{Binding IsInActive,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Content="In-Active" Width="70"></RadioButton>
+                    </DockPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+    <UserControl.InputBindings >
+        <KeyBinding Key="F3"  Command ="{ Binding AddClickCommand}"/>
+        <KeyBinding Key="F5"  Command="{Binding EditClickCommand}"/>
+        <KeyBinding Key="F6"  Command="{Binding DeleteClickCommand}"/>
+        <KeyBinding Key="S"  Modifiers="Control" Command="{Binding UpdateLocCommand}"/>
+        <KeyBinding Key="F9"  Command="{Binding OnCloseCommand}"/>
+    </UserControl.InputBindings >
+</UserControl>

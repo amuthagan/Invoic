@@ -1,0 +1,915 @@
+﻿<UserControl x:Class="ProcessDesigner.frmFRCS"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:ic="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions" 
+        xmlns:il="clr-namespace:Microsoft.Expression.Interactivity.Layout;assembly=Microsoft.Expression.Interactions"     
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls" 
+        xmlns:common="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"   
+        xmlns:uc="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+        Height="540" Width="1020" MinWidth="980" MinHeight="540"
+        x:Name="FRCS"
+        Background="{StaticResource WindowBackground}" Loaded="UserControl_Loaded">
+    <UserControl.InputBindings >
+        <KeyBinding Key="F3" Command ="{Binding AddNewClickCommand}"/>
+        <KeyBinding Key="F5" Command="{Binding EditClickCommand}"/>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveClickCommand}"/>
+        <KeyBinding Key="F8" Command="{Binding PrintClickCommand}"/>
+        <KeyBinding Key="F9" Command="{Binding CloseClickCommand}"/>
+        <KeyBinding Modifiers="Control" Key="Insert" Command="{Binding CostDetailsInsertCommand}"/>
+        <KeyBinding Modifiers="Control" Key="Delete" Command="{Binding CostDetailsDeleteCommand}"/>
+        <KeyBinding Modifiers="Control" Key="A" Command="{Binding CostDetailsInsertCommand}"/>
+        <KeyBinding Modifiers="Control" Key="D" Command="{Binding CostDetailsDeleteCommand}"/>
+    </UserControl.InputBindings>
+    <UserControl.Resources>
+        <UICommon:DateTimeConverter x:Key="DateTimeConverter"/>
+        <UICommon:BooleanConverter x:Key="BooleanConverter"/>
+        <UICommon:CurrencyConverter x:Key="CurrencyConverter"/>
+        <UICommon:DecimalConverter x:Key="DecimalConverter"/>
+        <CollectionViewSource x:Key="OperationViewSource" Source="{Binding Path=OperationDataSource}"/>
+        <CollectionViewSource x:Key="OperationCostViewSource" Source="{Binding Path=OperationCostDataSource}"/>
+        <CollectionViewSource x:Key="OperationCostOutputViewSource" Source="{Binding Path=CostCentreOutputDataSource}"/>
+    </UserControl.Resources>
+
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="19*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="25*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="55"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border BorderThickness="1" Grid.Row="1" Grid.Column="1" >
+                <Grid>
+                    <ToolBarTray >
+                        <ToolBar Height="48" BandIndex="0">
+                            <Button x:Name="AddNewButton" Content="Add F3" ToolTip="Click/Press F3 to add new record"  Width="85" Command="{Binding AddNewClickCommand}" IsEnabled="{Binding ActionPermission.AddNew}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Add.png"></Button>
+                            <Button x:Name="EditButton" Content="Edit F5"  ToolTip="Click/Press F5 to edit record" Grid.Row="0" Grid.Column="2" Width="85" Command="{Binding EditClickCommand}"  IsEnabled="{Binding ActionPermission.Edit}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Edit.png"></Button>
+                            <Button x:Name ="SaveButton" Content="Save Ctrl+S"  ToolTip="Click/Press Ctrl+S to save record" Grid.Row="0" Grid.Column="3" Width="85" Command="{Binding SaveClickCommand}"
+                                  CommandParameter="Save" IsEnabled="{Binding ActionPermission.Save}"  KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Save.png" />
+                            <Button x:Name="PrintButton" Content="Print F8"  ToolTip="Click/Press F8 to print report" Grid.Row="0" Grid.Column="4" Width="85" Command="{Binding PrintClickCommand}" IsEnabled="{Binding ActionPermission.Print}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Print.png"></Button>
+                            <Button x:Name="RefreshButton" Content="Refresh"  ToolTip="Click/Refresh to get updated cost" Grid.Row="0" Grid.Column="4" Width="85" Command="{Binding RefreshClickCommand}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Refresh.png"></Button>
+                            <Button x:Name="SearchButton" Content="Search" Grid.Row="0" Grid.Column="4" Width="85"  Command="{Binding CostSheetSearchClickCommand}" IsEnabled="{Binding ActionPermission.Search}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Search.png"></Button>
+                            <Menu ToolBar.OverflowMode="Always" >
+                                <StackPanel Background="White" >
+                                    <MenuItem Header="Cost Sheet Search" Command="{Binding CostSheetSearchClickCommand}" IsEnabled="{Binding ActionPermission.CostSheetSearch}" Style="{StaticResource MenuItemStyleKey}">
+                                    </MenuItem>
+                                    <MenuItem  Header="Product Search" Command="{Binding ProductSearchClickCommand}" IsEnabled="{Binding ActionPermission.ProductSearch}" Style="{StaticResource MenuItemStyleKey}"/>
+                                </StackPanel>
+                            </Menu>
+                        </ToolBar>
+                        <ToolBar Height="48" BandIndex="1">
+                            <Button x:Name="CopyButton" Content="Copy" Grid.Row="0" Grid.Column="1" Width="85" Command="{Binding CIReferenceCopyClickCommand}" IsEnabled="{Binding ActionPermission.Copy}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Copy.png"></Button>
+                            <Button x:Name="StandardNoteButton" Content="Standard Note" Grid.Row="1" Grid.Column="4" Width="85" Command="{Binding StandardNoteClickCommand}" IsEnabled="{Binding ActionPermission.StandartNotes}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Note.png"></Button>
+                            <Button x:Name="CloseButton" Content="Close F9"  ToolTip="Click/Press F9 to close" Grid.Row="0" Grid.Column="4" Width="85" Command="{Binding CloseClickCommand}" IsEnabled="{Binding ActionPermission.Close}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Close.png"></Button>
+                        </ToolBar>
+                    </ToolBarTray>
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" Grid.Row="3" Grid.Column="1" >
+                <Grid Margin="-9,1,9,-0.955">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="10*" ></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="25*" ></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="15*" ></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="20*" ></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="18*" ></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="20*" ></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="10" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="1" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="1" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="1" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="1" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="1" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="2" ></RowDefinition>
+                        <!--<RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="5" ></RowDefinition>-->
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="1" ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="3" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="46*"></ColumnDefinition>
+                            <ColumnDefinition Width="15*"></ColumnDefinition>
+                            <ColumnDefinition Width="30*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Control:DatePickerCus Name ="dtpDateRecd" Grid.Row="0" Grid.Column="0" TabIndex="12" Width="112" Tag="Please select Date Received" HorizontalAlignment="Left"  SelectedDate="{Binding ActiveEntity.ENQU_RECD_ON, UpdateSourceTrigger=PropertyChanged}"  >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedDateChanged">
+                                    <i:InvokeCommandAction Command="{Binding EnquiryReceivedOnChangedCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Control:DatePickerCus>
+                        <TextBlock Text="Zone : " Name ="lblZone" TextAlignment="Right"  Grid.Row="0" Grid.Column="1" Visibility="{Binding ZoneVisibility,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" HorizontalAlignment="Left" Margin="0.317,5,0,4.578" Width="36" ></TextBlock>
+                        <Control:ComboBoxCus x:Name="ltbZone" Tag="Please Enter/Select Zone" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="0"  Grid.Column="2" Width="42" MaxLength="1" 
+                                     SelectedValuePath="CODE" 
+                                     SelectedValue="{Binding ActiveEntity.ZONE_CODE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding CIReferenceZoneDataSource}"
+                                     SelectedItem="{Binding CiReferenceZoneSelectedRow}" 
+                                     ButtonVisibility="{Binding CIReferenceZoneHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding CiReferenceZoneDropDownItems}"
+                                     Visibility="{Binding ZoneVisibility,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                     >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedItemChanged">
+                                    <i:InvokeCommandAction Command="{Binding CIReferenceZoneSelectedItemChangedCommand}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction Command="{Binding CIReferenceZoneEndEditCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <Control:ComboBoxCus.InputBindings>
+                                <KeyBinding  Key="Enter" Command="{Binding CIReferenceZoneEndEditCommand}"  />
+                            </Control:ComboBoxCus.InputBindings>
+                            <!--<i:Interaction.Behaviors >
+                                <UICommon:TabOnEnterComboBoxCusBehavior/>
+                            </i:Interaction.Behaviors>-->
+                        </Control:ComboBoxCus>
+                    </Grid>
+
+                    <TextBlock Text="Date Received :" Name ="lblDateRecd" TextAlignment="Right"  Grid.Row="1" Grid.Column="1"></TextBlock>
+                    <TextBlock Text="CI Reference :" Name ="lblCIReference" TextAlignment="Right" Grid.Row="3" Grid.Column="1"></TextBlock>
+                    <TextBlock Text="Customer :" Name ="lblCustomer" TextAlignment="Right" Grid.Row="5" Grid.Column="1"></TextBlock>
+                    <TextBlock Text="Plant :" Name ="lblPlant" TextAlignment="Right"  Grid.Row="7" Grid.Column="1"></TextBlock>
+
+                    <TextBlock Text="Multi. Factor :" TextAlignment="Right"  Grid.Row="11" Grid.Column="1"></TextBlock>
+                    <common:DecimalTextBox IsFormatRequired="False" AllowNegative="False" MaxDecimalPlaces="2" MaxLength="5" Grid.Column="3" Grid.Row="11" Tag="Please enter Multi.Factor"                          
+                         Text="{Binding MandatoryFields.RM_FACTOR,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TextAlignment="Left" Width="50" HorizontalAlignment="Left">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="LostFocus">
+                                <i:InvokeCommandAction Command="{Binding RMFactorLostFocusCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </common:DecimalTextBox>
+
+                    <CheckBox Content="Is Combined" Grid.Column="3" Grid.Row="11" IsChecked="{Binding ActiveEntity.IS_COMBINED, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                              HorizontalAlignment="Right" Margin="0,4.143,56.083,4.429" ToolTip="Avoid Cheesh and finish weight validation" Width="88" Height="15" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Checked">
+                                <i:InvokeCommandAction Command="{Binding CombinedIsCheckedCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Unchecked">
+                                <i:InvokeCommandAction Command="{Binding CombinedIsCheckedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterCheckBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </CheckBox>
+                    <TextBlock Text="Remarks :" Name ="lblRemarks" TextAlignment="Right"  Grid.Row="13" Grid.Column="1"></TextBlock>
+
+
+                    <Control:ComboBoxCus x:Name="ltbCIReference" Tag="Please Enter/Select CI Reference Number" HorizontalAlignment="Left"
+                                     Grid.Row="3"  Grid.Column="3" Width="110" MaxLength="10"
+                                     SelectedValuePath="CI_REFERENCE" 
+                                     SelectedValue="{Binding MandatoryFields.CI_REFERENCE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding CIReferenceDataSource}"
+                                     SelectedItem="{Binding CIReferenceSelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding CIReferenceHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding CIReferenceDropDownItems}"
+                                     >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding CIReferenceSelectedItemChangedCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="LostFocus">
+                                <i:InvokeCommandAction Command="{Binding CIReferenceEndEditCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Control:ComboBoxCus.InputBindings>
+                            <KeyBinding  Key="Enter" Command="{Binding CIReferenceSelectedItemChangedCommand}"  />
+                            <!--<KeyBinding  Key="Tab" Command="{Binding CIReferenceEndEditCommand}"  />-->
+                        </Control:ComboBoxCus.InputBindings>
+                        <!--<i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterComboBoxCusBehavior />
+                        </i:Interaction.Behaviors>-->
+                    </Control:ComboBoxCus>
+                    <Control:ComboBoxCus x:Name="ltbCustomer" Tag="Please Enter/Select Customer" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="5"  Grid.Column="3" Width="211" MaxLength="10"
+                                     SelectedValuePath="CUST_NAME" 
+                                     SelectedValue="{Binding MandatoryFields.CUST_NAME,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                     DataSource="{Binding CustomersDataSource}"
+                                     SelectedItem="{Binding CustomerSelectedRow,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding CustomerHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding CustomerDropDownItems}"
+                                     >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding CustomerSelectedItemChangedCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="LostFocus">
+                                <i:InvokeCommandAction Command="{Binding CustomerEndEditCommand}" CommandParameter="N"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Control:ComboBoxCus.InputBindings>
+                            <KeyBinding  Key="Enter" Command="{Binding CustomerEndEditCommand}" CommandParameter="Y" />
+                            <!--<KeyBinding  Key="Tab" Command="{Binding CustomerEndEditCommand}"  />-->
+                        </Control:ComboBoxCus.InputBindings>
+                        <!--<i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterComboBoxCusBehavior />
+                        </i:Interaction.Behaviors>-->
+                    </Control:ComboBoxCus>
+                    <Control:ComboBoxCus x:Name="ltbLocation" Tag="Please Enter/Select Plant" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="7"  Grid.Column="3"  Width="45" MaxLength="10"
+                                     SelectedValuePath="LOC_CODE" 
+                                     SelectedValue="{Binding MandatoryFields.LOC_CODE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding PlantDataSource}"
+                                     SelectedItem="{Binding PlantSelectedRow}" 
+                                     ButtonVisibility="{Binding PlantHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding PlantDropDownItems}"
+                                     >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding PlantSelectedItemChangedCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="LostFocus">
+                                <i:InvokeCommandAction Command="{Binding PlantEndEditCommand}" CommandParameter="N"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Control:ComboBoxCus.InputBindings>
+                            <KeyBinding  Key="Enter" Command="{Binding PlantEndEditCommand}" CommandParameter="Y" />
+                            <!--<KeyBinding  Key="Tab" Command="{Binding PlantEndEditCommand}" CommandParameter="Y" />-->
+                        </Control:ComboBoxCus.InputBindings>
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterComboBoxCusBehavior />
+                        </i:Interaction.Behaviors>
+                    </Control:ComboBoxCus>
+                    <Grid Grid.Column="3" Grid.Row="9"  Grid.RowSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="chkFeasible" Content="Feasible" Grid.Column="0" Grid.Row="0" IsChecked="{Binding IS_FEASIBILITY_CAN_CHANGE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="0,5,10.306,4.578">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <!--<i:InvokeCommandAction Command="{Binding FeasibleIsCheckedCommand}"/>-->
+                                    <si:CallMethodAction MethodName="CheckBox_Checked" TargetObject="{Binding}"/>
+                                </i:EventTrigger>
+                                <!--<i:EventTrigger EventName="Unchecked">
+                                    <i:InvokeCommandAction Command="{Binding FeasibleIsUnCheckedCommand}"/>
+                                    <si:CallMethodAction MethodName="CheckBox_Checked" TargetObject="{Binding}"/>
+                                </i:EventTrigger>-->
+                            </i:Interaction.Triggers>
+                            <!--<i:Interaction.Behaviors >
+                                <UICommon:TabOnEnterCheckBoxBehavior />
+                            </i:Interaction.Behaviors>-->
+                        </CheckBox>
+                        <CheckBox Content="Export" Grid.Row="0" IsChecked="{Binding ActiveEntity.EXPORT, Converter={StaticResource BooleanConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="4.694,5,4.611,4.578" Grid.Column="1" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <i:InvokeCommandAction Command="{Binding ExportIsCheckedCommand}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Unchecked">
+                                    <i:InvokeCommandAction Command="{Binding ExportIsCheckedCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <i:Interaction.Behaviors >
+                                <UICommon:TabOnEnterCheckBoxBehavior />
+                            </i:Interaction.Behaviors>
+                        </CheckBox>
+                        <CheckBox Content="Pending" Grid.Column="2" Grid.Row="0" IsChecked="{Binding ActiveEntity.PENDING, Converter={StaticResource BooleanConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <i:InvokeCommandAction Command="{Binding PendingIsCheckedCommand}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Unchecked">
+                                    <i:InvokeCommandAction Command="{Binding PendingIsCheckedCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <i:Interaction.Behaviors >
+                                <UICommon:TabOnEnterCheckBoxBehavior />
+                            </i:Interaction.Behaviors>
+                        </CheckBox>
+                    </Grid>
+                    <TextBox x:Name="txtRemarks" Grid.Column="3"  Grid.Row="13" Width="300" HorizontalAlignment="Left"  Grid.ColumnSpan="5" Tag="Please enter Remarks" 
+                         AcceptsReturn="False" AcceptsTab="False"
+                         Text="{Binding ActiveEntity.REMARKS }">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+
+                    <TextBlock Text="Product Description :" Name ="lblProductDescription" TextAlignment="Right"  Grid.Row="1" Grid.Column="5"></TextBlock>
+                    <TextBlock Text="Customer Part Number :" Name ="lblCustomerPartNo" TextAlignment="Right"  Grid.Row="3" Grid.Column="5"></TextBlock>
+                    <TextBlock Text="Drawing Issue Number :" Name ="lblDwgIssueNo" TextAlignment="Right"  Grid.Row="5" Grid.Column="5"></TextBlock>
+                    <TextBlock Text="Cust. Approved Date :" Name ="lblDate" TextAlignment="Right"  Grid.Row="7" Grid.Column="5"></TextBlock>
+                    <TextBlock Text="Cheese Weight :" Name ="lblCheeseWt" TextAlignment="Right"  Grid.Row="9" Grid.Column="5"></TextBlock>
+                    <TextBlock Text="Finish Weight :" Name ="lblFinishWt" TextAlignment="Right"  Grid.Row="11" Grid.Column="5"></TextBlock>
+
+                    <TextBox x:Name="txtProdDesc" Grid.Column="7"  Grid.Row="1" Grid.ColumnSpan="5"  Tag="Please enter Product Description" MaxLength="50"
+                         UICommon:FocusExtension.IsFocused="{Binding IsDefaultFocused, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                         Text="{Binding ActiveEntity.PROD_DESC ,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="0.167,1,0,0.578" Width="350" HorizontalAlignment="left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBox x:Name="txtCustDwgNo" Grid.Column="7"  Grid.Row="3" Tag="Please enter Customer Part No." 
+                         Text="{Binding ActiveEntity.CUST_DWG_NO,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBox x:Name="txtCustDwgIssueNo" Grid.Column="7"  Grid.Row="5" Tag="Please enter Drawing Issue No." 
+                         Width="115" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.CUST_DWG_NO_ISSUE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+
+                    <Control:DatePickerCus Name ="txtFRCSDate" Grid.Column="7" Grid.Row="7" Tag=" Please select Cust. Approved Date" HorizontalAlignment="Left"  SelectedDate="{Binding ActiveEntity.FR_CS_DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="115" >
+                    </Control:DatePickerCus>
+                    <Grid Grid.Column="7" Grid.Row="9" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="65*"></ColumnDefinition>
+                            <ColumnDefinition Width="12*"></ColumnDefinition>
+                            <ColumnDefinition Width="20*"></ColumnDefinition>
+                            <ColumnDefinition Width="35*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <common:DecimalTextBox IsFormatRequired="False"  AllowNegative="False" MaxDecimalPlaces="2" MaxLength="13" x:Name="txtCheeseWt" Grid.Column="0" Grid.Row="0" Tag="Please enter Cheese Weight" 
+                         Text="{Binding CHEESE_WT,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TextAlignment="Left" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <i:InvokeCommandAction Command="{Binding FinishWeightMouseDoubleClickCommand}" CommandParameter="C"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction Command="{Binding CheeseWeightLostFocusCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <i:Interaction.Behaviors >
+                                <UICommon:TabOnEnterTextBoxBehavior />
+                            </i:Interaction.Behaviors>
+                        </common:DecimalTextBox>
+                        <Button x:Name="btnBrowseCheeseWeightCalculation" Content="..." Grid.Row="0" Grid.Column="2" Width="25" Height="22" Command="{Binding FinishWeightMouseDoubleClickCommand}" CommandParameter="C" KeyboardNavigation.IsTabStop="True"></Button>
+                        <TextBlock Text="Kgs/100" TextAlignment="Right"  Grid.Row="11" Grid.Column="3"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Column="7" Grid.Row="11" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="65*"></ColumnDefinition>
+                            <ColumnDefinition Width="12*"></ColumnDefinition>
+                            <ColumnDefinition Width="20*"></ColumnDefinition>
+                            <ColumnDefinition Width="35*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <common:DecimalTextBox IsFormatRequired="False" AllowNegative="False" MaxDecimalPlaces="2" MaxLength="13" x:Name="txtFinishWt" Grid.Column="0" Grid.Row="0" Tag="Please enter Finish Weight" 
+                         Text="{Binding FINISH_WT,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TextAlignment="Left">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <i:InvokeCommandAction Command="{Binding FinishWeightMouseDoubleClickCommand}" CommandParameter="F"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction Command="{Binding FinishWeightLostFocusCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <i:Interaction.Behaviors >
+                                <UICommon:TabOnEnterTextBoxBehavior />
+                            </i:Interaction.Behaviors>
+                        </common:DecimalTextBox>
+                        <Button x:Name="btnBrowseFinishWeightCalculation" Content="..." Grid.Row="0" Grid.Column="2" Width="25" Height="22" Command="{Binding FinishWeightMouseDoubleClickCommand}" CommandParameter="F" KeyboardNavigation.IsTabStop="True"></Button>
+                        <TextBlock Text="Kgs/100" TextAlignment="Right"  Grid.Row="11" Grid.Column="5"></TextBlock>
+                    </Grid>
+
+                    <TextBlock Text="Customer Dwg / Std  No. :" Name ="lblCustomerDwgOrStdNo" TextAlignment="Right"  Grid.Row="3" Grid.Column="9"></TextBlock>
+                    <TextBlock Text="Drawing Issue Date :" Name ="lblDwgDate" TextAlignment="Right"  Grid.Row="5" Grid.Column="9"></TextBlock>
+                    <TextBlock Text="Off :" Name ="lblOff" TextAlignment="Right"  Grid.Row="7" Grid.Column="9"></TextBlock>
+                    <TextBlock Text="SFL Share :" Name ="lblSFLShare" TextAlignment="Right"  Grid.Row="9" Grid.Column="9"></TextBlock>
+                    <TextBlock Text="Potential :" Name ="lblPotential" TextAlignment="Right"  Grid.Row="11" Grid.Column="9"></TextBlock>
+                    <!--<TextBlock Text="RM Factor :" Name ="lblFactor" TextAlignment="Right"  Grid.Row="13" Grid.Column="9"></TextBlock>-->
+                    <TextBlock Text="Prepared By :" Name ="lblPreparedBy" TextAlignment="Right"  Grid.Row="13" Grid.Column="9"></TextBlock>
+                    <TextBox x:Name="txtCustStdNo" Grid.Column="11"  Grid.Row="3" Tag="Please enter Customer Drawing Number" 
+                         Text="{Binding ActiveEntity.CUST_STD_NO,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+                    <Control:DatePickerCus Name ="txtCustDwgDate" Grid.Column="11" Grid.Row="5" Tag="Please select Drawing Issue Date" HorizontalAlignment="Left"  SelectedDate="{Binding ActiveEntity.CUST_STD_DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="115">
+                    </Control:DatePickerCus>
+
+                    <common:DecimalTextBox IsFormatRequired="False" x:Name="txtOff" Grid.Column="11" Grid.Row="7" Tag="Please enter Off" 
+                         MaxLength="10" MaxDecimalPlaces="0" Width="75" HorizontalAlignment="Left"
+                         Text="{Binding MandatoryFields.NUMBER_OFF,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox IsFormatRequired="False" x:Name="txtSflShare" Grid.Column="11" Grid.Row="9" Tag="Please enter SFL Share" 
+                         MaxLength="3" MaxDecimalPlaces="0" Width="30" HorizontalAlignment="Left"
+                         Text="{Binding MandatoryFields.SFL_SHARE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="LostFocus">
+                                <i:InvokeCommandAction Command="{Binding SFLShareLostFocusCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox IsFormatRequired="False" x:Name="txtPotential" Grid.Column="11" Grid.Row="11" Tag="Please enter Potential" 
+                         MaxLength="10" MaxDecimalPlaces="0" Width="75" HorizontalAlignment="Left"
+                         Text="{Binding MandatoryFields.POTENTIAL,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+
+                    <Control:ComboBoxCus x:Name="ltbResponsible" Tag="Please Enter/Select Prepared By" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="13"  Grid.Column="11" Width="155" MaxLength="30"
+                                     SelectedValuePath="USER_NAME" 
+                                     SelectedValue="{Binding ActiveEntity.RESPONSIBILITY,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding PreparedByDataSource}" 
+                                     SelectedItem="{Binding PreparedBySelectedRow}" 
+                                     ButtonVisibility="{Binding PreparedByHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding PreparedByDropDownItems}"
+                                     >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding PreparedBySelectedItemChangedCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="LostFocus">
+                                <i:InvokeCommandAction Command="{Binding PreparedByEndEditCommand}" CommandParameter="N"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Control:ComboBoxCus.InputBindings>
+                            <KeyBinding  Key="Enter" Command="{Binding PreparedByEndEditCommand}" CommandParameter="Y" />
+                            <!--<KeyBinding  Key="Tab" Command="{Binding responsibleEndEdit}" CommandParameter="Y" />-->
+                        </Control:ComboBoxCus.InputBindings>
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterComboBoxCusBehavior />
+                        </i:Interaction.Behaviors>
+                    </Control:ComboBoxCus>
+
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" Grid.Row="5" Grid.Column="1" Visibility="{Binding StandatedNotesVisibility}" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85*"></RowDefinition>
+                        <RowDefinition Height="15*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <toolKit:DataGrid Grid.Column="0" Grid.Row="0" Name="ssStandardNotes" AutoGenerateColumns="False" ItemsSource="{Binding StandardNotes,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" CanUserSortColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" Margin="0,5,0,0" SelectedItem="{Binding StandardNotesSelectedRow}" RowHeaderWidth="20">
+                        <toolKit:DataGrid.Columns>
+                            <toolKit:DataGridTextColumn Header="Standard Notes" Width="1*" Binding="{Binding STD_NOTES, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Control:TextBoxIntsOnly.Mask="Any" >
+                                <toolKit:DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="2000"/>
+                                    </Style>
+                                </toolKit:DataGridTextColumn.EditingElementStyle>
+                            </toolKit:DataGridTextColumn>
+                        </toolKit:DataGrid.Columns>
+                        <!--<toolKit:DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Delete" Command="{Binding DeleteOperationClickCommand}"  />
+                        </ContextMenu>
+                    </toolKit:DataGrid.ContextMenu>-->
+                    </toolKit:DataGrid>
+                    <Grid Grid.Column="0" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"></ColumnDefinition>
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button x:Name ="StandatedNotesSaveButton" Content="Save" Grid.Row="0" Grid.Column="1" Command="{Binding StandatedNotesSaveClickCommand}"  KeyboardNavigation.IsTabStop="False"/>
+                        <Button x:Name ="StandatedNotesIncludeButton" Content="Include" Grid.Row="0" Grid.Column="2" Command="{Binding StandatedNotesIncludeClickCommand}" KeyboardNavigation.IsTabStop="False"/>
+                        <Button x:Name ="StandatedNotesCloseButton" Content="Close" Grid.Row="0" Grid.Column="3" Command="{Binding StandatedNotesCloseClickCommand}" KeyboardNavigation.IsTabStop="False"/>
+                    </Grid>
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" Grid.Row="5" Grid.Column="1" Visibility="{Binding RejectReasonsVisibility}" >
+                <GroupBox Header="Reject Reason" x:Name="fraRejectReason">
+                    <TextBox x:Name="txtRejectReason" ToolTip="Enter the Reject Reason" 
+                         Tag="REJECT_REASON" Height="145" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" TextAlignment="Left" VerticalContentAlignment="Top" HorizontalContentAlignment="Left"
+                         Text="{Binding ActiveEntity.REJECT_REASON,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                        <!--<i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>-->
+                    </TextBox>
+                </GroupBox>
+            </Border>
+            <Border BorderThickness="1" Grid.Row="5" Grid.Column="1" Visibility="{Binding CostNotesVisibility}" >
+                <GroupBox Header="Standard Notes" x:Name="fraCostNotes">
+                    <TextBox x:Name="txtCostNotes" ToolTip="Standard Notes Preview" 
+                         Tag="COST_NOTES" Height="145" AcceptsReturn="True" TextWrapping="Wrap"
+                         Text="{Binding ActiveEntity.COST_NOTES,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding CostNotesPreviewMouseDoubleClickCommand}" CommandParameter="C"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+                </GroupBox>
+            </Border>
+            <Border BorderThickness="1" Grid.Row="5" Grid.Column="1" Visibility="{Binding CostDetailsVisibility}" >
+                <toolKit:DataGrid Grid.Column="1" Grid.Row="1" Name="ssCostDetails" AutoGenerateColumns="False" KeyDown="ssCostDetails_KeyDown" KeyUp="ssCostDetails_KeyUp" PreviewKeyDown="ssCostDetails_PreviewKeyDown" ItemsSource="{Binding CostDetails,UpdateSourceTrigger=PropertyChanged}" CanUserSortColumns="False" 
+                                  CanUserAddRows="False"  CanUserDeleteRows="True" SelectedItem="{Binding CostDetailsSelectedRow,UpdateSourceTrigger=PropertyChanged}" CanUserResizeRows ="False" RowHeaderWidth="25" Margin="-1,1,1,-1.045" UICommon:ScrollToTopBehavior.ScrollToTop="True"
+>
+                    <!--<toolKit:DataGrid.InputBindings>
+                        <KeyBinding  Key="Enter" Command="{Binding RawMaterialEndEditCommand}" />
+                    </toolKit:DataGrid.InputBindings>-->
+                    <toolKit:DataGrid.Columns>
+                        <toolKit:DataGridTextColumn Header="SNO" Width="0.6*" Binding="{Binding SNO}">
+                            <toolKit:DataGridTextColumn.EditingElementStyle>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="MaxLength" Value="6"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"/>
+                                </Style>
+                            </toolKit:DataGridTextColumn.EditingElementStyle>
+                        </toolKit:DataGridTextColumn>
+
+                        <toolKit:DataGridTemplateColumn Header="Operation Code" SortMemberPath="OPERATION_NO" >
+                            <toolKit:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding OPERATION_NO,UpdateSourceTrigger=PropertyChanged}" />
+                                </DataTemplate>
+                            </toolKit:DataGridTemplateColumn.CellTemplate>
+                            <toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <uc:ComboBoxWithSearch Grid.Column="1" DataSource="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.OperationDataSource}"  
+                                             SelectedValue="{Binding OPERATION_NO,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding OPERATION_NO,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedItem="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.OperCode_SelectedItem,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}"
+                                             ColumnsHeader="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.DropDownHeaderOper}"
+				                             SelectedValuePath="OPERATION_NO"  DisplayValuePath="OPERATION_NO"   IsReadOnly="True" DropDownWidth="300"                                     
+                                              VerticalContentAlignment="Center" >
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectedItemChanged">
+                                                <i:InvokeCommandAction  Command="{Binding ElementName=FRCS,Path=DataContext.OnOperaionSelectionChanged}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </uc:ComboBoxWithSearch>
+                                    <!--<bhCustCtrl:CustComboBox IsSynchronizedWithCurrentItem="False"   
+                                             ItemsSource="{Binding Source={StaticResource OperationViewSource}}"
+                                             SelectedValue ="{Binding OPERATION_NO,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"                                                               
+                                             SelectedValuePath="OPERATION_NO" DisplayMemberPath="OPERATION_NO"     
+                                             SelectedItem="{Binding ElementName=FRCS,Path=DataContext.OperCode_SelectedItem,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}"                                                             
+                                             Text="{Binding OPERATION_NO,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             IsEditable="True" VerticalContentAlignment="Center" >
+                                        <toolKit:DataGridTextColumn Width="75"  Header="Oper Code" Binding="{Binding OPERATION_NO}" />
+                                        <toolKit:DataGridTextColumn Width="150" Header="Operation" Binding="{Binding OPERATION}" />                                                                         
+                                    </bhCustCtrl:CustComboBox>-->
+                                </DataTemplate>
+                            </toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                        </toolKit:DataGridTemplateColumn>
+
+                        <toolKit:DataGridTextColumn Header="Operation" Width="1.8*" Binding="{Binding OPERATION}" >
+                            <toolKit:DataGridTextColumn.EditingElementStyle>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="MaxLength" Value="50"/>
+                                    <Setter Property="IsReadOnly" Value="True"/>
+                                </Style>
+                            </toolKit:DataGridTextColumn.EditingElementStyle>
+                        </toolKit:DataGridTextColumn>
+                        <toolKit:DataGridTemplateColumn  Header="CC Code" SortMemberPath="COST_CENT_CODE" Width="0.8*">
+                            <toolKit:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding COST_CENT_CODE,UpdateSourceTrigger=PropertyChanged}" />
+                                </DataTemplate>
+                            </toolKit:DataGridTemplateColumn.CellTemplate>
+                            <toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <uc:ComboBoxWithSearch Grid.Column="1" DataSource="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.DVOperationCost}"  
+                                             SelectedValue="{Binding COST_CENT_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding COST_CENT_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedItem="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.CCCode_SelectedItem,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}"
+                                             ColumnsHeader="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.DropDownItemCCCode}"
+				                             SelectedValuePath="COST_CENT_CODE"  DisplayValuePath="COST_CENT_CODE"   IsReadOnly="True" DropDownWidth="330"  DropDownHeight="200"                                   
+                                              VerticalContentAlignment="Center" >
+                                    </uc:ComboBoxWithSearch>
+
+                                    <!--<bhCustCtrl:CustComboBox IsSynchronizedWithCurrentItem="False"   
+                                             ItemsSource="{Binding Source={StaticResource OperationCostViewSource}}"
+                                             Text="{Binding COST_CENT_CODE,UpdateSourceTrigger=PropertyChanged}"  
+				                            SelectedValuePath="COST_CENT_CODE" DisplayMemberPath="COST_CENT_CODE"                                               
+                                           IsEditable="True" VerticalContentAlignment="Center" >
+                                        <toolKit:DataGridTextColumn Width="75"  Header="Code" Binding="{Binding COST_CENT_CODE}" />
+                                        <toolKit:DataGridTextColumn Width="150" Header="Description" Binding="{Binding COST_CENT_DESC}" />
+                                        <toolKit:DataGridTextColumn Width="150" Header="Location" Binding="{Binding LOC_CODE}" />
+                                    </bhCustCtrl:CustComboBox>-->
+                                </DataTemplate>
+                            </toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                        </toolKit:DataGridTemplateColumn>
+
+                        <toolKit:DataGridTemplateColumn Header="Output" SortMemberPath="OUTPUT" Width="0.6*">
+                            <toolKit:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CCOutput,UpdateSourceTrigger=PropertyChanged}" />
+                                </DataTemplate>
+                            </toolKit:DataGridTemplateColumn.CellTemplate>
+                            <toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <uc:ComboBoxWithSearch Grid.Column="1" DataSource="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.DVCostCentreOutput}"  
+                                             SelectedValue="{Binding OUTPUT,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding OUTPUT,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedItem="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.Output_SelectedItem,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}"
+                                             ColumnsHeader="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.CostCentreOutputDropDownItems}"
+				                             SelectedValuePath="OUTPUT"  DisplayValuePath="OUTPUT"  DropDownWidth="330"  DropDownHeight="200"                                   
+                                              VerticalContentAlignment="Center" >
+                                    </uc:ComboBoxWithSearch>
+                                    <!--<bhCustCtrl:CustComboBox IsSynchronizedWithCurrentItem="False"   
+                                             ItemsSource="{Binding Source={StaticResource OperationCostOutputViewSource}}"
+                                             Text="{Binding OUTPUT,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                            SelectedValuePath="OUTPUT" DisplayMemberPath="OUTPUT"                                               
+                                           IsEditable="True" VerticalContentAlignment="Center" >
+                                        <toolKit:DataGridTextColumn Width="75"  Header="Code" Binding="{Binding COST_CENT_CODE}" />
+                                        <toolKit:DataGridTextColumn Width="150" Header="OUTPUT" Binding="{Binding OUTPUT}" />
+                                    </bhCustCtrl:CustComboBox>-->
+                                </DataTemplate>
+                            </toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                        </toolKit:DataGridTemplateColumn>
+                        <!--<bhCustCtrl:CustDataGridComboBoxColumn  x:Name="cmbCostCentreOutputMaster" 
+                            Width="1*" Header="Output" SelectedValueBinding="{Binding OUTPUT,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="OUTPUT"  DisplayMemberPath="OUTPUT" 
+                            ItemsSource="{Binding Source={StaticResource OperationCostOutputViewSource}}">
+                            <toolKit:DataGridTextColumn Header="Code" Binding="{Binding COST_CENT_CODE, Mode=Default,UpdateSourceTrigger=PropertyChanged}" />
+                            <toolKit:DataGridTextColumn Header="OUTPUT" Binding="{Binding OUTPUT, Mode=Default,UpdateSourceTrigger=PropertyChanged}" />
+                        </bhCustCtrl:CustDataGridComboBoxColumn>-->
+                        <bhCustCtrl:DataGridNumericColumn Header="Var Cost" Width="0.9*" Binding="{Binding VAR_COST, UpdateSourceTrigger=PropertyChanged ,Mode=TwoWay}" MaxPrecision="6" MaxScale="2" ></bhCustCtrl:DataGridNumericColumn>
+                        <!--<toolKit:DataGridTextColumn Header="Var Cost" Width="0.9*" Binding="{Binding VAR_COST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,Converter={StaticResource DecimalConverter}}" Control:TextBoxIntsOnly.Mask="UnSignedDec">
+                            <toolKit:DataGridTextColumn.EditingElementStyle>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="MaxLength" Value="10"/>
+                                    <Setter Property="TextAlignment" Value="Left"/>
+                                    <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"/>
+                                </Style>
+                            </toolKit:DataGridTextColumn.EditingElementStyle>
+                            <toolKit:DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Right" />
+                                </Style>
+                            </toolKit:DataGridTextColumn.ElementStyle>
+                        </toolKit:DataGridTextColumn>-->
+                        <bhCustCtrl:DataGridNumericColumn Header="Fixed Cost" Width="0.9*" Binding="{Binding FIX_COST, UpdateSourceTrigger=PropertyChanged ,Mode=TwoWay}" MaxPrecision="6" MaxScale="2" ></bhCustCtrl:DataGridNumericColumn>
+                        <!--<toolKit:DataGridTextColumn Header="Fixed Cost" Width="0.9*" Binding="{Binding FIX_COST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,Converter={StaticResource DecimalConverter}}">
+                            <toolKit:DataGridTextColumn.EditingElementStyle>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="MaxLength" Value="10"/>
+                                    <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"/>
+                                </Style>
+                            </toolKit:DataGridTextColumn.EditingElementStyle>
+                            <toolKit:DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Right" />
+                                </Style>
+                            </toolKit:DataGridTextColumn.ElementStyle>
+                        </toolKit:DataGridTextColumn>-->
+                        <bhCustCtrl:DataGridNumericColumn Header="SPL Cost" Width="0.9*" Binding="{Binding SPL_COST, UpdateSourceTrigger=PropertyChanged ,Mode=TwoWay}" MaxPrecision="6" MaxScale="2" ></bhCustCtrl:DataGridNumericColumn>
+                        <!--<toolKit:DataGridTextColumn Header="SPL Cost" Width="0.9*" Binding="{Binding SPL_COST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,Converter={StaticResource DecimalConverter}}">
+                            <toolKit:DataGridTextColumn.EditingElementStyle>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="MaxLength" Value="10"/>
+                                    <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"/>
+                                </Style>
+                            </toolKit:DataGridTextColumn.EditingElementStyle>
+                            <toolKit:DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Right" />
+                                </Style>
+                            </toolKit:DataGridTextColumn.ElementStyle>
+                        </toolKit:DataGridTextColumn>-->
+                        <bhCustCtrl:DataGridNumericColumn Header="Operation Cost" Width="1.0*" Binding="{Binding TOTAL_COST, UpdateSourceTrigger=PropertyChanged ,Mode=TwoWay}" MaxPrecision="7" MaxScale="2" ></bhCustCtrl:DataGridNumericColumn>
+                        <!--<toolKit:DataGridTextColumn Header="Operation Cost" Width="1.1*" Binding="{Binding TOTAL_COST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,Converter={StaticResource DecimalConverter}}">
+                            <toolKit:DataGridTextColumn.EditingElementStyle>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="MaxLength" Value="13"/>
+                                    <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"/>
+                                </Style>
+                            </toolKit:DataGridTextColumn.EditingElementStyle>
+                            <toolKit:DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Right" />
+                                </Style>
+                            </toolKit:DataGridTextColumn.ElementStyle>
+                        </toolKit:DataGridTextColumn>-->
+                    </toolKit:DataGrid.Columns>
+                    <toolKit:DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Add Row" Command="{Binding CostDetailsInsertCommand}"  />
+                            <MenuItem Header="Delete Row" Command="{Binding CostDetailsDeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                            <MenuItem Header="ReNumber" Command="{Binding CostDetailsReNumberCommand}"  />
+                        </ContextMenu>
+                    </toolKit:DataGrid.ContextMenu>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="CurrentCellChanged">
+                            <i:InvokeCommandAction  Command="{Binding CurrentCellChangedCostDetailsCommand}" CommandParameter="{Binding ElementName=ssCostDetails, Path=SelectedItem}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="BeginningEdit">
+                            <i:InvokeCommandAction  Command="{Binding CostDetailsBeginningEditCommand}" CommandParameter="{Binding ElementName=ssCostDetails, Path=CurrentCell}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="CellEditEnding">
+                            <si:CallMethodAction MethodName="OnCellEditEndingCostDetails" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </toolKit:DataGrid>
+            </Border>
+            <Border BorderThickness="1" Grid.Row="7" Grid.Column="1" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="9*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="40*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="12*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="25*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="25*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="25*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="25*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="25*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2"></RowDefinition>
+                        <RowDefinition Height="50*"></RowDefinition>
+                        <RowDefinition Height="1"></RowDefinition>
+                        <RowDefinition Height="50*"></RowDefinition>
+                        <RowDefinition Height="2"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="RM :" Name ="lblRM" TextAlignment="Right"  Grid.Row="1" Grid.Column="1"></TextBlock>
+                    <TextBlock Text="Finish :" Name ="lblFinish" TextAlignment="Right"  Grid.Row="3" Grid.Column="1"></TextBlock>
+                    <Control:ComboBoxCus x:Name="ltbRawMaterial" Tag="Please select Raw Material" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="1"  Grid.Column="3" Width="130" MaxLength="10"
+                                     SelectedValuePath="RM_DESC" 
+                                     SelectedValue="{Binding MandatoryFields.RM_DESC,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding RawMaterialsDataSource}"
+                                     SelectedItem="{Binding RawMaterialSelectedRow}" 
+                                     ButtonVisibility="{Binding RawMaterialHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding RawMaterialDropDownItems}"
+                                     >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding RawMaterialSelectedItemChangedCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="LostFocus">
+                                <i:InvokeCommandAction Command="{Binding RawMaterialEndEditCommand}" CommandParameter="N"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Control:ComboBoxCus.InputBindings>
+                            <KeyBinding  Key="Enter" Command="{Binding RawMaterialEndEditCommand}" CommandParameter="Y" />
+                            <!--<KeyBinding  Key="Tab" Command="{Binding RawMaterialEndEditCommand}" CommandParameter="Y" />-->
+                        </Control:ComboBoxCus.InputBindings>
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterComboBoxCusBehavior />
+                        </i:Interaction.Behaviors>
+                    </Control:ComboBoxCus>
+                    <Grid Grid.Row="3" Grid.Column="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="25*"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="30*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Control:ComboBoxCus x:Name="ltbFinish" Tag="Please select Finish Code" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="1"  Grid.Column="0"  Width="45" MaxLength="10"
+                                     SelectedValuePath="FINISH_CODE" 
+                                     SelectedValue="{Binding ActiveEntity.FINISH_CODE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding FinishDataSource}"
+                                     SelectedItem="{Binding FinishSelectedRow}" 
+                                     ButtonVisibility="{Binding FinishHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding FinishDropDownItems}"
+                                     >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedItemChanged">
+                                    <i:InvokeCommandAction Command="{Binding FinishSelectedItemChangedCommand}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction Command="{Binding FinishEndEditCommand}" CommandParameter="N"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <Control:ComboBoxCus.InputBindings>
+                                <KeyBinding  Key="Enter" Command="{Binding FinishEndEditCommand}" CommandParameter="Y" />
+                                <!--<KeyBinding  Key="Tab" Command="{Binding FinishEndEditCommand}" CommandParameter="Y" />-->
+                            </Control:ComboBoxCus.InputBindings>
+                            <i:Interaction.Behaviors >
+                                <UICommon:TabOnEnterComboBoxCusBehavior />
+                            </i:Interaction.Behaviors>
+                        </Control:ComboBoxCus>
+                        <TextBlock Text="Top Coat :" Name ="lblTopCoat" TextAlignment="Right"  Grid.Row="1" Grid.Column="2"></TextBlock>
+                        <Control:ComboBoxCus x:Name="ltbCoating" Tag="Please select Top Coat" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="1"  Grid.Column="4"  Width="45" MaxLength="10"
+                                     SelectedValuePath="COATING_CODE" 
+                                     SelectedValue="{Binding ActiveEntity.COATING_CODE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding TopCoatingDataSource}"
+                                     SelectedItem="{Binding TopCoatingSelectedRow}" 
+                                     ButtonVisibility="{Binding TopCoatingHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding TopCoatingDropDownItems}"
+                                     >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedItemChanged">
+                                    <i:InvokeCommandAction Command="{Binding TopCoatingSelectedItemChangedCommand}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction Command="{Binding CoatingEndEditCommand}" CommandParameter="N"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <Control:ComboBoxCus.InputBindings>
+                                <KeyBinding  Key="Enter" Command="{Binding CoatingEndEditCommand}" CommandParameter="Y" />
+                                <!--<KeyBinding  Key="Tab" Command="{Binding CoatingEndEditCommand}" CommandParameter="Y" />-->
+                            </Control:ComboBoxCus.InputBindings>
+                            <i:Interaction.Behaviors >
+                                <UICommon:TabOnEnterComboBoxCusBehavior />
+                            </i:Interaction.Behaviors>
+                        </Control:ComboBoxCus>
+                    </Grid>
+                    <TextBlock Text="RM Cost :" Name ="lblRMCostCaption" TextAlignment="Right"  Grid.Row="1" Grid.Column="5"></TextBlock>
+                    <TextBlock Text="Notes :" Name ="lblNotes" TextAlignment="Right"  Grid.Row="3" Grid.Column="5"></TextBlock>
+                    <TextBlock Text="{Binding ActiveEntity.RM_COST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, Converter={StaticResource DecimalConverter}}" Name ="lblRmCost" TextAlignment="Left"  Grid.Row="1" Grid.Column="7"></TextBlock>
+                    <TextBox UICommon:FocusExtension.IsFocused="{Binding StandatedNotesIsFocusedSaveButton}" x:Name="txtNotes" Grid.Column="7"  Grid.Row="3" Grid.ColumnSpan="10"  Tag="Please enter Notes" 
+                         AcceptsReturn="True" AcceptsTab="True" Width="400" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.COST_NOTES ,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding CostNotesMouseDoubleClickCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <!--<i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>-->
+                    </TextBox>
+                    <Grid Grid.Row="1" Grid.Column="9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="45*"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="35*"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="35*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Cost for " Name ="lblCostfor100Pcs" TextAlignment="Right"  Grid.Row="0" Grid.Column="0"></TextBlock>
+                        <TextBox x:Name="txtStartingNo" Grid.Column="2" Grid.Row="0" ToolTip="Enter Starting No. of the Part Number" 
+                         Control:TextBoxIntsOnly.Mask="Integer" Tag="NO_OF_PCS" IsEnabled="False"
+                         Text="{Binding ActiveEntity.NO_OF_PCS,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left">
+                            <i:Interaction.Behaviors >
+                                <UICommon:TabOnEnterTextBoxBehavior />
+                            </i:Interaction.Behaviors>
+                        </TextBox>
+                        <TextBlock Text="Pcs :" Name ="lblPcs" TextAlignment="Left"  Grid.Row="0" Grid.Column="4"></TextBlock>
+                    </Grid>
+                    <TextBlock Text="{Binding ActiveEntity.FINAL_COST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, Converter={StaticResource DecimalConverter}}" Name ="lblCost" TextAlignment="Left"  Grid.Row="1" Grid.Column="11"></TextBlock>
+                    <TextBlock Text="Realisation :" Name ="lblRealisation" TextAlignment="Right"  Grid.Row="1" Grid.Column="13"></TextBlock>
+                    <TextBlock Text="{Binding ActiveEntity.REALISATION,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, Converter={StaticResource DecimalConverter}}" Name ="txtRealisation" TextAlignment="Left"  Grid.Row="1" Grid.Column="15"></TextBlock>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

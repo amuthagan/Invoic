@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="yes"?>
+<DSAPQPDATA xmlns="APQP">
+  <xs:schema id="DSAPQPDATA" targetNamespace="APQP" xmlns:mstns="APQP" xmlns="APQP" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+    <xs:element name="DSAPQPDATA" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="APQP" form="unqualified" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="HIDDEN_SL_NO" form="unqualified" type="xs:string" minOccurs="0" />
+                <xs:element name="SL_NO" form="unqualified" type="xs:string" minOccurs="0" />
+                <xs:element name="APQP_ACTIVITY" form="unqualified" type="xs:string" minOccurs="0" />
+                <xs:element name="STATUS" form="unqualified" type="xs:string" minOccurs="0" />
+                <xs:element name="COMPLETION_DATE" form="unqualified" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="COMMENT" form="unqualified" type="xs:string" minOccurs="0" />
+                <xs:element name="LEAD_RESP" form="unqualified" type="xs:string" minOccurs="0" />
+                <xs:element name="DUE_DATE" form="unqualified" type="xs:dateTime" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</DSAPQPDATA>

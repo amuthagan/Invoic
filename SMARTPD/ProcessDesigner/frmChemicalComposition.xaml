@@ -1,0 +1,91 @@
+﻿<Window x:Class="ProcessDesigner.frmChemicalComposition"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Chemical Composition"  Height="500" Width="800" MinWidth="800"  ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="{StaticResource WindowBackground}">
+    <Border BorderThickness="1" BorderBrush="Black"  Margin="10,10,10,10" CornerRadius="10">
+
+        <Grid KeyboardNavigation.TabNavigation ="Cycle" >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="16*" ></ColumnDefinition>
+                <ColumnDefinition Width="16*"  ></ColumnDefinition>
+                <ColumnDefinition  Width="16*" ></ColumnDefinition>
+                <ColumnDefinition  Width="16*" ></ColumnDefinition>
+                <ColumnDefinition  Width="20*" ></ColumnDefinition>
+                <ColumnDefinition Width="16*"  ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="43*"></RowDefinition>
+                </Grid.RowDefinitions>
+            
+            <!--Grid and Button-->
+            <Border Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="11" Padding="5,5,5,5">
+                <DataGrid Name="dgvGrid" ></DataGrid>
+            </Border>
+            <Button Name="btnShow" Content="Show" Grid.Column="5" Grid.Row="11" Padding="5,5,5,5" Width="115" Height="100"></Button>
+            
+            <!--TextBox and Lables-->
+            <!--1 Set-->
+            <TextBlock Name="lblCarbon" Text="Carbon : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblSilicon" Text="Silicon : " Grid.Row="2"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblManganese"  Text="Manganese : " Grid.Row="3"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+            <TextBlock  Name="lblSulphur" Text="Sulphur : " Grid.Row="4"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblPhosporus"  Text="Phosporus : " Grid.Row="5"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+            <TextBlock  Name="lblChromium" Text="Chromium : " Grid.Row="6"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblBoron"  Text="Boron : " Grid.Row="7"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+            <TextBlock  Name="lblMolybdenum" Text="Molybdenum : " Grid.Row="8"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+            <TextBox Name="txtCarbon" Tag="Please enter Carbon" Height="25" Grid.Row="1"  Grid.Column="1" ></TextBox>
+            <TextBox Name="txtSilicon"   Height="25" Grid.Row="2"  Grid.Column="1" ></TextBox>
+            <TextBox Name="txtManganese"   Height="25" Grid.Row="3"  Grid.Column="1" ></TextBox>
+            <TextBox Name="txtSulphur"   Height="25" Grid.Row="4"  Grid.Column="1" ></TextBox>
+            <TextBox  Name="txtPhosporus"  Height="25" Grid.Row="5"  Grid.Column="1" ></TextBox>
+            <TextBox  Name="txtChromium"  Height="25" Grid.Row="6"  Grid.Column="1" ></TextBox>
+            <TextBox  Name="txtBoron"  Height="25" Grid.Row="7"  Grid.Column="1" ></TextBox>
+            <TextBox Name="txtMolybdenum"   Height="25" Grid.Row="8"  Grid.Column="1" ></TextBox>
+            
+            <!--2 set-->
+            <TextBlock Name="lblLead"  Text="Lead : " Grid.Row="1"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblAluminium"  Text="Aluminium : " Grid.Row="2"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+            <TextBlock  Name="lblNickel" Text="Nickel : " Grid.Row="3"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblCopper"  Text="Copper : " Grid.Row="4"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblOxygen"  Text="Oxygen : " Grid.Row="5"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblTensileStrength"  Text="Tensile Strength : " Grid.Row="6"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblMaxHardness"  Text="Max Hardness : " Grid.Row="7"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblSampleDia"  Text="Sample Dia : " Grid.Row="8"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+            <TextBox Name="txtLead"   Height="25" Grid.Row="1"  Grid.Column="3"  Margin="0,0,5,0"></TextBox>
+            <TextBox Name="txtAluminium"   Height="25" Grid.Row="2"  Grid.Column="3"  Margin="0,0,5,0"></TextBox>
+            <TextBox  Name="txtNickel"  Height="25" Grid.Row="3"  Grid.Column="3" Margin="0,0,5,0" ></TextBox>
+            <TextBox  Name="txtCopper"  Height="25" Grid.Row="4"  Grid.Column="3" Margin="0,0,5,0" ></TextBox>
+            <TextBox  Name="txtOxygen"  Height="25" Grid.Row="5"  Grid.Column="3"  Margin="0,0,5,0"></TextBox>
+            <TextBox  Name="txtTensileStrength"  Height="25" Grid.Row="6"  Grid.Column="3" Margin="0,0,5,0" ></TextBox>
+            <TextBox  Name="txtMaxHardness"  Height="25" Grid.Row="7"  Grid.Column="3"  Margin="0,0,5,0"></TextBox>
+            <TextBox  Name="txtSampleDia"  Height="25" Grid.Row="8"  Grid.Column="3" Margin="0,0,5,0" ></TextBox>
+            <!--3 set-->
+            <TextBlock Name="lblHardenedQuenchTemp"  Text="Hardened Quench Temp : " Grid.Row="1"  Grid.Column="4" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblHardenedMinCoreHR"  Text="Hardened Min Core HRc : " Grid.Row="2"  Grid.Column="4" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblHardenedMinCoreHV"  Text="Hardened Min Core HV 30 : " Grid.Row="3"  Grid.Column="4" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblTemperedTemp"  Text="Tempered Temp : " Grid.Row="4"  Grid.Column="4" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblTemperedTime"  Text="Tempered Time : " Grid.Row="5"  Grid.Column="4" TextAlignment="Right"></TextBlock>
+            <TextBlock Name="lblTemperedMinCoreHTc"  Text="Tempered Min Core HTc : " Grid.Row="6"  Grid.Column="4" TextAlignment="Right"></TextBlock>
+            <TextBlock  Name="lblTemperedCoreHV" Text="Tempered Core HV30 : " Grid.Row="7"  Grid.Column="4" TextAlignment="Right"></TextBlock>
+            <TextBox  Name="txtHardenedQuenchTemp"  Height="25" Grid.Row="1"  Grid.Column="5" Margin="0,0,5,0"></TextBox>
+            <TextBox  Name="txtHardenedMinCoreHR"  Height="25" Grid.Row="2"  Grid.Column="5"  Margin="0,0,5,0" ></TextBox>
+            <TextBox  Name="txtHardenedMinCoreHV"  Height="25" Grid.Row="3"  Grid.Column="5" Margin="0,0,5,0" ></TextBox>
+            <TextBox  Name="txtTemperedTemp"  Height="25" Grid.Row="4"  Grid.Column="5"  Margin="0,0,5,0"></TextBox>
+            <TextBox  Name="txtTemperedTime"  Height="25" Grid.Row="5"  Grid.Column="5" Margin="0,0,5,0" ></TextBox>
+            <TextBox  Name="txtTemperedMinCoreHTc"  Height="25" Grid.Row="6"  Grid.Column="5" Margin="0,0,5,0" ></TextBox>
+            <TextBox  Name="txtTemperedCoreHV"  Height="25" Grid.Row="7"  Grid.Column="5" Margin="0,0,5,0" ></TextBox>
+
+        </Grid>
+    </Border>
+    
+</Window>

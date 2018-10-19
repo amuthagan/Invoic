@@ -1,0 +1,138 @@
+﻿<Window x:Class="ProcessDesigner.frmMFMPlan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uc="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        Title="SmartPD - MFM Plan"  Height="520" Width="600"   WindowStartupLocation="CenterScreen" Icon="Images/logo.ico"
+        Background="{StaticResource WindowBackground}" ResizeMode="NoResize" Loaded="Window_Loaded" >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding WindowLoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border BorderThickness="1" Margin="4">
+            <Grid>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="30*" ></ColumnDefinition>
+                    <ColumnDefinition Width="70*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock  Text="Part No : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right" FontWeight="Bold"></TextBlock>
+                <uc:ComboBoxWithSearch Tag="Please enter/select Part No" Grid.Column="1" Grid.Row ="0" IsReadOnly="False" x:Name="cmbPartNo" ColumnsHeader="{Binding DropdownHeaders}" Width="160" HorizontalAlignment="Left"
+					DataSource="{Binding  MFMPlan.DVProductMaster,UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding PartNoSelectedItem,UpdateSourceTrigger=PropertyChanged}" 
+                                     SelectedValuePath="PART_NO" DisplayValuePath="PART_NO" SelectedText="{Binding MFMPlan.PART_NO,UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding MFMPlan.PART_NO,UpdateSourceTrigger=PropertyChanged}" MaxLength="9" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectedItemChanged">
+                            <i:InvokeCommandAction Command="{Binding OnPartNoSelectionChanged}"/>
+                        </i:EventTrigger>                       
+                    </i:Interaction.Triggers>
+                    <uc:ComboBoxWithSearch.InputBindings>
+                        <KeyBinding Key="Enter"  Command="{Binding OnPartNoSelectionChanged}"  />
+                    </uc:ComboBoxWithSearch.InputBindings>
+                </uc:ComboBoxWithSearch>                
+                <TextBlock Text="Part Description : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right" FontWeight="Bold"></TextBlock>
+                <TextBlock Name="txtPartDescription"  Grid.Row="1"  Grid.Column="1" FontWeight="Bold" Text="{Binding MFMPlan.PART_DESC}" ></TextBlock>
+                <TextBlock Text="Customer : " Grid.Row="2"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <TextBlock Name="txtCustomer"  Grid.Row="2"  Grid.Column="1" Text="{Binding MFMPlan.CUST_NAME}"></TextBlock>
+            </Grid>
+        </Border>
+        
+        <Border BorderThickness="1" Grid.Row="1" Margin="4,2">
+            <Grid Margin="10,0" IsEnabled="{Binding IsEnabledPlanGrid}" >
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="200" ></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*" ></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock  Text="Planned" Grid.Row="0"  Grid.Column="1" TextAlignment="Center" TextDecorations="Underline" FontWeight="Bold"></TextBlock>
+                <TextBlock  Text="Actual" Grid.Row="0"  Grid.Column="3" TextAlignment="Center" TextDecorations="Underline" FontWeight="Bold"></TextBlock>
+
+                <TextBlock Text="Document Release Date : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <uc:DatePickerCus Tag="Please select Document Release Planned Date "  Grid.Row="1"  Grid.Column="1" SelectedDate="{Binding MFMPlan.DOC_REL_DT_PLAN,UpdateSourceTrigger=PropertyChanged}" />
+                <uc:DatePickerCus Tag="Please select Document Release Actual Date"   Grid.Row="1"  Grid.Column="3" SelectedDate="{Binding MFMPlan.DOC_REL_DT_ACTUAL,UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Text="B/O Measuring Inst./Gauge Date : " Grid.Row="2"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <uc:DatePickerCus Tag="Please select B/O Measuring Inst./Gauge Planned Date"  Grid.Row="2"  Grid.Column="1" SelectedDate="{Binding MFMPlan.TIME_BOGAUGE_PLAN,UpdateSourceTrigger=PropertyChanged}" />
+                <uc:DatePickerCus Tag="Please select B/O Measuring Inst./Gauge Actual Date "   Grid.Row="2"  Grid.Column="3" SelectedDate="{Binding MFMPlan.TIME_BOGAUGE_ACTUAL,UpdateSourceTrigger=PropertyChanged}" />               
+
+                <TextBlock Text="Tools Ready Date : " Grid.Row="3"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <uc:DatePickerCus Tag="Please select Tools Ready Planned Date "   Grid.Row="3"  Grid.Column="1" SelectedDate="{Binding MFMPlan.TOOLS_READY_DT_PLAN,UpdateSourceTrigger=PropertyChanged}" />
+                <uc:DatePickerCus Tag="Please select Tools Ready Actual Date "   Grid.Row="3"  Grid.Column="3" SelectedDate="{Binding MFMPlan.TOOLS_READY_ACTUAL_DT,UpdateSourceTrigger=PropertyChanged}" />              
+
+                <TextBlock Text="Forging Date : " Grid.Row="4"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <uc:DatePickerCus Tag="Please select Forging Planned Date"   Grid.Row="4"  Grid.Column="1" SelectedDate="{Binding MFMPlan.FORGING_PLAN_DT,UpdateSourceTrigger=PropertyChanged}" />
+                <uc:DatePickerCus  Tag="Please select Forging Actual Date "  Grid.Row="4"  Grid.Column="3" SelectedDate="{Binding MFMPlan.FORGING_ACTUAL_DT,UpdateSourceTrigger=PropertyChanged}" Margin="0.333,2.333,0,0" VerticalAlignment="Top" />
+
+                <TextBlock Text="Secondary Operation Date : " Grid.Row="5"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <uc:DatePickerCus Tag="Please select Secondary Operation Planned Date"  Grid.Row="5"  Grid.Column="1" SelectedDate="{Binding MFMPlan.SECONDARY_PLAN_DT,UpdateSourceTrigger=PropertyChanged}" />
+                <uc:DatePickerCus Tag="Please select Secondary Operation Actual Date"  Grid.Row="5"  Grid.Column="3" SelectedDate="{Binding MFMPlan.SECONDARY_ACTUAL_DT,UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Text="Heat Treatment / Processing Date : " Grid.Row="6"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <uc:DatePickerCus Tag="Please select Heat Treatment / Processing Planned Date "   Grid.Row="6"  Grid.Column="1" SelectedDate="{Binding MFMPlan.HEAT_TREATMENT_PLAN_DT,UpdateSourceTrigger=PropertyChanged}" />
+                <uc:DatePickerCus Tag="Please select Heat Treatment / Processing Actual Date"   Grid.Row="6"  Grid.Column="3" SelectedDate="{Binding MFMPlan.HEAT_TREATMENT_ACTUAL,UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Text="ISSR Date : " Grid.Row="7"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <uc:DatePickerCus Tag="Please select ISSR Planned Date"   Grid.Row="7"  Grid.Column="1" SelectedDate="{Binding MFMPlan.ISSR_PLAN_DT,UpdateSourceTrigger=PropertyChanged}" Margin="0,2.833,0.333,0" VerticalAlignment="Top" />
+                <uc:DatePickerCus Tag="Please select ISSR Actual Date"   Grid.Row="7"  Grid.Column="3" SelectedDate="{Binding MFMPlan.ISSR_ACTUAL_DT,UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Text="PPAP Date  : " Grid.Row="8"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <uc:DatePickerCus Tag="Please select PPAP Planned Date "  Grid.Row="8"  Grid.Column="1" SelectedDate="{Binding MFMPlan.PPAP_PLAN,UpdateSourceTrigger=PropertyChanged}" />
+                <uc:DatePickerCus Tag="Please select PPAP Actual Date "  Grid.Row="8"  Grid.Column="3" SelectedDate="{Binding MFMPlan.PPAP_ACTUAL_DT,UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Text="Sample / PPAP Qty  : " Grid.Row="9"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <uc:DecimalTextBox Tag="Please enter Sample/PPAP Qty" Name="txtSamplePPAPQty"   Grid.Row="9"  Grid.Column="1" Text="{Binding MFMPlan.SAMPLE_QTY,UpdateSourceTrigger=PropertyChanged,StringFormat=F0}" 
+                                  Width="50" HorizontalAlignment="Left" MaxLength="5" AllowNegative="False" MaxDecimalPlaces="0" />
+                <TextBlock Text="PSW Signed date : " Grid.Row="9"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                <uc:DatePickerCus Tag="Please select PSW Signed Actual date "  Grid.Row="9"  Grid.Column="3" SelectedDate="{Binding MFMPlan.PSW_DATE,UpdateSourceTrigger=PropertyChanged}" />
+               
+
+                <TextBlock  Text="Responsibility : " Grid.Row="10"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <uc:ComboBoxWithSearch Tag="Please select Responsibility" Grid.Row="10" Grid.Column="1" Width="200" HorizontalAlignment="Left"  Grid.ColumnSpan="3" VerticalAlignment="Center"
+                                             DataSource="{Binding MFMPlan.DVUsers}"   
+                                             SelectedValue="{Binding MFMPlan.RESP,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding MFMPlan.USER_FULL_NAME,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="LOGIN"  DisplayValuePath="USER_FULL_NAME"   IsReadOnly="False"                                             
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsUsers}">                    
+                </uc:ComboBoxWithSearch>
+                
+
+                <TextBlock Text="Remarks : " Grid.Row="11"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <TextBox Tag="Please enter Remarks" Name="txtRemarks"   Grid.Row="11" Grid.ColumnSpan="3" Grid.Column="1" Text="{Binding MFMPlan.REMARKS,UpdateSourceTrigger=PropertyChanged}" MaxLength="200" ></TextBox>
+            </Grid>
+        </Border>
+
+        <Border BorderThickness="1" Grid.Row="2" Margin="4,4">
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0" >
+                <Button Name="btnSave" Content="_Save" Height="40"  Width="100" Padding="10,15" Margin="0,0,20,0" Visibility="{Binding SaveVisibility}" Command="{Binding SaveCommand}"/>
+                <Button Name="btnClose" Content="_Cancel" Height="40"  Width="100" Padding="10,15" Command="{Binding CloseCommand}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</Window>

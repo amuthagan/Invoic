@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="ProcessDesigner.frmSapImport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"       
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+        xmlns:uc="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:t="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"    
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        Loaded="UserControl_Loaded" Height="120" Width="500"   MinWidth="500" MaxWidth="500" MaxHeight="150" Background="{StaticResource WindowBackground}">
+    <Border Margin="5" BorderThickness="1" CornerRadius="4">
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="65"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+                <ColumnDefinition Width="80"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="File Name : " Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+            <TextBox Tag="Please enter File Name" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="2,0,30,0" Name="txtFileName" VerticalAlignment="Center" Text="{Binding CmbFilePath,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"   ></TextBox>
+            <Button Grid.Row="0" Grid.Column="3" Name="btnSelect" Content="..." VerticalAlignment="Center" HorizontalAlignment="Right" Margin="2" Width="30" Height="25" Command="{Binding OnOpenExcelCommand}"></Button>
+            <TextBlock Text="Updation : " Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+            <ComboBox Tag="Please select Updation " Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="2,0,30,0" Text="{Binding CmbTableName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  Name="cmbUpdation" VerticalAlignment="Center"   >
+                <ComboBoxItem Name="ROHUPDATION" Content="ROH-UPDATION"></ComboBoxItem>
+                <ComboBoxItem Name="Sap_ccvsoprncc" Content="SAP_CC Vs OPRN CC"></ComboBoxItem>
+                <ComboBoxItem Name="Sap_matgrvspdoprncode" Content="SAP_MATGR Vs PD_OPRN CODE"></ComboBoxItem>
+                <ComboBoxItem Name="Sap_matgrvssaproutshorttext" Content="SAP_MATGR Vs SAP_ROUT_SHORT TEXT"></ComboBoxItem>
+                <ComboBoxItem Name="Sap_nutboltstdsplcostcenre" Content="SAP-NUT-BOLT-STD-SPL-COSTCENRE"></ComboBoxItem>
+                <ComboBoxItem Name="Sap_matgrvsconfirmationpoints" Content="SAP_MATGR Vs CONFIRMATION POINTS"></ComboBoxItem>
+                <ComboBoxItem Name="Sapno_vsunitofmeasureupdate" Content="SAPNO vs UNIT-OF-MEASURE-UPDATE"></ComboBoxItem>
+            </ComboBox>
+            <Button Grid.Row="0" Grid.Column="6" Name="btnCancel" Content="Cancel" VerticalAlignment="Center" Height="30" Command="{Binding OnCancelCommand}" Margin="2" ></Button>
+            <Button Grid.Row="1" Grid.Column="6" Name="cmbFetch" Content="Fetch From File to PD" VerticalAlignment="Top"  Height="30" Command="{Binding OnUpdateCommand}" Margin="2" ></Button>
+            <TextBlock Grid.Row="2" Grid.Column="0" Margin="5,0,0,0" Grid.ColumnSpan="6" Visibility="{Binding SapExportVisible,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  Text="{Binding SapExport,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" ></TextBlock>
+        </Grid>
+    </Border>
+</UserControl>

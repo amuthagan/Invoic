@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="ProcessDesigner.frmQcp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:Common="clr-namespace:ProcessDesigner.UICommon"
+        Height="150" Width="350" Background="{StaticResource WindowBackground}" Loaded="UserControl_Loaded">
+    <Grid>
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="20*" ></ColumnDefinition>
+                    <ColumnDefinition Width="50*"></ColumnDefinition>
+                    <!--<ColumnDefinition Width="50*"></ColumnDefinition>-->
+                </Grid.ColumnDefinitions>
+                <TextBlock  Text="Part Number : " Grid.Row="0"  Grid.Column="0" Margin="15,0,2,0"></TextBlock>
+                <Lookup:ComboBoxWithSearch Tag="Please select Part Number" MaxLength="40" Width="160"  IsReadOnly="False" Grid.Row="0"  Grid.Column="1" Margin="0,0,80,0" x:Name="cmbPartNo" 
+					DataSource="{Binding PccsModel.PartNoDetails,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
+                    SelectedItem="{Binding SelectedRowPart,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  SelectedValuePath="PART_NO" 
+                    SelectedText="{Binding QCPMODEL.PartNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" DisplayValuePath="PART_NO"
+                    SelectedValue="{Binding QCPMODEL.PartNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"
+                     ColumnsHeader="{Binding DropDownItemsPart,UpdateSourceTrigger=PropertyChanged}" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectedItemChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandPartNo,UpdateSourceTrigger=PropertyChanged}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <Lookup:ComboBoxWithSearch.InputBindings>
+                        <KeyBinding Key="Enter"  Command="{Binding SelectChangeComboCommandPartNo}"  />
+                    </Lookup:ComboBoxWithSearch.InputBindings>
+                </Lookup:ComboBoxWithSearch>
+                <Button Name="btnShowReport" Content="Show Report" Height="35" Grid.Row="1"  Grid.Column="1" Width="100" Margin="0,0,80,0" Command="{Binding QcpReportClickCommand}" ></Button>
+            </Grid>
+        </Border> 
+    </Grid>
+</UserControl>

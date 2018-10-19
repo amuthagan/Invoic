@@ -1,0 +1,44 @@
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="GridToolScheduleModel" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="PART_NO" type="xs:string" minOccurs="0" />
+                <xs:element name="SEQ_NO" type="xs:string" minOccurs="0" />
+                <xs:element name="WIRE" type="xs:string" minOccurs="0" />
+                <xs:element name="SNO" type="xs:string" minOccurs="0" />
+                <xs:element name="CATEGORY" type="xs:string" minOccurs="0" />
+                <xs:element name="OPN_CD" type="xs:string" minOccurs="0" />
+                <xs:element name="TOOL_CODE" type="xs:string" minOccurs="0" />
+                <xs:element name="TOOL_CODE_END" type="xs:string" minOccurs="0" />
+                <xs:element name="CC_SNO" type="xs:string" minOccurs="0" />
+                <xs:element name="QTY" type="xs:string" minOccurs="0" />
+                <xs:element name="TOOL_DESC1" type="xs:string" minOccurs="0" />
+                <xs:element name="REMARK1" type="xs:string" minOccurs="0" />
+                <xs:element name="CC_CODE" type="xs:string" minOccurs="0" />
+                <xs:element name="PART_DESC" type="xs:string" minOccurs="0" />
+                <xs:element name="OPN_DESC" type="xs:string" minOccurs="0" />
+                <xs:element name="SUB_HEAD" type="xs:string" minOccurs="0" />
+                <xs:element name="TN" type="xs:string" minOccurs="0" />
+                <xs:element name="BN" type="xs:string" minOccurs="0" />
+                <xs:element name="COST_CENT_DESC" type="xs:string" minOccurs="0" />
+                <xs:element name="ROUTE_NO" type="xs:string" minOccurs="0" />
+                <xs:element name="TOOL_CODE_DESC" type="xs:string" minOccurs="0" />
+                <xs:element name="ISSUE_NO" type="xs:string" minOccurs="0" />
+                <xs:element name="ALTER" type="xs:string" minOccurs="0" />
+                <xs:element name="ISSUE_DATE" type="xs:string" minOccurs="0" />
+                <xs:element name="INITIAL" type="xs:string" minOccurs="0" />
+                <xs:element name="COMPILEDBY" type="xs:string" minOccurs="0" />
+                <xs:element name="APPROVEDBY" type="xs:string" minOccurs="0" />
+                <xs:element name="SUB_HEAD_NO" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>

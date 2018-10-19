@@ -1,0 +1,24 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="ProcessDesigner.frmReportViewer"    
+        xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" 
+       
+        Title="Report Viewer" WindowState="Maximized" Icon="Images/Logo.ico" >
+    <Window.Resources>       
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary
+                Source="/PresentationFramework.Aero;component/themes/Aero.NormalColor.xaml" />-->
+                <ResourceDictionary
+                Source="pack://application:,,,/WPFToolkit;component/Themes/Aero.NormalColor.xaml" />              
+            </ResourceDictionary.MergedDictionaries> 
+            
+        </ResourceDictionary>       
+    </Window.Resources>
+    <Grid>      
+        <Viewer:CrystalReportsViewer x:Name="reportView"  PreviewKeyDown="reportView_PreviewKeyDown" 
+                                     ShowRefreshButton="False" ShowLogo="False" ShowOpenFileButton="False" ShowToggleSidePanelButton="False" ToggleSidePanel="None"  >       
+        </Viewer:CrystalReportsViewer>       
+        
+    </Grid>
+</Window>

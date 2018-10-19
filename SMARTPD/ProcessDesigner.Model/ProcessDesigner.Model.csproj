@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{55A70D55-E57C-4A99-B882-D39BD3F776CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProcessDesigner.Model</RootNamespace>
+    <AssemblyName>ProcessDesigner.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine">
+      <HintPath>..\packages\CrystalDecisions.CrystalReports.Engine.1.0.0\lib\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Composition">
+      <HintPath>..\packages\Prism.Composition.5.0.0\lib\NET45\Microsoft.Practices.Prism.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\packages\Prism.Interactivity.5.0.0\lib\NET45\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm">
+      <HintPath>..\packages\Prism.Mvvm.1.0.0\lib\net45\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm.Desktop">
+      <HintPath>..\packages\Prism.Mvvm.1.0.0\lib\net45\Microsoft.Practices.Prism.Mvvm.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.PubSubEvents">
+      <HintPath>..\packages\Prism.PubSubEvents.1.0.0\lib\portable-sl4+wp7+windows8+net40\Microsoft.Practices.Prism.PubSubEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.SharedInterfaces">
+      <HintPath>..\packages\Prism.Mvvm.1.0.0\lib\net45\Microsoft.Practices.Prism.SharedInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AllFeatures.cs" />
+    <Compile Include="CategoryMaterModel.cs" />
+    <Compile Include="AuditReportModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AuxToolScheduleReportModel.cs" />
+    <Compile Include="CCMasterModel.cs" />
+    <Compile Include="CFTMeetingModel.cs" />
+    <Compile Include="ControlPlanRptModel.cs" />
+    <Compile Include="CopyStatusModel.cs" />
+    <Compile Include="CostSheetModel.cs" />
+    <Compile Include="CPGModel.cs" />
+    <Compile Include="DDPerformanceSummaryModel.cs" />
+    <Compile Include="DrawingModel1.cs" />
+    <Compile Include="EcnCftMeetingRptModel.cs" />
+    <Compile Include="LogModel.cs" />
+    <Compile Include="LogNewModel.cs" />
+    <Compile Include="MachineBookingModel.cs" />
+    <Compile Include="ManufacReportModel.cs" />
+    <Compile Include="MFMDevelopmentModel.cs" />
+    <Compile Include="NewProcessCCModel.cs" />
+    <Compile Include="OperatorQualityAssuranceModel.cs" />
+    <Compile Include="ApplicationModel.cs" />
+    <Compile Include="ProcessDesignerDatabase.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProcessDesignerDatabase.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessSheetArrayModel.cs" />
+    <Compile Include="QcpModel.cs" />
+    <Compile Include="CrossLinkingCharModel.cs" />
+    <Compile Include="DDPerformanceOneModel.cs" />
+    <Compile Include="DDPerformanceTwoModel.cs" />
+    <Compile Include="DevelopmentReportModel.cs" />
+    <Compile Include="ISIRModel.cs" />
+    <Compile Include="CopyTurningMacModel.cs" />
+    <Compile Include="CostSheetSearchModel.cs" />
+    <Compile Include="CPMMasterModel.cs" />
+    <Compile Include="DrawingModel.cs" />
+    <Compile Include="ErrorsContainer.cs" />
+    <Compile Include="FeatureMasterModel.cs" />
+    <Compile Include="FRCSModel.cs" />
+    <Compile Include="GridProductSearchModel.cs" />
+    <Compile Include="GrinmachineModel.cs" />
+    <Compile Include="MFMPlanDetailsGrid.cs" />
+    <Compile Include="MFMPlanDetailsModel.cs" />
+    <Compile Include="MFMPlanModel.cs" />
+    <Compile Include="NylocmacModel.cs" />
+    <Compile Include="PartNumberConfigurationModel.cs" />
+    <Compile Include="PartSubmissionWarrantModel.cs" />
+    <Compile Include="PCCSModel.cs" />
+    <Compile Include="PermissionModel.cs" />
+    <Compile Include="PointMachineModel.cs" />
+    <Compile Include="ProcessSheetModel.cs" />
+    <Compile Include="ProductCategoryModel.cs" />
+    <Compile Include="ProductInformationModel.cs" />
+    <Compile Include="ProductSearchModel.cs" />
+    <Compile Include="ProductWeightModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PSWTitleMasterModel.cs" />
+    <Compile Include="RawMaterialModel.cs" />
+    <Compile Include="ReportMISCustomerPartNoWiseModel.cs" />
+    <Compile Include="ReportMISFeatureWiseModel.cs" />
+    <Compile Include="ReportMISMFMModel.cs" />
+    <Compile Include="ReportMISProductInformationModel.cs" />
+    <Compile Include="ReportOTPMChartsModel.cs" />
+    <Compile Include="ReportPendingPartNumberStatusModel.cs" />
+    <Compile Include="RoleUserSecurityModel.cs" />
+    <Compile Include="RPDModel.cs" />
+    <Compile Include="RPDModel_Notify.cs" />
+    <Compile Include="RptControlPlanModel.cs" />
+    <Compile Include="RptDimensionalModel.cs" />
+    <Compile Include="RptProcessSheetModel.cs" />
+    <Compile Include="SapModel.cs" />
+    <Compile Include="SecurityUsersModel.cs" />
+    <Compile Include="TapmacModel.cs" />
+    <Compile Include="TfcModel.cs" />
+    <Compile Include="ThreadRollingModel.cs" />
+    <Compile Include="TollInfoModel.cs" />
+    <Compile Include="ToolAdminModel.cs" />
+    <Compile Include="ToolSchedSubModel.cs" />
+    <Compile Include="ToolScheduleModel.cs" />
+    <Compile Include="ToolScheduleReportModel.cs" />
+    <Compile Include="ToolsQuickVModel.cs" />
+    <Compile Include="ValidatableBindableBase.cs" />
+    <Compile Include="ViewModelBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="ProcessDesignerDatabase.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ProcessDesignerDatabase.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Settings.StyleCop" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProcessDesigner.Common\ProcessDesigner.Common.csproj">
+      <Project>{e161c3f4-22a5-4219-a6a6-66bacc385fe8}</Project>
+      <Name>ProcessDesigner.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ProcessDesignerDatabase.dbml.layout">
+      <DependentUpon>ProcessDesignerDatabase.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

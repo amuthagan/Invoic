@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6071E46E-4A58-4EDD-BC8D-E80F008A2009}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProcessDesigner.BLL</RootNamespace>
+    <AssemblyName>ProcessDesigner.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActiveUsersBLL.cs" />
+    <Compile Include="CategoryBll.cs" />
+    <Compile Include="APQPBll.cs" />
+    <Compile Include="AuditReportBll.cs" />
+    <Compile Include="CFTMeetingBll.cs" />
+    <Compile Include="ChangePassword.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CircularRolling.cs" />
+    <Compile Include="CirReference.cs" />
+    <Compile Include="Coatingmaster.cs" />
+    <Compile Include="ControlPlanRptBll.cs" />
+    <Compile Include="CopyStatusBLL.cs" />
+    <Compile Include="CopyTurningMacBll.cs" />
+    <Compile Include="CostCenterMasterDet.cs" />
+    <Compile Include="CostSheetBll.cs" />
+    <Compile Include="CostSheetSearchBll.cs" />
+    <Compile Include="CPGBll.cs" />
+    <Compile Include="CPMMasterBll.cs" />
+    <Compile Include="CrossLinkingCharDet.cs" />
+    <Compile Include="CrossLinkingcharGrid.cs" />
+    <Compile Include="CustomerMaset.cs" />
+    <Compile Include="DDPerformanceBll.cs" />
+    <Compile Include="DevelopmentReportBll.cs" />
+    <Compile Include="DrawingBll.cs" />
+    <Compile Include="EcnCftMeetingRptBll.cs" />
+    <Compile Include="ECNPCNBll.cs" />
+    <Compile Include="Essential.cs" />
+    <Compile Include="ExhitbitMaster.cs" />
+    <Compile Include="FeasibleReportAndCostSheet.cs" />
+    <Compile Include="FeatureMasterBll.cs" />
+    <Compile Include="FeaturesBLL.cs" />
+    <Compile Include="FeatureUpdateBll.cs" />
+    <Compile Include="FinishMasterBll.cs" />
+    <Compile Include="FlxReportsBll.cs" />
+    <Compile Include="ForgingMachine.cs" />
+    <Compile Include="ForignCalc.cs" />
+    <Compile Include="GrinmachineBll.cs" />
+    <Compile Include="IDataManipulation.cs" />
+    <Compile Include="ISIRBll.cs" />
+    <Compile Include="LocationMasterBll.cs" />
+    <Compile Include="Login.cs" />
+    <Compile Include="LogViewBll.cs" />
+    <Compile Include="MachineBookingBll.cs" />
+    <Compile Include="ManufacReportBll.cs" />
+    <Compile Include="MFMDevelopmentBll.cs" />
+    <Compile Include="MFMPlanBll.cs" />
+    <Compile Include="MFMPlanDetailsBll.cs" />
+    <Compile Include="MOPGraphBll.cs" />
+    <Compile Include="NylocmachineBll.cs" />
+    <Compile Include="OperationMasterBll.cs" />
+    <Compile Include="OperatorQualityAssurance.cs" />
+    <Compile Include="OptimalConditionBll.cs" />
+    <Compile Include="PartNumberConfiguration.cs" />
+    <Compile Include="ApplicationBll.cs" />
+    <Compile Include="PartSubmissionWarrantBll.cs" />
+    <Compile Include="PCCSBll.cs" />
+    <Compile Include="PermissionDet.cs" />
+    <Compile Include="PointMachineBll.cs" />
+    <Compile Include="ProcessSheetBll.cs" />
+    <Compile Include="ProductCategoryBll.cs" />
+    <Compile Include="ProductInformation.cs" />
+    <Compile Include="ProductSearchBll.cs" />
+    <Compile Include="ProductWeightBll.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PSWTitleMasterBll.cs" />
+    <Compile Include="QcpBll.cs" />
+    <Compile Include="RawMaterial.cs" />
+    <Compile Include="ReportMISCustomerPartNoWise.cs" />
+    <Compile Include="ReportMISFeatureWise.cs" />
+    <Compile Include="ReportMISMFM.cs" />
+    <Compile Include="ReportMISProductInformationWise.cs" />
+    <Compile Include="ReportOTPMCharts.cs" />
+    <Compile Include="ReportPendingPartNumberStatus.cs" />
+    <Compile Include="RoleUserSecurityDet.cs" />
+    <Compile Include="RPPBLL.cs" />
+    <Compile Include="SapBll.cs" />
+    <Compile Include="SapExportPDBll.cs" />
+    <Compile Include="SecurityUserRolesDet.cs" />
+    <Compile Include="SecurityUsersBll.cs" />
+    <Compile Include="SpecialCharacteristicsBll.cs" />
+    <Compile Include="StandardConditionBll.cs" />
+    <Compile Include="Tapmachine.cs" />
+    <Compile Include="TfcBll.cs" />
+    <Compile Include="TfcECNBll.cs" />
+    <Compile Include="TfcPCRBll.cs" />
+    <Compile Include="ThreadRollingBll.cs" />
+    <Compile Include="ToolAdminBll.cs" />
+    <Compile Include="ToolInfoBLL.cs" />
+    <Compile Include="ToolScheduleBll.cs" />
+    <Compile Include="ToolsQuickViewBll.cs" />
+    <Compile Include="Trimmachine.cs" />
+    <Compile Include="UnitMasterBll.cs" />
+    <Compile Include="UpdateHistoryBLL.cs" />
+    <Compile Include="UserInformation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UserRoleDet.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProcessDesigner.Common\ProcessDesigner.Common.csproj">
+      <Project>{e161c3f4-22a5-4219-a6a6-66bacc385fe8}</Project>
+      <Name>ProcessDesigner.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcessDesigner.DAL\ProcessDesigner.DAL.csproj">
+      <Project>{ea4966c7-fee4-4e4c-8c2e-b05b025038de}</Project>
+      <Name>ProcessDesigner.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcessDesigner.HashEncryption\ProcessDesigner.HashEncryption.csproj">
+      <Project>{116467c1-49da-4e1f-bd03-8c3764402b06}</Project>
+      <Name>ProcessDesigner.HashEncryption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcessDesigner.Model\ProcessDesigner.Model.csproj">
+      <Project>{55a70d55-e57c-4a99-b882-d39bd3f776ce}</Project>
+      <Name>ProcessDesigner.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Settings.StyleCop" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

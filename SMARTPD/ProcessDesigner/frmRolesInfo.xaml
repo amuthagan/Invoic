@@ -1,0 +1,34 @@
+﻿<Window x:Class="ProcessDesigner.frmRolesInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Roles Information" Height="150" Width="300" ResizeMode="NoResize" Icon="Images/logo.ico" Background="{StaticResource WindowBackground}" WindowStartupLocation="CenterScreen"  >
+    <Border Margin="4" BorderThickness="1" CornerRadius="3">
+        <Grid KeyboardNavigation.TabNavigation ="Cycle" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" ></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60*"></RowDefinition>
+                <RowDefinition Height="40*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Gray"  BorderThickness="0,1,0,0" />
+            <Border Grid.Row="1" Grid.Column="0"  BorderBrush="Gray"  BorderThickness="0,1,0,0" />
+            <TextBlock Grid.Row="0" Grid.Column="0"  Padding="0,0,0,0"  HorizontalAlignment="Right">
+                    <AccessText Text="_Role Name : "/>
+            </TextBlock>
+            <TextBox Tag="Please enter Role Name " Grid.Row="0" Name="tbRoleName" Height="25" Width="115" HorizontalAlignment="Left" MaxLength="15" Text="{Binding Role_Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Margin="2,16,26,15" Grid.Column="1" ToolTip="Enter the role name" />
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Width="70" Height="30" HorizontalAlignment="Right" Content="_Save" Name="btnSave" Command="{Binding OnSaveCommand}" ToolTip="Save"></Button>
+                <Button Grid.Row="0" Grid.Column="1" Width="70" Height="30" HorizontalAlignment="Left" Content="_Cancel" Name="btnCancel" Command="{Binding OnCancelCommand}" ToolTip="Cancel"></Button>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

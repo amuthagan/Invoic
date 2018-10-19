@@ -1,0 +1,24 @@
+﻿<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="RptDevRptLogModel" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="PART_NO" type="xs:string"/>
+                <xs:element name="DEV_RUN_NO" type="xs:string"/>
+                <xs:element name="STAGE_NO" type="xs:string"/>
+                <xs:element name="PROBLEM_FACED" type="xs:string"/>
+                <xs:element name="COUNTER_MEASURE" type="xs:string"/>
+				        <xs:element name="REWORK_TOOL_DESIGN" type="xs:decimal"/>
+				        <xs:element name="REWORK_TOOL_MFG" type="xs:decimal"/>
+				        <xs:element name="REMARKS" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>

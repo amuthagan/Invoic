@@ -1,0 +1,261 @@
+﻿<UserControl x:Class="ProcessDesigner.frmDrawings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"       
+        xmlns:wfirms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:busy="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"     
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        Height="500" Width="1000" Background="{StaticResource WindowBackground}" Loaded="UserControl_Loaded"  >
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <si:CallMethodAction MethodName="LoadMethod" TargetObject="{Binding}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+    <UserControl.Resources>
+        <UICommon:DateTimeConverter x:Key="DateTimeConverter"/>
+        <UICommon:BooleanConverter x:Key="BooleanConverter"/>
+        <UICommon:CurrencyConverter x:Key="CurrencyConverter"/>
+        <UICommon:DecimalConverter x:Key="DecimalConverter"/>
+        <!--<CollectionViewSource x:Key="OperationViewSource" Source="{Binding Path=OperationDataSource}"/>
+        <CollectionViewSource x:Key="OperationCostViewSource" Source="{Binding Path=OperationCostDataSource}"/>
+        <CollectionViewSource x:Key="OperationCostOutputViewSource" Source="{Binding Path=CostCentreOutputDataSource}"/>-->
+    </UserControl.Resources>
+    <Border BorderThickness="0" KeyboardNavigation.TabNavigation="Cycle">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="12*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+                <RowDefinition Height="75*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ToolBarTray  >
+                        <ToolBar Grid.Row="0" Grid.Column="0"  Height="58" >
+                            <!--<Button Content="Add F3" Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Lookup:AddedProperty.Image="Images/Add.png" Command="{Binding OnAddCommand}" IsEnabled="{Binding AddEnable}" />-->
+                            <Button Content="Edit/View F5" Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Command="{Binding OnEditCommand}"  KeyboardNavigation.IsTabStop="False"  Lookup:AddedProperty.Image="Images/Edit.png" IsEnabled="{Binding EditEnable,UpdateSourceTrigger=PropertyChanged}"  Visibility="Collapsed"   />
+                            <Button Content="Save Ctrl+S" Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Command="{Binding OnSaveCommand}"  KeyboardNavigation.IsTabStop="False"  Lookup:AddedProperty.Image="Images/Save.png"  IsEnabled="{Binding SaveEnable,UpdateSourceTrigger=PropertyChanged}" ToolTip="Save Record" />
+                            <Button Content="Search" Height="50" Margin="2,0,2,0" Padding ="10,0,10,0"  Command="{Binding OnSearchCommand}" KeyboardNavigation.IsTabStop="False"  Lookup:AddedProperty.Image="Images/Search.png"/>
+                            <Menu ToolBar.OverflowMode="Always" >
+                                <DockPanel >
+                                    <MenuItem  Header="Cost Sheet Search"  Command="{Binding CostSheetSearchClickCommand}"  />
+                                    <MenuItem  Header="Product Search" Command="{Binding ProductSearchClickCommand}"/>
+                                    <MenuItem  Header="Tools Search" Command="{Binding ToolSearchClickCommand}" />
+                                </DockPanel>
+                            </Menu>
+                        </ToolBar>
+                        <ToolBar  Grid.Row="0" Grid.Column="0" Height="58" >
+                            <Button Content="_Copy" Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Command="{Binding OnCopyCommand}" KeyboardNavigation.IsTabStop="False"  Lookup:AddedProperty.Image="Images/Copy.png" ToolTip="Copy"/>
+                            <Button Content="Close F9 " Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Command="{Binding OnCloseCommand}" KeyboardNavigation.IsTabStop="False"  Lookup:AddedProperty.Image="Images/Close.png" ToolTip="Close Current Active Form"/>
+                        </ToolBar>
+                    </ToolBarTray>
+                    <Button Content="ECN" Height="30" Width="50" Grid.Column="1"  Margin="2,0,2,0" Padding ="10,0,10,0" Visibility="Collapsed" />
+                    <Button Content="MPS" Height="30" Width="50" Grid.Column="2"  Margin="2,0,2,0" Padding ="10,0,10,0" Visibility="Collapsed" />
+                </Grid>
+            </Border>
+            <Border Grid.Column="0" Grid.Row="1" Margin="2,1,2,1" KeyboardNavigation.TabIndex="0"  BorderThickness="1" Grid.ColumnSpan="2">
+                <Grid Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" KeyboardNavigation.TabIndex="0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"></ColumnDefinition>
+                        <ColumnDefinition Width="19*"></ColumnDefinition>
+                        <ColumnDefinition Width="13*"></ColumnDefinition>
+                        <ColumnDefinition Width="40*"></ColumnDefinition>
+                        <ColumnDefinition Width="30*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Part No : " TextAlignment="Right" Grid.Column="0" Grid.Row="0" FontWeight="Bold" />
+                    <!--<TextBox Width="86" HorizontalAlignment="Left" Grid.Row="0"  Grid.Column="1" Margin="2,0"  UICommon:FocusExtension.IsFocused="{Binding PartNumberIsFocused,UpdateSourceTrigger=PropertyChanged}" ></TextBox>-->
+                    <Lookup:ComboBoxCus Name="cmbPartNo" FontWeight="Bold" MaxLength="11" IsReadOnly="False" IsEditable="True" Tag="Please select Part No."  Width="160" HorizontalAlignment="Left" UICommon:FocusExtension.IsFocused="{Binding PartNumberIsFocused,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" ColumnsHeader="{Binding PartColumns}" Grid.Column="1" Grid.Row="0" ButtonVisibility="{Binding HasDropDownVisibility,UpdateSourceTrigger=PropertyChanged}" Margin="2,0" ToolTip="Select Part Number."
+					     DataSource="{Binding DV_PART_MAST,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"  SelectedItem="{Binding SelectedRow}"  SelectedValuePath="PART_NO" SelectedValue="{Binding DrwModel.PART_NO,UpdateSourceTrigger=PropertyChanged}"   >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding OnselectChangeComboPartCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Lookup:ComboBoxCus.InputBindings>
+                            <KeyBinding Key="Enter"  Command="{Binding EnterPartNumberCmb}"  />
+                        </Lookup:ComboBoxCus.InputBindings>
+                    </Lookup:ComboBoxCus>
+                    <TextBlock Text=" Description : " TextAlignment="Right" Width="120" Grid.Column="2" Grid.Row="0" FontWeight="Bold"/>
+                    <TextBlock Margin="5,0,0,0" Text="{Binding PART_DESCRIPTION,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }"  TextAlignment="Left" Grid.Column="3" Grid.Row="0" FontWeight="Bold" />
+                    <TextBlock Text="Page No : " TextAlignment="Right" Grid.Column="2" Grid.Row="0" Visibility="Collapsed"/>
+                    <TextBox Grid.Column="0" Grid.Row="0" Width="40" HorizontalAlignment="Center"  Text="{Binding PAGE_NO,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }" Visibility="Collapsed"></TextBox>
+                    <Button Grid.Column="0" Grid.Row="0" Width="25" Height="30" HorizontalAlignment="Center" Command="{Binding OnPreviousCommand}"  KeyboardNavigation.IsTabStop="False"  Lookup:AddedProperty.Image="Images/UpArrow.png" Visibility="Collapsed"  ></Button>
+                    <Button Grid.Column="0" Grid.Row="0" Width="25" Height="30" HorizontalAlignment="Center" Command="{Binding OnNextCommand}"  KeyboardNavigation.IsTabStop="False"  Lookup:AddedProperty.Image="Images/DownArrow.png"  Visibility="Collapsed" ></Button>
+                    <TextBlock Text="Total Pages : " TextAlignment="Right" Grid.Column="0" Grid.Row="0" Visibility="Collapsed"/>
+                    <TextBlock Text="" TextAlignment="Left" Grid.Column="0" Grid.Row="0" Visibility="Collapsed"/>
+                    <TextBlock Text="{Binding TOTAL_PAGE_NO,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }"  TextAlignment="Left" Grid.Column="7" Grid.Row="7" Grid.ColumnSpan="5" Visibility="Collapsed" />
+                </Grid>
+            </Border>
+            <Border Grid.Column="0" Grid.Row="2" Margin="2,1,2,1" BorderThickness="1" KeyboardNavigation.TabIndex="1" Grid.ColumnSpan="2">
+                <Grid Grid.Column="0" Grid.Row="2" Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7.2*"></ColumnDefinition>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                        <ColumnDefinition Width="30*"></ColumnDefinition>
+                        <ColumnDefinition Width="30*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.ContextMenu>
+                        <ContextMenu Grid.Row="3">
+                            <MenuItem Header="Insert" Command="{Binding OnInsertImageCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                            <MenuItem Header="Edit" Command="{Binding OnEditImageCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                            <MenuItem Header="Delete" Command="{Binding OnDeleteImageCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                        </ContextMenu>
+                    </Grid.ContextMenu>
+                    <TextBlock Text="Drwg Type : " TextAlignment="Right" Grid.Column="0" Grid.Row="0" FontWeight="Bold" />
+                    <Lookup:ComboBoxCus Name="cmbDrwType" Tag="Please select Dwg Issue No." SelectedItemChanged="cmbDrwType_SelectedItemChanged"  MaxLength="{Binding ComboBoxMaxLength}" Width="128" HorizontalAlignment="Left" ColumnsHeader="{Binding DwgColumns}" Grid.Column="1" Grid.Row="0" ButtonVisibility="{Binding ButtonEnable}" Margin="2,0" ToolTip="Select Drawing Type"
+					     DataSource="{Binding DV_DWG_TYPE_MAST,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"  SelectedItem="{Binding SelectedRow}"  SelectedValuePath="DWG_TYPE_DESC" SelectedValue="{Binding DrwModel.DWG_TYPE_DESC,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"  IsReadOnly="True" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding OnselectChangeComboDrawingCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Lookup:ComboBoxCus>
+                    <Button x:Name="btnECN" Content="_ECN" Grid.Row="0" Grid.Column="2" Width="100" Margin="5,5,5,5" HorizontalAlignment="Right" Command="{Binding ShowECNCommand}" Click="btnECN_Click" ></Button>
+                    <Button x:Name="btnPCN" Content="_PCN" Grid.Row="0" Grid.Column="3" Width="100" Margin="5,5,5,5" HorizontalAlignment="Left" Command="{Binding ShowPCNCommand}"></Button>
+                </Grid>
+            </Border>
+            <Border Grid.Column="0" Grid.Row="3" Margin="2,1,2,1" BorderThickness="1" KeyboardNavigation.TabIndex="2" Grid.ColumnSpan="2">
+                <Grid Grid.Column="0" Grid.Row="3" Margin="5,5,5,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"></RowDefinition>
+                        <RowDefinition Height="95*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Column="0" Grid.Row="1" Header="Revisions" >
+                        <DataGrid RowHeaderWidth="25" AutoGenerateColumns="False" CanUserResizeRows ="False"  PreviewKeyDown="dgvProdDwgMast_PreviewKeyDown"  Name="dgvProdDwgMast" ItemsSource="{Binding DV_PROD_DWG_ISSUE}"  CanUserAddRows="False" CanUserDeleteRows="False" UICommon:ScrollToTopBehavior.ScrollToTop="True" CanUserSortColumns="True">
+                            <!--<DataGrid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Delete" Command="{Binding OnDeleteIssueRevisionsCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>-->
+                            <DataGrid.InputBindings>
+                                <KeyBinding  Key="Delete" Command="{Binding OnDeleteIssueRevisionsCommand}" CommandParameter="{Binding ElementName=dgvProdDwgMast, Path=SelectedItem}" />
+                            </DataGrid.InputBindings>
+                            <i:Interaction.Behaviors>
+                                <UICommon:DataGridBehavior/>
+                            </i:Interaction.Behaviors>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="CurrentCellChanged">
+                                    <i:InvokeCommandAction Command="{Binding RowEditIssueRevisionsCommand}" CommandParameter="{Binding ElementName=dgvProdDwgMast, Path=SelectedItem}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="CellEditEnding">
+                                    <si:CallMethodAction MethodName="dgvProdDwgMast_CellEditEnding" TargetObject="{Binding}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Sorting">
+                                    <si:CallMethodAction MethodName="dgrdProdDwgMast_Sorting" TargetObject="{Binding}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="Location">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding LOC_CODE}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <Lookup:ComboBoxWithSearch IsReadOnly="True"
+                                            DataSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.LocationMaster}"
+                                             ColumnsHeader="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.DropDownItemsLocation}"                                         
+                                             SelectedText="{Binding LOC_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedValue="{Binding LOC_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedValuePath="LOC_CODE" 
+                                             DisplayValuePath="LOC_CODE"   
+                                             VerticalContentAlignment="Center" >
+                                            </Lookup:ComboBoxWithSearch>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Width="80"  Header="Issue No" Binding="{Binding ISSUE_NO,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  >
+                                    <DataGridTextColumn.EditingElementStyle>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="MaxLength" Value="3"/>
+                                            <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"></Setter>
+                                        </Style>
+                                    </DataGridTextColumn.EditingElementStyle>
+                                </DataGridTextColumn>
+                                <!--<DataGridTextColumn Header="Date" Width="*"  Binding="{Binding  ISSUE_DATE,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridTextColumn}},Path=IsReadOnlyPrdCode}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>-->
+                                <DataGridTemplateColumn Header="Date" Width="90">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ISSUE_DATE, Mode=OneWay, Converter={StaticResource DateTimeConverter}}"></TextBlock>
+                                            <!--<TextBlock Text="{Binding ISSUE_DATE,Converter={StaticResource DateTimeConverter}, Mode=OneWay}" />-->
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <Control:DatePickerCus  Name ="txtIssueDate" ToolTip="Select Date" SelectedDate="{Binding ISSUE_DATE, UpdateSourceTrigger=PropertyChanged}">
+                                            </Control:DatePickerCus>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Alterations" Width="40*"  Binding="{Binding  ISSUE_ALTER,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridTextColumn}},Path=IsReadOnlyPrdCode}">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="VerticalAlignment" Value="Center" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                    <DataGridTextColumn.EditingElementStyle>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="VerticalContentAlignment" Value="Center"  />
+                                            <Setter Property="MaxLength" Value="1000"></Setter>
+                                        </Style>
+                                    </DataGridTextColumn.EditingElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Intl" Width="120"  Binding="{Binding  COMPILED_BY,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridTextColumn}},Path=IsReadOnlyPrdCode}">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="VerticalAlignment" Value="Center" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                    <DataGridTextColumn.EditingElementStyle>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                                            <Setter Property="MaxLength" Value="10"></Setter>
+                                        </Style>
+                                    </DataGridTextColumn.EditingElementStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+    <UserControl.InputBindings >
+        <!--<KeyBinding Key="F3" Command="{Binding OnAddCommand}" />-->
+        <KeyBinding Key="S" Modifiers="Control"  Command="{Binding OnSaveCommand}"/>
+        <KeyBinding Key="F9"  Command="{Binding OnCloseCommand}"/>
+    </UserControl.InputBindings >
+</UserControl>

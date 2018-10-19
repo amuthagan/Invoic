@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="ManufactDetails" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="ManufactDetails" msdata:IsDataSet="true" msdata:MainDataTable="Process" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Process">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PART_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="SNO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MFG_PROCESS_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="ISSUES_FACED" type="xs:string" minOccurs="0" />
+              <xs:element name="ROOT_CAUSE" type="xs:string" minOccurs="0" />
+              <xs:element name="CORRECTIVE_ACTION" type="xs:string" minOccurs="0" />
+              <xs:element name="STATUS" type="xs:string" minOccurs="0" />
+              <xs:element name="ROWID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,374 @@
+﻿<Window x:Class="ProcessDesigner.frmForgingCalc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:EnterKey="clr-namespace:ProcessDesigner.UICommon" 
+        xmlns:uc="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        Loaded="Window_Loaded"
+        Title="Forging Calc" Height="700" Width="850" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"  Background="{StaticResource WindowBackground}">
+    <Border  BorderThickness="1"  Margin="10,10,10,10" Padding="5" CornerRadius="10">
+
+        <Grid EnterKey:EnteKeyTab.IsEnabled="True">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="32*" ></ColumnDefinition>
+                <ColumnDefinition Width="36*"  ></ColumnDefinition>
+                <ColumnDefinition Width="32*"  ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="75*"></RowDefinition>
+                <RowDefinition Height="7*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.Column="0"  Grid.ColumnSpan="3" Grid.RowSpan="19" BorderBrush="Black"   BorderThickness="1,1,0,1" Background="Orange" />
+                <TextBlock  Grid.Column="0" Background="Orange"  Grid.Row="0" FontWeight="Bold"  Text="Cone Parameters"  HorizontalAlignment="Center"></TextBlock>
+                <TextBlock  Grid.Column="1" Grid.Row="0" Width="Auto" FontWeight="Bold" Text="Heading Parameters"  HorizontalAlignment="Center"></TextBlock>
+                <TextBlock  Grid.Column="2" Name="lblExtrusion" Grid.Row="0" Width="Auto"  FontWeight="Bold" Text="Extrusion Paramaters"  HorizontalAlignment="Center"></TextBlock>
+            </Grid>
+
+            <Grid Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="14*"></ColumnDefinition>
+                    <ColumnDefinition Width="8*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="14*"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="12*"></ColumnDefinition>
+                    <ColumnDefinition Width="12*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"></RowDefinition>
+                    <RowDefinition Height="40*"></RowDefinition>
+                    <RowDefinition Height="40*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock  FontWeight="Bold" Text="Part No: " Grid.Column="0" Grid.Row="0"    VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                <TextBlock Name="txtPartNo"  FontWeight="Bold"  Grid.Column="1" Grid.Row="0"    VerticalAlignment="Center"  HorizontalAlignment="Left"  ></TextBlock>
+                <TextBlock  FontWeight="Bold" Text="Description: " Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0" VerticalAlignment="Center"  HorizontalAlignment="Right"   ></TextBlock>
+                <TextBlock Name="lblPartDescription" FontWeight="Bold"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="0" VerticalAlignment="Center"  HorizontalAlignment="Left"   ></TextBlock>
+
+                <TextBlock  Text="Head Volume: " Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Left"  ></TextBlock>
+                <TextBox Grid.Column="1"    Name="txt_HeadVolume" Grid.Row="1" uc:TextBoxIntsOnly.Mask="Decimal"    HorizontalContentAlignment="Right"    ></TextBox>
+                <TextBlock Text="cubic mm " Grid.Column="2" Grid.Row="1" VerticalAlignment="Center"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Text="Body Volume : " Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"  HorizontalAlignment="Left"  ></TextBlock>
+                <TextBox Grid.Column="1" Grid.Row="2" Name="txt_BodyVolume"  uc:TextBoxIntsOnly.Mask="Decimal" HorizontalContentAlignment="Right"  ></TextBox>
+                <TextBlock Text="cubic mm " Grid.Column="2" Grid.Row="2" VerticalAlignment="Center"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+
+                <TextBlock Text="Min wire Size : " Grid.Column="3" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Left"  ></TextBlock>
+                <TextBox Grid.Column="4" Grid.Row="1"  Name="txt_minwiresize" uc:TextBoxIntsOnly.Mask="Decimal" HorizontalContentAlignment="Right"></TextBox>
+                <TextBlock Text="mm " Grid.Column="5" Grid.Row="1" VerticalAlignment="Center"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Text="Max wire Size : " Grid.Column="3" Grid.Row="2" VerticalAlignment="Center"  HorizontalAlignment="Left"  ></TextBlock>
+                <TextBox Grid.Column="4" Grid.Row="2" Name="txt_maxwiresize" uc:TextBoxIntsOnly.Mask="Decimal" HorizontalContentAlignment="Right" ></TextBox>
+                <TextBlock Text="mm " Grid.Column="5" Grid.Row="2" VerticalAlignment="Center" Margin="3,2,2,2"  HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Text="Total CD Length :" Grid.Column="6" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Left"  ></TextBlock>
+                <TextBox Grid.Column="7" Grid.Row="1"  Name="lbl_TotCOLength" uc:TextBoxIntsOnly.Mask="Decimal" HorizontalContentAlignment="Right"  ></TextBox>
+                <TextBlock Text="cubic mm " Grid.Column="8" Grid.Row="1" VerticalAlignment="Center"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+            </Grid>
+
+            <!--First Column-->
+
+            <Grid Grid.Row="2" Grid.Column="0">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="16*"></ColumnDefinition>
+                    <ColumnDefinition Width="13*"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Column="0"  Grid.ColumnSpan="3" Grid.RowSpan="19" BorderBrush="Black"   BorderThickness="1,1,0,1" Background="{x:Null}" />
+
+                <CheckBox Name="chk_SINGLE_CONE" Grid.Column="0" Grid.Row="0"  Margin="10,2,2,0" Content="Single Cone" VerticalAlignment="Top" Checked="chk_SINGLE_CONE_Checked" Unchecked="chk_SINGLE_CONE_Checked" ></CheckBox>
+                <CheckBox Grid.Column="1" Name="chk_DOUBLE_CONE" Grid.Row="0" Grid.ColumnSpan ="2" HorizontalAlignment="Center" Content="double Cone" Margin="21,0,21,2" VerticalAlignment="Bottom"></CheckBox>
+                <CheckBox Grid.Column="0" Name="chk_FACE_ANGLE" Grid.Row="1"  Content="Face Angle" Margin="10,2,2,2"  ></CheckBox>
+                <CheckBox Grid.Column="1" Name="chk_CONVERGED_CONE" Grid.Row="1"  Grid.ColumnSpan ="2" HorizontalAlignment="Center" Content="Pointed Angle"></CheckBox>
+
+                <TextBlock  Grid.Column="0" Grid.Row="2" Text="Cone Dia Factor :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBox Name="txt_ConeDiaFactor"   Grid.Column="1" Grid.Row="2" Height="20"  uc:TextBoxIntsOnly.Mask="Decimal"  HorizontalContentAlignment="Right" Width="100" HorizontalAlignment="Right" ></TextBox>
+                <TextBlock  Text="mm " Grid.Column="2" Grid.Row="2"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Punch - Die Gap :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBox  Name="txt_DiePunchGap" Grid.Column="1" Grid.Row="3" Height="20"  uc:TextBoxIntsOnly.Mask="Decimal"  HorizontalContentAlignment="Right" Width="100" HorizontalAlignment="Right" ></TextBox>
+                <TextBlock  Grid.Column="2" Grid.Row="3" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Parallel Land :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBox  Name="txt_ParallelLand" Grid.Column="1" Grid.Row="4" uc:TextBoxIntsOnly.Mask="Decimal"  HorizontalContentAlignment="Right" Height="20"  Width="100" HorizontalAlignment="Right" ></TextBox>
+                <TextBlock  Grid.Column="2" Grid.Row="4" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="5" Text="Min Cone Dia Top :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBox  Name="txt_MinConeDiaTop" Grid.Column="1" Grid.Row="5"  uc:TextBoxIntsOnly.Mask="Decimal"  HorizontalContentAlignment="Right" Height="20"  Width="100" HorizontalAlignment="Right" ></TextBox>
+                <TextBlock  Grid.Column="2" Grid.Row="5" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="6" Text="Min Cone Dia Bot :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBox Name="txt_MinConeDiaBot" Grid.Column="1" Grid.Row="6"  uc:TextBoxIntsOnly.Mask="Decimal"  HorizontalContentAlignment="Right" Height="20"  Width="100"  HorizontalAlignment="Right" ></TextBox>
+                <TextBlock  Grid.Column="2" Grid.Row="6" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="7" Text="Face Angle :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBox Name="txt_FaceAngle" Grid.Column="1" Grid.Row="7"  uc:TextBoxIntsOnly.Mask="Decimal"  HorizontalContentAlignment="Right" Height="20"   Width="100" HorizontalAlignment="Right" ></TextBox>
+                <TextBlock  Grid.Column="2" Grid.Row="7" Text="deg "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="8" Text="Cut Off Length :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Name="lbl_CutOffLength" Grid.Column="1" Grid.Row="8" Height="20" TextAlignment="Right"    Width="100" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="8" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="9" Text="Max Cone Dia :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Name="lbl_MaxConeDia" Grid.Column="1" TextAlignment="Right"  Grid.Row="9" Height="20"   Width="100" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="9" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="10" Text="Mean Cone Dia :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Name="lbl_MeanConeDia" Grid.Column="1" TextAlignment="Right"  Grid.Row="10"    Height="20"  Width="100" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="10" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="11" Text="Cone Ht W/O land :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Name="lbl_ConeHeight" Grid.Column="1" TextAlignment="Right"  Grid.Row="11" Text="" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="11" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="12" Text="Cone Ht W/ land :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock  Name="lbl_ConeHeightWithLand" TextAlignment="Right"  Grid.Column="1" Grid.Row="12" Text="" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="12" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Name="lbl_FAH" Grid.Row="13"  HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Name="lbl_FaceAngleHeight" TextAlignment="Right"  Grid.Column="1" Grid.Row="13" Text="" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="13" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="14" Text="Total Cone Ht :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Name="lbl_TotalConeHeight" TextAlignment="Right"  Grid.Column="1" Grid.Row="14" Text="" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="14" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+
+                <TextBlock Grid.Column="0" Grid.Row="15" Text="Cone Angle :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Name="lbl_ConeAngle" TextAlignment="Right"  Grid.Column="1" Grid.Row="15" Text="" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="15" Text="deg "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="16" Text="L/D Ratio :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock  Name="lbl_LbyD" TextAlignment="Right"  Grid.Column="1" Grid.Row="16" Text="" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="16" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="17" Text="Conv Cone Dia :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Name="lbl_ConvergedConeDia" TextAlignment="Right"  Grid.Column="1" Grid.Row="17" Text="" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="17" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="18" Text="Conv Cone Height :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Name="lbl_ConvergedConeHeight" TextAlignment="Right"  Grid.Column="1" Grid.Row="18" Text="" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="18" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+            </Grid>
+
+            <!-- Second Column-->
+
+            <Grid Grid.Column="1" Grid.Row="2" >
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="16*"></ColumnDefinition>
+                    <ColumnDefinition Width="13*"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Column="0"  Grid.ColumnSpan="3" Grid.RowSpan="19" BorderBrush="Black"   BorderThickness="1,1,1,1" Background="{x:Null}" />
+
+                <CheckBox Grid.Column="0" Name="chk_OpenHeading" Grid.Row="0" Content="Open Heading" Grid.ColumnSpan ="2" HorizontalAlignment="Center" Checked="chk_OpenHeading_Checked" ></CheckBox>
+                <CheckBox Grid.Column="0" Grid.Row="1" Name="chk_ClosedHeading" Content="Closed Heading" Grid.ColumnSpan ="2" HorizontalAlignment="Center" Checked="chk_ClosedHeading_Checked"></CheckBox>
+
+
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Head Angle :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBox Grid.Column="1" Grid.Row="2" Height="20"  Name="txt_HeadAngle" uc:TextBoxIntsOnly.Mask="Decimal"  HorizontalContentAlignment="Right" Width="100" HorizontalAlignment="Right" ></TextBox>
+                <TextBlock  Grid.Column="2" Grid.Row="2" Text="deg "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Head Jn Radius :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBox Grid.Column="1" Grid.Row="3" Height="20" Name="txt_HeadJnRad"  uc:TextBoxIntsOnly.Mask="Decimal"  HorizontalContentAlignment="Right" Width="100" HorizontalAlignment="Right" ></TextBox>
+                <TextBlock  Grid.Column="2" Grid.Row="3" Text="mm "  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Head Cham Percent :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBox Grid.Column="1" Grid.Row="4" Name="txt_HeadChamferPercent"  uc:TextBoxIntsOnly.Mask="Decimal"  HorizontalContentAlignment="Right" Height="20"  Width="100" HorizontalAlignment="Right" ></TextBox>
+                <TextBlock  Grid.Column="2" Grid.Row="4" Text=""  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+
+                <TextBlock Grid.Column="0" Grid.Row="6" Text="Wire-Cone Sev Ratio :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="6" Name="lbl_WireConeSevRatio" Text=""  TextAlignment="Right"  HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="6" Text="mm"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="7" Text="Cone-Head Sev Ratio :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Name="lbl_SeverityRatio"  TextAlignment="Right" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="7" Text="mm"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="8" Text="Top Chamfer Dia :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="8" Name="lbl_TopChamferDia"  TextAlignment="Right" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="8" Text="mm"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="9" Text="Bot Chamfer Dia :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="9" Name="lbl_botChamferDia"  TextAlignment="Right" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="9" Text="mm"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="10" Text="Chamfer Height :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="10" Text=""  Name="lbl_ChamferHeight"  TextAlignment="Right"  HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="10" Text="mm"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="11" Text="Head Bottom Dia :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="11" Text="" Name="lbl_headBottomDia"  TextAlignment="Right" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="11" Text="mm"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="12" Text="Head Ht Below Chamfer :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="12" Name="lbl_HeadHeightBelowChamfer"  TextAlignment="Right" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="12" Text="mm"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+
+                <TextBlock Grid.Column="0" Grid.Row="13" Text="90% of Collar Dia :" HorizontalAlignment="Right" ></TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="13" Name="lbl_CollarDia90"  TextAlignment="Right" HorizontalAlignment="Right"  Height="20"  Width="90" ></TextBlock>
+                <TextBlock  Grid.Column="2" Grid.Row="13" Text="mm"  Margin="3,2,2,2" HorizontalAlignment="Left"  ></TextBlock>
+            </Grid>
+
+
+            <!-- Third Column-->
+
+            <Grid Grid.Column="2" Grid.Row="2" Margin="0,0,0,0">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="16*"></ColumnDefinition>
+                    <ColumnDefinition Width="13*"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Column="0"  Grid.ColumnSpan="3" Grid.RowSpan="19" BorderBrush="Black"   BorderThickness="0,1,1,1" Background="{x:Null}" />
+
+                <CheckBox Grid.Column="0" Name="Chk_Extrusion" Grid.Row="0" Content="Extrusion" Grid.ColumnSpan="2" HorizontalAlignment="Center"  ></CheckBox>
+
+                <TextBlock Padding="2" Grid.Column="0"  Grid.Row="2" Text="Area Reduction for Shank :" HorizontalAlignment="left" Grid.ColumnSpan="3"   ></TextBlock>
+                <TextBlock Grid.Column="1" Name="lbl_ShankReduction" Grid.Row="2" TextAlignment="Right"  HorizontalAlignment="Right"  Height="20"  Width="90" Grid.ColumnSpan="3"></TextBlock>
+
+                <TextBlock  Padding="2" Grid.Column="0" Grid.Row="3" Text="Area Reduction For TRD :" HorizontalAlignment="left" Grid.ColumnSpan="3" ></TextBlock>
+                <TextBlock Grid.Column="1" Name="lbl_TRDReduction" Grid.Row="3" TextAlignment="Right"  HorizontalAlignment="Right"  Height="20"  Width="90" Grid.ColumnSpan="3" ></TextBlock>
+
+                <TextBlock Padding="2" Grid.Column="0" Grid.Row="8" Text="Cost Centre :" HorizontalAlignment="left" Grid.ColumnSpan="2" ></TextBlock>
+                <ComboBox  Grid.Column="1" Name="ltbCostCentre" Grid.Row="8" HorizontalAlignment="left" Width="120"  Grid.ColumnSpan="2"></ComboBox>
+
+                <TextBlock Padding="2" Grid.Column="0" Grid.Row="9" Text="Forging Process :" HorizontalAlignment="Left"  Grid.ColumnSpan="2" ></TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="9"   Text="" HorizontalAlignment="left"  Height="20"  Width="90"  Grid.ColumnSpan="2" ></TextBlock>
+
+
+                <TextBlock Padding="2" Grid.Column="0" Grid.Row="10" Text="Station : Feed and Cut Off :" HorizontalAlignment="Left" Grid.ColumnSpan="2"  ></TextBlock>
+
+                <TextBlock Padding="2" Grid.Column="0" Grid.Row="11" Text="Section 1 :" HorizontalAlignment="Left"  Grid.ColumnSpan="2" ></TextBlock>
+                <TextBox Grid.Column="0" Grid.Row="11" Name="stage_1"  uc:TextBoxIntsOnly.Mask="Any"   TextAlignment="Right"    Height="20"  Width="150" HorizontalAlignment="Right" Grid.ColumnSpan="2" ></TextBox>
+
+                <TextBlock Padding="2" Grid.Column="0" Grid.Row="12" Text="Section 2 :" HorizontalAlignment="Left"  Grid.ColumnSpan="2" ></TextBlock>
+                <TextBox Grid.Column="0" Grid.Row="12"  Name="stage_2"  Height="20"  Width="150" HorizontalAlignment="Right"  TextAlignment="Right"  Grid.ColumnSpan="2" ></TextBox>
+
+                <TextBlock Padding="2" Grid.Column="0" Grid.Row="13" Text="Section 3 :" HorizontalAlignment="Left"  Grid.ColumnSpan="2" ></TextBlock>
+                <TextBox Grid.Column="0" Grid.Row="13" Name="stage_3"  Height="20"  Width="150" TextAlignment="Right"  HorizontalAlignment="Right" Grid.ColumnSpan="2" ></TextBox>
+
+                <TextBlock Padding="2" Grid.Column="0" Grid.Row="14" Text="Section 4 :" HorizontalAlignment="Left"  Grid.ColumnSpan="2" ></TextBlock>
+                <TextBox Grid.Column="0" Grid.Row="14"  Name="stage_4"  Height="20"  Width="150" TextAlignment="Right"   HorizontalAlignment="Right" Grid.ColumnSpan="2" ></TextBox>
+
+                <TextBlock Padding="2" Grid.Column="0" Grid.Row="15" Text="Section 5 :" HorizontalAlignment="Left"  Grid.ColumnSpan="2" ></TextBlock>
+                <TextBox Grid.Column="0" Grid.Row="15"  Name="stage_5"  Height="20"  Width="150" TextAlignment="Right"  HorizontalAlignment="Right" Grid.ColumnSpan="2" ></TextBox>
+            </Grid>
+
+            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*" ></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition  Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"></RowDefinition>
+                    <RowDefinition Height="90*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Name="cmdCalculation"  Grid.Column="1" Grid.Row="1" Content="Calculation" Command="{Binding SaveCommand}" Click="cmdCalculation_Click">
+
+                </Button>
+                <Button Name="cmdDrawings"  Grid.Column="3" Grid.Row="1" Content="Show Drawings" />
+                <Button Name="cmdPrint"  Grid.Column="5" Grid.Row="1" Content="Print" />
+                <Button Name="cmdOK"  Grid.Column="8" Grid.Row="1" Content="Ok" />
+                <Button Name="cmdCancel"  Grid.Column="10" Grid.Row="1" Content="Cancel" />
+
+            </Grid>
+
+        </Grid>
+    </Border>
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Control" Key="S" Command="{Binding SaveCommand}"/>
+    </Window.InputBindings>
+</Window>
+

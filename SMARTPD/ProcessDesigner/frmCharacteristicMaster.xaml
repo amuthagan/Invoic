@@ -1,0 +1,339 @@
+﻿<UserControl x:Class="ProcessDesigner.frmCharacteristicMaster"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Common="clr-namespace:ProcessDesigner.UICommon"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        xmlns:EnterKey="clr-namespace:ProcessDesigner.Common" 
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"              
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon"
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"  
+        xmlns:t="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+        Height="600" Width="935"  Background="{StaticResource WindowBackground}"  Loaded="Window_Loaded">
+    <UserControl.Resources>
+        <UICommon:IntegerConverter x:Key="IntegerConverter"/>
+        <CollectionViewSource x:Key="OperCodeSource" Source="{Binding CrossLinkingCharModel.DtClassificationCmbPrdType}"/>
+        <CollectionViewSource x:Key="PrdTypeGrdSource" Source="{Binding CrossLinkingCharModel.DtClassificationPrdType}"/>
+        <CollectionViewSource x:Key="LnkedCmbSource" Source="{Binding CrossLinkingCharModel.DtClassificationCmblinkedWith}"/>
+        <CollectionViewSource x:Key="LnkedGrdSource" Source="{Binding CrossLinkingCharModel.DtClassificationlinkedWith}"/>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="F3" Command="{Binding AddCommand}" />
+        <KeyBinding Key="F5" Command="{Binding EditCommand}" />
+        <KeyBinding  Modifiers="Control" Key="S" Command="{Binding SaveCommand}" />
+        <KeyBinding Key="F9" Command="{Binding CloseCommand}" />
+    </UserControl.InputBindings>
+    <Border >
+        <Grid Margin ="5,5,5,5" KeyboardNavigation.TabNavigation ="Cycle">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+                <RowDefinition Height="83*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ToolBar Grid.Row="0">
+                <Button Name="btnAdd" IsTabStop="False" Content="Add F3"  Grid.Row="0" Grid.Column="0" Width="60" Height="40"  IsEnabled="{Binding AddButtonIsEnable}" Command="{Binding AddCommand}" ToolTip="Add New Record" Lookup:AddedProperty.Image="Images/Add.png"/>
+                <Button Name="btnEdit" Visibility="Collapsed" IsTabStop="False"  Content="Edit/View F5" Grid.Row="0" Grid.Column="1" Width="80" Height="40" IsEnabled="{Binding EditButtonIsEnable}" Command="{Binding EditCommand}" ToolTip="Edit or View Record" Lookup:AddedProperty.Image="Images/Edit.png"/>
+                <Button  Name="btnSave" IsTabStop="False" Content="Save Ctrl+S" Grid.Row="0" Grid.Column="2"   Width="70" Height="40" IsEnabled="{Binding SaveButtonIsEnable}"  Command="{Binding SaveCommand}" ToolTip="Save Record" Lookup:AddedProperty.Image="Images/Save.png"  />
+                <Button  Name="btnClose" IsTabStop="False" Content="Close F9" Grid.Row="0" Grid.Column="5" Width="60" Height="40"  Command="{Binding CloseCommand}" ToolTip="Close Form" Lookup:AddedProperty.Image="Images/Close.png"/>
+            </ToolBar>
+            <Border Grid.Row="1" BorderThickness="1" Margin="5,5,5,5">
+                <Grid Grid.Row="1" Name="grdTopCmb" Margin="0,0,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                        <ColumnDefinition Width="19*"></ColumnDefinition>
+                        <ColumnDefinition Width="30*"></ColumnDefinition>
+                        <ColumnDefinition Width="15*"></ColumnDefinition>
+                        <ColumnDefinition Width="30*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Type : " Grid.Column="0"  Grid.Row="0" VerticalAlignment="Center"  HorizontalAlignment="Right"></TextBlock>
+                    <ComboBox Name="cmbType" Tag="Please select Type" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding CrossLinkingCharModel.DtCmbType,UpdateSourceTrigger=PropertyChanged ,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" DisplayMemberPath="PRODUCT_CATEGORY"  SelectedItem="{Binding SelectedRowType}"  SelectedValuePath="PRODUCT_CATEGORY"   SelectedValue="{Binding CrossLinkingCharModel.Type,UpdateSourceTrigger=PropertyChanged}"  Common:FocusExtension.IsFocused="{Binding CategoryIsFocused}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandType}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+
+                    <TextBlock Grid.Column="2" Name="errType" Visibility="Hidden" Grid.Row="0" Margin="-120,5,0,0"  Text="*" FontSize="25" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="Red" />
+
+                    <TextBlock Text="Product Type : " Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+                    <ComboBox  Name="cmbProductType" Tag="Please select Product Type" Grid.Column="3" Grid.Row="0" ItemsSource="{Binding CrossLinkingCharModel.DtCmbPrdType,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True,Mode=TwoWay, ValidatesOnDataErrors=True}"   SelectedItem="{Binding SelectedRowPrdType}"  SelectedValuePath="TYPE" DisplayMemberPath="TYPE"  SelectedValue="{Binding CrossLinkingCharModel.ProductType,UpdateSourceTrigger=PropertyChanged}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandPrdType}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+
+                    <TextBlock Grid.Column="4" Name="errPrdType" Visibility="Hidden" Grid.Row="0" Margin="-88,5,0,0"  Text="*" FontSize="25" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="Red" />
+
+                    <TextBlock Text="Linked With : " Grid.Column="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="0" ></TextBlock>
+                    <ComboBox Name="cmbLinkedWith" Tag="Please select Linked With" Grid.Column="5" Grid.Row="0" Width="200" VerticalAlignment="Center"  SelectedItem="{Binding SelectedRowLinkedWith,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" HorizontalAlignment="Left" ItemsSource="{Binding CrossLinkingCharModel.DtCmbLinkedWith,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="SUBTYPE" SelectedValuePath="SUBTYPE" SelectedValue="{Binding CrossLinkingCharModel.LinkedWith,UpdateSourceTrigger=PropertyChanged}"  >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandLinkedWith}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+                    <TextBlock Grid.Column="5" Visibility="Hidden" Name="errLnkedWith"  Grid.Row="0" Margin="30,5,0,0"  Text="*" FontSize="25" VerticalAlignment="center" HorizontalAlignment="Right" FontWeight="Bold" Foreground="Red" />
+
+                </Grid>
+            </Border>
+            <GroupBox Header="Feature Details" Grid.Row="2">
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35*"></RowDefinition>
+                        <RowDefinition Height="65*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="252"></ColumnDefinition>
+                        <ColumnDefinition Width="652"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Name="dgvFeature" ItemsSource="{Binding CrossLinkingCharModel.DtFeatureDetails,UpdateSourceTrigger=PropertyChanged}"   SelectedItem="{Binding SelectedRowFeatureDetails,UpdateSourceTrigger=PropertyChanged}" RowHeaderWidth="20" AutoGenerateColumns="False" CanUserAddRows="False"    CanUserResizeColumns="False" Grid.Column="0"  Grid.Row="0" Grid.RowSpan="2"  Margin="0,1,2,0.767" UICommon:ScrollToTopBehavior.ScrollToTop="True">
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Delete" Command="{Binding DeleteCommandFeature}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="1*" Header="Feature" Binding="{Binding Feature,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="49"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="FeatureCode" Binding="{Binding feature_code,UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" />
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="RowEditEnding">
+                                <i:InvokeCommandAction  Command="{Binding RowEditEndingFeatureCommand}" CommandParameter="{Binding ElementName=dgvFeature, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeGrdCommandFeatureDetails}" CommandParameter="{Binding ElementName=dgvFeature, Path=SelectedItem}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="BeginningEdit">
+                                <si:CallMethodAction MethodName="OnBeginningEdit" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </DataGrid>
+                    <DataGrid Name="dgvCharacterstics"  ItemsSource="{Binding CrossLinkingCharModel.DtCharacteristicsDetails,UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding CharacterSelectedItem,UpdateSourceTrigger=PropertyChanged}"  AutoGenerateColumns="False"  HorizontalAlignment="Stretch" SelectionMode="Single"  SelectionUnit="FullRow" RowHeaderWidth="20" HorizontalContentAlignment="Stretch" ColumnWidth="*" Grid.Column="1" Grid.Row="0" CanUserAddRows="False" CanUserDeleteRows="False" Margin="3,-1,-3,0" Height="157" VerticalAlignment="Top" UICommon:ScrollToTopBehavior.ScrollToTop="True">
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Delete" Command="{Binding DeleteCommandChar}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.InputBindings>
+                            <KeyBinding  Key="Delete" Command="{Binding DeleteCommandChar}" CommandParameter="{Binding ElementName=dgvCharacterstics, Path=SelectedItem}" />
+                        </DataGrid.InputBindings>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="oper_code" Binding="{Binding oper_code,UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" />
+                            <DataGridTextColumn  Header="feature_code" Binding="{Binding feature_code,UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" />
+                            <DataGridTextColumn  Header="feature_desc" Binding="{Binding feature_desc,UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" />
+                            <DataGridTextColumn  Header="sno" Binding="{Binding sno,UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" />
+                            <DataGridTextColumn Width="29*" Header="Measuring Technique" Binding="{Binding measuring_technique,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="30"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="19*" Header="Sample Size" Binding="{Binding sample_size,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource IntegerConverter}}" >
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="2"/>
+                                        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+                                        <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedInt"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Width="19*" Header="Sample Freq." Binding="{Binding sample_frequency,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="15"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="24*" Header="Control Method" Binding="{Binding control_method,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="25"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="21*" Header="Reaction Plan" Binding="{Binding reaction_plan,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="25"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="RowEditEnding">
+                                <i:InvokeCommandAction  Command="{Binding RowEditEndingCharacteristicsCommand}" CommandParameter="{Binding ElementName=dgvCharacterstics, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeGrdCommandCharDetails}" CommandParameter="{Binding ElementName=dgvCharacterstics, Path=SelectedItem}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="BeginningEdit">
+                                <i:InvokeCommandAction  Command="{Binding RowBeginEditCharacteristicsCommand}" CommandParameter="{Binding ElementName=dgvCharacterstics, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                    </DataGrid>
+                    <GroupBox Header="Classification Details : " Grid.Column="1"  Grid.Row ="1" Grid.ColumnSpan="2" Margin="0,2,2,0">
+                        <Grid Grid.Row="1" Grid.Column="1" Name="grdFuture" Margin="0,5,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="75*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"></ColumnDefinition>
+                                <ColumnDefinition Width="50*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <toolKit:DataGrid Grid.Column="0" RowHeaderWidth="20" ItemsSource="{Binding Source={StaticResource PrdTypeGrdSource}}" Grid.Row="1" Name="dgOperation" CanUserDeleteRows="False"  AutoGenerateColumns="False"  CanUserSortColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" UICommon:ScrollToTopBehavior.ScrollToTop="True" Margin="0,0,0,0.107">
+                                <!--<DataGrid.Resources>
+                                    <CollectionViewSource x:Key="OperCodeSource" Source="{Binding CrossLinkingCharModel.DtClassificationPrdType,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                </DataGrid.Resources>-->
+                                <toolKit:DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Delete" Command="{Binding DeleteCommandPrdType}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                                    </ContextMenu>
+                                </toolKit:DataGrid.ContextMenu>
+                                <toolKit:DataGrid.InputBindings>
+                                    <KeyBinding  Key="Delete" Command="{Binding DeleteCommandPrdType}" CommandParameter="{Binding ElementName=dgOperation, Path=SelectedItem}" />
+                                </toolKit:DataGrid.InputBindings>
+                                <i:Interaction.Behaviors>
+                                    <UICommon:DataGridBehaviorToolkit/>
+                                </i:Interaction.Behaviors>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="RowEditEnding">
+                                        <i:InvokeCommandAction  Command="{Binding RowEditEndingClassificationPrdTypeCommand}" CommandParameter="{Binding ElementName=dgOperation, Path=SelectedItem}"/>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="BeginningEdit">
+                                        <i:InvokeCommandAction  Command="{Binding RowBeginEditClassificationPrdTypeCommand}" CommandParameter="{Binding ElementName=dgOperation, Path=SelectedItem}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <toolKit:DataGrid.Columns>
+                                    <toolKit:DataGridTemplateColumn Width="*" >
+                                        <toolKit:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding SUBTYPE,UpdateSourceTrigger=PropertyChanged}" />
+                                            </DataTemplate>
+                                        </toolKit:DataGridTemplateColumn.CellTemplate>
+                                        <toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                                            <DataTemplate>
+                                                <Lookup:ComboBoxWithSearch IsReadOnly="False"   x:Name="cmbOpMaster" 
+                                             DataSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.CrossLinkingCharModel.DtClassificationCmbPrdType}"
+                                             SelectedText="{Binding SUBTYPE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedValue="{Binding SUBTYPE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedValuePath="SUBTYPE" 
+                                             DisplayValuePath="SUBTYPE"   
+                                             ColumnsHeader="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.DropDownItemsPrdType}"                    
+                                             VerticalContentAlignment="Center" MaxLength="50" >
+                                                    <i:Interaction.Triggers>
+                                                        <i:EventTrigger EventName="SelectionChanged">
+                                                            <i:InvokeCommandAction Command="{Binding SelectChangeGrdCommandPrdTypeDetails}" CommandParameter="{Binding ElementName=dgOperation, Path=SelectedItem}" />
+                                                        </i:EventTrigger>
+                                                    </i:Interaction.Triggers>
+                                                </Lookup:ComboBoxWithSearch>
+                                                <!--<bhCustCtrl:CustComboBox  x:Name="cmbOpMaster" IsSynchronizedWithCurrentItem="False"   
+                                                    ItemsSource="{Binding Source={StaticResource OperCodeSource}}"
+                                           Text="{Binding SUBTYPE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,BindsDirectlyToSource=True}"  
+				                            SelectedValuePath="SUBTYPE" DisplayMemberPath="SUBTYPE"                                               
+                                           IsEditable="True" VerticalContentAlignment="Center" >
+                                                    <toolKit:DataGridTextColumn Width="305"  Header="Sub Type" Binding="{Binding SUBTYPE}" />
+                                                    <i:Interaction.Triggers>
+                                                        <i:EventTrigger EventName="SelectionChanged">
+                                                            <i:InvokeCommandAction Command="{Binding SelectChangeGrdCommandPrdTypeDetails}" CommandParameter="{Binding ElementName=dgOperation, Path=SelectedItem}" />
+                                                        </i:EventTrigger>
+                                                    </i:Interaction.Triggers>
+                                                </bhCustCtrl:CustComboBox>-->
+                                            </DataTemplate>
+                                        </toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                                    </toolKit:DataGridTemplateColumn>
+
+                                </toolKit:DataGrid.Columns>
+
+                            </toolKit:DataGrid>
+                            <TextBlock Style="{StaticResource HeaderText}" Margin="5,0,0,0" TextAlignment="Left" VerticalAlignment="Top" Text="{Binding CrossLinkingCharModel.ProductTypeH,UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Grid.Row="1"></TextBlock>
+                            <toolKit:DataGrid Grid.Column="1" Grid.Row="1" Name="dgvLinkedWith" ItemsSource="{Binding Source={StaticResource LnkedGrdSource}}" RowHeaderWidth="20" AutoGenerateColumns="False"   CanUserSortColumns="False" CanUserAddRows="False"  Margin="2,0,0,0" SelectionUnit="FullRow" UICommon:ScrollToTopBehavior.ScrollToTop="True">
+                                <toolKit:DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Delete" Command="{Binding DeleteCommandLnkWith}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                                    </ContextMenu>
+                                </toolKit:DataGrid.ContextMenu>
+                                <toolKit:DataGrid.InputBindings>
+                                    <KeyBinding  Key="Delete" Command="{Binding DeleteCommandLnkWith}" CommandParameter="{Binding ElementName=dgvLinkedWith, Path=SelectedItem}" />
+                                </toolKit:DataGrid.InputBindings>
+                                <i:Interaction.Behaviors>
+                                    <UICommon:DataGridBehaviorToolkit/>
+                                </i:Interaction.Behaviors>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="RowEditEnding">
+                                        <i:InvokeCommandAction  Command="{Binding RowEditEndingClassificationLinkedWithCommand}" CommandParameter="{Binding ElementName=dgvLinkedWith, Path=SelectedItem}"/>
+                                    </i:EventTrigger>
+                                    <!--<i:EventTrigger EventName="BeginningEdit">
+                                        <si:CallMethodAction MethodName="OnBeginningEditDtLinkedWith" TargetObject="{Binding}"/>
+                                    </i:EventTrigger>-->
+                                </i:Interaction.Triggers>
+                                <toolKit:DataGrid.Columns>
+                                    <toolKit:DataGridTemplateColumn Header="{Binding ElementName=cmbLinkedWith,Path=Text,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Width="*" >
+                                        <toolKit:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding SUBTYPE,UpdateSourceTrigger=PropertyChanged}" />
+                                            </DataTemplate>
+                                        </toolKit:DataGridTemplateColumn.CellTemplate>
+                                        <toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                                            <DataTemplate>
+                                                <Lookup:ComboBoxWithSearch IsReadOnly="False"   x:Name="cmbdgvLinkedWith" 
+                                             DataSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.CrossLinkingCharModel.DtClassificationCmblinkedWith}"
+                                             SelectedText="{Binding SUBTYPE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedValue="{Binding SUBTYPE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedValuePath="SUBTYPE" 
+                                             DisplayValuePath="SUBTYPE"   
+                                             ColumnsHeader="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.DropDownItemsLinkedWith}"                    
+                                             VerticalContentAlignment="Center" MaxLength="50" >
+                                                    <i:Interaction.Triggers>
+                                                        <i:EventTrigger EventName="SelectionChanged">
+                                                            <i:InvokeCommandAction Command="{Binding SelectChangeGrdCommandPrdTypeDetails}" CommandParameter="{Binding ElementName=dgOperation, Path=SelectedItem}" />
+                                                        </i:EventTrigger>
+                                                    </i:Interaction.Triggers>
+                                                </Lookup:ComboBoxWithSearch>
+                                                <!--<bhCustCtrl:CustComboBox  x:Name="cmbdgvLinkedWith"  IsSynchronizedWithCurrentItem="False"   
+                                                    ItemsSource="{Binding Source={StaticResource LnkedCmbSource}}"
+                                           Text="{Binding SUBTYPE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,BindsDirectlyToSource=True}"  
+				                            SelectedValuePath="SUBTYPE" DisplayMemberPath="SUBTYPE"                                               
+                                           IsEditable="True" VerticalContentAlignment="Center">
+                                                    <toolKit:DataGridTextColumn Width="305"  Header="Sub Type" Binding="{Binding SUBTYPE}" />
+                                                    <i:Interaction.Triggers>
+                                                        <i:EventTrigger EventName="SelectionChanged">
+                                                            <i:InvokeCommandAction Command="{Binding SelectChangeGrdCommandPrdTypeDetails}" CommandParameter="{Binding ElementName=dgvLinkedWith, Path=SelectedItem}" />
+                                                        </i:EventTrigger>
+                                                    </i:Interaction.Triggers>
+                                                </bhCustCtrl:CustComboBox>-->
+                                            </DataTemplate>
+                                        </toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                                    </toolKit:DataGridTemplateColumn>
+                                </toolKit:DataGrid.Columns>
+
+                            </toolKit:DataGrid>
+                            <TextBlock Style="{StaticResource HeaderText}" Margin="5,0,0,0" TextAlignment="Left" VerticalAlignment="Top" Text="{Binding CrossLinkingCharModel.LinkedWithH,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1"></TextBlock>
+                            <!--<DataGrid Name="dgvLinkedWith" Grid.Column="1" Grid.Row="1"></DataGrid>-->
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </Border>
+
+</UserControl>

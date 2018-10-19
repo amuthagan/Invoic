@@ -1,0 +1,26 @@
+﻿<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="GridSpecialCharacteristics" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="PART_NO" type="xs:string"/>
+                <xs:element name="SEQ_NO" type="xs:string"/>
+                <xs:element name="PART_DESC" type="xs:string"/>
+                <xs:element name="CUST_NAME" type="xs:string"/>
+                <xs:element name="CUST_STD_NO" type="xs:string"/>
+                <xs:element name="LOC_CODE" type="xs:string"/>
+                <xs:element name="FEATURE" type="xs:string"/>
+                <xs:element name="CTRL_SPEC_MIN" type="xs:string"/>
+                <xs:element name="CTRL_SPEC_MAX" type="xs:string"/>
+                <xs:element name="SPEC_CHAR" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>

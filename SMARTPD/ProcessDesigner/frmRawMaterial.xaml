@@ -1,0 +1,211 @@
+﻿<UserControl x:Class="ProcessDesigner.frmRawMaterial"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:ic="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions" 
+        xmlns:il="clr-namespace:Microsoft.Expression.Interactivity.Layout;assembly=Microsoft.Expression.Interactions"       
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"        
+        Height="500" Width="800" Background="{StaticResource WindowBackground}"
+        KeyDown="UserControl_KeyDown" Loaded="UserControl_Loaded"
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:Common="clr-namespace:ProcessDesigner.UICommon"
+         Tag="RawMaterial" >
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="LocationViewSource" Source="{Binding Path=RawMaterialLocationMaster}"/>
+    </UserControl.Resources>
+
+    <Border>
+        <Grid KeyboardNavigation.TabNavigation ="Cycle">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="11*"></RowDefinition>
+                <RowDefinition Height="40*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ToolBar Grid.Row="0" >
+                <Button x:Name="AddNew"  Height="40" Width="65" Content="Add F3"  IsEnabled="{Binding AddButtonIsEnable}" Command="{Binding AddNewClickCommand}" KeyboardNavigation.IsTabStop="False" Lookup:AddedProperty.Image="Images/Add.png"></Button>
+                <Button x:Name="Edit"   Height="40" Width="75" Content="Edit/View F5"  IsEnabled="{Binding EditButtonIsEnable}"   Command="{Binding EditClickCommand}"  KeyboardNavigation.IsTabStop="False" Lookup:AddedProperty.Image="Images/Edit.png"></Button>
+                <Button x:Name ="Save" Height="40" Width="70" Padding="1" Content="Save Ctrl+S"  IsEnabled="{Binding SaveButtonIsEnable}"  Command="{Binding SaveClickCommand}"  KeyboardNavigation.IsTabStop="False" Lookup:AddedProperty.Image="Images/Save.png"/>
+                <Button x:Name="Close" Height="40" Width="65"  Content="Close F9" Command="{Binding CloseClickCommand}" KeyboardNavigation.IsTabStop="False" Lookup:AddedProperty.Image="Images/Close.png"></Button>
+            </ToolBar>
+            <!--<Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="AddNew" Content="Add F3" Grid.Row="0" Grid.Column="1" Command="{Binding AddNewClickCommand}" KeyboardNavigation.IsTabStop="False" ></Button>
+                <Button x:Name="Edit" Content="Edit/View F5" Grid.Row="0" Grid.Column="2" Command="{Binding EditClickCommand}"  KeyboardNavigation.IsTabStop="False"></Button>
+                <Button x:Name ="Save" Content="Save F7" Grid.Row="0" Grid.Column="3"  Command="{Binding SaveClickCommand}"  KeyboardNavigation.IsTabStop="False"/>
+                <Button x:Name="Close" Content="Close F9" Grid.Row="0" Grid.Column="4" Command="{Binding CloseClickCommand}" KeyboardNavigation.IsTabStop="False"></Button>
+            </Grid>-->
+            <Border Grid.Row="1" BorderThickness="1" Margin="2,2,2,2">
+                <Grid Grid.Row="1" Margin="10,5,10,0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="3"></ColumnDefinition>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="RM Code : " Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="0"  ></TextBlock>
+                    <TextBlock Text="RM Desc : " Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" ></TextBlock>
+                    <TextBlock Text="Class : " Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" ></TextBlock>
+                    <Control:ComboBoxCus DropDownCusWidth="500"  DataSource="{Binding RawMaterials}" IsReadOnly="{Binding RMCodeIsReadonly,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" x:Name="ltbRmCode" Grid.Row="0"  Grid.Column="2" HorizontalAlignment="Left" 
+                                     Tag="Please enter RM Code" TabIndex="1" Width="95"
+                                     SelectedValuePath="RM_CODE" SelectedItem="{Binding SelectedRow}" 
+                                     SelectedValue="{Binding MandatoryFields.RM_CODE,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding HasDropDownVisibility}"
+                                     ColumnsHeader="{Binding DropDownItems}" 
+                                      MaxLength="10" KeyboardNavigation.TabIndex="1" 
+                                     >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="LostFocus">
+                                <i:InvokeCommandAction  Command="{Binding TextBoxValueChanged}" CommandParameter="{Binding Input}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Control:ComboBoxCus.InputBindings>
+                            <KeyBinding  Key="Enter" Command="{Binding TextBoxValueChanged}"  />
+                        </Control:ComboBoxCus.InputBindings>
+                        <!--<i:Interaction.Behaviors >
+                            <Common:TabOnEnterComboBoxCusBehavior />
+                        </i:Interaction.Behaviors>-->
+                    </Control:ComboBoxCus>
+                    <TextBox x:Name="txtRmDesc" Grid.Column="2" Width="155" HorizontalAlignment="Left" Grid.Row="1" Tag="Please enter RM Description"                         
+                         Text="{Binding MandatoryFields.RM_DESC, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                         Common:FocusExtension.IsFocused="{Binding RMDescIsFocused}"
+                         >
+                        <i:Interaction.Behaviors >
+                            <Common:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBlock x:Name="lblClass" Text="{Binding CLASS_DESCRIPTION, Mode=TwoWay}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="2" ></TextBlock>
+                </Grid>
+            </Border>
+            <Border Grid.Row="2" BorderThickness="1" Margin="2,2,2,2">
+                <Grid Grid.Row="2" Margin="5,2,5,0">
+                    <toolKit:DataGrid CanUserAddRows="True" RowHeaderWidth="20"
+                                  CanUserDeleteRows="True" 
+                                  CanUserResizeColumns="True" 
+                                  CanUserReorderColumns="False" 
+                                  CanUserResizeRows="False"
+                                  CanUserSortColumns="False"
+                                  AutoGenerateColumns="False"
+                                  ItemsSource="{Binding Path=RawMaterialsSize,UpdateSourceTrigger=PropertyChanged}" 
+                                  ToolTip="Enter Raw Material Details" 
+                                     UICommon:ScrollToTopBehavior.ScrollToTop="True"
+
+                                  Grid.Column="1" Grid.Row="1"  x:Name="ssRawMaterial"  MouseMove="ssRawMaterial_MouseMove" >                  
+                        <i:Interaction.Behaviors>
+                            <UICommon:DataGridBehaviorToolkit/>
+                        </i:Interaction.Behaviors>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <i:InvokeCommandAction Command="{Binding TextBoxMIN_DIA_ValueChanged}"  CommandParameter="{Binding ElementName=ssRawMaterial, Path=CurrentCell}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <toolKit:DataGrid.Columns>
+                            <toolKit:DataGridTextColumn Header="RM Code" Visibility="Hidden" Width="20*" Binding="{Binding RM_CODE}" Control:TextBoxIntsOnly.Mask="Any" ></toolKit:DataGridTextColumn>
+                            <bhCustCtrl:DataGridNumericColumn Header="Minimum Dia" Width="20*" Binding="{Binding RM_DIA_MIN, UpdateSourceTrigger=PropertyChanged ,Mode=TwoWay}" MaxPrecision="10" MaxScale="2" ></bhCustCtrl:DataGridNumericColumn>
+                            <bhCustCtrl:DataGridNumericColumn Header="Maximum Dia" Width="20*" Binding="{Binding RM_DIA_MAX, UpdateSourceTrigger=PropertyChanged ,Mode=TwoWay}" MaxPrecision="10" MaxScale="2" ></bhCustCtrl:DataGridNumericColumn>
+                            
+                            <toolKit:DataGridTemplateColumn Header="Location Code"  Width="20*">
+                                <toolKit:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding LOC_CODE}" />
+                                    </DataTemplate>
+                                </toolKit:DataGridTemplateColumn.CellTemplate>
+                                <toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Lookup:ComboBoxWithSearch IsReadOnly="True"
+                                            DataSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.RawMaterialLocationMaster}"
+                                             ColumnsHeader="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.DropDownItemsLocation}"                                         
+                                             SelectedText="{Binding LOC_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedValue="{Binding LOC_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedValuePath="LOC_CODE" 
+                                             DisplayValuePath="LOC_CODE"   
+                                             VerticalContentAlignment="Center" >
+                                        </Lookup:ComboBoxWithSearch>
+                                    </DataTemplate>
+                                </toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                            </toolKit:DataGridTemplateColumn>
+                        </toolKit:DataGrid.Columns>
+                        <toolKit:DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Delete" Command="{Binding DeleteClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                            </ContextMenu>
+                        </toolKit:DataGrid.ContextMenu>
+                    </toolKit:DataGrid>
+                </Grid>
+            </Border>
+            <Border Grid.Row="3" BorderThickness="1" Margin="2,2,2,2">
+                <Grid Grid.Row="3" Margin="10,5,10,2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                        <ColumnDefinition Width="11*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                        <ColumnDefinition Width="11*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Cost for Domestic : " Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="0" ></TextBlock>
+                    <TextBlock Text="Per Kg." Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" ></TextBlock>
+                    <TextBlock Text="Cost for Export : " Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" ></TextBlock>
+
+
+
+                    <Control:NumericTextBox  x:Name="txtDomesticCost" Grid.Column="1" Grid.Row="0" Tag="Please enter Domestic Cost"  
+                          KeyboardNavigation.TabIndex="4" Height="25" Width="90" HorizontalAlignment="Left"
+                          Text="{Binding ActiveEntity.LOC_COST , Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged , StringFormat=F2}"  MaxPrecision="10" MaxScale="2" TextAlignment="Left" TextChanged="txtDomesticCost_TextChanged"></Control:NumericTextBox>
+
+                    <!--<Control:DecimalTextBox x:Name="txtDomesticCost" Grid.Column="1" Grid.Row="0" ToolTip="Enter Domestic Cost"  
+                         KeyboardNavigation.TabIndex="4" Height="25" MaxLength="13"
+                         Text="{Binding ActiveEntity.LOC_COST , Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged , StringFormat=F2}" AllowNegative="False" MaxDecimalPlaces="2" TextAlignment="Left" TextChanged="txtDomesticCost_TextChanged"
+                         >
+                        <i:Interaction.Behaviors >
+                            <Common:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </Control:DecimalTextBox>-->
+
+                    <Control:DecimalTextBox x:Name="txtExportCost" Grid.Column="5"  Grid.Row="0" Tag="Please enter Export Cost" 
+                         Width="90" KeyboardNavigation.TabIndex="5" Height="25" AllowNegative="False" MaxDecimalPlaces="2"
+                         Text="{Binding ActiveEntity.EXP_COST , Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged , StringFormat=F2}" TextAlignment="Left" MaxLength="13"
+                         >
+                        <i:Interaction.Behaviors >
+                            <Common:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </Control:DecimalTextBox>
+                    <TextBlock Text="Per Kg." Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" ></TextBlock>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+    <UserControl.InputBindings >
+        <KeyBinding Key="F3" Command ="{Binding AddNewClickCommand}"/>
+        <KeyBinding Key="F5" Command="{Binding EditClickCommand}"/>
+        <!--<KeyBinding Key="F6" Modifiers="Control" Command="{Binding DeleteClickCommand}"/>-->
+        <!--<KeyBinding Key="F7" Modifiers="Control" Command="{Binding SaveClickCommand}"/>-->
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveClickCommand}"/>
+        <KeyBinding Key="F9" Command="{Binding CloseClickCommand}"/>
+    </UserControl.InputBindings >
+</UserControl>

@@ -1,0 +1,286 @@
+﻿<Window x:Class="ProcessDesigner.frmStandardCondition"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:Common="clr-namespace:ProcessDesigner.UICommon"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        Title="Standard Condition" ResizeMode="NoResize"  Height="450" Width="800" WindowStartupLocation="CenterScreen" Background="{StaticResource WindowBackground}">
+    <Border Margin="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"></RowDefinition>
+                    <RowDefinition Height="50*"></RowDefinition>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Cost Centre Code : " Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="0" ></TextBlock>
+                <TextBlock Text="{Binding CostCenterCode ,Mode=TwoWay }"  Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Left" Grid.Row="0" ></TextBlock>
+                <TextBlock Text="Standard : " Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="1" ></TextBlock>
+                <TextBlock Text="{Binding Standard,Mode=TwoWay }" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Left" Grid.Row="1" ></TextBlock>
+
+                <TextBlock Text="Date Made : " Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="0" ></TextBlock>
+                <TextBlock Text="Revision : " Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="1" ></TextBlock>
+
+                <TextBlock Text="Valid Upto : " Grid.Column="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="0" ></TextBlock>
+                <TextBlock Text="Revision Date : " Grid.Column="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="1" ></TextBlock>
+                <Button Content="Save" Grid.Row="0"  ToolTip="save a Record" Command="{Binding UpdateOperMastCommand}" HorizontalAlignment="Center" Grid.Column="6" Grid.RowSpan="2" Width="70" Height="40" ></Button>
+
+
+                <!--<DatePicker x:Name="dateRecd" SelectedDate="{Binding DATE_MADE,StringFormat='DD/MM/YYYY', Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }"  Common:FocusExtension.IsFocused="{Binding ChangeFocus}"  Grid.Column="3"  Grid.Row="0"   Height="30" SelectedDateFormat="Short"  >
+                    <DatePicker.Resources>
+                        <Style TargetType="DatePickerTextBox">
+                            <Setter Property="Text" Value="DD/MM/YYYY"/>
+                            <Setter Property="Lookup:TextBoxIntsOnly.Mask" Value="Date"></Setter>
+                            <Setter Property="MaxLength" Value="10"/>
+                        </Style>
+                    </DatePicker.Resources>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="LostFocus">
+                            <i:InvokeCommandAction  Command="{Binding TextBoxValueChanged}" CommandParameter="{Binding DATE_MADE}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </DatePicker>-->
+
+
+                <DatePicker Tag="Please select Date Made " Grid.Column="3"   Grid.Row="0"  Height="30" DisplayDate="{Binding DATE_MADE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  SelectedDate="{Binding DATE_MADE, Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged}">
+                    <DatePicker.Resources>
+                        <Style TargetType="{x:Type DatePickerTextBox}">
+                            <Setter Property="Control.Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <TextBox x:Name="PART_TextBox" MaxLength="10"  Height="20" Lookup:TextBoxIntsOnly.Mask="Date" 
+                                             Text="{Binding Path=SelectedDate, StringFormat='dd/MM/yyyy',  
+                                             RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" Tag="DATE_MADE" >
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="LostFocus">
+                                                    <si:CallMethodAction MethodName="TextBoxDateValidation_LostFocus" TargetObject="{Binding}" />
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+
+                <DatePicker Tag="Please enter Valid Upto" Grid.Column="5"  Height="30" Grid.Row="0" DisplayDate="{Binding VALID_UPTO, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  SelectedDate="{Binding VALID_UPTO, Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged}">
+                    <DatePicker.Resources>
+                        <Style TargetType="{x:Type DatePickerTextBox}">
+                            <Setter Property="Control.Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <TextBox x:Name="PART_TextBox1" MaxLength="10"  Height="20" Lookup:TextBoxIntsOnly.Mask="Date" 
+                                             Text="{Binding Path=SelectedDate, StringFormat='dd/MM/yyyy',  
+                                             RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" Tag="VALID_UPTO" >
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="LostFocus">
+                                                    <si:CallMethodAction MethodName="TextBoxDateValidation_LostFocus" TargetObject="{Binding}" />
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox> 
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+
+                <TextBox Tag="Please enter Revision" Grid.Column="3"  Grid.Row="1"  MaxLength="50" Height="30" Text ="{Binding REVISION_NO, Mode=TwoWay }"></TextBox>
+
+                <DatePicker Tag="Please enter Revision Date" Grid.Column="5"  Grid.Row="1" Height="30" DisplayDate="{Binding REVISION_DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  SelectedDate="{Binding REVISION_DATE, Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged}">
+                    <DatePicker.Resources>
+                        <Style TargetType="{x:Type DatePickerTextBox}">
+                            <Setter Property="Control.Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <TextBox x:Name="PART_TextBox2" MaxLength="10"  Height="20" Lookup:TextBoxIntsOnly.Mask="Date" 
+                                             Text="{Binding Path=SelectedDate, StringFormat='dd/MM/yyyy',  
+                                             RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" Tag="REVISION_DATE" >
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="LostFocus">
+                                                    <si:CallMethodAction MethodName="TextBoxDateValidation_LostFocus" TargetObject="{Binding}" />
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>               
+            </Grid>
+
+
+            <toolKit:DataGrid Grid.Row="1"  Grid.Column="0"  CanUserAddRows="False"  Grid.ColumnSpan="2" x:Name="rpdDataGrid"   Grid.RowSpan="2" ItemsSource="{Binding GridData, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" AutoGenerateColumns="False" UICommon:ScrollToTopBehavior.ScrollToTop="True">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="RowEditEnding">
+                        <i:InvokeCommandAction  Command="{Binding RowEditEndingSubTypeCommand}" CommandParameter="{Binding ElementName=rpdDataGrid, Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <toolKit:DataGrid.Columns>
+                    <toolKit:DataGridTextColumn  x:Name="S_No" Header="S.NO" IsReadOnly="True" Binding="{Binding SER_NO, Mode=TwoWay }" Width="60">
+                    </toolKit:DataGridTextColumn>
+                    <toolKit:DataGridTextColumn  Binding="{Binding ILLUSTRATION, Mode=TwoWay }" Width="150"  Header="Illustration" >
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="50"/>
+                                <Setter Property="ToolTip" Value="{Binding ILLUSTRATION}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+                    <toolKit:DataGridTextColumn Binding="{Binding AREA, Mode=TwoWay }" Header="Area" Width="130" >
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="50"/>
+                                <Setter Property="ToolTip" Value="{Binding AREA}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+                    <toolKit:DataGridTextColumn Binding="{Binding REQD_COND, Mode=TwoWay }" Header="Reqd.Cond" Width="150">
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="50"/>
+                                <Setter Property="ToolTip"  Value="{Binding REQD_COND}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+
+                    <toolKit:DataGridTextColumn Binding="{Binding METHOD, Mode=TwoWay }" Header="Method" Width="75" >
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="50"/>
+                                <Setter Property="ToolTip" Value="{Binding METHOD}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+
+
+                    <toolKit:DataGridTextColumn Binding="{Binding RESP, Mode=TwoWay }" Header="Resp" Width="60" >
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="20"/>
+                                <Setter Property="ToolTip" Value="{Binding RESP}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+                    <toolKit:DataGridTextColumn Binding="{Binding FREQUENCY, Mode=TwoWay }" Header="Frequency" Width="90">
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="50"/>
+                                <Setter Property="ToolTip" Value="{Binding FREQUENCY}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+
+                    <toolKit:DataGridTextColumn Binding="{Binding TIME_ALLOWED, Mode=TwoWay }" Header="Time Allowed" Width="120" >
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="50"/>
+                                <Setter Property="ToolTip" Value="{Binding TIME_ALLOWED}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+                </toolKit:DataGrid.Columns>
+            </toolKit:DataGrid>
+
+
+            <!--<toolKit:DataGrid Grid.Row="1"   CanUserAddRows="False"  x:Name="rpdDataGrid" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding GridData, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged }"
+                     AutoGenerateColumns="False">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="RowEditEnding">
+                        <i:InvokeCommandAction  Command="{Binding RowEditEndingSubTypeCommand}" CommandParameter="{Binding ElementName=rpdDataGrid, Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <toolKit:DataGrid.Columns>
+                    <toolKit:DataGridTextColumn  x:Name="S_No" Header="S.NO" Binding="{Binding SER_NO, Mode=TwoWay }" Width="60">
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="2"/>
+                                <Setter Property="Lookup:TextBoxIntsOnly.Mask" Value="UnSignedDec" ></Setter>
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+                    <toolKit:DataGridTextColumn  Binding="{Binding ILLUSTRATION, Mode=TwoWay }" Width="150"  Header="Illustration" >
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="50"/>
+                                <Setter Property="ToolTip" Value="{Binding ILLUSTRATION}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+                    <toolKit:DataGridTextColumn Binding="{Binding AREA, Mode=TwoWay }" Header="Area" Width="130" >
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="50"/>
+                                <Setter Property="ToolTip" Value="{Binding AREA}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+                    <toolKit:DataGridTextColumn Binding="{Binding REQD_COND, Mode=TwoWay }" Header="Reqd.Cond" Width="150">
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="50"/>
+                                <Setter Property="ToolTip"  Value="{Binding REQD_COND}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle> 
+                    </toolKit:DataGridTextColumn>
+
+                    <toolKit:DataGridTextColumn Binding="{Binding METHOD, Mode=TwoWay }" Header="Method" Width="75" >
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="50"/>
+                                <Setter Property="ToolTip" Value="{Binding METHOD}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+
+
+                    <toolKit:DataGridTextColumn Binding="{Binding RESP, Mode=TwoWay }" Header="Resp" Width="60" >
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="20"/>
+                                <Setter Property="ToolTip" Value="{Binding RESP}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+                    <toolKit:DataGridTextColumn Binding="{Binding FREQUENCY, Mode=TwoWay }" Header="Frequency" Width="90">
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="50"/>
+                                <Setter Property="ToolTip" Value="{Binding FREQUENCY}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+
+                    <toolKit:DataGridTextColumn Binding="{Binding TIME_ALLOWED, Mode=TwoWay }" Header="Time Allow" Width="90" >
+                        <toolKit:DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLength" Value="50"/>
+                                <Setter Property="ToolTip" Value="{Binding TIME_ALLOWED}" />
+                            </Style>
+                        </toolKit:DataGridTextColumn.EditingElementStyle>
+                    </toolKit:DataGridTextColumn>
+                </toolKit:DataGrid.Columns>
+            </toolKit:DataGrid>-->
+
+
+        </Grid>
+    </Border>
+</Window>

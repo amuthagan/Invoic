@@ -1,0 +1,49 @@
+﻿<Window x:Class="ProcessDesigner.frmHardnessConversion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="frmHardnessConversion" Height="500" Width="700" Background="{StaticResource WindowBackground}" >
+    <Window.Resources >
+        <Style TargetType="ListBoxItem" BasedOn="{StaticResource RadioListboxItem}" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"></RowDefinition>
+            <RowDefinition  Height="20*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border  Grid.Row="0" Grid.Column="0" Padding="4">
+            <GroupBox Header="Input Hardness Type" >
+                <ListBox Name="LstBox1" Margin ="2,5,0,10" />
+            </GroupBox>
+        </Border>
+
+        <Border  Grid.Row="0" Grid.Column="1" Padding="4">
+            <GroupBox  Header="Conversion Hardness Type" Grid.Row="0" Grid.Column="1"  >
+             <ListBox Name="LstBox2" Margin ="2,5,0,10" />
+        </GroupBox>
+            </Border> 
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Input Value :" TextAlignment="Center" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Padding="0,0,10,0"> </TextBlock>
+            <TextBlock Text="Range :" TextAlignment="Center" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Padding="0,0,10,0"></TextBlock>
+            <TextBox  TextAlignment="Left"  Grid.Row="0" Grid.Column="1" Tag="Please enter Input Value"></TextBox>
+            <TextBox TextAlignment="Left"   Grid.Row="1" Grid.Column="1" Tag="Please enter Range"></TextBox>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+           
+            <TextBlock Text="Equivalent value : " TextAlignment="Left" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="0" Padding="10,0,0,0"></TextBlock>
+        </Grid>
+        
+        </Grid>
+    
+</Window>

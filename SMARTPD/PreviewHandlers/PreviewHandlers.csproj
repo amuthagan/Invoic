@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{18400AF3-1B79-479B-87D0-AD54A5E55059}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PreviewHandlers</RootNamespace>
+    <AssemblyName>PreviewHandlers</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BitMiracle.LibTiff.NET">
+      <HintPath>E:\SFL\ProcessDesigner\03.Coding\ProcessDesigner\PreviewHandlers\bin\Debug\BitMiracle.LibTiff.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BrowserPreviewHandlerHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CachedLibTiffImage.cs" />
+    <Compile Include="DefaultPreviewHandlerHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DefaultPreviewHostsMapping.cs" />
+    <Compile Include="ExcelPreviewHelper.cs" />
+    <Compile Include="IInitializeWithFile.cs" />
+    <Compile Include="IInitializeWithStream.cs" />
+    <Compile Include="ImageFactory.cs" />
+    <Compile Include="ImagePreviewHandlerHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IPaginalImageFile.cs" />
+    <Compile Include="IPaginalPreviewHandlerHost.cs" />
+    <Compile Include="IPreviewHelper.cs" />
+    <Compile Include="IPreviewHandler.cs" />
+    <Compile Include="IPreviewHandlerHost.cs" />
+    <Compile Include="PaginalImage.cs" />
+    <Compile Include="AppPreviewHelperBase.cs" />
+    <Compile Include="PreviewAppDescriptionFactory.cs" />
+    <Compile Include="PreviewContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PreviewContainer.designer.cs">
+      <DependentUpon>PreviewContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreviewHandlerHostBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PreviewHandlerHostFactory.cs" />
+    <Compile Include="ProcessExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Messages.Designer.cs" />
+    <Compile Include="StreamWrapper.cs" />
+    <Compile Include="AutoCadPreviewHelper.cs" />
+    <Compile Include="VisioPreviewHelper.cs" />
+    <Compile Include="WordPreviewHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Messages.resx" />
+    <EmbeddedResource Include="Resources\Messages.ru-RU.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="zoom.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dll\BitMiracle.LibTiff.NET.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

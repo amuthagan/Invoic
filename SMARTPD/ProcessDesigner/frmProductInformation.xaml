@@ -1,0 +1,1685 @@
+﻿<UserControl x:Class="ProcessDesigner.frmProductInformation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:ic="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions" 
+        xmlns:il="clr-namespace:Microsoft.Expression.Interactivity.Layout;assembly=Microsoft.Expression.Interactions"       
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls" 
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"             
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+             
+         Height="600" Width="941" MinWidth="941" MinHeight="600"
+        Background="{StaticResource WindowBackground}" Name="ProductInformation" Loaded="ProductInformation_Loaded" >
+    <UserControl.InputBindings >
+        <KeyBinding Key="F3" Command ="{Binding AddNewClickCommand}"/>
+        <KeyBinding Key="F5" Command="{Binding EditClickCommand}"/>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveClickCommand}"/>
+        <KeyBinding Key="F8" Command="{Binding PrintClickCommand}"/>
+        <KeyBinding Key="F9" Command="{Binding CloseClickCommand}"/>
+    </UserControl.InputBindings>
+    <UserControl.Resources>
+        <UICommon:DateTimeConverter x:Key="DateTimeConverter"/>
+        <UICommon:BooleanConverter x:Key="BooleanConverter"/>
+        <UICommon:CurrencyConverter x:Key="CurrencyConverter"/>
+        <UICommon:DecimalConverter x:Key="DecimalConverter"/>
+        <CollectionViewSource x:Key="OperationViewSource" Source="{Binding Path=OperationDataSource}"/>
+        <CollectionViewSource x:Key="OperationCostViewSource" Source="{Binding Path=OperationCostDataSource}"/>
+        <CollectionViewSource x:Key="OperationCostOutputViewSource" Source="{Binding Path=CostCentreOutputDataSource}"/>
+    </UserControl.Resources>
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="940"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="1"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="2"></RowDefinition>
+                <RowDefinition Height="30*"></RowDefinition>
+                <RowDefinition Height="2"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border BorderThickness="1" Grid.Row="1" Grid.Column="1" >
+                <ToolBarTray>
+                    <ToolBar Height="58" >
+                        <Button x:Name="AddNewButton" Content="Add F3"  Width="85" Height="50" Command="{Binding AddNewClickCommand}" IsEnabled="{Binding ActionPermission.AddNew}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Add.png"></Button>
+                        <Button x:Name="EditButton" Content="Edit F5" Grid.Row="0" Grid.Column="2" Width="85" Height="50" Command="{Binding EditClickCommand}"  IsEnabled="{Binding ActionPermission.Edit}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Edit.png"></Button>
+                        <Button x:Name ="SaveButton" Content="Save Ctrl+S" Grid.Row="0" Grid.Column="3" Width="85" Height="50" Command="{Binding SaveClickCommand}" IsEnabled="{Binding ActionPermission.Save}"  KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Save.png" />
+                        <Button x:Name="SimilarPartNumberButton" Visibility="Collapsed" Content="Similar Part No." Grid.Row="0" Grid.Column="4" Width="95" Height="50" Command="{Binding SimilarPartNumberClickCommand}" IsEnabled="{Binding ActionPermission.SimilarPartNumber}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Print.png"></Button>
+                        <Button x:Name="PrintButton" Content="Print" Grid.Row="1" Grid.Column="4" Width="85" Height="50" Command="{Binding StandardNoteClickCommand}" IsEnabled="{Binding ActionPermission.Print}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Print.png"></Button>
+                        <Menu ToolBar.OverflowMode="Always" >
+                            <StackPanel Background="White">
+                                <!--<MenuItem Header="Process Control and Capability Sheet"/>
+                                <MenuItem Header="Initial Sample Submission Report"/>-->
+                                <MenuItem Header="Initial Sample Inspection Report" Command="{Binding InitialSampleInspectionReportClickCommand}" IsEnabled="{Binding ActionPermission.Print}"/>
+                                <MenuItem Header="Part Submission Warrant" Command="{Binding PSWClickCommand}" IsEnabled="{Binding ActionPermission.Print}"/>
+                                <Separator/>
+                                <MenuItem Header="Production Part Approval - Dimensional Results" Command="{Binding DimensionalClickCommand}" CommandParameter="0" IsEnabled="{Binding ActionPermission.Print}"/>
+                                <MenuItem Header="Dimensional Results-Blank" Command="{Binding DimensionalClickCommand}" CommandParameter="1" IsEnabled="{Binding ActionPermission.Print}"/>
+                                <MenuItem Header="Production Part Approval - Material Test Results" Command="{Binding MaterialClickCommand}" CommandParameter="0" IsEnabled="{Binding ActionPermission.Print}"/>
+                                <MenuItem Header="Material Results-Blank" Command="{Binding MaterialClickCommand}" CommandParameter="1" IsEnabled="{Binding ActionPermission.Print}"/>
+                                <MenuItem Header="Production Part Approval - Performance Test Results" Command="{Binding PerfomanceClickCommand}" CommandParameter="0" IsEnabled="{Binding ActionPermission.Print}"/>
+                                <MenuItem Header="ISIR Requisition" Command="{Binding ISIRClickCommand}" IsEnabled="{Binding ActionPermission.Print}"/>
+                                <Separator/>
+                                <MenuItem Header="Control Plan" Command="{Binding ControlPlanCommand}" IsEnabled="{Binding ActionPermission.Report}"/>
+                                <Separator/>
+                                <MenuItem Header="Check List" Command="{Binding CheckListClickCommand}" IsEnabled="{Binding ActionPermission.Print}"/>
+                            </StackPanel>
+                        </Menu>
+                    </ToolBar>
+                    <ToolBar Height="58" >
+                        <Button x:Name="ShowRelatedButton" Content="Show Related" Grid.Row="0" Grid.Column="4" Width="85" Height="50" Command="{Binding ShowRelatedClickCommand}" IsEnabled="{Binding ActionPermission.ShowRelated}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/ShowRelated.png"></Button>
+                        <Menu ToolBar.OverflowMode="Always" >
+                            <StackPanel Background="White" >
+                                <MenuItem Header="Process Sheet" Command="{Binding ProcessSheetCommand}" />
+                                <MenuItem  Header="Drawings" Command="{Binding DrawingsCommand}" />
+                                <MenuItem  Header="Tool Schedule" Command="{Binding ToolScheduleCommand}"/>
+                                <MenuItem Header="Control Plan" Command="{Binding ControlPlanCommand}" />
+                                <MenuItem  Header="Development Report" Command="{Binding DevlptRptCommand}" />
+                                <MenuItem  Header="Manufacturing Report" Command="{Binding MfgRptCommand}" />
+                                <MenuItem Header="Cost Sheet" Command="{Binding CostSheetCommand}" />
+                                <Separator />
+                                <MenuItem  Header="Product Search" Command="{Binding ProductSearchCommand}" />
+                                <MenuItem Header="Cost Sheet Search" Command="{Binding CostSheetSearchCommand}" ></MenuItem>
+                                <MenuItem  Header="Tools Search" Command="{Binding ToolsSearchCommand}" />
+                            </StackPanel>
+                        </Menu>
+
+                    </ToolBar>
+                    <ToolBar Height="58" >
+                        <Button x:Name="CopyButton" Content="Copy" Grid.Row="0" Grid.Column="1" Width="85" Height="50" Command="{Binding CopyProductInformationClickCommand}" IsEnabled="{Binding ActionPermission.Copy}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Copy.png"></Button>
+                        <Button x:Name="CloseButton" Content="Close F9" Grid.Row="0" Grid.Column="4" Width="85" Height="50" Command="{Binding CloseClickCommand}" IsEnabled="{Binding ActionPermission.Close}" KeyboardNavigation.IsTabStop="False" Control:AddedProperty.Image="Images/Close.png"></Button>
+                    </ToolBar>
+                </ToolBarTray>
+            </Border>
+            <Border BorderThickness="1" Grid.Row="3" Grid.Column="1" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="165"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="160"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontWeight="Bold" Text="Part No :" Name ="lblPartNumber" TextAlignment="Right"  Grid.Column="0"></TextBlock>
+                    <Control:ComboBoxCus x:Name="ltbPartNo" UICommon:FocusExtension.IsFocused="{Binding DefaultControlFocus}" Tag="Enter/Select Part No." FontWeight="Bold"
+                                     Grid.Column="2"  MaxLength="11" Margin="0,0,15,0" CharacterCasingText="Upper"
+                                     SelectedValuePath="PART_NO" IsReadOnly="False" IsEditable="True" Width="140"
+                                     SelectedValue="{Binding MandatoryFields.PART_NO,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding PartNumberDataSource}"
+                                     SelectedItem="{Binding PartNumberSelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding PartNumberHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding PartNumberDropDownItems}"
+                                     >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding PartNumberSelectedItemChangedCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="EnterKeyPressed">
+                                <i:InvokeCommandAction Command="{Binding PartNumberEnterKeyPressedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Control:ComboBoxCus.InputBindings>
+                            <KeyBinding  Key="Enter" Command="{Binding PartNumberEndEditCommand}"  />
+                        </Control:ComboBoxCus.InputBindings>
+                    </Control:ComboBoxCus>
+
+                    <TextBlock FontWeight="Bold" Text="Description : " Name ="lblDescription"  Grid.Column="4" TextAlignment="Right" ></TextBlock>
+                    <TextBox  x:Name="txtPartDesc" Grid.Column="6"  Tag="Enter the product description" FontWeight="Bold" Margin="0,0,15,0"
+                         Text="{Binding MandatoryFields.PART_DESC ,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" MaxLength="40" >
+                    </TextBox>
+
+                </Grid>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="5" Grid.Column="1" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="470"></ColumnDefinition>
+                        <ColumnDefinition Width="2"></ColumnDefinition>
+                        <ColumnDefinition Width="450"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border BorderThickness="2" Grid.Row="1" Grid.Column="1" Visibility="{Binding AddModeVisibility}"  Margin="-6,0,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                <ColumnDefinition Width="160"></ColumnDefinition>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                <ColumnDefinition Width="0.03*"></ColumnDefinition>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Manufacturing Standard :" TextAlignment="Right" Grid.Row="1" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Thread Code :" TextAlignment="Right" Grid.Row="3" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Thread Dia Code :" TextAlignment="Right" Grid.Row="5" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Similarity :" TextAlignment="Right" Grid.Row="7" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Product Family :" TextAlignment="Right" Grid.Row="9" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Forecast Location :" TextAlignment="Right" Grid.Row="11" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Current Location1 :" TextAlignment="Right" Grid.Row="13" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Current Location2 :" TextAlignment="Right" Grid.Row="15" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Quality :" TextAlignment="Right" Grid.Row="17" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Doc Rel Date :" TextAlignment="Right" Grid.Row="19" Grid.Column="1" Visibility="Hidden"></TextBlock>
+                            <Button x:Name="CreateCIReferenceButton" Visibility="Collapsed" Content="Create CI Reference"  Grid.Row="21" Grid.Column="1" Width="120" Grid.ColumnSpan="3" IsEnabled="{Binding ActionPermission.CreateCIReference}" Command="{Binding CreateCIReferenceClickCommand}"></Button>
+
+                            <Control:ComboBoxWithSearch x:Name="ltbMfgStandard" Tag="Enter/Select Manufacturing Standard"  HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="1"  Grid.Column="3" Width="265" MaxLength="1"
+                                     SelectedValuePath="MFG_STD" DisplayValuePath="MFG_STD" 
+                                     SelectedValue="{Binding MandatoryFields.MFG_STD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ManufacturingStandardDataSource}"
+                                     SelectedText="{Binding MandatoryFields.MFG_STD, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ManufacturingStandardHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ManufacturingStandardDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ManufacturingStandardSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ManufacturingStandardEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ManufacturingStandardEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch x:Name="ltbThrdCode" Tag="Enter/Select Thread Code"  HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="3"  Grid.Column="3" Width="265" MaxLength="1"
+                                     SelectedValuePath="THREAD_CD" DisplayValuePath="THREAD_CD"
+                                     SelectedValue="{Binding MandatoryFields.THREAD_CD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ThreadCodeDataSource}"
+                                     SelectedText="{Binding MandatoryFields.THREAD_CD, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ThreadCodeHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ThreadCodeDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ThreadCodeSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ThreadCodeEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ThreadCodeEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <TextBox x:Name="txtThrdDiaCode" Grid.Column="3"  Grid.Row="5" Tag="Enter Thread Dia Code" 
+                              Width="38" HorizontalAlignment="Left"
+                             Text="{Binding MandatoryFields.DIA_CD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                                <i:Interaction.Behaviors >
+                                    <UICommon:TabOnEnterTextBoxBehavior />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Control:ComboBoxWithSearch x:Name="ltbSimiliar" Tag="Enter/Select Similarity"  HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="7"  Grid.Column="3" Width="265" MaxLength="1"
+                                     SelectedValuePath="SIM_TO_STD_CD" DisplayValuePath="SIM_TO_STD_CD"
+                                     SelectedValue="{Binding MandatoryFields.SIM_TO_STD_CD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding SimilarityDataSource}"
+                                     SelectedText="{Binding MandatoryFields.SIM_TO_STD_CD, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding SimilarityHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding SimilarityDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding SimilaritySelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding SimilarityEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding SimilarityEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch x:Name="ltbPrdClassyt" Tag="Enter/Select Product Family"  HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="9"  Grid.Column="3" Width="265" MaxLength="25"
+                                     SelectedValuePath="FAMILY" DisplayValuePath="FAMILY"
+                                     SelectedValue="{Binding MandatoryFields.FAMILY,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ProductFamilyDataSource}"
+                                     SelectedText="{Binding MandatoryFields.FAMILY, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ProductFamilyHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ProductFamilyDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ProductFamilySelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ProductFamilyEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ProductFamilyEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+
+                            <Control:ComboBoxCus x:Name="ltbForeCastLocn" Tag="Enter/Select Forecast Location"  HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="11"  Grid.Column="3" Width="265" MaxLength="2"
+                                     SelectedValuePath="BIF_FORECAST" 
+                                     SelectedValue="{Binding MandatoryFields.BIF_FORECAST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ForecastLocationDataSource}"
+                                     SelectedItem="{Binding ForecastLocationSelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ForecastLocationHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ForecastLocationDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ForecastLocationSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ForecastLocationEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxCus.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ForecastLocationEndEditCommand}"  />
+                                </Control:ComboBoxCus.InputBindings>
+                            </Control:ComboBoxCus>
+                            <TextBlock Text="{Binding ActiveEntity.BIF_FORECAST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left" Grid.Row="11" Grid.Column="4" Grid.ColumnSpan="4" Margin="-5,0,0,0"></TextBlock>
+
+                            <Control:ComboBoxCus x:Name="ltbCurrLocation1" Tag="Enter/Select Current Location1"  HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="13"  Grid.Column="3" Width="265" MaxLength="2"
+                                     SelectedValuePath="BIF_PROJ" 
+                                     SelectedValue="{Binding MandatoryFields.BIF_PROJ,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding CurrentLocation1DataSource}"
+                                     SelectedItem="{Binding CurrentLocation1SelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding CurrentLocation1HasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding CurrentLocation1DropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding CurrentLocation1SelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding CurrentLocation1EndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxCus.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding CurrentLocation1EndEditCommand}"  />
+                                </Control:ComboBoxCus.InputBindings>
+                            </Control:ComboBoxCus>
+                            <TextBlock Text="{Binding ActiveEntity.BIF_PROJ,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left" Grid.Row="13" Grid.Column="4" Grid.ColumnSpan="4" Margin="-5,0,0,0"></TextBlock>
+
+                            <Control:ComboBoxCus x:Name="ltbCurrLocation2" Tag="Enter/Select Current Location2"  HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="15"  Grid.Column="3" Width="265" MaxLength="2"
+                                     SelectedValuePath="LOCATION"
+                                     SelectedValue="{Binding MandatoryFields.LOCATION,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding CurrentLocation2DataSource}"
+                                     SelectedItem="{Binding CurrentLocation2SelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding CurrentLocation2HasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding CurrentLocation2DropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding CurrentLocation2SelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding CurrentLocation2EndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxCus.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding CurrentLocation2EndEditCommand}"  />
+                                </Control:ComboBoxCus.InputBindings>
+                            </Control:ComboBoxCus>
+                            <TextBlock Text="{Binding ActiveEntity.LOC_CODE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left" Grid.Row="15" Grid.Column="4" Grid.ColumnSpan="4" Margin="-5,0,0,0"></TextBlock>
+
+                            <TextBox x:Name="txtQlty" Grid.Column="3"  Grid.Row="17" Tag="Enter Quality" 
+                              Width="85" HorizontalAlignment="Left"
+                             Text="{Binding MandatoryFields.QUALITY,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                                <i:Interaction.Behaviors >
+                                    <UICommon:TabOnEnterTextBoxBehavior />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Control:DatePickerCus Name ="txtPlannedDocdate" Height="25" Width="112.26" Grid.Row="19" Grid.Column="3" Tag="Select Planned Document Release Date" HorizontalAlignment="Left"  SelectedDate="{Binding MandatoryFields.DOC_REL_DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="Hidden"></Control:DatePickerCus>
+                            <!--<DatePicker  Name ="txtPlannedDocdate" Height="25" Grid.Row="19" Grid.Column="3" Width="256"
+                                     DisplayDate="{Binding MandatoryFields.DOC_REL_DATE, Converter={StaticResource DateTimeConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     SelectedDate="{Binding MandatoryFields.DOC_REL_DATE, Converter={StaticResource DateTimeConverter},UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     Tag="Select Planned Document Release Date">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedDateChanged">
+                                        <i:InvokeCommandAction Command="{Binding PlannedDocumentReleaseDateOnChangedCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <i:Interaction.Behaviors >
+                                    <UICommon:TabOnEnterDatePickerBehavior />
+                                </i:Interaction.Behaviors>
+                            </DatePicker>-->
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="2" Grid.Row="1" Grid.Column="3" Visibility="{Binding AddModeVisibility}"  Margin="0,0,-7,0" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                <ColumnDefinition Width="160"></ColumnDefinition>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="13" Grid.ColumnSpan="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition Width="110"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="5"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="Cost Sheet" TextAlignment="Left" Style="{StaticResource HeaderText}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" ></TextBlock>
+
+                                    <DataGrid Grid.Row="3"  Grid.Column="0" Grid.RowSpan="7" Name="dgrdCIRefAdd" ItemsSource="{Binding Product_CIinfo,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeRows="False"
+                                    CanUserDeleteRows="False" RowHeaderWidth="20" SelectionUnit="FullRow" SelectedItem="{Binding Prd_CIref_SelectedRow,UpdateSourceTrigger=PropertyChanged}"   UICommon:ScrollToTopBehavior.ScrollToTop="True"  SelectionMode="Single" >
+                                        <i:Interaction.Behaviors>
+                                            <UICommon:DataGridBehavior/>
+                                        </i:Interaction.Behaviors>
+                                        <DataGrid.InputBindings>
+                                            <KeyBinding  Key="Delete" Command="{Binding DeleteCommandCIRef}" />
+                                        </DataGrid.InputBindings>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding ProductCIRefSelectionChangedCommand}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="PreviewKeyDown">
+                                                <si:CallMethodAction MethodName="CIRef_PreviewKeyDown" TargetObject="{Binding}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="BeginningEdit">
+                                                <si:CallMethodAction MethodName="OnBeginningEditCIRef" TargetObject="{Binding}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="CellEditEnding">
+                                                <si:CallMethodAction MethodName="OnCellEditEndingCIRef" TargetObject="{Binding}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn  Width="30" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox x:Name="chkCurrentCIref"  IsChecked="{Binding Path=CURRENT_CIREF,UpdateSourceTrigger=PropertyChanged}"
+                                          HorizontalAlignment="Center" >
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="Click">
+                                                                    <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.OnCheckChangeCommandCIRef}" 
+                                                           CommandParameter="{Binding}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </CheckBox>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="CI Reference" Width="1*" SortMemberPath="CI_REF" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding CI_REF,UpdateSourceTrigger=PropertyChanged}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                                <DataGridTemplateColumn.CellEditingTemplate>
+                                                    <DataTemplate>
+                                                        <Control:ComboBoxWithSearch  DataSource="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.CIReferenceDataSource}"  
+                                                             SelectedValue="{Binding CI_REF,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                                             SelectedText="{Binding CI_REF,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                                             SelectedItem="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.CIReferenceSelectedRow,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}"
+                                                             ColumnsHeader="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.CIReferenceDropDownItems}"
+				                                             SelectedValuePath="CI_REFERENCE"  DisplayValuePath="CI_REFERENCE"   IsReadOnly="False" DropDownWidth="400"                                     
+                                                              VerticalContentAlignment="Center" >
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="SelectedItemChanged">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=ProductInformation, Path=DataContext.CIReferenceSelectedItemChangedCommand}"/>
+                                                                </i:EventTrigger>
+                                                                <i:EventTrigger EventName="TextBox_MouseDoubleClick">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=ProductInformation, Path=DataContext.CIReferenceClickCommand}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </Control:ComboBoxWithSearch>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellEditingTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+
+                                    <TextBlock Text="Customer : " TextAlignment="Right" Grid.Row="3" Grid.Column="1"/>
+                                    <TextBlock Text="Customer Part No : " TextAlignment="Right" Grid.Row="5" Grid.Column="1"></TextBlock>
+                                    <TextBlock Text="Drawing Issue No : " TextAlignment="Right" Grid.Row="7" Grid.Column="1"></TextBlock>
+                                    <TextBlock Text="Finish + Top Coat Description : " TextAlignment="Right" Grid.Row="11" Grid.Column="0"></TextBlock>
+                                    <TextBlock Text="Realisation : " TextAlignment="Right" Grid.Row="13" Grid.Column="0"></TextBlock>
+                                    <TextBlock TextAlignment="Left" Style="{StaticResource HeaderText}"  Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="4" />
+                                    <!--<Control:ComboBoxCus x:Name="ltbCIReferenceAddMode" IsEditable="True" IsReadOnly="False" Tag="CI Reference Number"  
+                                         Grid.Row="3"  Grid.Column="2"  MaxLength="10" Margin="0,0,15,0"
+                                         Tag="CI_REFERENCE" SelectedValuePath="CI_REFERENCE" 
+                                         SelectedValue="{Binding MandatoryFields.CI_REFERENCE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                         DataSource="{Binding CIReferenceDataSource}"
+                                         SelectedItem="{Binding CIReferenceSelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                         ButtonVisibility="{Binding CIReferenceHasDropDownVisibility}" 
+                                         ColumnsHeader="{Binding CIReferenceDropDownItems}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectedItemChanged">
+                                                <i:InvokeCommandAction Command="{Binding CIReferenceSelectedItemChangedCommand}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="LostFocus">
+                                                <i:InvokeCommandAction Command="{Binding CIReferenceLostFocusCommand}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="TextBox_MouseDoubleClick">
+                                                <i:InvokeCommandAction Command="{Binding CIReferenceDoubleClickCommand}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="PreviewKeyDown">
+                                                <si:CallMethodAction MethodName="CIReferenceDouble_PreviewKeyDown" TargetObject="{Binding}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <Control:ComboBoxCus.InputBindings>
+                                            <KeyBinding  Key="Enter" Command="{Binding CIReferenceEndEditCommand}"  />
+                                        </Control:ComboBoxCus.InputBindings>
+                                    </Control:ComboBoxCus>-->
+
+                                    <Control:ComboBoxCus x:Name="ltbCustomerAddMode" IsEditable="False" IsReadOnly="True"  
+                                         Grid.Row="3"  Grid.Column="2" Margin="5,0,15,0" MaxLength="10" IsEnabled="False"
+                                         SelectedValuePath="CUST_CODE"  
+                                         SelectedValue="{Binding MandatoryFields.CUST_CODE,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                         DataSource="{Binding CustomersDataSource}"
+                                         SelectedItem="{Binding CustomerSelectedRow,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                         ButtonVisibility="{Binding CustomerHasDropDownVisibility}" 
+                                         ColumnsHeader="{Binding CustomerDropDownItems}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectedItemChanged">
+                                                <i:InvokeCommandAction Command="{Binding CustomerSelectedItemChangedCommand}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="LostFocus">
+                                                <i:InvokeCommandAction Command="{Binding CustomerEndEditCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <Control:ComboBoxCus.InputBindings>
+                                            <KeyBinding  Key="Enter" Command="{Binding CustomerEndEditCommand}"  />
+                                        </Control:ComboBoxCus.InputBindings>
+                                    </Control:ComboBoxCus>
+                                    <TextBox x:Name="lblCustomerDwgNoAddMode" Grid.Column="2"  Grid.Row="5"  
+                                         IsReadOnly="True" Margin="5,0,15,0" 
+                                         Text="{Binding ActiveCIInfoEntity.CUST_DWG_NO,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                                        <i:Interaction.Behaviors >
+                                            <UICommon:TabOnEnterTextBoxBehavior />
+                                        </i:Interaction.Behaviors>
+                                    </TextBox>
+                                    <TextBox x:Name="txtCustDwgIssueNoAddMode" Grid.Column="2"  Grid.Row="7"  Margin="5,0,15,0"
+                                                 IsReadOnly="True" Text="{Binding ActiveCIInfoEntity.CUST_DWG_NO_ISSUE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                                        <i:Interaction.Behaviors >
+                                            <UICommon:TabOnEnterTextBoxBehavior />
+                                        </i:Interaction.Behaviors>
+                                    </TextBox>
+                                    <TextBlock Text="Issue Date : " TextAlignment="Right" Grid.Row="9" Grid.Column="1"/>
+                                    <Control:DatePickerCus Name ="lblIssueDateAddMode" Grid.Column="2" Grid.Row="9" IsEnabled="False"  SelectedDate="{Binding ActiveCIInfoEntity.CUST_STD_DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,15,0" />
+
+                                    <TextBox x:Name="lblFinshAddMode" Grid.Column="1" Grid.Row="11" Grid.ColumnSpan="2" 
+                                         IsReadOnly="True" Margin="5,0,15,0" 
+                                         Text="{Binding MandatoryFields.FINISH_DESC,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left">
+                                    </TextBox>
+
+                                    <Control:DecimalTextBox IsFormatRequired="False" x:Name="txtREALISATIONAddMode" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2"  IsReadOnly="True"
+                                          MaxLength="13" MaxDecimalPlaces="2" Margin="5,0,15,0" 
+                                         Text="{Binding ActiveCIInfoEntity.REALISATION,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TextAlignment="Left">
+                                        <i:Interaction.Behaviors >
+                                            <UICommon:TabOnEnterTextBoxBehavior />
+                                        </i:Interaction.Behaviors>
+                                    </Control:DecimalTextBox>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Column="0" Grid.Row="16" Grid.RowSpan="20" Grid.ColumnSpan="5">
+                                <GroupBox Visibility="Visible" Header="Category">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="160"></ColumnDefinition>
+                                            <ColumnDefinition Width="5"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="5"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="2"></RowDefinition>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="2"></RowDefinition>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="2"></RowDefinition>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="2"></RowDefinition>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="2"></RowDefinition>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="2"></RowDefinition>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="2"></RowDefinition>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="2"></RowDefinition>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="2"></RowDefinition>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="2"></RowDefinition>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="2"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="Category :" Name ="lblPartNumberConfig" TextAlignment="Right"  Grid.Row="9" Grid.Column="0"></TextBlock>
+                                        <Control:ComboBoxCus x:Name="ltbPartNumberConfig" Tag="Enter/Select Categoty" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="9"  Grid.Column="2" Width="260" MaxLength="10"
+                                     SelectedValuePath="PART_CONFIG_ID" 
+                                     SelectedValue="{Binding MandatoryFields.PART_CONFIG_ID,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding PartNumberConfigDataSource}"
+                                     SelectedItem="{Binding PartNumberConfigSelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding PartNumberConfigHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding PartNumberConfigDropDownItems}"
+                                     >
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="SelectedItemChanged">
+                                                    <i:InvokeCommandAction Command="{Binding PartNumberConfigSelectedItemChangedCommand}"/>
+                                                </i:EventTrigger>
+                                                <i:EventTrigger EventName="LostFocus">
+                                                    <i:InvokeCommandAction Command="{Binding PartNumberConfigEndEditCommand}"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                            <Control:ComboBoxCus.InputBindings>
+                                                <KeyBinding  Key="Enter" Command="{Binding PartNumberConfigEndEditCommand}"  />
+                                            </Control:ComboBoxCus.InputBindings>
+                                        </Control:ComboBoxCus>
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="2" Grid.Row="1" Grid.Column="1" Visibility="{Binding EditModeVisibility}"  Margin="-6,0,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                <ColumnDefinition Width="160"></ColumnDefinition>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                <ColumnDefinition Width="0.03*"></ColumnDefinition>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Manufacturing Standard :" TextAlignment="Right" Grid.Row="1" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Thread Code :" TextAlignment="Right" Grid.Row="3" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Thread Dia Code :" TextAlignment="Right" Grid.Row="5" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Thread Standard :" TextAlignment="Right" Grid.Row="7" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Quality :" TextAlignment="Right" Grid.Row="9" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Heat Treatment :" TextAlignment="Right" Grid.Row="11" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Estimated Finish Weight :" TextAlignment="Right" Grid.Row="13" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Forecast Location :" TextAlignment="Right" Grid.Row="15" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Current Location1 :" TextAlignment="Right" Grid.Row="17" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Current Location2 :" TextAlignment="Right" Grid.Row="19" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Nos per Pack :" TextAlignment="Right" Grid.Row="21" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="PSW Approved :" TextAlignment="Right" Grid.Row="23" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Allotted On :" TextAlignment="Right" Grid.Row="25" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Doc Rel Date :" TextAlignment="Right" Grid.Row="27" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Samples Submission Date :" TextAlignment="Right" Grid.Row="29" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Prd Dwg Issue No &amp; Date :" TextAlignment="Right" Grid.Row="31" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Seq Dwg Issue No. &amp; Date :" TextAlignment="Right" Grid.Row="33" Grid.Column="1"></TextBlock>
+                            <Button x:Name="cmdReleaseDoc" Content="Release Document"  Grid.Row="35" Grid.Column="1" Grid.ColumnSpan="3" Width="120" Command="{Binding ReleaseDocumentClickCommand}" IsEnabled="{Binding ActionPermission.ReleaseDocument}" KeyboardNavigation.IsTabStop="False" ></Button>
+                            <Button x:Name="cmdUpdate" Visibility="Collapsed" Content="Update Order Processing"  Grid.Row="37" Grid.Column="3" Command="{Binding AddNewClickCommand}" IsEnabled="{Binding ActionPermission.UpdateOrderProcessing}" KeyboardNavigation.IsTabStop="False"></Button>
+                            <Control:ComboBoxWithSearch x:Name="ltbStandard" Tag="Enter/Select Manufacturing Standard" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="1"  Grid.Column="3" Width="265" MaxLength="1"
+                                    SelectedValuePath="MFG_STD" DisplayValuePath="MFG_STD"
+                                     SelectedValue="{Binding MandatoryFields.MFG_STD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ManufacturingStandardDataSource}"
+                                     SelectedText="{Binding  MandatoryFields.MFG_STD, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ManufacturingStandardHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ManufacturingStandardDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ManufacturingStandardSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ManufacturingStandardEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ManufacturingStandardEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch x:Name="ltbThreadCode" Tag="Enter/Select Thread Code" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="3"  Grid.Column="3" Width="265" MaxLength="1"
+                                     SelectedValuePath="THREAD_CD" DisplayValuePath="THREAD_CD"
+                                     SelectedValue="{Binding MandatoryFields.THREAD_CD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ThreadCodeDataSource}"
+                                     SelectedText="{Binding MandatoryFields.THREAD_CD, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ThreadCodeHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ThreadCodeDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ThreadCodeSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ThreadCodeEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ThreadCodeEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Grid Grid.Column="3" Grid.Row="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="1"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBox x:Name="txtThreadCode" Grid.Column="0"  Grid.Row="1" Tag="Enter Thread Dia Code" 
+                                  Width="38" HorizontalAlignment="Left"
+                                 Text="{Binding MandatoryFields.DIA_CD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterTextBoxBehavior />
+                                    </i:Interaction.Behaviors>
+                                </TextBox>
+                                <TextBlock Text="Thread Class : " TextAlignment="Left" Grid.Row="1" Grid.Column="2"></TextBlock>
+                                <TextBox x:Name="txtThreadClass" Grid.Column="4"  Grid.Row="1" Tag="Enter Thread Class" 
+                                 Width="52" HorizontalAlignment="Left"
+                                 Text="{Binding ActiveEntity.THREAD_CLASS,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterTextBoxBehavior />
+                                    </i:Interaction.Behaviors>
+                                </TextBox>
+                            </Grid>
+                            <TextBox x:Name="txtThreadStd" Grid.Column="3"  Grid.Row="7" Tag="Enter Thread Standard" 
+                                 Width="155" HorizontalAlignment="Left"
+                                 Text="{Binding ActiveEntity.THREAD_STD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                                <i:Interaction.Behaviors >
+                                    <UICommon:TabOnEnterTextBoxBehavior />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <TextBox x:Name="txtQuality" Grid.Column="3"  Grid.Row="9" Tag="Enter Quality" 
+                             Width="80" HorizontalAlignment="Left"
+                             Text="{Binding MandatoryFields.QUALITY,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                                <i:Interaction.Behaviors >
+                                    <UICommon:TabOnEnterTextBoxBehavior />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Control:ComboBoxWithSearch x:Name="ltbHeatTreatment" Tag="Enter/Select Heat Treatment" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="11"  Grid.Column="3" Width="265" MaxLength="1"
+                                     SelectedValuePath="HEAT_TREATMENT_CD" DisplayValuePath="HEAT_TREATMENT_CD"
+                                     SelectedValue="{Binding MandatoryFields.HEAT_TREATMENT_CD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding HeatTreatmentDataSource}"
+                                     SelectedText="{Binding MandatoryFields.HEAT_TREATMENT_CD, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding HeatTreatmentHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding HeatTreatmentDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding HeatTreatmentSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding HeatTreatmentEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding HeatTreatmentEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Grid Grid.Column="3" Grid.Row="13" Grid.ColumnSpan="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"></ColumnDefinition>
+                                    <ColumnDefinition Width="5"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="5"></ColumnDefinition>
+                                    <ColumnDefinition Width="70"></ColumnDefinition>
+                                    <ColumnDefinition Width="5"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Control:DecimalTextBox IsFormatRequired="False" x:Name="txtEstFinishWt" Grid.Column="0" Grid.Row="0" Tag="Enter Estimated Finish Weight" 
+                                 MaxLength="7" MaxDecimalPlaces="3"
+                                 Text="{Binding ActiveEntity.FINISH_WT_EST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="LostFocus">
+                                            <i:InvokeCommandAction Command="{Binding EstimatedFinishWeightLostFocusCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterTextBoxBehavior />
+                                    </i:Interaction.Behaviors>
+                                </Control:DecimalTextBox>
+                                <TextBlock Text="Finish Weight :" TextAlignment="Right" Grid.Row="1" Grid.Column="2"></TextBlock>
+                                <Control:DecimalTextBox IsFormatRequired="False" x:Name="txtFinishWt" Grid.Column="4" Grid.Row="0" Tag="Enter Finish Weight" 
+                                 MaxDecimalPlaces="3" MaxLength="7"
+                                 Text="{Binding ActiveEntity.FINISH_WT,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="LostFocus">
+                                            <i:InvokeCommandAction Command="{Binding FinishWeightLostFocusCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterTextBoxBehavior />
+                                    </i:Interaction.Behaviors>
+                                </Control:DecimalTextBox>
+                                <TextBlock Text="Kgs/100 No" TextAlignment="Left" Grid.Row="1" Grid.Column="7"></TextBlock>
+                            </Grid>
+                            <Control:ComboBoxCus x:Name="ltbForecastLocation" Tag="Enter/Select Forecast Location" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="15"  Grid.Column="3" Width="265" MaxLength="2"
+                                     SelectedValuePath="BIF_FORECAST" 
+                                     SelectedValue="{Binding MandatoryFields.BIF_FORECAST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ForecastLocationDataSource}"
+                                     SelectedItem="{Binding ForecastLocationSelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ForecastLocationHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ForecastLocationDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ForecastLocationSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ForecastLocationEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxCus.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ForecastLocationEndEditCommand}"  />
+                                </Control:ComboBoxCus.InputBindings>
+                            </Control:ComboBoxCus>
+                            <TextBlock Text="{Binding ActiveEntity.BIF_FORECAST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left" Grid.Row="15" Grid.Column="4" Grid.ColumnSpan="4" Margin="-5,0,0,0"></TextBlock>
+
+                            <Control:ComboBoxCus x:Name="ltbCurrentLocation1" Tag="Enter/Select Current Location1" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="17"  Grid.Column="3" Width="265" MaxLength="2"
+                                     SelectedValuePath="BIF_PROJ" 
+                                     SelectedValue="{Binding MandatoryFields.BIF_PROJ,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding CurrentLocation1DataSource}"
+                                     SelectedItem="{Binding CurrentLocation1SelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding CurrentLocation1HasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding CurrentLocation1DropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding CurrentLocation1SelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding CurrentLocation1EndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxCus.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding CurrentLocation1EndEditCommand}"  />
+                                </Control:ComboBoxCus.InputBindings>
+                            </Control:ComboBoxCus>
+                            <TextBlock Text="{Binding ActiveEntity.BIF_PROJ,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }"  Margin="-5,0,0,0" TextAlignment="Left" Grid.Row="17" Grid.Column="4" Grid.ColumnSpan="4"></TextBlock>
+
+                            <Control:ComboBoxCus x:Name="ltbCurrentLocation2" Tag="Enter/Select Current Location2"  HorizontalAlignment="Right" IsReadOnly="True"
+                                     Grid.Row="19"  Grid.Column="3" Width="265" MaxLength="2"
+                                     SelectedValuePath="LOCATION" 
+                                     SelectedValue="{Binding MandatoryFields.LOCATION,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding CurrentLocation2DataSource}"
+                                     SelectedItem="{Binding CurrentLocation2SelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding CurrentLocation2HasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding CurrentLocation2DropDownItems}" Margin="0,2,18.495,2.333"
+                                     >  
+                            <!--new-->
+                            <!--<Control:ComboBoxCus x:Name="ltbCurrentLocation2" Tag="Enter/Select Current Location2"  HorizontalAlignment="Right" IsReadOnly="True"
+                                     Grid.Row="19"  Grid.Column="3" Width="265" MaxLength="2"
+                                     SelectedValuePath="BIF_PROJ" 
+                                     SelectedValue="{Binding MandatoryFields.BIF_PROJ,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding CurrentLocation1DataSource}"
+                                     SelectedItem="{Binding CurrentLocation1SelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding CurrentLocation1HasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding CurrentLocation1DropDownItems}" Margin="0,2,18.495,2.333"
+                                     >-->
+                                
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding CurrentLocation2SelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding CurrentLocation2EndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxCus.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding CurrentLocation2EndEditCommand}"  />
+                                </Control:ComboBoxCus.InputBindings>
+                            </Control:ComboBoxCus>
+                            <TextBlock Text="{Binding ActiveEntity.LOC_CODE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" Margin="-5,0,0,0" TextAlignment="Left" Grid.Row="19" Grid.Column="4" Grid.ColumnSpan="4" ></TextBlock>
+                            <Control:DecimalTextBox IsFormatRequired="False" x:Name="txtPackNos" Grid.Column="3" Grid.Row="21" Tag="Enter Nos per Pack" 
+                                 MaxLength="5" MaxDecimalPlaces="0" Width="265" HorizontalAlignment="Left"
+                                 Text="{Binding ActiveEntity.NOS_PER_PACK,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding NosPerPackLostFocusCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <i:Interaction.Behaviors >
+                                    <UICommon:TabOnEnterTextBoxBehavior />
+                                </i:Interaction.Behaviors>
+                            </Control:DecimalTextBox>
+
+                            <Grid Grid.Column="3" Grid.Row="23">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="1"></ColumnDefinition>
+                                    <ColumnDefinition Width="70"></ColumnDefinition>
+                                    <ColumnDefinition Width="1"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Control:ComboBoxWithSearch x:Name="ltbPSWApproved" Tag="Enter/Select PSW Approved Status" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="0"  Grid.Column="0" Width="75" MaxLength="8"
+                                     SelectedValuePath="PSW_ST" DisplayValuePath="PSW_ST"
+                                     SelectedValue="{Binding ActiveEntity.PSW_ST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding PSWApprovedDataSource}"
+                                     SelectedText="{Binding ActiveEntity.PSW_ST,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding PSWApprovedHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding PSWApprovedDropDownItems}" 
+                                     >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectedItemChanged">
+                                            <i:InvokeCommandAction Command="{Binding PSWApprovedSelectedItemChangedCommand}" CommandParameter="YES"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="LostFocus">
+                                            <i:InvokeCommandAction Command="{Binding PSWApprovedEndEditCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <!--<i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterComboBoxCusBehavior />
+                                    </i:Interaction.Behaviors>-->
+                                </Control:ComboBoxWithSearch>
+                                <TextBlock Text="PSW Date :" TextAlignment="Left" Grid.Row="1" Grid.Column="2" Visibility="{Binding PWSDateVisibility}"></TextBlock>
+                                <Control:DatePickerCus  Name ="txtPSWDate" Width="105" Grid.Column="7" Grid.Row="7" Tag="Please enter/select PSW date" Visibility="{Binding PWSDateVisibility}" HorizontalAlignment="Left"  SelectedDate="{Binding ActiveMFMEntity.PSW_DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></Control:DatePickerCus>
+                                <!--<DatePicker  Name ="txtPSWDate" Grid.Column="7" Grid.Row="7" Tag="Enter PSW date" Visibility="{Binding PWSDateVisibility}"
+                                     DisplayDate="{Binding ActiveMFMEntity.PSW_DATE, Converter={StaticResource DateTimeConverter},UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     SelectedDate="{Binding ActiveMFMEntity.PSW_DATE, Converter={StaticResource DateTimeConverter},UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterDatePickerBehavior />
+                                    </i:Interaction.Behaviors>
+                                </DatePicker>-->
+                            </Grid>
+                            <Grid Grid.Column="3" Grid.Row="25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Control:DatePickerCus Name ="txtAllotedOn" Width="112.26" Grid.Column="0" Grid.Row="7" Tag="Please enter/select Alloted On Date" HorizontalAlignment="Left"  SelectedDate="{Binding ActiveEntity.ALLOT_DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></Control:DatePickerCus>
+                                <!--<DatePicker  Name ="txtAllotedOn" Grid.Column="0" Grid.Row="7" Tag="Enter Alloted On Date"
+                                     DisplayDate="{Binding ActiveEntity.ALLOT_DATE, Converter={StaticResource DateTimeConverter},UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     SelectedDate="{Binding ActiveEntity.ALLOT_DATE, Converter={StaticResource DateTimeConverter},UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    <DatePicker.Resources>
+                                        <Style TargetType="DatePickerTextBox">
+                                            <Setter Property="IsReadOnly" Value="True"/>
+                                        </Style>
+                                    </DatePicker.Resources>
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterDatePickerBehavior />
+                                    </i:Interaction.Behaviors>
+                                </DatePicker>-->
+                                <TextBlock Text="Responsibility :" TextAlignment="Right" Grid.Row="1" Grid.Column="2"></TextBlock>
+                                <TextBlock x:Name="lblres" Text="{Binding ActiveEntity.ALLOTTED_BY,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left" Grid.Row="11" Grid.Column="4" Grid.ColumnSpan="4"></TextBlock>
+                            </Grid>
+                            <Control:DatePickerCus Name ="txtReleaseDate" Height="25" Width="112.26" Grid.Row="27" Grid.Column="3" Tag="Please enter/select Planned Document Release Date" HorizontalAlignment="Left"  SelectedDate="{Binding MandatoryFields.DOC_REL_DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></Control:DatePickerCus>
+                            <!--<DatePicker  Name ="txtReleaseDate" Height="25" Grid.Row="27" Grid.Column="3" Width="256"
+                                     DisplayDate="{Binding MandatoryFields.DOC_REL_DATE, Converter={StaticResource DateTimeConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     SelectedDate="{Binding MandatoryFields.DOC_REL_DATE, Converter={StaticResource DateTimeConverter},UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     Tag="Select Planned Document Release Date">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedDateChanged">
+                                        <i:InvokeCommandAction Command="{Binding PlannedDocumentReleaseDateOnChangedCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <i:Interaction.Behaviors >
+                                    <UICommon:TabOnEnterDatePickerBehavior />
+                                </i:Interaction.Behaviors>
+                            </DatePicker>-->
+                            <Grid Grid.Column="3" Grid.Row="29">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.2*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Control:DatePickerCus Name ="txtSampleSubmission" Width="112.26" Height="25" Grid.Row="1" Grid.Column="0" Tag="Please enter/select Sample Submission Date" HorizontalAlignment="Left" SelectedDate="{Binding ActiveEntity.SAMP_SUBMIT_DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectedDateChanged">
+                                            <i:InvokeCommandAction Command="{Binding SamplesSubmissionDateOnChangedCommand}"/>
+                                        </i:EventTrigger>
+                                        <!--<i:EventTrigger EventName="LostFocus">
+                                            <i:InvokeCommandAction Command="{Binding SamplesSubmissionDateLostFocusCommand}"/>
+                                        </i:EventTrigger>-->
+                                    </i:Interaction.Triggers>
+                                </Control:DatePickerCus>
+                                <!--<DatePicker  Name ="txtSampleSubmission" Height="25" Grid.Row="1" Grid.Column="0" DisplayDate="{Binding ActiveEntity.SAMP_SUBMIT_DATE, Converter={StaticResource DateTimeConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     SelectedDate="{Binding ActiveEntity.SAMP_SUBMIT_DATE, Converter={StaticResource DateTimeConverter},UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     Tag="Select Sample Submission Date">
+                                    <DatePicker.Resources>
+                                        <Style TargetType="DatePickerTextBox">
+                                            <Setter Property="IsReadOnly" Value="{Binding SamplesSubmissionDateReadOnly}"/>
+                                        </Style>
+                                    </DatePicker.Resources>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectedDateChanged">
+                                            <i:InvokeCommandAction Command="{Binding SamplesSubmissionDateOnChangedCommand}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="LostFocus">
+                                            <i:InvokeCommandAction Command="{Binding SamplesSubmissionDateLostFocusCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <DatePicker.InputBindings>
+                                        <KeyBinding  Key="Enter" Command="{Binding SamplesSubmissionDateLostFocusCommand}"  />
+                                    </DatePicker.InputBindings>
+                                    -->
+                                <!--<i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterDatePickerBehavior />
+                                    </i:Interaction.Behaviors>-->
+                                <!--
+                                </DatePicker>-->
+                                <CheckBox x:Name="chkHold" Content="Hold" Tag="Select Hold the Product or not" 
+                                    Grid.Row="1" Grid.Column="2" IsChecked="{Binding ActiveEntity.HOLD_ME, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, Converter={StaticResource BooleanConverter}}" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Unchecked">
+                                            <i:InvokeCommandAction Command="{Binding FeasibleIsCheckedCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterCheckBoxBehavior />
+                                    </i:Interaction.Behaviors>
+                                </CheckBox>
+                                <CheckBox x:Name="chkCancelled" Content="Cancelled" Tag="Select Hold the Product or not" 
+                                    Grid.Row="1" Grid.Column="4" IsChecked="{Binding ActiveEntity.CANCEL_STATUS, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, Converter={StaticResource BooleanConverter}}" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Unchecked">
+                                            <i:InvokeCommandAction Command="{Binding FeasibleIsCheckedCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterCheckBoxBehavior />
+                                    </i:Interaction.Behaviors>
+                                </CheckBox>
+                            </Grid>
+                            <Grid Grid.Column="3" Grid.Row="31">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Control:DecimalTextBox IsFormatRequired="False" x:Name="prd_issue_no" Grid.Column="0" Grid.Row="1" Tag="Enter Nos per Pack" 
+                                 MaxLength="3" MaxDecimalPlaces="0" IsReadOnly="True"
+                                 Text="{Binding MandatoryFields.PRODUCT_DRAWING_ISSUE_NO,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="LostFocus">
+                                            <i:InvokeCommandAction Command="{Binding EstimatedFinishWeightLostFocusCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterTextBoxBehavior />
+                                    </i:Interaction.Behaviors>
+                                </Control:DecimalTextBox>
+                                <Control:DatePickerCus Name ="prd_issue_date" Height="25" Grid.Row="1" Grid.Column="2" Width="125" Tag="Please enter/select Product Drawing Issue Date" HorizontalAlignment="Left"  SelectedDate="{Binding MandatoryFields.PRODUCT_DRAWING_ISSUE_DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"  ></Control:DatePickerCus>
+                                <!--<DatePicker  Name ="prd_issue_date" Height="25" Grid.Row="1" Grid.Column="2" 
+                                     DisplayDate="{Binding MandatoryFields.PRODUCT_DRAWING_ISSUE_DATE, Converter={StaticResource DateTimeConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     SelectedDate="{Binding MandatoryFields.PRODUCT_DRAWING_ISSUE_DATE, Converter={StaticResource DateTimeConverter},UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     Tag="Select Product Drawing Issue Date">
+                                    <DatePicker.Resources>
+                                        <Style TargetType="DatePickerTextBox">
+                                            <Setter Property="IsReadOnly" Value="True"/>
+                                            <Setter Property="Text" Value="{Binding MandatoryFields.PRODUCT_DRAWING_ISSUE_DATE, Converter={StaticResource DateTimeConverter},UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                                        </Style>
+                                    </DatePicker.Resources>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectedDateChanged">
+                                            <i:InvokeCommandAction Command="{Binding ProductDrawingIssueDateOnChangedCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterDatePickerBehavior />
+                                    </i:Interaction.Behaviors>
+                                </DatePicker>-->
+                            </Grid>
+                            <Grid Grid.Column="3" Grid.Row="33">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBox IsReadOnly="True" x:Name="txtLocCode"   Width="56" HorizontalAlignment="Left"
+                                 Text="{Binding MandatoryFields.SEQUENCE_DRAWING_LOC_CODE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterTextBoxBehavior />
+                                    </i:Interaction.Behaviors>
+                                </TextBox>
+                                <Control:DecimalTextBox IsFormatRequired="False" x:Name="sequence_issue_no" Grid.Column="0" Tag="Enter Nos per Pack" 
+                                 MaxLength="3" MaxDecimalPlaces="0" IsReadOnly="True" Text="{Binding MandatoryFields.SEQUENCE_DRAWING_ISSUE_NO,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left" Margin="60,2,4.406,2.412" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="LostFocus">
+                                            <i:InvokeCommandAction Command="{Binding EstimatedFinishWeightLostFocusCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterTextBoxBehavior />
+                                    </i:Interaction.Behaviors>
+                                </Control:DecimalTextBox>
+                                <Control:DatePickerCus Name ="sequence_issue_date"  Height="25" Width="125" Grid.Row="1" Grid.Column="2" Tag="Please enter/select Product Drawing Issue Date" HorizontalAlignment="Left"  SelectedDate="{Binding MandatoryFields.SEQUENCE_DRAWING_ISSUE_DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" ></Control:DatePickerCus>
+                                <Button Width="20" Content="..." Grid.Row="1" Grid.Column="2" Command="{Binding SeqDwgCommand}" KeyboardNavigation.IsTabStop="False"  Margin="125,0,0,0" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" ></Button>
+                                <!--<DatePicker  Name ="sequence_issue_date" Height="25" Grid.Row="1" Grid.Column="2" 
+                                     DisplayDate="{Binding MandatoryFields.SEQUENCE_DRAWING_ISSUE_DATE, Converter={StaticResource DateTimeConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     SelectedDate="{Binding MandatoryFields.SEQUENCE_DRAWING_ISSUE_DATE, Converter={StaticResource DateTimeConverter},UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     Tag="Select Product Drawing Issue Date">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectedDateChanged">
+                                            <i:InvokeCommandAction Command="{Binding SequenceDrawingIssueDateOnChangedCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <i:Interaction.Behaviors >
+                                        <UICommon:TabOnEnterDatePickerBehavior />
+                                    </i:Interaction.Behaviors>
+                                </DatePicker>-->
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="2" Grid.Row="1" Grid.Column="3" Visibility="{Binding EditModeVisibility}" Margin="0,0,-7,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                <ColumnDefinition Width="160"></ColumnDefinition>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="13" Grid.ColumnSpan="5">
+                                <Grid Background="white" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="145"/>
+                                        <ColumnDefinition Width="110"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1.5*"></RowDefinition>
+                                        <RowDefinition Height="2"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="5"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="Cost Sheet" TextAlignment="Left" Style="{StaticResource HeaderText}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" ></TextBlock>
+
+                                    <DataGrid Grid.Row="3"  Grid.Column="0" Grid.RowSpan="7" Name="dgrdCIRef" ItemsSource="{Binding Product_CIinfo,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeRows="False"
+                                    CanUserDeleteRows="False" CanUserSortColumns="False" RowHeaderWidth="10" SelectionUnit="FullRow" SelectedItem="{Binding Prd_CIref_SelectedRow,UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single">
+                                        <i:Interaction.Behaviors>
+                                            <UICommon:DataGridBehavior/>
+                                        </i:Interaction.Behaviors>
+                                        <DataGrid.InputBindings>
+                                            <KeyBinding  Key="Delete" Command="{Binding DeleteCommandCIRef}" />
+                                        </DataGrid.InputBindings>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding ProductCIRefSelectionChangedCommand}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="PreviewKeyDown">
+                                                <si:CallMethodAction MethodName="CIRef_PreviewKeyDown" TargetObject="{Binding}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="BeginningEdit">
+                                                <si:CallMethodAction MethodName="OnBeginningEditCIRef" TargetObject="{Binding}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="CellEditEnding">
+                                                <si:CallMethodAction MethodName="OnCellEditEndingCIRef" TargetObject="{Binding}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn  Width="25" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox x:Name="chkCurrentCIref"  IsChecked="{Binding Path=CURRENT_CIREF,UpdateSourceTrigger=PropertyChanged}"
+                                          HorizontalAlignment="Center" >
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="Click">
+                                                                    <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.OnCheckChangeCommandCIRef}" 
+                                                           CommandParameter="{Binding}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </CheckBox>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="CI Reference" Width="1*" SortMemberPath="CI_REF" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding CI_REF,UpdateSourceTrigger=PropertyChanged}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                                <DataGridTemplateColumn.CellEditingTemplate>
+                                                    <DataTemplate>
+                                                        <Control:ComboBoxWithSearch IsColumnsSorting="True" DataSource="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.CIReferenceDataSource}"  
+                                                             SelectedValue="{Binding CI_REF,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                                             SelectedText="{Binding CI_REF,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                                             SelectedItem="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.CIReferenceSelectedRow,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}"
+                                                             ColumnsHeader="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.CIReferenceDropDownItems}"
+				                                             SelectedValuePath="CI_REFERENCE"  DisplayValuePath="CI_REFERENCE"   IsReadOnly="False" DropDownWidth="400"                                     
+                                                              VerticalContentAlignment="Center" >
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="SelectedItemChanged">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=ProductInformation, Path=DataContext.CIReferenceSelectedItemChangedCommand}"/>
+                                                                </i:EventTrigger>
+                                                                <i:EventTrigger EventName="TextBox_MouseDoubleClick">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=ProductInformation, Path=DataContext.CIReferenceClickCommand}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </Control:ComboBoxWithSearch>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellEditingTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+
+                                    <TextBlock Text="Customer : " TextAlignment="Left" Margin="5" Width="60" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1"/>
+                                    <TextBlock Text="Customer Part No : " TextAlignment="Right" Grid.Row="5" Grid.Column="1"/>
+                                    <TextBlock Text="Drawing Issue No : " TextAlignment="Right" Grid.Row="7" Grid.Column="1"/>
+                                    <TextBlock Text="Finish + Top Coat Description: " TextWrapping="Wrap" TextAlignment="Right" Grid.Row="11" Margin="0,0,5,0" Grid.Column="0" />
+                                    <TextBlock Text="Realisation : " TextAlignment="Right" Grid.Row="13" Grid.Column="0"/>
+                                    <TextBlock TextAlignment="Left" Style="{StaticResource HeaderText}"  Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="4" />
+                                    <!--<Control:ComboBoxCus x:Name="ltbCIReference" IsEditable="True" IsReadOnly="False" Tag="CI Reference Number" 
+                                         Grid.Row="3"  Grid.Column="2" Margin="0,0,15,0" MaxLength="10"
+                                         Tag="CI_REFERENCE" SelectedValuePath="CI_REFERENCE" 
+                                         SelectedValue="{Binding MandatoryFields.CI_REFERENCE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                         DataSource="{Binding CIReferenceDataSource}"
+                                         SelectedItem="{Binding CIReferenceSelectedRow, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                         ButtonVisibility="{Binding CIReferenceHasDropDownVisibility}" 
+                                         ColumnsHeader="{Binding CIReferenceDropDownItems}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectedItemChanged">
+                                                <i:InvokeCommandAction Command="{Binding CIReferenceSelectedItemChangedCommand}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="LostFocus">
+                                                <i:InvokeCommandAction Command="{Binding CIReferenceLostFocusCommand}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="TextBox_MouseDoubleClick">
+                                                <i:InvokeCommandAction Command="{Binding CIReferenceDoubleClickCommand}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="PreviewKeyDown">
+                                                <si:CallMethodAction MethodName="CIReferenceDouble_PreviewKeyDown" TargetObject="{Binding}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <Control:ComboBoxCus.InputBindings>
+                                            <KeyBinding  Key="Enter" Command="{Binding CIReferenceEndEditCommand}"  />
+                                        </Control:ComboBoxCus.InputBindings>
+                                    </Control:ComboBoxCus>-->
+
+                                    <Control:ComboBoxCus x:Name="ltbCustomer" IsEditable="False" IsReadOnly="True"   
+                                         Grid.Row="3"  Grid.Column="2" Margin="-46,0,2,0" MaxLength="10" IsEnabled="False" 
+                                         SelectedValuePath="CUST_CODE" 
+                                         SelectedValue="{Binding MandatoryFields.CUST_CODE,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                         DataSource="{Binding CustomersDataSource}"
+                                         SelectedItem="{Binding CustomerSelectedRow,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                         ButtonVisibility="{Binding CustomerHasDropDownVisibility}" 
+                                         ColumnsHeader="{Binding CustomerDropDownItems}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectedItemChanged">
+                                                <i:InvokeCommandAction Command="{Binding CustomerSelectedItemChangedCommand}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="LostFocus">
+                                                <i:InvokeCommandAction Command="{Binding CustomerEndEditCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <Control:ComboBoxCus.InputBindings>
+                                            <KeyBinding  Key="Enter" Command="{Binding CustomerEndEditCommand}"  />
+                                        </Control:ComboBoxCus.InputBindings>
+                                    </Control:ComboBoxCus>
+                                    <TextBox x:Name="lblCustomerDwgNo" Grid.Column="2"  Grid.Row="5"  
+                                          IsReadOnly="True" Margin="0,0,2,0" 
+                                         Text="{Binding ActiveCIInfoEntity.CUST_DWG_NO,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                                        <i:Interaction.Behaviors >
+                                            <UICommon:TabOnEnterTextBoxBehavior />
+                                        </i:Interaction.Behaviors>
+                                    </TextBox>
+
+                                    <TextBox x:Name="txtCustDwgIssueNo" Grid.Column="2" Grid.Row="7"  Margin="0,0,2,0"
+                                                 IsReadOnly="True" 
+                                                 Text="{Binding ActiveCIInfoEntity.CUST_DWG_NO_ISSUE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }">
+                                        <i:Interaction.Behaviors >
+                                            <UICommon:TabOnEnterTextBoxBehavior />
+                                        </i:Interaction.Behaviors>
+                                    </TextBox>
+                                    <TextBlock Text="Issue Date : " TextAlignment="Right" Grid.Row="9" Grid.Column="1"></TextBlock>
+                                    <Control:DatePickerCus Name ="lblIssueDate"  Grid.Row="9" Grid.Column="2" IsEnabled="False"  SelectedDate="{Binding ActiveCIInfoEntity.CUST_STD_DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"   Margin="0,0,2,0"></Control:DatePickerCus>
+
+                                    <TextBox x:Name="lblFinsh" Grid.Column="1" TextWrapping="Wrap" Height="30" Grid.Row="11" Grid.ColumnSpan="2"  
+                                         IsReadOnly="True" Margin="0,0,2,0"
+                                         Text="{Binding MandatoryFields.FINISH_DESC,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay }" TextAlignment="Left">
+                                    </TextBox>
+                                    <!--<TextBlock Text="{Binding ActiveCIInfoEntity.REALISATION,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, Converter={StaticResource DecimalConverter}}" Name ="txtRealisation1" TextAlignment="Left"  Grid.Row="11" Grid.Column="3" Background="White" Height="25" ></TextBlock>-->
+                                    <Control:DecimalTextBox IsFormatRequired="False" x:Name="txtREALISATION" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2"  IsReadOnly="True"
+                                         MaxDecimalPlaces="2" MaxLength="13"  Margin="0,0,2,0" 
+                                         Text="{Binding ActiveCIInfoEntity.REALISATION,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TextAlignment="Left">
+                                        <i:Interaction.Behaviors >
+                                            <UICommon:TabOnEnterTextBoxBehavior />
+                                        </i:Interaction.Behaviors>
+                                    </Control:DecimalTextBox>
+                                </Grid>
+                            </Grid>
+                            <TextBlock Text="Product Family :" TextAlignment="Right" Grid.Row="15" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Type :" TextAlignment="Right" Grid.Row="17" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="{Binding MandatoryFields.HeadForm,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TextAlignment="Right" Grid.Row="19" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="{Binding MandatoryFields.ShankForm,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TextAlignment="Right" Grid.Row="21" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="{Binding MandatoryFields.EndForm,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TextAlignment="Right" Grid.Row="23" Grid.Column="1"></TextBlock>
+                            <TextBlock Visibility="{Binding InternalThreadedVisibility,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Text="Driving Feature :" TextAlignment="Right" Grid.Row="25" Grid.Column="1"></TextBlock>
+                            <TextBlock Visibility="{Binding InternalThreadedVisibility,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Text="Additional Feature :" TextAlignment="Right" Grid.Row="27" Grid.Column="1"></TextBlock>
+                            <TextBlock Visibility="{Binding InternalThreadedVisibility,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Text="Keywords :" TextAlignment="Right" Grid.Row="29" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Product Group Category :" TextAlignment="Right" Grid.Row="{Binding MandatoryFields.RowProductGroupCategory,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="Similarity :" TextAlignment="Right" Grid.Row="{Binding MandatoryFields.RowSimilarity,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Grid.Column="1"></TextBlock>
+                            <Control:ComboBoxWithSearch x:Name="ltbProductFamily" Tag="Enter/Select Product Family" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="15"  Grid.Column="3" Width="268" MaxLength="25" Margin="0,0,5,0"
+                                     SelectedValuePath="FAMILY" DisplayValuePath="FAMILY" 
+                                     SelectedValue="{Binding MandatoryFields.FAMILY,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ProductFamilyDataSource}"
+                                     SelectedText="{Binding MandatoryFields.FAMILY, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ProductFamilyHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ProductFamilyDropDownItems}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ProductFamilySelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ProductFamilyEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ProductFamilyEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch x:Name="ltbType" Tag="Enter/Select Type" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="17"  Grid.Column="3" Width="268" MaxLength="25"
+                                     SelectedValuePath="TYPE" DisplayValuePath="TYPE"
+                                     SelectedValue="{Binding MandatoryFields.TYPE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ProductTypeDataSource}"
+                                     SelectedText="{Binding MandatoryFields.TYPE, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ProductTypeHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ProductTypeDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ProductTypeSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ProductTypeEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ProductTypeEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch x:Name="ltbHeadForm" Tag="Enter/Select HeadForm" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="19"  Grid.Column="3" Width="268" MaxLength="25"
+                                     SelectedValuePath="HEAD_STYLE" DisplayValuePath="HEAD_STYLE"
+                                     SelectedValue="{Binding MandatoryFields.HEAD_STYLE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ProductHeadFormDataSource}"
+                                     SelectedText="{Binding MandatoryFields.HEAD_STYLE, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ProductHeadFormHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ProductHeadFormDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ProductHeadFormSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ProductHeadFormEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ProductHeadFormEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch x:Name="ltbShankForm" Tag="Enter/Select ShankForm" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="20"  Grid.Column="3" Width="268" MaxLength="25"
+                                     SelectedValuePath="APPLICATION" DisplayValuePath="APPLICATION"
+                                     SelectedValue="{Binding MandatoryFields.APPLICATION,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ProductShankFormDataSource}"
+                                     SelectedText="{Binding MandatoryFields.APPLICATION, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ProductShankFormHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ProductShankFormDropDownItems}"  Grid.RowSpan="3"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ProductShankFormSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ProductShankFormEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ProductShankFormEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch x:Name="ltbEndForm" Tag="Enter/Select EndForm" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="23"  Grid.Column="3" Width="268" MaxLength="6"
+                                     SelectedValuePath="PRD_CLASS_CD" DisplayValuePath="PRD_CLASS_CD"
+                                     SelectedValue="{Binding MandatoryFields.PRD_CLASS_CD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ProductEndFormDataSource}"
+                                     SelectedText="{Binding MandatoryFields.PRD_CLASS_CD, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ProductEndFormHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ProductEndFormDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ProductEndFormSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ProductEndFormEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ProductEndFormEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch x:Name="ltbDrivingFeature" Tag="Enter/Select DrivingFeature" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="25"  Grid.Column="3" Width="268" MaxLength="6"
+                                     SelectedValuePath="PRD_GRP_CD" DisplayValuePath="PRD_GRP_CD"
+                                     SelectedValue="{Binding MandatoryFields.PRD_GRP_CD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ProductDrivingFeatureDataSource}"
+                                     SelectedText="{Binding MandatoryFields.PRD_GRP_CD, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ProductDrivingFeatureHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ProductDrivingFeatureDropDownItems}"
+                                     Visibility="{Binding InternalThreadedVisibility,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ProductDrivingFeatureSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ProductDrivingFeatureEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ProductDrivingFeatureEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch x:Name="ltbAdditionalFeature" Tag="Enter/Select AdditionalFeature" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="27"  Grid.Column="3" Width="268" MaxLength="6"
+                                     SelectedValuePath="ADDL_FEATURE" DisplayValuePath="ADDL_FEATURE"
+                                     SelectedValue="{Binding MandatoryFields.ADDL_FEATURE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ProductAdditionalFeatureDataSource}"
+                                     SelectedText="{Binding MandatoryFields.ADDL_FEATURE, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ProductAdditionalFeatureHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ProductAdditionalFeatureDropDownItems}"
+                                     Visibility="{Binding InternalThreadedVisibility,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ProductAdditionalFeatureSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ProductAdditionalFeatureEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ProductAdditionalFeatureEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch x:Name="ltbKeywords" Tag="Enter/Select Keywords" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="29"  Grid.Column="3" Width="268" MaxLength="6"
+                                     SelectedValuePath="KEYWORDS" DisplayValuePath="KEYWORDS"
+                                     SelectedValue="{Binding MandatoryFields.KEYWORDS,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ProductKeywordsDataSource}"
+                                     SelectedText="{Binding MandatoryFields.KEYWORDS, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ProductKeywordsHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ProductKeywordsDropDownItems}"
+                                     Visibility="{Binding InternalThreadedVisibility,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ProductKeywordsSelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ProductKeywordsEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ProductKeywordsEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch x:Name="ltbPGCategory" Tag="Enter/Select PGCategory" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="{Binding MandatoryFields.RowProductGroupCategory,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  Grid.Column="3" Width="268" MaxLength="3"
+                                     SelectedValuePath="PG_CATEGORY" DisplayValuePath="PG_CATEGORY"
+                                     SelectedValue="{Binding MandatoryFields.PG_CATEGORY,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding ProductPGCategoryDataSource}"
+                                     SelectedText="{Binding MandatoryFields.PG_CATEGORY, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding ProductPGCategoryHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding ProductPGCategoryDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding ProductPGCategorySelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding ProductPGCategoryEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding ProductPGCategoryEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch x:Name="ltbSimilarity" Tag="Enter/Select Similarity" HorizontalAlignment="Left" IsReadOnly="True"
+                                     Grid.Row="{Binding MandatoryFields.RowSimilarity,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  Grid.Column="3" Width="265" MaxLength="1"
+                                     SelectedValuePath="SIM_TO_STD_CD" DisplayValuePath="SIM_TO_STD_CD"
+                                     SelectedValue="{Binding MandatoryFields.SIM_TO_STD_CD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     DataSource="{Binding SimilarityDataSource}"
+                                     SelectedText="{Binding MandatoryFields.SIM_TO_STD_CD, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                     ButtonVisibility="{Binding SimilarityHasDropDownVisibility}" 
+                                     ColumnsHeader="{Binding SimilarityDropDownItems}"
+                                     >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding SimilaritySelectedItemChangedCommand}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding SimilarityEndEditCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Control:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding  Key="Enter" Command="{Binding SimilarityEndEditCommand}"  />
+                                </Control:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                        </Grid>
+                    </Border>
+
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

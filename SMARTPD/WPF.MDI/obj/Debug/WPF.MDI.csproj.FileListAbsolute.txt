@@ -1,0 +1,69 @@
+E:\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.dll
+E:\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.pdb
+E:\ProcessDesigner\WPF.MDI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.cache
+E:\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.lref
+E:\ProcessDesigner\WPF.MDI\obj\Debug\Themes\Generic.baml
+E:\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.g.resources
+E:\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.dll
+E:\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.pdb
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.pdb
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.csprojResolveAssemblyReference.cache
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\WPF.MDI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.cache
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.lref
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\WPF.MDI\obj\Debug\Themes\Generic.baml
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.g.resources
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.pdb
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.pdb
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.csprojResolveAssemblyReference.cache
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\WPF.MDI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.cache
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.lref
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\WPF.MDI\obj\Debug\Themes\Generic.baml
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.g.resources
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.pdb
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.pdb
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.csprojResolveAssemblyReference.cache
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\WPF.MDI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.cache
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.lref
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\WPF.MDI\obj\Debug\Themes\Generic.baml
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.g.resources
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.pdb
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.pdb
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.csprojResolveAssemblyReference.cache
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.cache
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.lref
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\Themes\Generic.baml
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.g.resources
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.pdb
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.pdb
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.csprojResolveAssemblyReference.cache
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.cache
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.lref
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\Themes\Generic.baml
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.g.resources
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.pdb
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\bin\Debug\WPF.MDI.pdb
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.cache
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI_MarkupCompile.lref
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\Themes\Generic.baml
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.g.resources
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.pdb
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\WPF.MDI\obj\Debug\WPF.MDI.csprojResolveAssemblyReference.cache

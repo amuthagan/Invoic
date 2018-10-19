@@ -1,0 +1,211 @@
+﻿<Window x:Class="ProcessDesigner.frmCopyStatus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+       xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        Title="Copy Status" Height="500" Width="550" MinWidth="700"  Icon="Images/logo.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{StaticResource WindowBackground}">
+    <Border BorderThickness="1" BorderBrush="Black"  Margin="5,5,5,5" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="40*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="70*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="Data to be copied" Grid.Row="0" Grid.Column="0" Margin="2,2,2,2" >
+                    <Border Grid.Row="0" Margin="2,2,2,2" BorderThickness="1" CornerRadius="7">
+                        <Grid Grid.Row="0" Margin="5,5,5,5" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20*"></RowDefinition>
+                                <RowDefinition Height="20*"></RowDefinition>
+                                <RowDefinition Height="20*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions >
+                                <ColumnDefinition Width="50*"></ColumnDefinition>
+                                <ColumnDefinition Width="50*"></ColumnDefinition>
+                                <ColumnDefinition Width="50*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox x:Name="chkPrdMast" IsChecked="{Binding IschkPrdMast}" IsEnabled="{Binding En_chkPrdMast}" Grid.Column="0" Grid.Row="0" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding OnCheckBoxClicked}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                </CheckBox.LayoutTransform>
+                                <TextBlock Text="Product Master" FontSize="8"/>
+                            </CheckBox>
+                            <CheckBox x:Name="chkProcessSheet" IsChecked="{Binding IschkProcessSheet}" IsEnabled="{Binding En_chkProcessSheet}"  Grid.Column="0" Grid.Row="1" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding OnCheckBoxClicked}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                </CheckBox.LayoutTransform>
+                                <TextBlock Text="Process Sheet" FontSize="8"/>
+                            </CheckBox>
+                            <CheckBox  x:Name="chkControlPlan" IsChecked="{Binding IschkControlPlan}" IsEnabled="{Binding En_chkControlPlan}"  Grid.Column="0" Grid.Row="2" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding OnCheckBoxClicked}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                </CheckBox.LayoutTransform>
+                                <TextBlock Text="Control Plan" FontSize="8"/>
+                            </CheckBox>
+                            <CheckBox x:Name="chkDrawings" IsChecked="{Binding IschkDrawings}" IsEnabled="{Binding En_chkDrawings}"  Grid.Column="1" Grid.Row="0" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding OnCheckBoxClicked}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                </CheckBox.LayoutTransform>
+                                <TextBlock Text="Drawings" FontSize="8"/>
+                            </CheckBox>
+                            <CheckBox x:Name="chkToolSchedule" IsChecked="{Binding IschkToolSchedule}" IsEnabled="{Binding En_chkToolSchedule}"  Grid.Column="1" Grid.Row="1" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding OnCheckBoxClicked}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                </CheckBox.LayoutTransform>
+                                <TextBlock Text="Tool Schedule" FontSize="8"/>
+                            </CheckBox>
+                            <Button Command="{Binding CopyClickCommand}" Content="Start Copy" Grid.Row="0" Grid.RowSpan="3" Grid.Column="2"  Width="100" Height="100" HorizontalAlignment="Center" ></Button>
+                        </Grid>
+                    </Border>
+                </GroupBox>
+
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                <GroupBox Header="Copy Status" Grid.Row="0" Grid.Column="0"  Grid.RowSpan="3" Margin="2,2,2,2">
+                    <Grid Grid.Row="0" Height="250" Margin="5,5,5,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"></RowDefinition>
+                            <RowDefinition Height="10*"></RowDefinition>
+                            <RowDefinition Height="10*"></RowDefinition>
+                            <RowDefinition Height="10*"></RowDefinition>
+                            <RowDefinition Height="10*"></RowDefinition>
+                            <RowDefinition Height="10*"></RowDefinition>
+                            <RowDefinition Height="10*"></RowDefinition>
+                            <RowDefinition Height="10*"></RowDefinition>
+                            <RowDefinition Height="10*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                            <ColumnDefinition Width="90*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image  Grid.Row="0" Grid.Column="0" Visibility="{Binding imgPrdMaster}" Source="Images/CHECKMRK.ICO"></Image>
+                        <Image  Grid.Row="1" Grid.Column="0" Visibility="{Binding ImgProcessSheetHeader}" Source="/Images/CHECKMRK.ICO"></Image>
+                        <Image  Grid.Row="2" Grid.Column="0" Visibility="{Binding ImgProcessSheet}" Source="/Images/CHECKMRK.ICO"></Image>
+                        <Image  Grid.Row="3" Grid.Column="0" Visibility="{Binding ImgProcessSheetCC}" Source="/Images/CHECKMRK.ICO"></Image>
+                        <Image x:Name="imgTSH" Grid.Row="4" Grid.Column="0" Visibility="{Binding ImgToolScheduleHeader}" Source="/Images/CHECKMRK.ICO"></Image>
+                        <Image x:Name="imgTSD" Grid.Row="5" Grid.Column="0" Visibility="{Binding ImgToolScheduleDetails}" Source="/Images/CHECKMRK.ICO"></Image>
+                        <Image x:Name="ImgCP" Grid.Row="6" Grid.Column="0" Visibility="{Binding imgControlPlan}" Source="/Images/CHECKMRK.ICO"></Image>
+                        <Image x:Name="ImgPD" Grid.Row="7" Grid.Column="0" Visibility="{Binding imgProductDrawing}" Source="/Images/CHECKMRK.ICO"></Image>
+                        <Image x:Name="ImgSD" Grid.Row="8" Grid.Column="0" Visibility="{Binding imgSequenceDrawing}" Source="/Images/CHECKMRK.ICO"></Image>
+                        <Image  Grid.Row="7" Grid.Column="0"></Image>
+                        <Image  Grid.Row="8" Grid.Column="0"></Image>
+                        <TextBlock Name="lblProductMaster" Text="Product Master" Grid.Row="0"  Grid.Column="1" TextAlignment="Left"></TextBlock>
+                        <TextBlock Name="lblProcessSheetHeader" Text="Process Sheet Header" Grid.Row="1"  Grid.Column="1" TextAlignment="Left"></TextBlock>
+                        <TextBlock Name="lblProcessSheet" Text="Process Sheet" Grid.Row="2"  Grid.Column="1" TextAlignment="Left"></TextBlock>
+                        <TextBlock Name="lblProcessSheetCostCentres" Text="Process Sheet Cost Centres" Grid.Row="3"  Grid.Column="1" TextAlignment="Left"></TextBlock>
+                        <TextBlock Name="lblToolScheduleHeader" Text="Tool Schedule Header" Grid.Row="4"  Grid.Column="1" TextAlignment="Left"></TextBlock>
+                        <TextBlock Name="lblToolScheduleDetails" Text="Tool Schedule Details" Grid.Row="5"  Grid.Column="1" TextAlignment="Left"></TextBlock>
+                        <TextBlock Name="lblTControlPlan" Text="Control Plan" Grid.Row="6"  Grid.Column="1" TextAlignment="Left"></TextBlock>
+                        <TextBlock Name="lblProductDrawing" Text="Product Drawing" Grid.Row="7"  Grid.Column="1" TextAlignment="Left"></TextBlock>
+                        <TextBlock Name="lblSequenceDrawing" Text="Sequence Drawing" Grid.Row="8"  Grid.Column="1" TextAlignment="Left"></TextBlock>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <GroupBox Header="Copy Parameters" Grid.Row="0" Grid.Column="0"  Grid.RowSpan="3" Margin="2,2,2,2">
+                    <Border Grid.Row="0" Margin="2,2,2,2" BorderThickness="1" CornerRadius="7">
+                        <Grid Grid.Row="0" Height="200" Margin="5,5,5,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"></RowDefinition>
+                                <RowDefinition Height="10*"></RowDefinition>
+                                <RowDefinition Height="10*"></RowDefinition>
+                                <RowDefinition Height="10*"></RowDefinition>
+                                <RowDefinition Height="10*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions >
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Name="lblOldPartNo" Text="Old Part No : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                            <TextBlock Name="lblOldRouteNo" Text="Old Process No : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                            <TextBlock Name="lblOldSeqNo" Text="Old Seq No : " Grid.Row="2"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                            <TextBlock Name="lblOldCCNo" Text="Old CC No : " Grid.Row="3"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                            <TextBlock Name="lblOldSHNo" Text="Old SH No : " Grid.Row="4"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+
+                            <TextBlock Name="lblNewPartNo" Text="New Part No : " Grid.Row="0"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                            <TextBlock Name="lblNewRouteNo" Text="New Process No : " Grid.Row="1"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                            <TextBlock Name="lblNewSeqNo" Text="New Seq No : " Grid.Row="2"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                            <TextBlock Name="lblNewCCNo" Text="New CC No : " Grid.Row="3"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                            <TextBlock Name="lblNewSHNo" Text="New SH No : " Grid.Row="4"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                            <TextBox  x:Name="txtOldPartNo" Tag="Please enter Old Part No." Width="120" HorizontalAlignment="Left" Text="{Binding OldPartNo ,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }"  Height="25" Grid.Row="0"  Grid.Column="1" MaxLength="9" CharacterCasing="Upper" ></TextBox>
+                            <TextBox  x:Name="txtOldRouteNo" Width="60" Tag="Please enter Old Process No." HorizontalAlignment="Left" Text="{Binding OldRouteNo ,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" IsReadOnly="{Binding IsReadOnlyProcessNo}"  Height="25" Grid.Row="1"  Grid.Column="1" MaxLength="2" Lookup:TextBoxIntsOnly.Mask="UnSignedInt" ></TextBox>
+                            <TextBox  x:Name="txtOldSeqNo" Width="60" Tag="Please enter Old Seq No." HorizontalAlignment="Left" Text="{Binding OldSeqNo ,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" IsReadOnly="{Binding IsReadOnlySeqNo}"  Height="25" Grid.Row="2"  Grid.Column="1"  MaxLength="4" Lookup:TextBoxIntsOnly.Mask="UnSignedInt"></TextBox>
+                            <TextBox  x:Name="txtOldCCNo" Width="40" Tag="Please enter Old CC No." HorizontalAlignment="Left" Text="{Binding OldCCSno ,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" IsReadOnly="{Binding IsReadOnlyCCSno}"  Height="25" Grid.Row="3"  Grid.Column="1" MaxLength="3" Lookup:TextBoxIntsOnly.Mask="UnSignedInt"></TextBox>
+                            <TextBox  x:Name="txtOldSHNo" Tag="Please enter Old SH No." Width="50" HorizontalAlignment="Left" Text="{Binding OldShNo ,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" IsReadOnly="{Binding IsReadOnlySHNo}"  Height="25" Grid.Row="4"  Grid.Column="1" MaxLength="4" Lookup:TextBoxIntsOnly.Mask="UnSignedInt"></TextBox>
+                            <TextBox  x:Name="txtNewPartNo" Tag="Please enter New Part No." Width="120" HorizontalAlignment="Left"  Text="{Binding NewPartNo ,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" Height="25" Grid.Row="0"  Grid.Column="3" MaxLength="11" CharacterCasing="Upper" ></TextBox>
+                            <!--<Lookup:ComboBoxCus MaxLength="9"  IsReadOnly="{Binding IsNewPartNoReadonly,UpdateSourceTrigger=PropertyChanged}"   Grid.Row="0"  Grid.Column="3"  x:Name="cmbNewPartNo"  ButtonVisibility="{Binding ButtonVisibleNewPartNumber,UpdateSourceTrigger=PropertyChanged}"
+					DataSource="{Binding NewPartNoDetails,UpdateSourceTrigger=PropertyChanged}"   SelectedItem="{Binding SelectedRowNewPart}"  SelectedValuePath="PART_NO" SelectedValue="{Binding NewPartNo,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" ColumnsHeader="{Binding DropDownItemsPart,UpdateSourceTrigger=PropertyChanged}"  >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandPartNo}"/>
+                                    </i:EventTrigger>                                    
+                                </i:Interaction.Triggers>
+                            </Lookup:ComboBoxCus>-->
+
+                            <TextBox  x:Name="txtNewRouteNo" Width="60" Tag="Please enter New Process No." HorizontalAlignment="Left" Text="{Binding NewRouteNo ,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" IsReadOnly="{Binding IsReadOnlyProcessNo}" Height="25" Grid.Row="1"  Grid.Column="3" MaxLength="2" Lookup:TextBoxIntsOnly.Mask="UnSignedInt"></TextBox>
+                            <!--<Lookup:ComboBoxCus MaxLength="2"  Lookup:TextBoxIntsOnly.Mask="UnSignedInt" IsReadOnly="{Binding IsNewRouteNoReadonly,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"  Grid.Column="3"  x:Name="cmbNewRouteNo"  ButtonVisibility="{Binding ButtonVisibleNewRouteNumber,UpdateSourceTrigger=PropertyChanged}"
+					DataSource="{Binding NewRouteNoDetails,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedRowNewRoute}"  SelectedValuePath="ROUTE_NO" SelectedValue="{Binding NewRouteNo,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" ColumnsHeader="{Binding DropDownItemsRoute,UpdateSourceTrigger=PropertyChanged}"  >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding SelectChangeComboCommanddNewRouteNo}"/>
+                                    </i:EventTrigger>
+                                    </i:Interaction.Triggers>                               
+                            </Lookup:ComboBoxCus>-->
+
+                            <TextBox x:Name="txtNewSeqNo" Width="60" Tag="Please enter New Seq. No." HorizontalAlignment="Left" Text="{Binding NewSeqNo ,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" IsReadOnly="{Binding IsReadOnlySeqNo}" Height="25" Grid.Row="2"  Grid.Column="3" MaxLength="4" Lookup:TextBoxIntsOnly.Mask="UnSignedInt"></TextBox>
+                            <!--<Lookup:ComboBoxCus MaxLength="4"  Lookup:TextBoxIntsOnly.Mask="UnSignedInt" IsReadOnly="{Binding IsNewRouteNoReadonly,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2"  Grid.Column="3"  x:Name="cmbNewSeqNo"  ButtonVisibility="{Binding ButtonVisibleNewRouteNumber,UpdateSourceTrigger=PropertyChanged}"
+					DataSource="{Binding NewSeqNoDetails,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedRowNewSequence}"  SelectedValuePath="SEQ_NO" SelectedValue="{Binding NewSeqNo,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" ColumnsHeader="{Binding DropDownItemsSeq,UpdateSourceTrigger=PropertyChanged}"  >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <i:InvokeCommandAction Command="{Binding SelectChangeComboCommanddNewSequenceNo}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Lookup:ComboBoxCus>-->
+                            <TextBox x:Name="txtNewCCNo" Tag="Please enter New CC No." Width="40" HorizontalAlignment="Left" Text="{Binding NewCCSno ,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" IsReadOnly="{Binding IsReadOnlyCCSno}" Height="25" Grid.Row="3"  Grid.Column="3" MaxLength="3" Lookup:TextBoxIntsOnly.Mask="UnSignedInt"></TextBox>
+                            <TextBox x:Name="txtNewSHNo" Tag="Please enter New SH No." Width="50" HorizontalAlignment="Left" Text="{Binding NewShNo ,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }"  IsReadOnly="{Binding IsReadOnlySHNo}" Height="25" Grid.Row="4"  Grid.Column="3" MaxLength="4" Lookup:TextBoxIntsOnly.Mask="UnSignedInt"></TextBox>
+                        </Grid>
+                    </Border>
+                </GroupBox>
+            </Grid>
+            <Button Content="Close" Grid.Row="2" Grid.Column="1" Width="100" Height="50" HorizontalAlignment="Center" Command="{Binding OnCloseCommand}"  ToolTip="Close Form" Lookup:AddedProperty.Image="Images/Close.png" ></Button>
+        </Grid>
+    </Border>
+</Window>

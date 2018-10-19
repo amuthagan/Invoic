@@ -1,0 +1,37 @@
+﻿<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="GridProcessSheetModel" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="PART_NO" type="xs:string"/>
+                <xs:element name="PART_DESC" type="xs:string"/>
+                <xs:element name="cust_name" type="xs:string"/>
+                <xs:element name="cust_dwg_no" type="xs:string"/>
+                <xs:element name="QUALITY" type="xs:string"/>
+                <xs:element name="WIRE_ROD_CD" type="xs:string"/>
+                <xs:element name="wire_size_min" type="xs:string"/>
+                <xs:element name="wire_size_max" type="xs:string"/>
+                <xs:element name="CHEESE_WT" type="xs:string"/>
+                <xs:element name="FINISH_WT" type="xs:string"/>
+                <xs:element name="seq_no" type="xs:string"/>
+                <xs:element name="OPN_DESC" type="xs:string"/>
+                <xs:element name="OPN_CD" type="xs:string"/>
+                <xs:element name="CC_CODE" type="xs:string"/>
+                <xs:element name="SETUPTIME" type="xs:string"/>
+                <xs:element name="OUTPUT" type="xs:string"/>
+                <xs:element name="EFFY" type="xs:string"/>
+                <xs:element name="ISSUE_NO" type="xs:string"/>
+                <xs:element name="ISSUE_DATE" type="xs:string"/>
+                <xs:element name="ISSUE_ALTER" type="xs:string"/>
+                <xs:element name="COMPILED_BY" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>

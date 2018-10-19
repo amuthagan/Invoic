@@ -1,0 +1,392 @@
+﻿<UserControl x:Class="ProcessDesigner.frmCCMaster"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"      
+        xmlns:Common="clr-namespace:ProcessDesigner.UICommon"
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:t="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"    
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+        Height="400" Width="700" Background="{StaticResource WindowBackground}" Loaded="UserControl_Loaded"  >
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="OperCodeViewSource" Source="{Binding Path=OperCodeMaster}"/>
+        <CollectionViewSource x:Key="UnitCodeViewSource" Source="{Binding Path=UnitCodeMaster}"/>
+    </UserControl.Resources>
+    <Border>
+        <Grid  KeyboardNavigation.TabNavigation ="Cycle">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="11*"></RowDefinition>
+                <RowDefinition Height="7*"></RowDefinition>
+                <RowDefinition Height="38*"></RowDefinition>
+                <RowDefinition Height="39*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ToolBar  >
+                <Button Content="Add F3" Grid.Row="0" Grid.Column="0" Width="60" Height="45" Name="btnAdd" IsEnabled="{Binding AddEnable}" ToolTip="Add" Command="{Binding AddNewClickCommand}"  KeyboardNavigation.IsTabStop="False"  Lookup:AddedProperty.Image="Images/Add.png"  ></Button>
+                <Button Content="Edit/View F5" Padding="1" Grid.Row="0" Grid.Column="1" Width="75"  Height="45" Name="btnEdit"  IsEnabled="{Binding EditEnable,UpdateSourceTrigger=PropertyChanged}" ToolTip="Edit" Command="{Binding EditClickCommand}" KeyboardNavigation.IsTabStop="False" Lookup:AddedProperty.Image="Images/Edit.png" ></Button>
+                <Button Content="Save Ctrl+S" Grid.Row="0" Padding="1" Grid.Column="2"  Width="70"  Height="45"  Name="btnSave" IsEnabled="{Binding SaveEnable}" ToolTip="Save" Command="{Binding SaveClickCommand}" KeyboardNavigation.IsTabStop="False" Lookup:AddedProperty.Image="Images/Save.png" />
+                <Button Content="{Binding Path=ShoworHidePhotoText}" Grid.Row="0" Grid.Column="3"  Height="45"  Width="90" Name="btnShowPhoto" IsEnabled="{Binding PhotoEnable}" Command="{Binding ShowPhotoClickCommand}" ToolTip="{Binding PhotoToolTip}" KeyboardNavigation.IsTabStop="False" Lookup:AddedProperty.Image="Images/AddImage.png"  />
+                <Button Content="Show Details" Padding="2" Grid.Row="0" Grid.Column="4"  Width="80"  Height="45"  Name="btnShowDetails" IsEnabled="{Binding ShowDetailsEnable}" Command="{Binding ShowDetailsClickCommand}"  ToolTip="Show Details" KeyboardNavigation.IsTabStop="False" Lookup:AddedProperty.Image="Images/Show.png" />
+                <Button Content="Update Cost" Padding="1" Grid.Row="0" Grid.Column="5"  Width="77"  Height="45"  Name="btnUpdateCostDetails"  Command="{Binding ImportCostClickCommand}"  ToolTip="Update Variable/Fixed Cost" KeyboardNavigation.IsTabStop="False" Lookup:AddedProperty.Image="Images/ExcelExport.png" />
+                <Button Content="Close F9" Grid.Row="0" Grid.Column="6" Width="60"  Height="45" Name="btnClose" ToolTip="Close" Command="{Binding CloseClickCommand}" KeyboardNavigation.IsTabStop="False" Lookup:AddedProperty.Image="Images/Close.png"></Button>
+            </ToolBar>
+            <Border BorderThickness="1" Grid.Row="1" Margin="10,5,10,-5" >
+                <Grid Grid.Row="1" Name="grdCostCenter" Margin="5,0,5,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Text="Cost Centre Code :" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="0" ></TextBlock>
+                    <!--<TextBox Grid.Column="1" Grid.Row="0" Name="tbCostCentreCode" Text="{Binding CostCentCode}"></TextBox>-->
+                    <Control:ComboBoxCus Margin="6,0,0,0" Grid.Column="1" IsReadOnly="{Binding ReadOnly}" Grid.Row="0" x:Name="usrCostCentreCode"  SelectedValue="{Binding CostCenterMasterModel.CostCentCode,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
+                                     DataSource="{Binding CostCenterCodeCombo,UpdateSourceTrigger=PropertyChanged}"
+                                     SelectedValuePath="COST_CENT_CODE"
+                                     Tag="Please enter/select Cost Centre Code" Width="130" HorizontalAlignment="Left"
+                                     ButtonVisibility="{Binding HasDropDownVisibility,UpdateSourceTrigger=PropertyChanged}"
+                                         MaxLength="15"
+                                         ColumnsHeader="{Binding DropDownItems}"
+                                    >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <i:Interaction.Behaviors >
+                            <!--<Common:TabOnEnterComboBoxCusBehavior />-->
+
+                        </i:Interaction.Behaviors>
+                    </Control:ComboBoxCus>
+                    <TextBlock Text="Description : " Grid.ColumnSpan="2"  Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="-180,2,2,2" ></TextBlock>
+                    <TextBox Grid.Column="2"  Grid.ColumnSpan="2"  Common:FocusExtension.IsFocused="{Binding ChangeFocus}"  Grid.Row="0"   Name="tbDescription" Text="{Binding CostCenterMasterModel.CostCentDesc,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" MaxLength="50" Tag="Please enter Cost Center Description" Width="200" HorizontalAlignment="Center" Margin="94,2,2,2"  ></TextBox>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="2" Margin="10,5,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45*"></RowDefinition>
+                    <RowDefinition Height="0*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border  BorderThickness="1" Margin="0,5,0,2">
+                    <Grid  Name="grdCostCenter1" Margin="10" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                            <ColumnDefinition Width="20*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Category : " Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="0" ></TextBlock>
+                        <!--<ComboBox Grid.Column="1" Grid.Row="0" Name="cmbCategory"  SelectedValue="{Binding CateCode,Mode=TwoWay}"  ToolTip="Select Category Code"  ></ComboBox>-->
+                        <Control:ComboBoxWithSearch Grid.Row="0" Grid.Column="1" DataSource="{Binding CategoryCombo}" DropDownWidth="300"  
+                                             SelectedValue="{Binding CostCenterMasterModel.CateCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding CostCenterMasterModel.Category,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="CATE_CODE"  DisplayValuePath="CATEGORY"   IsReadOnly="True"                                             
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownHeaderCategory}" Tag="Please select Category Code" Name="cmbCategory">
+                        </Control:ComboBoxWithSearch>
+                        <!--<bhCustCtrl:CustComboBox Grid.Column="1" Grid.Row="0" IsReadOnly="True"  x:Name="cmbCategory1"  ToolTip="Select Category Code"
+                                             IsSynchronizedWithCurrentItem="False"   
+                                             ItemsSource="{Binding CategoryCombo}"   
+                                             SelectedValue="{Binding CostCenterMasterModel.CateCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="CATE_CODE" 
+                                             DisplayMemberPath="CATEGORY"   
+                                             IsEditable="True"
+                                              VerticalContentAlignment="Center" >
+                            <toolKit:DataGridTextColumn Width="75"  Header="Code" Binding="{Binding CATE_CODE}" />
+                            <toolKit:DataGridTextColumn Width="150" Header="Category Description" Binding="{Binding CATEGORY}" />
+                        </bhCustCtrl:CustComboBox>-->
+                        <TextBlock Text="Location : "  VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Column="0" Grid.Row="1" ></TextBlock>
+                        <Control:ComboBoxWithSearch Grid.Row="1" Grid.Column="1" DataSource="{Binding LocationCombo}" DropDownWidth="300" 
+                                             SelectedValue="{Binding CostCenterMasterModel.LocCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding CostCenterMasterModel.LocationName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="LOC_CODE"  DisplayValuePath="LOCATION"   IsReadOnly="True"                                             
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownHeaderLocation}" Tag="Please select Location Code" Name="cmbLocation">
+                        </Control:ComboBoxWithSearch>
+                        <!--<ComboBox Grid.Column="1" Grid.Row="1" Name="cmbLocation" SelectedValue="{Binding LocCode,Mode=TwoWay}" ToolTip="Select Location Code" ></ComboBox>-->
+                        <!--<bhCustCtrl:CustComboBox Grid.Column="1" Grid.Row="1" IsReadOnly="True"  x:Name="cmbLocation"  ToolTip="Select Location Code"
+                                             IsSynchronizedWithCurrentItem="False"   
+                                             ItemsSource="{Binding LocationCombo}"
+                                             SelectedValue="{Binding CostCenterMasterModel.LocCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="LOC_CODE" 
+                                             DisplayMemberPath="LOCATION"   
+                                             IsEditable="True"
+                                              VerticalContentAlignment="Center" >
+                            <toolKit:DataGridTextColumn Width="75"  Header="Code" Binding="{Binding LOC_CODE}" />
+                            <toolKit:DataGridTextColumn Width="150" Header="Location Description" Binding="{Binding LOCATION}" />
+                        </bhCustCtrl:CustComboBox>-->
+                        <TextBlock Text="Module : " Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="2" ></TextBlock>
+                        <Control:ComboBoxWithSearch Grid.Row="2" Grid.Column="1" DataSource="{Binding ModuleCombo}" DropDownWidth="300" 
+                                             SelectedValue="{Binding CostCenterMasterModel.Module,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding CostCenterMasterModel.ModuleName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="MODULE_CODE"  DisplayValuePath="MODULE_NAME"   IsReadOnly="True"                                             
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownHeaderModule}" Tag="Please select Module Code" Name="cmbModule">
+                        </Control:ComboBoxWithSearch>
+                        <!--<ComboBox Grid.Column="1" Grid.Row="2" Name="cmbModule" SelectedValue="{Binding Module,Mode=TwoWay}" ToolTip="Select Module Code" ></ComboBox>-->
+                        <!--<bhCustCtrl:CustComboBox Grid.Column="1" Grid.Row="2" IsReadOnly="True" x:Name="cmbModule"  ToolTip="Select Module Code"
+                                             IsSynchronizedWithCurrentItem="False"   
+                                             ItemsSource="{Binding ModuleCombo}"    
+                                             SelectedValue="{Binding CostCenterMasterModel.Module,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="MODULE_CODE" 
+                                             DisplayMemberPath="MODULE_NAME"   
+                                             IsEditable="True"
+                                              VerticalContentAlignment="Center" >
+                            <toolKit:DataGridTextColumn Width="75"  Header="Code" Binding="{Binding MODULE_CODE}" />
+                            <toolKit:DataGridTextColumn Width="150" Header="Module Description" Binding="{Binding MODULE_NAME}" />
+                        </bhCustCtrl:CustComboBox>-->
+
+                        <TextBlock Text="Efficiency : " Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,6,211,6" ></TextBlock>
+                        <Control:DecimalTextBox Width="38" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="3" Name="tbEfficiency" Text="{Binding CostCenterMasterModel.Efficiency,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged , StringFormat=F2}" MaxDecimalPlaces="2"  AllowNegative="False" Tag="Please enter Efficiency" MaxLength="5" ></Control:DecimalTextBox>
+                        <TextBlock Text="Machine Name : " Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="4" ></TextBlock>
+                        <TextBox Grid.Column="2" Grid.Row="4" Name="tbMachineName" Text="{Binding CostCenterMasterModel.MachineName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Tag="Please enter Machine Name"  ></TextBox>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="0" Grid.Column="1" BorderThickness="1" Margin="5,5,0,2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80*"></RowDefinition>
+                            <RowDefinition Height="20*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Grid.Column="0" Name="imgPhoto" Source="{Binding PhotoSource,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding ShowOrHidePhotoVisibility}" ></Image>
+                        <Border Grid.Column="0" Grid.Row="1" BorderThickness="0.5" VerticalAlignment="Top" ></Border>
+                        <Grid Grid.Column="0" Grid.Row="1" Margin="2,3,2,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80*"></ColumnDefinition>
+                                <ColumnDefinition Width="20*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0" Grid.Row="0" Name="tbFileName" Text="{Binding CostCenterMasterModel.FilePath}" IsReadOnly="True" Tag="FILE_PATH" ></TextBox>
+                            <Button Grid.Column="1" Grid.Row="0" Height="25" Content="Upload" Name="btnUpload" Command="{Binding UploadClickCommand}" ToolTip="Select the required image to upload"></Button>
+                        </Grid>
+
+                    </Grid>
+                </Border>
+
+                <GroupBox Grid.Row="1" Header="TPM Information" Margin="0,5,0,0" Name="grpTPMInfo" Visibility="Collapsed">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"></ColumnDefinition>
+                            <ColumnDefinition Width="20*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <RadioButton Content="Optimal Conditions" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Name="radCondition" IsChecked="{Binding OptCondition}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <i:InvokeCommandAction Command="{Binding TPMInfoClickCommand}" CommandParameter="Optimal"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </RadioButton>
+                        <RadioButton Content="Standard" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Name="radStandard" IsChecked="{Binding OptStandard}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <i:InvokeCommandAction Command="{Binding TPMInfoClickCommand}" CommandParameter="Standard"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </RadioButton>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Grid.Row="1" Grid.Column="1" Header="Standard" Name="grpStandard" Margin="5,5,0,0" Visibility="{Binding StandardOptionVisibility}" >
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"></ColumnDefinition>
+                            <ColumnDefinition Width="20*"></ColumnDefinition>
+                            <ColumnDefinition Width="20*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Content="Cleaning" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Name="radCleaning" IsChecked="{Binding OptCleaning}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <i:InvokeCommandAction Command="{Binding StandardClickCommand}" CommandParameter="1"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </RadioButton>
+                        <RadioButton Content="Inspection" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Name="radInspection" IsChecked="{Binding OptInspection}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <i:InvokeCommandAction Command="{Binding StandardClickCommand}" CommandParameter="2"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </RadioButton>
+                        <RadioButton Content="Lubrication" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0" Name="radLubrication" IsChecked="{Binding OptLubrication}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <i:InvokeCommandAction Command="{Binding StandardClickCommand}" CommandParameter="3"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </RadioButton>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+            <GroupBox Header="Output Details " Grid.Row="3" Margin="10,5,10,0">
+                <Grid Grid.Row="3" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                        <ColumnDefinition Width="80*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <!--<TextBlock Text="Output Details :" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center"  HorizontalAlignment="Left" Grid.Row="0" ></TextBlock>-->
+                    <DataGrid RowHeaderWidth="20" Grid.Column="0" Grid.Row="1"  Name="dgOutput" AutoGenerateColumns="False" ItemsSource="{Binding DvOutput}" Margin="0,5,0,0" CanUserDeleteRows="False" SelectedItem="{Binding OutputSelectedRow,UpdateSourceTrigger=PropertyChanged}" CanUserAddRows="False" UICommon:ScrollToTopBehavior.ScrollToTop="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Output" Width="100*" CanUserSort="False" Binding="{Binding OUTPUT,UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="10"/>
+                                        <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedInt"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="RowEditEnding">
+                                <i:InvokeCommandAction  Command="{Binding RowEditEndingOutputCommand}" CommandParameter="{Binding ElementName=dgOutput, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <!--<MenuItem Header="Delete" Command="{Binding DeleteOperationClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />-->
+                                <MenuItem Header="Delete" Command="{Binding DeleteOutputClickCommand}"  />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                    </DataGrid>
+                    <toolKit:DataGrid Grid.Column="1" RowHeaderWidth="15" Grid.Row="1" Name="dgOperation" AutoGenerateColumns="False" ItemsSource="{Binding DvOperation}" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="0,5,0,0" SelectedItem="{Binding OperSelectedRow}"     >
+                        <i:Interaction.Behaviors>
+                            <UICommon:DataGridBehaviorToolkit/>
+                        </i:Interaction.Behaviors>
+                        <toolKit:DataGrid.Columns>
+                            <!--<bhCustCtrl:CustDataGridComboBoxColumn  x:Name="cmbOpMaster" 
+                            Width="150" Header="Operation"  SelectedValueBinding="{Binding OPN_CODE,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="OPN_CODE"  DisplayMemberPath="OPN_CODE" 
+                            ItemsSource="{Binding Source={StaticResource OperCodeViewSource}}">
+                                <toolKit:DataGridTextColumn Header="Opn Code"  Binding="{Binding OPN_CODE, Mode=Default,UpdateSourceTrigger=PropertyChanged}" />
+                                <toolKit:DataGridTextColumn Header="Operations" Binding="{Binding OPER_DESC, Mode=Default}" />
+                            </bhCustCtrl:CustDataGridComboBoxColumn>-->
+                            <toolKit:DataGridTemplateColumn Header="Oper Code" Width="150">
+                                <toolKit:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding OPN_CODE,UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </toolKit:DataGridTemplateColumn.CellTemplate>
+                                <toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Control:ComboBoxWithSearch Grid.Column="1" DataSource="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.OperCodeMaster}"
+                                            ColumnsHeader="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.DropDownHeaderOper}"
+				                            SelectedValue="{Binding OPN_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                            SelectedText="{Binding OPN_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                            DisplayValuePath="OPN_CODE"   
+                                            SelectedValuePath="OPN_CODE"
+                                            IsReadOnly="True"                                      
+                                            VerticalContentAlignment="Center" DropDownWidth="250" DropDownHeight="250" >
+                                        </Control:ComboBoxWithSearch>
+                                        <!--<bhCustCtrl:CustComboBox IsSynchronizedWithCurrentItem="False" 
+                                             ItemsSource ="{Binding Source={StaticResource OperCodeSource}}"
+                                             SelectedValue ="{Binding OPER_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                            SelectedValuePath="OPER_CODE" DisplayMemberPath="OPER_CODE"     
+                                            SelectedItem="{Binding ElementName=ProcessSheet,Path=DataContext.OperCode_SelectedItem,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}"
+                                           IsEditable="True" VerticalContentAlignment="Center" MaxLength="10" >
+                                                <toolKit:DataGridTextColumn Width="90"  Header="Oper Code" Binding="{Binding OPER_CODE}" />
+                                                <toolKit:DataGridTextColumn Width="150" Header="Operations" Binding="{Binding OPER_DESC}" />
+                                            </bhCustCtrl:CustComboBox>-->
+                                    </DataTemplate>
+                                </toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                            </toolKit:DataGridTemplateColumn>
+                            <toolKit:DataGridTemplateColumn Header="Unit" Width="150">
+                                <toolKit:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding UNIT_CODE,UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </toolKit:DataGridTemplateColumn.CellTemplate>
+                                <toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Control:ComboBoxWithSearch DataSource="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.UnitCodeMaster}"
+                                            ColumnsHeader="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=DataContext.DropDownHeaderUnit}"
+				                            SelectedValue="{Binding UNIT_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                            SelectedText="{Binding UNIT_CODE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                            DisplayValuePath="UNIT_CODE"   
+                                            SelectedValuePath="UNIT_CODE"
+                                            IsReadOnly="True"                                      
+                                            VerticalContentAlignment="Center" DropDownWidth="300" DropDownHeight="250">
+                                        </Control:ComboBoxWithSearch>
+                                    </DataTemplate>
+                                </toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                            </toolKit:DataGridTemplateColumn>
+                            <!--<bhCustCtrl:CustDataGridComboBoxColumn  x:Name="cmbUnitMaster" Width="150" Header="Unit" SelectedValueBinding="{Binding UNIT_CODE}" SelectedValuePath="UNIT_CODE"  DisplayMemberPath="UNIT_CODE" 
+                            ItemsSource="{Binding Source={StaticResource UnitCodeViewSource}}">
+                                <toolKit:DataGridTextColumn Header="Unit Code" Binding="{Binding UNIT_CODE, Mode=Default}">
+                                </toolKit:DataGridTextColumn>
+                                <toolKit:DataGridTextColumn Header="Unit desc" Binding="{Binding UNIT_OF_MEAS, Mode=Default}" >
+                                </toolKit:DataGridTextColumn>
+                            </bhCustCtrl:CustDataGridComboBoxColumn>-->
+                            <!--<toolKit:DataGridTemplateColumn Header="Fix Cost" Width="21*">
+                                <toolKit:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding FIX_COST,UpdateSourceTrigger=PropertyChanged,StringFormat=F2}" />
+                                    </DataTemplate>
+                                </toolKit:DataGridTemplateColumn.CellTemplate>
+                                <toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Control:DecimalTextBox Name="tbFixCost"  MaxDecimalPlaces="2" MaxLength="13" Text ="{Binding FIX_COST,  UpdateSourceTrigger=PropertyChanged,StringFormat=F2,Mode=TwoWay }" AllowNegative="False" Loaded="FocusTextBoxOnLoad" LostFocus="tbFixCost_LostFocus"  TextChanged="tbFixCost_TextChanged"   >
+                                        </Control:DecimalTextBox>
+                                    </DataTemplate>
+                                </toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                            </toolKit:DataGridTemplateColumn>-->
+                            <bhCustCtrl:DataGridNumericColumn Header="Fix Cost" Width="21*" Binding="{Binding FIX_COST, UpdateSourceTrigger=PropertyChanged ,Mode=TwoWay}" MaxPrecision="6" MaxScale="2" ></bhCustCtrl:DataGridNumericColumn>
+                            <!--<toolKit:DataGridTemplateColumn Header="Var Cost" Width="21*">
+                                <toolKit:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding VAR_COST,UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </toolKit:DataGridTemplateColumn.CellTemplate>
+                                <toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Control:DecimalTextBox Name="tbVarCost" MaxDecimalPlaces="2" MaxLength="13"    Text="{Binding VAR_COST,UpdateSourceTrigger=PropertyChanged}" Loaded="FocusTextBoxOnLoad" LostFocus="tbFixCost_LostFocus"  TextChanged="tbFixCost_TextChanged" >
+                                        </Control:DecimalTextBox>
+                                    </DataTemplate>
+                                </toolKit:DataGridTemplateColumn.CellEditingTemplate>
+                            </toolKit:DataGridTemplateColumn>-->
+                            <bhCustCtrl:DataGridNumericColumn Header="Var Cost" Width="21*" Binding="{Binding VAR_COST, UpdateSourceTrigger=PropertyChanged ,Mode=TwoWay}" MaxPrecision="6" MaxScale="2" ></bhCustCtrl:DataGridNumericColumn>
+                        </toolKit:DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="OnCellEditEndingOperation" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <toolKit:DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <!--<MenuItem Header="Delete" Command="{Binding DeleteOperationClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />-->
+                                <MenuItem Header="Delete" Command="{Binding DeleteOperationClickCommand}"  />
+                            </ContextMenu>
+                        </toolKit:DataGrid.ContextMenu>
+                    </toolKit:DataGrid>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </Border>
+    <UserControl.InputBindings >
+        <KeyBinding Key="F3" Command ="{Binding AddNewClickCommand}"/>
+        <KeyBinding Key="F5" Command="{Binding EditClickCommand}"/>
+        <KeyBinding Key="F6"  Command="{Binding DeleteClickCommand}"/>
+        <KeyBinding Key="S" Modifiers="Control"  Command="{Binding SaveClickCommand}"/>
+        <KeyBinding Key="F8"  Command="{Binding ShowPhotoClickCommand}"/>
+        <KeyBinding Key="F9"  Command="{Binding CloseClickCommand}"/>
+    </UserControl.InputBindings >
+</UserControl>

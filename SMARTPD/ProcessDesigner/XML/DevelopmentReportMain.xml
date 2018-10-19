@@ -1,0 +1,25 @@
+﻿<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="RptDevRptMainModel" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="PART_NO" type="xs:string"/>
+                <xs:element name="DEV_RUN_NO" type="xs:string"/>
+                <xs:element name="CUST_COMP" type="xs:string"/>
+                <xs:element name="CUST_COMP_DESC" type="xs:string"/>
+                <xs:element name="FORGE_DDREP" type="xs:string"/>
+				<xs:element name="FORGE_ZAPREP" type="xs:string"/>
+				<xs:element name="RECORD" type="xs:string"/>
+				<xs:element name="REPORT_DATE" type="xs:string"/>
+				<xs:element name="NO_FORG_SHT" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>

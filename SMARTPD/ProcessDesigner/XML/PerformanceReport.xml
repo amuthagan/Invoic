@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<DSREPORTDATA>
+  <xs:schema id="DSREPORTDATA" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="DSREPORTDATA" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="REPORTDATA" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="COLUMN0" type="xs:string" minOccurs="0" />
+                <xs:element name="COLUMN1" type="xs:string" minOccurs="0" />
+                <xs:element name="COLUMN2" type="xs:string" minOccurs="0" />
+                <xs:element name="COLUMN3" type="xs:string" minOccurs="0" />
+                <xs:element name="COLUMN4" type="xs:string" minOccurs="0" />
+                <xs:element name="COLUMN5" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</DSREPORTDATA>

@@ -1,0 +1,80 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="DDCI_INFO" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DDCI_INFO">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CI_REFERENCE" type="xs:string" minOccurs="0" />
+              <xs:element name="ENQU_RECD_ON" type="xs:string" minOccurs="0" />
+              <xs:element name="FR_CS_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="PROD_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="CUST_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="CUST_DWG_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="CUST_DWG_NO_ISSUE" type="xs:string" minOccurs="0" />
+              <xs:element name="EXPORT" type="xs:string" minOccurs="0" />
+              <xs:element name="NUMBER_OFF" type="xs:string" minOccurs="0" />
+              <xs:element name="POTENTIAL" type="xs:string" minOccurs="0" />
+              <xs:element name="SFL_SHARE" type="xs:string" minOccurs="0" />
+              <xs:element name="REMARKS" type="xs:string" minOccurs="0" />
+              <xs:element name="RESPONSIBILITY" type="xs:string" minOccurs="0" />
+              <xs:element name="PENDING" type="xs:string" minOccurs="0" />
+              <xs:element name="FEASIBILITY" type="xs:string" minOccurs="0" />
+              <xs:element name="REJECT_REASON" type="xs:string" minOccurs="0" />
+              <xs:element name="LOC_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="CHEESE_WT" type="xs:string" minOccurs="0" />
+              <xs:element name="FINISH_WT" type="xs:string" minOccurs="0" />
+              <xs:element name="FINISH_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="SUGGESTED_RM" type="xs:string" minOccurs="0" />
+              <xs:element name="RM_COST" type="xs:string" minOccurs="0" />
+              <xs:element name="FINAL_COST" type="xs:string" minOccurs="0" />
+              <xs:element name="COST_NOTES" type="xs:string" minOccurs="0" />
+              <xs:element name="PROCESSED_BY" type="xs:string" minOccurs="0" />
+              <xs:element name="ORDER_DT" type="xs:string" minOccurs="0" />
+              <xs:element name="PRINT" type="xs:string" minOccurs="0" />
+              <xs:element name="ALLOT_PART_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="PART_NO_REQ_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="CUST_STD_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="CUST_STD_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="AUTOPART" type="xs:string" minOccurs="0" />
+              <xs:element name="SAFTYPART" type="xs:string" minOccurs="0" />
+              <xs:element name="APPLICATION" type="xs:string" minOccurs="0" />
+              <xs:element name="STATUS" type="xs:string" minOccurs="0" />
+              <xs:element name="CUSTOMER_NEED_DT" type="xs:string" minOccurs="0" />
+              <xs:element name="MKTG_COMMITED_DT" type="xs:string" minOccurs="0" />
+              <xs:element name="PPAP_LEVEL" type="xs:string" minOccurs="0" />
+              <xs:element name="DEVL_METHOD" type="xs:string" minOccurs="0" />
+              <xs:element name="PPAP_FORGING" type="xs:string" minOccurs="0" />
+              <xs:element name="PPAP_SAMPLE" type="xs:string" minOccurs="0" />
+              <xs:element name="PACKING" type="xs:string" minOccurs="0" />
+              <xs:element name="NATURE_PACKING" type="xs:string" minOccurs="0" />
+              <xs:element name="SPL_CHAR" type="xs:string" minOccurs="0" />
+              <xs:element name="OTHER_CUST_REQ" type="xs:string" minOccurs="0" />
+              <xs:element name="ATP_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="SIMILAR_PART_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="GENERAL_REMARKS" type="xs:string" minOccurs="0" />
+              <xs:element name="MONTHLY" type="xs:string" minOccurs="0" />
+              <xs:element name="MKTG_COMMITED_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="ROWID" type="xs:string" minOccurs="0" />
+              <xs:element name="DELETE_FLAG" type="xs:string" minOccurs="0" />
+              <xs:element name="ENTERED_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="ENTERED_BY" type="xs:string" minOccurs="0" />
+              <xs:element name="UPDATED_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="UPDATED_BY" type="xs:string" minOccurs="0" />
+              <xs:element name="IDPK" type="xs:string" minOccurs="0" />
+              <xs:element name="COATING_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="REALISATION" type="xs:string" minOccurs="0" />
+              <xs:element name="NO_OF_PCS" type="xs:string" minOccurs="0" />
+              <xs:element name="ZONE_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="DDCOST_PROCESS_DATA" type="xs:string" minOccurs="0" />
+              <xs:element name="DDSHAPE_DETAILS" type="xs:string" minOccurs="0" />
+              <xs:element name="PRD_CIREF" type="xs:string" minOccurs="0" />
+              <xs:element name="CUST_NAME" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

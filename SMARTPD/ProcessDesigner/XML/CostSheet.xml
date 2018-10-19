@@ -1,0 +1,46 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CostSheet" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SEQ_NO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OPN_CD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OPN_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="CC_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="OUTPUT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VAR_COST" type="xs:double" minOccurs="0" />
+              <xs:element name="FIX_COST" type="xs:double" minOccurs="0" />
+              <xs:element name="SPL_COST" type="xs:double" minOccurs="0" />
+              <xs:element name="OPN_COST" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CostSheetMain">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PART_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="PART_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="ROUTE_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="WIRE_ROD_CD" type="xs:string" minOccurs="0" />
+              <xs:element name="CUSTOMER" type="xs:string" minOccurs="0" />
+              <xs:element name="RMCOST" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RMMAST" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COST" type="xs:decimal" minOccurs="0" />
+              <xs:element name="REAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FINISH_WT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CHEESE_WT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RMWGT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CUSTCODE" type="xs:string" minOccurs="0" />
+              <xs:element name="FINISH_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="EXPORT" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

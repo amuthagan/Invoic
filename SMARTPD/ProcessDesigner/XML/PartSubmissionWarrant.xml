@@ -1,0 +1,70 @@
+﻿<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="GridPartSubmissionWarrantModel" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="EX_NO" type="xs:string"/>
+                <xs:element name="REVISION_NO" type="xs:string"/>
+                <xs:element name="PART_NO" type="xs:string"/>
+                <xs:element name="RUNRATE" type="xs:string"/>
+                <xs:element name="PART_DESC" type="xs:string"/>
+                <xs:element name="CUST_DWG_NO" type="xs:string"/>
+                <xs:element name="SHOWNDRAWINGNO" type="xs:string"/>
+                <xs:element name="CUST_DWG_NO_ISSUE" type="xs:string"/>
+                <xs:element name="CUST_STD_DATE" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="DATE2" type="xs:string"/>
+                <xs:element name="ADDENGGCHANGE" type="xs:string"/>
+                <xs:element name="SAFETYYES" type="xs:boolean"/>
+                <xs:element name="SAFETYNO" type="xs:boolean"/>
+                <xs:element name="PURCHASEORDERNO" type="xs:string"/>
+                <xs:element name="WEIGHT" type="xs:string"/>
+                <xs:element name="CHECKAIDNO" type="xs:string"/>
+                <xs:element name="CHECKAIDENGGLVL" type="xs:string"/>
+                <xs:element name="DATE3" type="xs:string"/>
+                <xs:element name="CUSTOMERNAME" type="xs:string"/>
+                <xs:element name="BUYER" type="xs:string"/>
+                <xs:element name="Application" type="xs:string"/>
+                <xs:element name="REPORTABLESUBSTANCEYES" type="xs:boolean"/>
+                <xs:element name="REPORTABLESUBSTANCENO" type="xs:boolean"/>
+                <xs:element name="REPORTABLESUBSTANCENOTAPPLICABLE" type="xs:boolean"/>
+                <xs:element name="PLASTICPARTYES" type="xs:boolean"/>
+                <xs:element name="PLASTICPARTNO" type="xs:boolean"/>
+                <xs:element name="PLASTICPARTNOTAPPLICABLE" type="xs:boolean"/>
+                <xs:element name="INITIALSUBMISSION" type="xs:boolean"/>
+                <xs:element name="ENGINEERINGCHANGES" type="xs:boolean"/>
+                <xs:element name="TOOLING" type="xs:boolean"/>
+                <xs:element name="CORRECTIONDISCREPANCY" type="xs:boolean"/>
+                <xs:element name="TOOLINGINACTIVE" type="xs:boolean"/>
+                <xs:element name="OPTIONALCONSTRUCTION" type="xs:boolean"/>
+                <xs:element name="SUBSUPPLIER" type="xs:boolean"/>
+                <xs:element name="PARTPROCESSING" type="xs:boolean"/>
+                <xs:element name="PARTPRODUCED" type="xs:boolean"/>
+                <xs:element name="OTHER" type="xs:boolean"/>
+                <xs:element name="OTHERTXT" type="xs:string"/>
+                <xs:element name="RSL1" type="xs:boolean"/>
+                <xs:element name="RSL2" type="xs:boolean"/>
+                <xs:element name="RSL3" type="xs:boolean"/>
+                <xs:element name="RSL4" type="xs:boolean"/>
+                <xs:element name="RSL5" type="xs:boolean"/>
+                <xs:element name="DIMENSIONALMEASUREMENTS" type="xs:boolean"/>
+                <xs:element name="MATERIALANDFUNCTIONALTESTS" type="xs:boolean"/>
+                <xs:element name="APPEARANCECRITERIA" type="xs:boolean"/>
+                <xs:element name="STATISTICALPROCESSPACKAGE" type="xs:boolean"/>
+                <xs:element name="LOC" type="xs:string"/>
+                <xs:element name="ADDRESS" type="xs:string"/>
+                <xs:element name="PHONENO" type="xs:string"/>
+                <xs:element name="FAXNO" type="xs:string"/>
+                <xs:element name="NAME" type="xs:string"/>
+                <xs:element name="TITLE" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>
+

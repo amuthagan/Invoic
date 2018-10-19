@@ -1,0 +1,449 @@
+﻿<UserControl x:Class="ProcessDesigner.frmProductSearch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"    
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:wfirms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:VM="clr-namespace:AxACCTRLLib;assembly=AxInterop.ACCTRLLib"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+        Height="600" Width="1024" >
+    <Grid>
+        <Border>
+            <Grid>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="50*" ></ColumnDefinition>
+                    <ColumnDefinition Width="50*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40*"></RowDefinition>
+                        <RowDefinition Height="55*"></RowDefinition>
+                        <RowDefinition Height="5*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Header="{Binding ProdSearchModel.TotalRecords}">
+                        <DataGrid RowHeaderWidth="20" AutoGenerateColumns="False" ItemsSource="{Binding ProductResult}" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectedItem="{Binding SelectedPartRow}" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Visible" UICommon:ScrollToTopBehavior.ScrollToTop="True" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Part No" Binding="{Binding PART_NO}" IsReadOnly="True" Width="100"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Description" Binding="{Binding PART_DESC}" IsReadOnly="True" Width="220"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Forging Cost Centre" Binding="{Binding CC_CODE}" IsReadOnly="True" Width="150" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="Dia Max" Binding="{Binding WIRE_SIZE_MAX}" IsReadOnly="True" Width="100"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Dia Min" Binding="{Binding WIRE_SIZE_MIN}" IsReadOnly="True" Width="100"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Quality" Binding="{Binding QUALITY}" IsReadOnly="True" Width="150"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Customer Dwg" Binding="{Binding CUST_DWG_NO}" IsReadOnly="True" Width="150"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Customer" Binding="{Binding CUST_NAME}" IsReadOnly="True" Width="150"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <i:InvokeCommandAction Command="{Binding ShowProductInformationCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </DataGrid>
+                    </GroupBox>
+                    <StackPanel  Grid.Row="3" Orientation="Horizontal">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="25*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Tool Code : " Grid.Column="0" TextAlignment="Right" ></TextBlock>
+                            <TextBox Name="txtToolCode" Grid.Column="1"  Height="25"  Width="160" Text="{Binding ProdSearchModel.ToolCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Tag="Please enter the Tool Code" MaxLength="25"></TextBox>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="11*"></RowDefinition>
+                        <RowDefinition Height="12.5*"></RowDefinition>
+                        <RowDefinition Height="8.3*"></RowDefinition>
+                        <RowDefinition Height="15*"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="55*"></ColumnDefinition>
+                            <ColumnDefinition Width="45*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Grid.Column="0" Grid.Row="0"  Header="By Process">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"></ColumnDefinition>
+                                    <ColumnDefinition Width="65*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition ></RowDefinition>
+                                    <RowDefinition ></RowDefinition>
+                                    <RowDefinition ></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Name="lblHeatTreatment" Text="Heat Treatment : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right"  ></TextBlock>
+                                <TextBox Name="txtHeatTreatment" Width="88" HorizontalAlignment="Left" MaxLength="10"  Height="25" Grid.Row="0"  Grid.Column="1" Text="{Binding ProdSearchModel.HeatTreatment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Tag="Please enter Heat Treatment" ></TextBox>
+                                <TextBlock Name="lblQuality" Text="Quality : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <TextBox Name="txtQuality" Width="88" HorizontalAlignment="Left" MaxLength="10" Height="25" Grid.Row="1"  Grid.Column="1"  Text="{Binding ProdSearchModel.Quality,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Tag="Please enter Quality" Margin="0,1,0,0" VerticalAlignment="Top" ></TextBox>
+                                <TextBlock Name="lblFinish" Text="Finish : " Grid.Row="2"  Grid.Column="0" TextAlignment="Right" Margin="0,0,0,6" VerticalAlignment="Bottom"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="2" Grid.Column="1" Width="120"  x:Name="cmbFinish" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" 
+                                             DataSource="{Binding ProdSearchModel.FinishCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.Finish,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.FinishText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="FINISH_CODE" 
+                                             DisplayValuePath="FINISH_CODE"   
+                                             IsReadOnly="True"
+                                              VerticalContentAlignment="Center" Tag="Please select Finish Code" ColumnsHeader="{Binding DropDownItemsFinish}" >
+                                </Control:ComboBoxWithSearch>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Grid.Column="1" Grid.Row="0"  Header="By RM Details">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"></ColumnDefinition>
+                                    <ColumnDefinition Width="65*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30*"></RowDefinition>
+                                    <RowDefinition Height="30*" ></RowDefinition>
+                                    <RowDefinition Height="30*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Name="lblRMSpec" Text="RM Spec : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="0" Grid.Column="1"     Name="cmbRMSpec" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="120" 
+                                             DataSource="{Binding ProdSearchModel.RMSpecCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.RMSpec,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.RMSpecText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="RM_CODE" 
+                                             DisplayValuePath="RM_CODE"   
+                                             IsReadOnly="True"
+                                              VerticalContentAlignment="Center" Tag="Please select RM Spec" ColumnsHeader="{Binding DropDownItemsRMSpec}">
+                                </Control:ComboBoxWithSearch>
+
+                                <TextBlock Name="lblMinRMSize" Text="Min RM Size : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <TextBox Name="txtMinRMSize"  Width="70" HorizontalAlignment="Left" Height="25" Grid.Row="1"  Grid.Column="2" Text="{Binding ProdSearchModel.MinRMSize,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Control:TextBoxIntsOnly.Mask="Decimal"  Tag="Please enter Min RM Size" MaxLength="7"></TextBox>
+                                <TextBlock Name="lblMaxRMSize" Text="Max RM Size : " Grid.Row="2"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <TextBox Name="txtMaxRMSize"  Width="70" HorizontalAlignment="Left" Height="25" Grid.Row="2"  Grid.Column="1" Text="{Binding ProdSearchModel.MaxRMSize,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Control:TextBoxIntsOnly.Mask="Decimal" Tag="Please enter Max RM Size" MaxLength="7"></TextBox>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="55*"></ColumnDefinition>
+                            <ColumnDefinition Width="45*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Grid.Column="0" Grid.Row="0"  Header="By Details">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"></ColumnDefinition>
+                                    <ColumnDefinition Width="65*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25*"></RowDefinition>
+                                    <RowDefinition Height="25*" ></RowDefinition>
+                                    <RowDefinition Height="25*"></RowDefinition>
+                                    <RowDefinition Height="25*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Name="lblManufacturedAt" Text="Manufactured At : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="0" Grid.Column="1"   Width="120"  Name="cmbManufacturedAt" HorizontalAlignment="Left" VerticalAlignment="Center"  MaxLength="2"
+                                             DataSource="{Binding ProdSearchModel.ManufacturedAtCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.ManufacturedAt,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.ManufacturedAtText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="LOC_CODE" 
+                                             DisplayValuePath="LOC_CODE"   
+                                             IsReadOnly="True" Tag="Please select Manufactured At"  ColumnsHeader="{Binding DropDownItemsManufacturedAt}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding SelectionChangedManufacturedCommand}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="LostFocus">
+                                            <i:InvokeCommandAction Command="{Binding SelectionChangedManufacturedCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Control:ComboBoxWithSearch>
+                                <TextBlock Name="lblCostCentre" Text="Cost Centre : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Column="1"   Width="120"  Name="cmbCostCentre" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.RowSpan="3"
+                                             DataSource="{Binding ProdSearchModel.CostCentreCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.CostCentre,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.CostCentreText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="COST_CENT_CODE" 
+                                             DisplayValuePath="COST_CENT_CODE"   
+                                             IsReadOnly="True"
+                                              VerticalContentAlignment="Center"  Tag="Please select Cost Centre" ColumnsHeader="{Binding DropDownItemsCostCentre}" >
+                                </Control:ComboBoxWithSearch>
+
+                                <TextBlock Name="lblOperation" Text="Operation : " Grid.Row="2"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="2" Grid.Column="1"   Width="120"  Name="cmbOperation" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                             DataSource="{Binding ProdSearchModel.OperationCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.Operation,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.OperationText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="OPER_CODE" 
+                                             DisplayValuePath="OPER_CODE"   
+                                             IsReadOnly="True"
+                                              VerticalContentAlignment="Center" Tag="Please select Operation" ColumnsHeader="{Binding DropDownItemsOperation}"  />
+                                <TextBlock Name="lblDescription" Text="Description : " Grid.Row="3"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <TextBox Name="txtDescription"  Height="23" Grid.Row="3"  Grid.Column="1" Text="{Binding ProdSearchModel.Description,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Tag="Please enter Description" MaxLength="60"></TextBox>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Grid.Column="1" Grid.Row="0"  Header="By Thread Details">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"></ColumnDefinition>
+                                    <ColumnDefinition Width="65*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30*"></RowDefinition>
+                                    <RowDefinition Height="30*"/>
+                                    <RowDefinition Height="30*"/>
+                                    <RowDefinition Height="10*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Name="lblThreadSize" Text="Thread Size : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right" HorizontalAlignment="Right" Margin="0,6" Width="121"></TextBlock>
+                                <TextBox Name="txtThreadSize"  Width="30" HorizontalAlignment="Left" Height="25" Grid.Row="0"  Grid.Column="1" Text="{Binding ProdSearchModel.ThreadSize,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Tag="Please enter Thread Size" MaxLength="2" ></TextBox>
+                                <TextBlock Name="lblThreadClass" Text="Thread Class : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <TextBox Name="txtThreadClass"  Width="50" HorizontalAlignment="Left" MaxLength="5" Height="25" Grid.Row="1"  Grid.Column="1"  Text="{Binding ProdSearchModel.ThreadClass,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Tag="Please enter Thread Class" ></TextBox>
+                                <TextBlock Name="lblThreadStd" Text="Thread Std : " Grid.Row="2"  Grid.Column="0" TextAlignment="Right" ></TextBlock>
+                                <TextBox Name="txtThreadStd"  Height="25" Grid.Row="2"  Grid.Column="1" Text="{Binding ProdSearchModel.ThreadStd,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Tag="Please enter Thread Std" MaxLength="20" ></TextBox>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Grid.Column="0" Grid.Row="0"  Header="By Customer Details">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="13*"></ColumnDefinition>
+                                    <ColumnDefinition Width="50*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25*"></RowDefinition>
+                                    <RowDefinition Height="25*" ></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Name="lblCustomer" Text="Customer : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right" ></TextBlock>
+
+                                <Control:ComboBoxWithSearch Grid.Row="0" Visibility="Collapsed" Grid.Column="1"  HorizontalAlignment="Left" Width="200"  x:Name="cmbCustomer"  SelectedValue="{Binding ProdSearchModel.Customer,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
+                                     DataSource="{Binding ProdSearchModel.CustomerCombo,UpdateSourceTrigger=PropertyChanged}"
+                                     SelectedValuePath="CUST_CODE" 
+                                     DisplayValuePath="CUST_NAME"                                                            
+                                     Tag="Please select customer"
+                                     ButtonVisibility="{Binding HasDropDownVisibility,UpdateSourceTrigger=PropertyChanged}"
+                                     MaxLength="15" ColumnsHeader="{Binding DropDownItems}" IsReadOnly="True" DropDownWidth="300" />
+                                <Control:ComboBoxCus Width="88" HorizontalAlignment="left" Grid.Column="1" Grid.Row ="0" UICommon:FocusExtension.IsFocused="{Binding PartNoIsFocused}" CharacterCasingText="Upper" IsEditable="True" IsReadOnly="False" Name="cmbPartNo" ColumnsHeader="{Binding DropDownItems}" 
+					DataSource="{Binding  ProdSearchModel.CustomerCombo,UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding PartNoSelectedItem,UpdateSourceTrigger=PropertyChanged}" 
+                                     SelectedValuePath="CUST_CODE" SelectedValue="{Binding ProdSearchModel.Customer,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" MaxLength="9" Tag="Please enter/select Customer Code"  >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectedItemChanged">
+                                            <i:InvokeCommandAction Command="{Binding OnPartNoSelectionChanged}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="EnterKeyPressed">
+                                            <i:InvokeCommandAction Command="{Binding OnPartNoSelectionChanged}"/>
+                                        </i:EventTrigger>
+                                        <!--<i:EventTrigger EventName="TextBox_LostFocus">
+                                    <i:InvokeCommandAction Command="{Binding OnPartNoSelectionChanged}"/>
+                                </i:EventTrigger>-->
+                                    </i:Interaction.Triggers>
+                                </Control:ComboBoxCus>
+
+                                <TextBlock Name="lblCustDrwgNo" Text="Cust Drwg No : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <TextBox Name="txtCustDrwgNo"  Height="25" Grid.Row="1"  Grid.Column="1" Text="{Binding ProdSearchModel.CustDrwgNo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Tag="Please enter Customer Drawing No." MaxLength="50" Width="345" HorizontalAlignment="Left" ></TextBox>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.ColumnSpan="2" Height="150" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Grid.Column="0" Grid.Row="0"  Header="By Family Details" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                                    <ColumnDefinition Width="30*"></ColumnDefinition>
+                                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                                    <ColumnDefinition Width="30*"></ColumnDefinition>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="0*"></RowDefinition>
+                                    <RowDefinition Height="0*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock  Text="Family : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Left" Width="145"  x:Name="cmbFamily"  SelectedValue="{Binding ProdSearchModel.Family,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
+                                     DataSource="{Binding ProdSearchModel.FamilyCombo,UpdateSourceTrigger=PropertyChanged}"
+                                     SelectedValuePath="PRD_CODE"
+                                     DisplayValuePath="PRODUCT_CATEGORY"
+                                     Tag="Please select Family"
+                                     ButtonVisibility="{Binding HasDropDownVisibility,UpdateSourceTrigger=PropertyChanged}"
+                                     SelectedText="{Binding ProdSearchModel.FamilyText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                     MaxLength="15" ColumnsHeader="{Binding DropDownItemsFamily}" IsReadOnly="True" DropDownWidth="300" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding SelectionChangedFamilyCommand}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="LostFocus">
+                                            <i:InvokeCommandAction Command="{Binding SelectionChangedFamilyCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Control:ComboBoxWithSearch>
+                                <!--<bhCustCtrl:CustComboBox Grid.Row="0" Grid.Column="1" Width="145"  Name="cmbFamily2" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                    IsSynchronizedWithCurrentItem="False"   
+                                             ItemsSource="{Binding ProdSearchModel.FamilyCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.Family,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             Text="{Binding ProdSearchModel.FamilyText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="PRD_CODE" 
+                                             DisplayMemberPath="PRODUCT_CATEGORY"   
+                                             IsEditable="True"
+                                              VerticalContentAlignment="Center" ToolTip="Select Family" >
+                                    <toolKit:DataGridTextColumn Width="200" Header="Product Category" Binding="{Binding PRODUCT_CATEGORY}" />
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding SelectionChangedFamilyCommand}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="LostFocus">
+                                            <i:InvokeCommandAction Command="{Binding SelectionChangedFamilyCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </bhCustCtrl:CustComboBox>-->
+                                <TextBlock  Text="Type : " Grid.Row="0"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="0" Grid.Column="3" Width="145"  Name="cmbFamilyType" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                             DataSource="{Binding ProdSearchModel.FamilyTypeCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.FamilyType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             SelectedText="{Binding ProdSearchModel.FamilyTypeText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="SUBTYPE" 
+                                             DisplayValuePath="SUBTYPE"   
+                                              ButtonVisibility="{Binding HasDropDownVisibility,UpdateSourceTrigger=PropertyChanged}"
+                                              VerticalContentAlignment="Center" Tag="Please select Family Type" IsReadOnly="True" DropDownWidth="200" ColumnsHeader="{Binding DropDownItemsFamilyType}" >
+                                </Control:ComboBoxWithSearch>
+                                <TextBlock  Text="Head Form : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="1" Grid.Column="1"   Width="145"  Name="cmbHeadForm" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                             DataSource="{Binding ProdSearchModel.HeadFormCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.HeadForm,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.HeadFormText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="PRD_CODE" 
+                                             DisplayValuePath="SUBTYPE"   
+                                             IsReadOnly="True"
+                                              VerticalContentAlignment="Center" Tag="Please select Head Form" DropDownWidth="200" ColumnsHeader="{Binding DropDownItemsHeadForm}" Margin="0,0,0,2.758" >
+                                </Control:ComboBoxWithSearch>
+                                <TextBlock Text="Shank Form : " Grid.Row="1"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="1" Grid.Column="3"   Width="145"  Name="cmbShankForm" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                             DataSource="{Binding ProdSearchModel.ShankFormCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.ShankForm,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.ShankFormText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="PRD_CODE" 
+                                             DisplayValuePath="SUBTYPE"
+                                             IsReadOnly="True"
+                                              VerticalContentAlignment="Center" Tag="Please select Shank Form" DropDownWidth="200" ColumnsHeader="{Binding DropDownItemsShankForm}" >
+                                </Control:ComboBoxWithSearch>
+                                <TextBlock Text="End Form : " Grid.Row="2"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="2" Grid.Column="1"   Width="145"  Name="cmbEndForm" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                             DataSource="{Binding ProdSearchModel.EndFormCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.EndForm,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.EndFormText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="PRD_CODE" 
+                                             DisplayValuePath="SUBTYPE"   
+                                             IsReadOnly="True"
+                                              VerticalContentAlignment="Center" Tag="Please select End Form" ColumnsHeader="{Binding DropDownItemsEndForm}" >
+                                </Control:ComboBoxWithSearch>
+                                <TextBlock Text="Driving Feature : " Grid.Row="2"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="2" Grid.Column="3"   Width="145"  Name="cmbDrivingFeature" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                             DataSource="{Binding ProdSearchModel.DrivingFeatureCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.DrivingFeature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.DrivingFeatureText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="PRD_CODE" 
+                                             DisplayValuePath="SUBTYPE"   
+                                             IsReadOnly="True"
+                                              VerticalContentAlignment="Center" Tag="Please select Driving Feature" ColumnsHeader="{Binding DropDownItemsDrivingFeature}" Margin="0,3,0,0" >
+                                </Control:ComboBoxWithSearch>
+                                <TextBlock  Text="Additional &#x0a; Feature : " Grid.Row="3" Grid.Column="0" TextAlignment="Right">
+                                </TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="3" Grid.Column="1"   Width="145"  Name="cmbAditionalFeature" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                             DataSource="{Binding ProdSearchModel.AdditionalFeatureCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.AdditionalFeature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.AdditionalFeatureText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="PRD_CODE" 
+                                             DisplayValuePath="SUBTYPE"   
+                                             IsReadOnly="True"
+                                             VerticalContentAlignment="Center"  Tag="Please select Additional Feature" ColumnsHeader="{Binding DropDownItemsAdditionalFeature}">
+                                </Control:ComboBoxWithSearch>
+                                <TextBlock Text="Keywords : " Grid.Row="3"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="3" Grid.Column="3"   Width="145"  Name="cmbKeywords" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                             DataSource="{Binding ProdSearchModel.KeywordsCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.Keyword,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.KeywordText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="PRD_CODE" 
+                                             DisplayValuePath="SUBTYPE"   
+                                             IsReadOnly="True"
+                                              VerticalContentAlignment="Center" Tag="Please select Keywords" ColumnsHeader="{Binding DropDownItemsKeywords}">
+                                </Control:ComboBoxWithSearch>
+                                <TextBlock  Text="Product Family : " Grid.Row="4"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="4" Grid.Column="1"   Width="145"  Name="cmbProductFamily" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                             DataSource="{Binding ProdSearchModel.ProductFamilyCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.ProductFamily,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.ProductFamilyText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"                                                         
+				                             SelectedValuePath="PRD_CLASS_CD" 
+                                             DisplayValuePath="PRD_CLASS_CD"   
+                                             IsReadOnly="True"
+                                             VerticalContentAlignment="Center" ToolTip="Select Product Family" ColumnsHeader="{Binding DropDownItemsProductFamily}" Grid.ColumnSpan="2" Visibility="Collapsed">
+                                </Control:ComboBoxWithSearch>
+                                <TextBlock Text="Head Style : " Grid.Row="4"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="4" Grid.Column="3"   Width="145"  Name="cmbHeadStyle" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                             DataSource="{Binding ProdSearchModel.HeadStyleCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.HeadStyle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.HeadStyleText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="HEAD_STYLE" 
+                                             DisplayValuePath="HEAD_STYLE"   
+                                             IsReadOnly="True"
+                                             VerticalContentAlignment="Center" ToolTip="Select Head Style" ColumnsHeader="{Binding DropDownItemsHeadStyle}" Visibility="Collapsed">
+                                </Control:ComboBoxWithSearch>
+                                <TextBlock Text="Type : " Grid.Row="5"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="5" Grid.Column="1"   Width="145"  Name="cmbType" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                             DataSource="{Binding ProdSearchModel.ProductTypeCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.ProductType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.ProductTypeText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="TYPE" 
+                                             DisplayValuePath="TYPE"   
+                                             IsReadOnly="True"
+                                              VerticalContentAlignment="Center" ToolTip="Select Product Type" ColumnsHeader="{Binding DropDownItemsProductType}" Visibility="Collapsed">
+                                </Control:ComboBoxWithSearch>
+                                <TextBlock  Text="Application : " Grid.Row="5"  Grid.Column="2" TextAlignment="Right" Visibility="Collapsed"></TextBlock>
+                                <Control:ComboBoxWithSearch Grid.Row="5" Grid.Column="3"   Width="145"  Name="cmbApplication" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                             DataSource="{Binding ProdSearchModel.ApplicationCombo}"   
+                                             SelectedValue="{Binding ProdSearchModel.Application,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ProdSearchModel.ApplicationText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"              
+				                             SelectedValuePath="SUB_TYPE" 
+                                             DisplayValuePath="SUB_TYPE"   
+                                             IsReadOnly="True"
+                                             VerticalContentAlignment="Center" ToolTip="Select Application" ColumnsHeader="{Binding DropDownItemsApplication}" Visibility="Collapsed">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding PreviewMouseLeftButtonDownCommand}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="PreviewKeyDown">
+                                            <i:InvokeCommandAction Command="{Binding PreviewMouseLeftButtonDownCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                </Control:ComboBoxWithSearch>
+                            </Grid>
+                        </GroupBox>
+
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="30*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Name="chkSpecialParts" Grid.Column="0"  Content ="Special Parts" VerticalAlignment="Center" IsChecked="{Binding ProdSearchModel.SpecialParts}" ToolTip="Special Parts" HorizontalAlignment="Right"></CheckBox>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Button Name="btnPrint"  Height="50" Width="100" Margin="0,0,5,0" Content="_Print" Command="{Binding PrintCommand}" ToolTip="Print Product Search List" IsEnabled="{Binding ProdSearchModel.PrintEnabled}" Control:AddedProperty.Image="Images/Print.png" />
+                            <Button Name="btnRefresh" Content="_Refresh" Height="50" Margin="0,0,5,0" Width="100" Command="{Binding SearchCommand}" ToolTip="Refresh Product Search List" Control:AddedProperty.Image="Images/Refresh.png" Click="btnRefresh_Click"></Button>
+                            <Button Name="btnClose" Content="_Close" Height="50" Width="100" Command="{Binding CloseCommand}" ToolTip="Close" Control:AddedProperty.Image="Images/Close.png"></Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

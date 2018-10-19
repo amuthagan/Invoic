@@ -1,0 +1,32 @@
+﻿<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="GridISIRModel" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="PART_NO" type="xs:string"/>
+                <xs:element name="CUST_NAME" type="xs:string"/>
+                <xs:element name="DESCRIPTION" type="xs:string"/>
+                <xs:element name="DATE1" type="xs:string"/>
+                <xs:element name="NOOFSAMPLE" type="xs:string"/>
+                <xs:element name="SPECIFICREQ" type="xs:string"/>
+                <xs:element name="HEATTREATMENT" type="xs:string"/>
+                <xs:element name="OTHERSPECIFICATION" type="xs:string"/>
+                <xs:element name="PARTSUBMISSION" type="xs:boolean"/>
+                <xs:element name="MATERIALTESTRESULTS" type="xs:boolean"/>
+                <xs:element name="DIMENSIONALTEST" type="xs:boolean"/>
+                <xs:element name="CONTROLPLAN" type="xs:boolean"/>
+                <xs:element name="MATERIALTESTCERTIFICATE" type="xs:boolean"/>
+                <xs:element name="PROCESSFLOW" type="xs:boolean"/>
+                <xs:element name="PERFORMANCETEST" type="xs:boolean"/>
+                <xs:element name="PROCESSFMEA" type="xs:boolean"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>

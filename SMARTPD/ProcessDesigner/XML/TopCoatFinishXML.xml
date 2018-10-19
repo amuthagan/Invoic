@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="_x003C__x003E_f__AnonymousTypef_x0060_8" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="_x003C__x003E_f__AnonymousTypef_x0060_8">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OPER_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="OPER_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="STATUS" type="xs:string" minOccurs="0" />
+              <xs:element name="COLORAPP" type="xs:string" minOccurs="0" />
+              <xs:element name="SALT_SPRAY_WHITE" type="xs:string" minOccurs="0" />
+              <xs:element name="SALT_SPRAY_RED" type="xs:string" minOccurs="0" />
+              <xs:element name="COF" type="xs:string" minOccurs="0" />
+              <xs:element name="OPER_CODE_SORT" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

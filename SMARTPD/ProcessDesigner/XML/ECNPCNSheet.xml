@@ -1,0 +1,82 @@
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="ECNPCNSheetModel" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="SNO" type="xs:string" minOccurs="0" />
+                <xs:element name="PART_NO" type="xs:string" minOccurs="0" />
+                <xs:element name="PART_DESC" type="xs:string" minOccurs="0" />
+                <xs:element name="CUST_PART_NO" type="xs:string" minOccurs="0" />
+                <xs:element name="SFL_DRAW_ISSUENO" type="xs:string" minOccurs="0" />
+                <xs:element name="SFL_DRAW_ISSUE_DATE" type="xs:string" minOccurs="0" />
+                <xs:element name="CUST_NAME" type="xs:string" minOccurs="0" />
+                <xs:element name="REQUSTED_BY" type="xs:string" minOccurs="0" />
+                <xs:element name="NATURE_OF_CHANGE" type="xs:string" minOccurs="0" />
+                <xs:element name="RESON_FOR_CHANGE" type="xs:string" minOccurs="0" />
+                <xs:element name="ACTUAL_CHANGE_IMP" type="xs:string" minOccurs="0" />
+                <xs:element name="DATE_OF_SIGN" type="xs:string" minOccurs="0" />
+                <xs:element name="INFGG_QTY" type="xs:string" minOccurs="0" />
+                <xs:element name="INWIP_QTY" type="xs:string" minOccurs="0" />
+                <xs:element name="INHEAT_TREATMENT_QTY" type="xs:string" minOccurs="0" />
+                <xs:element name="INFGG_INITIAL" type="xs:string" minOccurs="0" />
+                <xs:element name="INWIP_INITIAL" type="xs:string" minOccurs="0" />
+                <xs:element name="INHEAT_TREATMENT_INITIAL" type="xs:string" minOccurs="0" />
+                <xs:element name="CHANGE_EFFECTIVE" type="xs:string" minOccurs="0" />
+                <xs:element name="DISPOSITION" type="xs:string" minOccurs="0" />
+                <xs:element name="COMPILED_BY" type="xs:string" minOccurs="0" />
+                <xs:element name="APPROVED_BY" type="xs:string" minOccurs="0" />
+                <xs:element name="DATE_OF_PCN" type="xs:string" minOccurs="0" />
+                <xs:element name="PRODUCT_CHANGE_NO" type="xs:string" minOccurs="0" />
+                <xs:element name="SFL_DRAW_ISSUENO1" type="xs:string" minOccurs="0" />
+                <xs:element name="SFL_DRAW_ISSUEDATE1" type="xs:string" minOccurs="0" />
+                <xs:element name="COST_DESC" type="xs:string" minOccurs="0" />
+                <xs:element name="MANUFACTURE_PROCESS" type="xs:string" minOccurs="0" />
+                <xs:element name="PRODUCT_DWG" type="xs:string" minOccurs="0" />
+                <xs:element name="GAUGE_DWG" type="xs:string" minOccurs="0" />
+                <xs:element name="PFD" type="xs:string" minOccurs="0" />
+                <xs:element name="SEQUENCE_DWG" type="xs:string" minOccurs="0" />
+                <xs:element name="PFMEA" type="xs:string" minOccurs="0" />
+                <xs:element name="RE_PPAP" type="xs:string" minOccurs="0" />
+                <xs:element name="OTHERS" type="xs:string" minOccurs="0" />
+                <xs:element name="TOOL_DWG" type="xs:string" minOccurs="0" />
+                <xs:element name="CONTROL_PLAN" type="xs:string" minOccurs="0" />
+                <xs:element name="CUST_ISSUE_NO" type="xs:string" minOccurs="0" />
+                <xs:element name="CUST_DWG_NO" type="xs:string" minOccurs="0" />
+                <xs:element name="CUST_DWG_NO_ISSUE" type="xs:string" minOccurs="0" />
+                <xs:element name="ROUTING_TAG" type="xs:string" minOccurs="0" />
+                <xs:element name="FINISH_CODE_SAP_DWG" type="xs:string" minOccurs="0" />
+                <xs:element name="WORK_INSTRUCTION" type="xs:string" minOccurs="0" />
+                <xs:element name="SAP_SEQ_DWG_ISSUE_NO_UPD" type="xs:string" minOccurs="0" />
+                <xs:element name="ALREADY_IN_EFFECT" type="xs:string" minOccurs="0" />
+                <xs:element name="IMMEDIATE" type="xs:string" minOccurs="0" />
+                <xs:element name="FROM_NEXT_HT_CYCLE" type="xs:string" minOccurs="0" />
+                <xs:element name="FROM_NEXT_FORGING" type="xs:string" minOccurs="0" />
+                <xs:element name="STOCK_AT_CODE" type="xs:string" minOccurs="0" />
+                <xs:element name="STOCK_AT_DESCRIPTION" type="xs:string" minOccurs="0" />
+                <xs:element name="LOGISTICS_CODE" type="xs:string" minOccurs="0" />
+                <xs:element name="LOGISTICS_DESCRIPTION" type="xs:string" minOccurs="0" />
+                <xs:element name="WARE_HOUSE_CODE" type="xs:string" minOccurs="0" />
+                <xs:element name="WARE_HOUSE_DESCRIPTION" type="xs:string" minOccurs="0" />
+                <xs:element name="WIP_HT_CODE" type="xs:string" minOccurs="0" />
+                <xs:element name="NEW_CODE" type="xs:string" minOccurs="0" />
+                <xs:element name="NEW_DESCRIPTION" type="xs:string" minOccurs="0" />
+                <xs:element name="DATE_OF_IMPLEMENTATION" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="INVOICE_DATE" type="xs:string" minOccurs="0" />
+                <xs:element name="INVOICE_NO" type="xs:string" minOccurs="0" />
+                <xs:element name="ECN_REFERENCE_NO" type="xs:string" minOccurs="0" />
+                <xs:element name="VERIFICATION" type="xs:string" minOccurs="0" />
+                <xs:element name="VALIDATION" type="xs:string" minOccurs="0" />
+                <xs:element name="WIP_HT_DESCRIPTION" type="xs:string" minOccurs="0" />
+                <xs:element name="SIGNATURE_NAME" type="xs:string" minOccurs="0" />
+                <xs:element name="SIGNATURE_DATE" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>

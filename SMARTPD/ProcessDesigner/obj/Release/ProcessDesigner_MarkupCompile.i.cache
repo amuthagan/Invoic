@@ -1,0 +1,20 @@
+﻿ProcessDesigner
+
+
+winexe
+C#
+.cs
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner\obj\Release\
+ProcessDesigner
+none
+false
+TRACE
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner\App.xaml
+114-1290678927
+16-145606416
+299-1621174372
+62-1051022865
+AppResource.xaml;frmApplication.xaml;frmCategory.xaml;frmCopyCIReference.xaml;frmAddCIReference.xaml;frmControlPlan.xaml;frmControlPlanGeneration.xaml;frmCopyStatus.xaml;frmCostSheet.xaml;frmCostSheetSearch.xaml;frmCustomerReference.xaml;frmDDPerformance.xaml;frmCoatingMaster.xaml;frmMISInputBox.xaml;frmManufacturingReport.xaml;frmDevelopmentReport.xaml;frmDDPerformanceSummary.xaml;frmDrawings.xaml;frmDummy.xaml;frmECNCFTMeet.xaml;frmECNPCN.xaml;frmflxReports.xaml;frmForgingCalc.xaml;frmForm2.xaml;frmInputBox.xaml;frmISIR.xaml;frmKaizenIdeaSheet.xaml;frmLocationMasterRange.xaml;frmLogView.xaml;frmMachineBooking.xaml;frmMcBookReport.xaml;frmMfmDevelopment.xaml;frmMFMPlan.xaml;frmMfmPlanDetails.xaml;frmMOPgraph.xaml;frmOperationMain.xaml;frmFinishMaster.xaml;frmOperatorQualityAssurance.xaml;frmOTPMCharts.xaml;frmPartNumberConfig.xaml;frmPartSubmissionWarrant.xaml;frmPCCS.xaml;frmPendingPartStatus.xaml;frmProductCategoryMaster.xaml;frmProductReleaseDate.xaml;frmProductSearch.xaml;frmProductWeight.xaml;frmQcp.xaml;frmRawMaterial.xaml;frmReportViewer.xaml;frmRPD.xaml;frmRptCustpartNo.xaml;frmRptFeatureWise.xaml;frmrptMFM.xaml;frmrptPartNos.xaml;frmSeqDwgIssue.xaml;frmSimiliarProduct.xaml;frmTfc.xaml;frmTfcECN.xaml;frmTfcPCR.xaml;frmToolSchedule_new.xaml;frmToolsInfo.xaml;frmToolsQuickView.xaml;frmAPQP.xaml;frmCCMaster.xaml;frmCFTMeet.xaml;frmChangePassword.xaml;frmCharacteristicMaster.xaml;frmFeatureMaster.xaml;frmChemicalComposition.xaml;frmCircularRolling.xaml;frmCopyCIRefNum.xaml;frmCopyTurningMac.xaml;frmCPMMaster.xaml;frmExhibit.xaml;frmFlatRollMac.xaml;frmFeatureUpdationMaster.xaml;frmForging.xaml;frmGrinmac.xaml;frmNylocmac.xaml;frmOptimalCondition.xaml;frmPointmac.xaml;frmProcessSheet.xaml;frmProductInformation.xaml;frmFRCS.xaml;frmHardnessConversion.xaml;frmLibrarySearch.xaml;frmLogin.xaml;frmLookUp.xaml;frmOperationMaster.xaml;frmPermissions.xaml;frmPSWTitleMaster.xaml;frmRolesInfo.xaml;frmSapBom.xaml;frmSapFert.xaml;frmSapHalb.xaml;frmSapImport.xaml;frmSapProductVersion.xaml;frmSapRouting.xaml;frmSapSub.xaml;frmSecurity.xaml;frmSecurityUserRoles.xaml;frmSecurityUsers.xaml;frmSNO.xaml;frmStandardCondition.xaml;frmSurfaceFinish.xaml;frmTapmac.xaml;frmThreadDetails.xaml;frmToolAdmin.xaml;frmTrimmac.xaml;frmUnitMaster.xaml;MainWindow.xaml;SplashScreen.xaml;Testing.xaml;
+
+False
+

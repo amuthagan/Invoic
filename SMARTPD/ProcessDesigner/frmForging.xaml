@@ -1,0 +1,551 @@
+﻿<Window x:Class="ProcessDesigner.frmForging"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:ic="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions" 
+        xmlns:il="clr-namespace:Microsoft.Expression.Interactivity.Layout;assembly=Microsoft.Expression.Interactions"       
+        Title="Forging Machine"  Height="545" Width="770" Background="{StaticResource WindowBackground}"
+        xmlns:common="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon"
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"         
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <i:Interaction.Triggers>
+        <!--<i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding OnUnLoadCommad}"/>
+        </i:EventTrigger>-->
+        <i:EventTrigger EventName="Loaded">
+            <si:CallMethodAction MethodName="LoadMethod" TargetObject="{Binding}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Window.Resources>
+        <UICommon:BooleanConverter x:Key="BooleanConverter"/>
+        <UICommon:DecimalConverter x:Key="DecimalConverter"/>
+        <UICommon:IntegerConverter x:Key="IntegerConverter"/>
+    </Window.Resources>
+    <Border Margin="5" BorderThickness="1">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="98*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" ></RowDefinition>
+                <RowDefinition Height="34*"></RowDefinition>
+                <RowDefinition Height="47*"></RowDefinition>
+                <RowDefinition Height="51*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="1"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Forging Machine" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource HeaderText}"  VerticalAlignment="Top"  ></TextBlock>
+            <Border Grid.Row="1" Grid.Column="1" Margin="5" BorderThickness="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="11.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="11.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" ></RowDefinition>
+                        <RowDefinition Height="12*" ></RowDefinition>
+                        <RowDefinition Height="0" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="0" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="0" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="1" ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Cost Centre Code :" Grid.Column="1"  Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <TextBlock x:Name="txtCostCentreCode" Grid.Column="3"  Grid.Row="1" 
+                         ToolTip="Cost Centre Code"                           
+                         Text="{Binding ActiveEntity.COST_CENT_CODE,UpdateSourceTrigger=PropertyChanged}">
+                    </TextBlock>
+                    <TextBlock Text="Machine Type :" Grid.Column="4" Grid.Row="1"  VerticalAlignment="Center"  HorizontalAlignment="Stretch" ></TextBlock>
+                    <ListBox Grid.Column="4"  Grid.Row="1" Name="lstRoles" Tag="Please enter Machine Type" ItemsSource="{Binding Path=MachineTypes,UpdateSourceTrigger=PropertyChanged}"  SelectionMode="Single" 
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="3" Margin="95,0,0,0"
+                             SelectedItem="{Binding SelectedRow,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                             SelectedIndex="{Binding SelectedIndexType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                             >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=DESCRIPTION,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <CheckBox Margin="10,0,0,0" Content="PKO Available"   Grid.Column="7" Grid.Row="1" IsChecked="{Binding ActiveEntity.PKO_AVAILABLE, Converter={StaticResource BooleanConverter}}" />
+                    <TextBlock Text="Manufacturer :" Grid.Column="1"  Grid.Row="3" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <TextBox x:Name="txtManufacturer" Grid.Column="3"  Grid.Row="3" Tag="Please enter Manufacturer" Grid.ColumnSpan="4" MaxLength="50"
+                         ToolTip="Enter the Manufacturer" Width="335.5" HorizontalAlignment="Left"                                                  
+                         Text="{Binding ActiveEntity.MANUFACTURER,UpdateSourceTrigger=PropertyChanged}">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBlock Text="Motor Power :" Grid.Column="7"  Grid.Row="3" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtMotorPower" Tag="Please enter Motor Power" Grid.Column="9" Grid.Row="3" ToolTip="Enter the Motor Power" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.MOTOR_POWER,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Min Product Diameter :" Grid.Column="1"  Grid.Row="5" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtMinProductDiameter" Tag="Please enter Min. Product Diameter" Grid.Column="3" Grid.Row="5" ToolTip="Enter the Min Product Diameter" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.MIN_PROD_DIA,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Max Product Diameter :" Grid.Column="4"  Grid.Row="5" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtMaxProductDiameter" Tag="Please enter Max. Product Diameter" Grid.Column="6" Grid.Row="5" ToolTip="Enter the Max Product Diameter" 
+                          MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.MAX_PROD_DIA,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Tonnage :" Grid.Column="7"  Grid.Row="5" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtTonnage" Tag="Please enter Tonnage" Grid.Column="9" Grid.Row="5" ToolTip="Enter the Tonnage" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.TONNAGE,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Min Product Length :" Grid.Column="1"  Grid.Row="7" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtMinProductLength" Tag="Please enter Min. Product Length" Grid.Column="3" Grid.Row="7" ToolTip="Enter the Min Product Length" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.MIN_PROD_LEN,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Max Product Length :" Grid.Column="4"  Grid.Row="7" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtMaxProductLength" Tag="Please enter Max. Product Length" Grid.Column="6" Grid.Row="7" ToolTip="Enter the Max Product Length" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.MAX_PROD_LEN,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Stations :" Grid.Column="7"  Grid.Row="7" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <TextBox x:Name="txtStations" Tag="Please enter Stations" Grid.Column="9" Grid.Row="7" ToolTip="Enter the Stations" 
+                         MaxLength="15" Width="103" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.NO_OF_STATIONS,UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+                </Grid>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="1" Margin="5" BorderThickness="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="11.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="11.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="0" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="0" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="0" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="0" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="0" ></RowDefinition>
+                        <RowDefinition Height="10*" ></RowDefinition>
+                        <RowDefinition Height="1" ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Cutter Type :" Grid.Column="1"  Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <TextBox x:Name="txtCutterType" Tag="Please enter Cutter Type" Grid.Column="3"  Grid.Row="1" MaxLength="50"
+                         ToolTip="Enter the Cutter Type"                                                 
+                         Text="{Binding ActiveEntity.CUTTER_TYPE}">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBlock Text="Cutter OD :" Grid.Column="4" Grid.Row="1"  VerticalAlignment="Center"  HorizontalAlignment="Right" ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtCutterOD" Tag="Please enter Cutter OD" Grid.Column="6" Grid.Row="1" ToolTip="Enter the Enter the Cutter OD" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.CUTTER_OD,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+
+                    <!--<TextBox x:Name="txtCutterOD" Grid.Column="6"  Grid.Row="1" 
+                         ToolTip="Enter the Cutter OD" 
+                         
+                         Tag="CUTTER_OD"
+                         TabIndex="12"
+                         Text="{Binding ActiveEntity.CUTTER_OD}">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>-->
+                    <TextBlock Text="Cutter Thick :" Grid.Column="7" Grid.Row="1"  VerticalAlignment="Center"  HorizontalAlignment="Right" ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtCutterThick" Tag="Please enter Cutter Thick" Grid.Column="9"  Grid.Row="1" ToolTip="Enter the Enter the Cutter Thick" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.CUTTER_TICKNESS,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+
+                    <!--<TextBox x:Name="txtCutterThick" Grid.Column="9"  Grid.Row="1" 
+                         ToolTip="Enter the Cutter Thick " 
+                         Tag="CUTTER_TICKNESS"
+                         TabIndex="22"
+                         Text="{Binding ActiveEntity.CUTTER_TICKNESS}">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>-->
+                    <TextBlock Text="Quill Type :" Tag="Please enter Quill Type" Grid.Column="1"  Grid.Row="3" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <TextBox x:Name="txtQuillType" Grid.Column="3"  Grid.Row="3" MaxLength="50"
+                         ToolTip="Enter the Quill Type" 
+                         Text="{Binding ActiveEntity.QUILL_TYPE,UpdateSourceTrigger=PropertyChanged}">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBlock Text="Quill OD :" Grid.Column="4"  Grid.Row="3" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtQuillOD" Tag="Please enter Quill OD" Grid.Column="6" Grid.Row="3" ToolTip="Enter the Quill OD" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.QUILL_OD,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Max Cuttoff Dia :" Grid.Column="7"  Grid.Row="3" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtMaxCuttoffDia" Tag="Please enter Max. Cutoff Dia" Grid.Column="9" Grid.Row="3" ToolTip="Enter the Max Cuttoff Dia" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.MAX_CUTOFF_DIA,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Quill Cutter Dist :" Grid.Column="1"  Grid.Row="5" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <TextBox x:Name="txtQuillCutterDist" Tag="Please enter Quill Cutter Dist." MaxLength="50" Grid.Column="3" Grid.Row="5" ToolTip="Enter the Quill Cutter Dist" 
+                         Text="{Binding ActiveEntity.QUILL_CUTTER_DIST,UpdateSourceTrigger=PropertyChanged }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBlock Text="Max Kick Out :" Grid.Column="4"  Grid.Row="5" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtMaxKickOut" Tag="Please enter Max. Kick Out" Grid.Column="6" Grid.Row="5" ToolTip="Enter the Max Kick Out" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.MAX_KNOCK_OUT,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Min Cutoff Len :" Grid.Column="7"  Grid.Row="5" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtMinCutoffLen" Tag="Please enter Min. Cutoff Len" Grid.Column="8" Grid.Row="5" ToolTip="Enter the Min Cutoff Len" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.MIN_CUTOFF_LEN,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left" Grid.ColumnSpan="2" Margin="4.7,1.426,0.36,0" VerticalAlignment="Top">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Max Cutoff Len :" Grid.Column="1"  Grid.Row="7" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtMaxCutoffLen" Tag="Please enter Max. Cutoff Len." Grid.Column="3" Grid.Row="7" ToolTip="Enter the Max Cutoff Len" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.MAX_CUTOFF_LEN,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Max Punch Kick Out :" Grid.Column="4"  Grid.Row="7" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtMaxPunchKickOut" Tag="Please enter Max. Punch Kick Out" Grid.Column="6" Grid.Row="7" ToolTip="Enter the Max Punch Kick Out" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.MAX_PUCH_KICKOUT,UpdateSourceTrigger=PropertyChanged,StringFormat=F2}" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Cool Tool plnref :" Grid.Column="7"  Grid.Row="7" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtCoolToolplnref" Tag="Please enter Cool Tool Plnref" Grid.Column="9" Grid.Row="7" ToolTip="Enter the Cool Tool plnref" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.CONE_TOOL_PIN_REF,UpdateSourceTrigger=PropertyChanged,StringFormat=F2}" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Punch Closed Dim :" Grid.Column="1"  Grid.Row="9" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtPunchClosedDim" Tag="Please enter Punch Closed Dim." Grid.Column="3" Grid.Row="9" ToolTip="Enter the Punch Closed Dim" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.PUNCH_CLOSED_DIM,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Punch Open Dim :" Grid.Column="4"  Grid.Row="9" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtPunchOpenDim" Tag="Please enter Punch Open Dim" Grid.Column="6" Grid.Row="9" ToolTip="Enter the Punch Open Dim" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.PUCH_OPEN_DIM,UpdateSourceTrigger=PropertyChanged,StringFormat=F2}" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Die Pitch :" Grid.Column="7"  Grid.Row="9" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtDiePitch" Tag="Please enter Die Pitch" Grid.Column="9" Grid.Row="9" ToolTip="Enter the Die Pitch" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.DIE_PITCH,UpdateSourceTrigger=PropertyChanged,StringFormat=F2}" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Quill Thickness :" Grid.Column="4"  Grid.Row="11" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtQuillThickness" Tag="Please enter Quill Thickness" Grid.Column="6" Grid.Row="11" ToolTip="Enter the Quill Thickness" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.QUILL_THICKNESS,UpdateSourceTrigger=PropertyChanged,StringFormat=F2}" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <TextBlock Text="Max Button Dia :" Grid.Column="7"  Grid.Row="11" VerticalAlignment="Center"  HorizontalAlignment="Right"  ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtMaxButtonDia" Tag="Please enter Max. Button Dia" Grid.Column="9" Grid.Row="11" ToolTip="Enter the Max Button Dia" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" Width="90" HorizontalAlignment="Left"
+                         Text="{Binding ActiveEntity.MAX_BUTTON_DIA,UpdateSourceTrigger=PropertyChanged,StringFormat=F2}" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+
+                </Grid>
+            </Border>
+            <Border Grid.Row="3" Grid.Column="1" Margin="5" BorderThickness="1">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20" ></RowDefinition>
+                        <RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="0"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="0"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="0"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="0"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="0"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" ></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                        <ColumnDefinition Width="50*"></ColumnDefinition>
+                        <ColumnDefinition Width="5" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="PUNCH DETAILS" Grid.Column="2"  Grid.Row="0"  VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.ColumnSpan="3"></TextBlock>
+                    <TextBlock Text="Diameter" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Row="1" ></TextBlock>
+                    <TextBlock Text="Length" Grid.Column="4" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Row="1" ></TextBlock>
+                    <TextBlock Text="Station 1 :" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center"  HorizontalAlignment="Right"></TextBlock>
+                    <TextBlock Text="Station 2 :" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center"  HorizontalAlignment="Right"></TextBlock>
+                    <TextBlock Text="Station 3 :" Grid.Column="0" Grid.Row="7" VerticalAlignment="Center"  HorizontalAlignment="Right"></TextBlock>
+                    <TextBlock Text="Station 4 :" Grid.Column="0" Grid.Row="9" VerticalAlignment="Center"  HorizontalAlignment="Right" ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtPunchDia1" Tag="Please enter Station 1 Punch Dia." Grid.Column="2" Grid.Row="3" ToolTip="Enter the Station 1 Diameter" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  
+                         Text="{Binding ActiveEntity.PUNCH_DIA_1 ,UpdateSourceTrigger=PropertyChanged,StringFormat=F2}" TextAlignment="Left" VerticalAlignment="Top">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtPunchLen1" Tag="Please enter Station 1 Punch Len." Grid.Column="4" Grid.Row="3"
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  
+                         Text="{Binding ActiveEntity.PUCH_LEN_1,UpdateSourceTrigger=PropertyChanged,StringFormat=F2}" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtPunchDia2" Tag="Please enter Station 2 Punch Dia." Grid.Column="2" Grid.Row="5" ToolTip="Enter the Station 1 Diameter" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" 
+                         Text="{Binding ActiveEntity.PUCH_DIA_2,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtPunchLen2" Tag="Please enter Station 2 Punch Len." Grid.Column="4" Grid.Row="5" ToolTip="Enter the Station 2 Length" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" 
+                         Text="{Binding ActiveEntity.PUCH_LEN_2,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtPunchDia3" Grid.Column="2" Grid.Row="7" Tag="Please enter the Station 3 Punch Dia." 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  
+                         Text="{Binding ActiveEntity.PUCH_DIA_3,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtPunchLen3" Grid.Column="4" Grid.Row="7" Tag="Please enter the Station 3 Punch Len." 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" 
+                         Text="{Binding ActiveEntity.PUCH_LEN_3,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtPunchDia4" Grid.Column="2" Grid.Row="9" Tag="Please enter the Station 4 Punch Dia." 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  
+                         Text="{Binding ActiveEntity.PUCH_DIA_4,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtPunchLen4" Grid.Column="4" Grid.Row="9" Tag="Please enter the Station 4 Punch Len." 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  
+                         Text="{Binding ActiveEntity.PUCH_LEN_4,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+
+                    <TextBlock Text="DIE DETAILS" Grid.Column="5"  Grid.Row="0"  VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.ColumnSpan="4"></TextBlock>
+                    <TextBlock Text="Diameter" Grid.Column="6" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Row="1" ></TextBlock>
+                    <TextBlock Text="Length" Grid.Column="8" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Row="1" ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtDieDia1" Grid.Column="6" Grid.Row="3" Tag="Please enter the Station 1 Die Dia." 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  
+                         Text="{Binding ActiveEntity.DIE_DIA1,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtDieLen1" Grid.Column="8" Grid.Row="3" Tag="Please enter the Station 1 Die Len." 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" 
+                         Text="{Binding ActiveEntity.DIE_LEN1,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left"
+                             >
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtDieDia2" Grid.Column="5" Grid.Row="5" Tag="Please enter the Station 2 Die Dia." 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" 
+                         Text="{Binding ActiveEntity.DIE_DIA2,UpdateSourceTrigger=PropertyChanged,StringFormat=F2}" TextAlignment="Left" Grid.ColumnSpan="3" Margin="4.592,0,4.544,2.904" VerticalAlignment="Bottom">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtDieLen2" Grid.Column="8" Grid.Row="5" Tag="Please enter the Station 2 Die Len."
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  
+                         Text="{Binding ActiveEntity.DIE_LEN2,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtDieDia3" Grid.Column="6" Grid.Row="7" Tag="Please enter the Station 3 Die Dia."
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" 
+                         Text="{Binding ActiveEntity.DIE_DIA3,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtDieLen3" Grid.Column="8" Grid.Row="7" Tag="Please enter the Station 3 Die Len." 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" 
+                         Text="{Binding ActiveEntity.DIE_LEN3,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtDieDia4" Grid.Column="6" Grid.Row="9" Tag="Please enter the Station 4 Die Dia." 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  
+                         Text="{Binding ActiveEntity.DIE_DIA4,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtDieLen4" Grid.Column="8" Grid.Row="9" Tag="Please enter the Station 4 Die Len."
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  
+                         Text="{Binding ActiveEntity.DIE_LEN4,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+
+                    <TextBlock Text="TRANF FINGER  DETAILS" Grid.Column="10"  Grid.Row="0"  VerticalAlignment="Center"  HorizontalAlignment="Center" ></TextBlock>
+                    <TextBlock Text="Transfer Finger Fix Dim" Grid.Column="10" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Row="1" ></TextBlock>
+                    <common:DecimalTextBox x:Name="txtTransfin1" Grid.Column="10" Grid.Row="3" Tag="Please enter the Station 1 Transfer Finger Fix Dim" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" 
+                         Text="{Binding ActiveEntity.TRANS_FINGER_FIX_DIM1,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtTransfin2" Grid.Column="10" Grid.Row="5" Tag="Please enter the Station 2 Transfer Finger Fix Dim" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" 
+                         Text="{Binding ActiveEntity.TRANS_FINGER_FIX_DIM2,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtTransfin3" Grid.Column="10" Grid.Row="7" Tag="Please enter the Station 3 Transfer Finger Fix Dim" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13"  
+                         Text="{Binding ActiveEntity.TRANS_FINGER_FIX_DIM3,UpdateSourceTrigger=PropertyChanged,StringFormat=F2}" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+                    <common:DecimalTextBox x:Name="txtTransfin4" Grid.Column="10" Grid.Row="9" Tag="Please enter the Station 4 Transfer Finger Fix Dim" 
+                         MaxDecimalPlaces="2"  AllowNegative="False" MaxLength="13" 
+                         Text="{Binding ActiveEntity.TRANS_FINGER_FIX_DIM4,UpdateSourceTrigger=PropertyChanged,StringFormat=F2 }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </common:DecimalTextBox>
+
+                    <TextBlock Text="Finger Mechanism :" Grid.Column="2" Grid.Row="11" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.ColumnSpan="7" ></TextBlock>
+                    <TextBox x:Name="txtTransfin5" Grid.Column="10" Grid.Row="11" Tag="Please enter the Finger Mechanism" 
+                         MaxLength="50" Text="{Binding ActiveEntity.FINGER_MECHANISM,UpdateSourceTrigger=PropertyChanged }" TextAlignment="Left">
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterTextBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+                </Grid>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="1" >
+                <Grid Grid.ColumnSpan="2" Margin="0,0,5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button  Height="30" Width="80" HorizontalAlignment="Right" Content="_Save" Command="{Binding OnSubmitCommand}" Margin="0,0,10,0"/>
+                    <Button Grid.Column="1" Height="30" Width="80"  HorizontalAlignment="Right" Content="_Cancel" Command="{Binding OnCacelCommand}" />
+                </Grid>
+            </Border>
+
+        </Grid>
+    </Border>
+</Window>

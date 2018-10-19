@@ -1,0 +1,147 @@
+﻿<Window x:Class="ProcessDesigner.frmThreadDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Thread Details" Height="400" Width="800" MinWidth="800" Background="{StaticResource WindowBackground}"  ResizeMode="NoResize">
+    <Border Padding="5" >
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--Left Side Group Boxes Thread Type & Standards-->
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition  Height="55*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Header="Thread Type">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60*"></ColumnDefinition>
+                            <ColumnDefinition Width="40*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*"></RowDefinition>
+                            <RowDefinition Height="60*" ></RowDefinition>
+                            <RowDefinition Height="20*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <RadioButton Content="External"  Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Left"  Name="rdbThreadType1"></RadioButton>
+                        <RadioButton Content="Internal"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Name="rdbThreadType2"></RadioButton>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="Standards" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="69*"/>
+                            <ColumnDefinition Width="65*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"></RowDefinition>
+                            <RowDefinition Height="30*" ></RowDefinition>
+                            <RowDefinition Height="30*" ></RowDefinition>
+                            <RowDefinition Height="10*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <RadioButton Content="IS"  Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Left"  Name="rdbStd1" ></RadioButton>
+                        <RadioButton Content="BS"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Name="rdbStd2" Grid.Column="1"></RadioButton>
+                        <RadioButton Content="ISO"  Grid.Row="2" VerticalAlignment="Center"  HorizontalAlignment="Left"  Name="rdbStd3" ></RadioButton>
+                        <RadioButton Content="DIN"  Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Name="rdbStd4" Grid.Column="1"></RadioButton>
+                    </Grid>
+                </GroupBox>
+
+            </Grid>
+
+            <!--Right Side Combo Boxes -->
+            <Grid Grid.Column="1"  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"></ColumnDefinition>
+                    <ColumnDefinition  Width="45*"></ColumnDefinition>
+                    <ColumnDefinition  Width="20*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15*"></RowDefinition>
+                    <RowDefinition Height="15*"></RowDefinition>
+                    <RowDefinition Height="15*"></RowDefinition>
+                    <RowDefinition Height="15*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Series : " Grid.Row="0" TextAlignment="Right" Grid.Column="0"></TextBlock>
+                <TextBlock Text="Nominal Dia : " Grid.Row="1" TextAlignment="Right" Grid.Column="0"></TextBlock>
+                <TextBlock Text="Fit : " Grid.Row="2" TextAlignment="Right" Grid.Column="0"></TextBlock>
+                <TextBlock Text="Pitch : " Grid.Row="3" TextAlignment="Right" Grid.Column="0"></TextBlock>
+                <TextBlock Text="Inches" FontWeight="Bold" Grid.Row="3" Grid.Column="2" Padding="4,2,0,0"></TextBlock>
+                <Button Content="Show" FontWeight="Bold" Grid.Row="5" Grid.Column="1"></Button>
+                <ComboBox Grid.Row="0" Grid.Column="1" Tag="Please select Series"></ComboBox>
+                <ComboBox Grid.Row="1" Grid.Column="1" Tag="Please select Normal Dia"></ComboBox>
+                <ComboBox Grid.Row="2" Grid.Column="1" Tag="Please select Fit "></ComboBox>
+                <ComboBox Grid.Row="3" Grid.Column="1" Tag="Please select Pitch"></ComboBox>
+            </Grid>
+
+            <!--Bottom Grid-->
+            <Grid Grid.Row ="1" Grid.ColumnSpan="2" >
+                <Border Padding="0,5,0,0" >
+                    <GroupBox Header="Three Dimension Output" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="12*"></ColumnDefinition>
+                                <ColumnDefinition Width="12*"></ColumnDefinition>
+                                <ColumnDefinition Width="12*"></ColumnDefinition>
+                                <ColumnDefinition Width="12*"></ColumnDefinition>
+                                <ColumnDefinition Width="12*"></ColumnDefinition>
+                                <ColumnDefinition Width="12*"></ColumnDefinition>
+                                <ColumnDefinition Width="12*"></ColumnDefinition>
+                                <ColumnDefinition Width="12*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"></RowDefinition>
+                                <RowDefinition Height="18*"></RowDefinition>
+                                <RowDefinition Height="22*"></RowDefinition>
+                                <RowDefinition Height="22*"></RowDefinition>
+                                <RowDefinition Height="10*"></RowDefinition>
+                                <RowDefinition Height="22*"></RowDefinition>
+                                <RowDefinition Height="3*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Name="lblHMajarDia" Grid.Column="1" Grid.Row="1" Text="Majar Dia" Grid.ColumnSpan="2" FontWeight="Bold" TextAlignment="Center"></TextBlock>
+                            <TextBlock Name="lblHPitchDia" Grid.Column="3" Grid.Row="1" Text="Pitch Dia" Grid.ColumnSpan="2" FontWeight="Bold" TextAlignment="Center"></TextBlock>
+                            <TextBlock Name="lblHMinorDia" Grid.Column="5" Grid.Row="1" Text="Minor Dia" Grid.ColumnSpan="2" FontWeight="Bold" TextAlignment="Center"></TextBlock>
+                            <TextBlock Name="lblHThreadRollingDia" Grid.Column="7" Grid.Row="1" TextWrapping="Wrap" Text="Thread Rolling Dia" Grid.ColumnSpan="2" FontWeight="Bold" TextAlignment="Center"></TextBlock>
+                            <TextBlock Name="lblMDUpper" Grid.Column="1" Grid.Row="2" Text="Upper Limit : "  TextAlignment="Right" ></TextBlock>
+                            <TextBlock Name="lblMDlower" Grid.Column="1" Grid.Row="3" Text="Lower Limit : "  TextAlignment="Right" ></TextBlock>
+                            <TextBlock  Name="lblPDUpper" Grid.Column="3" Grid.Row="2" Text="Upper Limit : "  TextAlignment="Right" ></TextBlock>
+                            <TextBlock  Name="lblPDLower" Grid.Column="3" Grid.Row="3" Text="Lower Limit : "  TextAlignment="Right" ></TextBlock>
+                            <TextBlock  Name="lblMiDUpper" Grid.Column="5" Grid.Row="2" Text="Upper Limit : "  TextAlignment="Right" ></TextBlock>
+                            <TextBlock  Name="lblMiDLower" Grid.Column="5" Grid.Row="3" Text="Lower Limit : "  TextAlignment="Right" ></TextBlock>
+                            <TextBlock  Name="lblTRDUpper" Grid.Column="7" Grid.Row="2" Text="Upper Limit : "  TextAlignment="Right" ></TextBlock>
+                            <TextBlock Name="lblTRDLower"  Grid.Column="7" Grid.Row="3" Text="Lower Limit : "  TextAlignment="Right" ></TextBlock>
+
+                            <TextBox Name="txtMDUpper" Grid.Column="2" Grid.Row="2" Height="25" Tag="Please enter Major Dia Upper Limit"></TextBox>
+                            <TextBox Name="txtMDLower" Grid.Column="2" Grid.Row="3" Height="25" Tag="Please enter Major Dia Lower Limit"></TextBox>
+                            <TextBox  Name="txtPDUpper" Grid.Column="4" Grid.Row="2"  Height="25" Tag="Please enter Pitch Dia Upper Limit" ></TextBox>
+                            <TextBox  Name="txtPDLower" Grid.Column="4" Grid.Row="3" Height="25" Tag="Please enter Pitch Dia Lower Limit"></TextBox>
+                            <TextBox  Name="txtMiDUpper" Grid.Column="6" Grid.Row="2" Height="25" Tag="Please enter Minor Dia Upper Limit" ></TextBox>
+                            <TextBox  Name="txtMiDLower" Grid.Column="6" Grid.Row="3" Height="25" Tag="Please enter Minor Dia Lower Limit" ></TextBox>
+                            <TextBox  Name="txtTRDUpper" Grid.Column="8" Grid.Row="2" Height="25" Tag="Please enter Thread Rolling Dia Upper Limit "></TextBox>
+                            <TextBox Name="txtTRDLower"  Grid.Column="8" Grid.Row="3" Height="25" Tag="Please enter Thread Rolling Dia Lower Limit" ></TextBox>
+
+                            <TextBlock Name="lblRemarks"  Grid.Column="1" Grid.Row="5" Text="Remarks : "  TextAlignment="Right" ></TextBlock>
+                            <TextBox Name="txtRemarks"  Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="7" Height="25" Tag="Please enter Remarks"></TextBox>
+                        </Grid>
+                    </GroupBox>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+   
+</Window>

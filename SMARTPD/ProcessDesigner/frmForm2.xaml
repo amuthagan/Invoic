@@ -1,0 +1,139 @@
+﻿<Window x:Class="ProcessDesigner.frmForm2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        mc:Ignorable="d"  d:DesignHeight="500" d:DesignWidth="800"
+        Title="Audit Report"  Background="{StaticResource WindowBackground}" Icon="Images\logo.ico" WindowStartupLocation="CenterScreen">
+    <Border BorderThickness="1" Margin="2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>                
+            </Grid.RowDefinitions>
+            <Border BorderThickness="1" Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Part Number Type" FontWeight="Bold" Grid.Column="0" VerticalAlignment="Center"   Grid.Row="0" Margin="10,5,5,5" ></TextBlock>
+                    <CheckBox Content="9 Digit ones" Grid.Column="0" Grid.Row="1" Margin="10,5,5,5" IsChecked="{Binding AuditReport.NineDigitPartNo,UpdateSourceTrigger=PropertyChanged}" >
+                        <i:Interaction.Triggers>                            
+                            <i:EventTrigger EventName="Checked">
+                                <i:InvokeCommandAction Command="{Binding CheckedChangedCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Unchecked">
+                                <i:InvokeCommandAction Command="{Binding CheckedChangedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </CheckBox>
+                    <CheckBox Content="6 Digit ones" Grid.Column="0" Grid.Row="2" Margin="10,5,5,5" IsChecked="{Binding AuditReport.SixDigitPartNo,UpdateSourceTrigger=PropertyChanged}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Checked">
+                                <i:InvokeCommandAction Command="{Binding CheckedChangedCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Unchecked">
+                                <i:InvokeCommandAction Command="{Binding CheckedChangedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </CheckBox>
+                    <Button Content="Generate" Height="30"  Grid.Column="1" Width="100" Grid.Row="1"  Grid.RowSpan="2" Command="{Binding GenerateCommand}" />
+                    <Button Content="Print" Height="30"  Grid.Column="2" Width="100" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Left" Visibility="{Binding PrintButtonVisibility}" Command="{Binding PrintCommand}" />
+                </Grid>
+            </Border>
+
+            <DataGrid Grid.Row="1"  ItemsSource="{Binding AuditReport.DVAuditReport,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"
+                      CanUserDeleteRows="False" RowHeaderWidth="0" SelectionUnit="FullRow" AlternationCount="0" UICommon:ScrollToTopBehavior.ScrollToTop="True" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="BeginningEdit">
+                        <si:CallMethodAction MethodName="OnBeginningEdit" TargetObject="{Binding}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Header="Part No" Width="100" Binding="{Binding PART_NO,UpdateSourceTrigger=PropertyChanged}" >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Header="Product Issue No" Width="150" Binding="{Binding ISSUENO,UpdateSourceTrigger=PropertyChanged}"  >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Header="Product Issue Date" Width="150" Binding="{Binding ISSUEDATE,UpdateSourceTrigger=PropertyChanged}"  >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Header="Sequence Issue No" Width="150" Binding="{Binding SEQ_ISSUENO,UpdateSourceTrigger=PropertyChanged}"  >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Header="Customer Drwg No" Width="150" Binding="{Binding CUST_DWG_NO,UpdateSourceTrigger=PropertyChanged}"  >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Header="Customer Part No" Width="150" Binding="{Binding CUST_STD_NO,UpdateSourceTrigger=PropertyChanged}"  >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Header="Customer Name" Width="150" Binding="{Binding CUST_NAME,UpdateSourceTrigger=PropertyChanged}"  >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Header="Customer Drwg Issue No" Width="170" Binding="{Binding CUS_ISSUENO,UpdateSourceTrigger=PropertyChanged}"  >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn  Header="Customer Drwg Issue Date" Width="180" Binding="{Binding CUS_ISSUEDATE,UpdateSourceTrigger=PropertyChanged}"  >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>      
+    </Border>
+</Window>

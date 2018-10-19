@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="DDFINISH_MAST" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DDFINISH_MAST">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FINISH_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="FINISH_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="ROWID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              <xs:element name="DELETE_FLAG" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ENTERED_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ENTERED_BY" type="xs:string" minOccurs="0" />
+              <xs:element name="UPDATED_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UPDATED_BY" type="xs:string" minOccurs="0" />
+              <xs:element name="COLORAPP" type="xs:string" minOccurs="0" />
+              <xs:element name="COATING_WEIGHT" type="xs:string" minOccurs="0" />
+              <xs:element name="COATING_THICKNESS" type="xs:string" minOccurs="0" />
+              <xs:element name="SALT_SPRAY_WHITE" type="xs:string" minOccurs="0" />
+              <xs:element name="SALT_SPRAY_RED" type="xs:string" minOccurs="0" />
+              <xs:element name="COF" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="ProcessDesigner.UserControls.DatePickerCus"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="25" Focusable="True" Name="DatePicker"  d:DesignWidth="300" DataContext="{Binding RelativeSource={RelativeSource Self}}" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="txtDate" Text="{Binding SelectedDate}" PreviewKeyDown="txtDate_PreviewKeyDown" PreviewLostKeyboardFocus="txtDate_PreviewLostKeyboardFocus" PreviewTextInput="txtDate_PreviewTextInput" />
+        <ToggleButton  Name="togDate"  IsTabStop="False" Template="{DynamicResource ComboBoxToggleButton}"  Height="{Binding ElementName=txtDate,Path=Height }" 
+                HorizontalAlignment="Right" Focusable="True"  />
+        <Popup Name="popContent"  IsOpen="{Binding IsChecked, ElementName=togDate,Mode=TwoWay}" StaysOpen="False" Opened="popContent_Opened" >
+            <Border  Name="bdrContent" BorderThickness="1" CornerRadius="4"  Background="White">
+                <Grid >
+                    <Grid.RowDefinitions >
+                        <RowDefinition />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Calendar Name="calForDate" SelectedDatesChanged="calForDate_SelectedDatesChanged"  />
+                    <Button Focusable="False"  Name="btnToday" Grid.Row="1" Click="btnToday_Click"  />
+                </Grid>                
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

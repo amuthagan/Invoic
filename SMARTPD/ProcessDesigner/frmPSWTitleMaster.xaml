@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="ProcessDesigner.frmPSWTitleMaster"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:Enterkey="clr-namespace:ProcessDesigner.Common"
+        xmlns:vm="clr-namespace:ProcessDesigner.Model" 
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:local="clr-namespace:ProcessDesigner.UICommon"  Height="125" Width="340" Loaded="UserControl_Loaded" Background="{StaticResource WindowBackground}">
+    <Border>
+        <Grid KeyboardNavigation.TabNavigation ="Cycle">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="70*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <ToolBar Grid.ColumnSpan="5">
+                <Button Content="Add F3"  Grid.Row="0" Grid.Column="0" Height="40"  Width="60"  IsEnabled="{Binding AddButtonIsEnable}" Command="{Binding OnAddCommand}" ToolTip="Add New Record" Lookup:AddedProperty.Image="Images/Add.png" ></Button>
+                <Button Content="Edit/View F5" Grid.Row="0" Grid.Column="1" Height="40" Width="80"  IsEnabled="{Binding EditButtonIsEnable}" Command="{Binding OnEditViewCommand }"  ToolTip="Edit or View Record" Lookup:AddedProperty.Image="Images/Edit.png"></Button>
+                <Button Content="Save Ctrl+S" Grid.Row="0" Grid.Column="3"  Height="40" Width="68" Padding="1" IsEnabled="{Binding SaveButtonIsEnable}"  Command="{Binding OnSaveCommand }"  ToolTip="Save Record" Lookup:AddedProperty.Image="Images/Save.png" />
+                <Button Content="Close F9" Grid.Row="0" Grid.Column="4" Height="40" Width="65" Command="{Binding OnCloseCommand}"  ToolTip="Close Form" Lookup:AddedProperty.Image="Images/Close.png"></Button>
+                <Button Visibility="Collapsed" Content="Delete F6" Grid.Row="0" Grid.Column="2"  Height="40" Width="60"  IsEnabled="{Binding DeleteButtonIsEnable}" Command="{Binding OnDeleteCommand }" ToolTip="Delete a Record" Lookup:AddedProperty.Image="Images/Delete.png" />
+            </ToolBar>
+            <Grid Grid.Row="1" Grid.ColumnSpan="6" Margin="2,2,2,2" KeyboardNavigation.TabNavigation ="Cycle">
+                <Border BorderThickness="1" Padding="0,0,20,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*"></ColumnDefinition>
+                            <ColumnDefinition Width="35*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Name : " Grid.Column="0"  Grid.Row="0" Margin="5,0,0,0" VerticalAlignment="Center"  HorizontalAlignment="Right"></TextBlock>
+                        <!--<ComboBox Grid.Column="1" Grid.Row="0"></ComboBox>-->
+                        <Lookup:ComboBoxCus Tag="Please enter/select Name " MaxLength="29" IsStatusBoxVisible="Visible"   Grid.Column="1" IsReadOnly="{Binding IsNameReadonly}"  Margin="2,5,20,0" Grid.Row ="0" x:Name="cmbPswName"  ButtonVisibility="{Binding ButtonVisibleName}"
+					DataSource="{Binding PSWTitleMaster.PSWTitleMasterDetails,UpdateSourceTrigger=PropertyChanged}"   SelectedItem="{Binding SelectedRowPsw}"  SelectedValuePath="NAME" SelectedValue="{Binding PSWTitleMaster.PSWName,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"  ColumnsHeader="{Binding DropDownItems}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedItemChanged">
+                                    <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandName}"/>
+                                </i:EventTrigger>
+                                <!--<i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandName}"/>
+                                </i:EventTrigger>-->
+                            </i:Interaction.Triggers>
+
+                        </Lookup:ComboBoxCus>
+                        <TextBlock Text="Title : " Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"  Margin="5,0,0,0"  HorizontalAlignment="Right" ></TextBlock>
+                        <TextBox Tag="Please enter Title" MaxLength="40" Grid.Column="1" Grid.Row="1" Margin="2,2,20,0"  local:FocusExtension.IsFocused="{Binding FocusButton}" Text="{Binding PSWTitleMaster.PSWTitle,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  >
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandName}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
+                        </TextBox>
+                        <DockPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" Margin="0,5,0,0" Width="140" HorizontalAlignment="Left" Visibility="{Binding IsVisibilityDelete,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" IsEnabled="{Binding IsDeleteEnable ,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                            <RadioButton IsChecked="{Binding IsActive,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Content="Active" Width="60" ></RadioButton>
+                            <RadioButton IsChecked="{Binding IsInActive,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Content="In-Active" Width="70"></RadioButton>
+                        </DockPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+    <UserControl.InputBindings >
+        <KeyBinding Key="F3"  Command ="{Binding OnAddCommand}"/>
+        <KeyBinding Key="F5"  Command="{Binding OnEditViewCommand}"/>
+        <KeyBinding Key="F6"  Command="{Binding OnDeleteCommand}"/>
+        <!--<KeyBinding Key="F7"  Command="{Binding OnSaveCommand}"/>-->
+        <KeyBinding Key="S" Modifiers="Control"  Command="{Binding OnSaveCommand}"/>
+        <KeyBinding Key="F9"  Command="{Binding OnCloseCommand}"/>
+    </UserControl.InputBindings >
+</UserControl>

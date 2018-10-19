@@ -1,0 +1,490 @@
+﻿<UserControl x:Class="ProcessDesigner.frmToolSchedule_new"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"    
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:Common="clr-namespace:ProcessDesigner.UICommon"
+        Height="650" Width="1000" MinWidth="800"   Background="{StaticResource WindowBackground}" Unloaded="UserControl_Unloaded">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <si:CallMethodAction MethodName="LoadMethod" TargetObject="{Binding}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <UICommon:DateTimeConverter x:Key="DateTimeConverter"/>
+        <UICommon:BooleanConverter x:Key="BooleanConverter"/>
+        <UICommon:CurrencyConverter x:Key="CurrencyConverter"/>
+        <UICommon:DecimalConverter x:Key="DecimalConverter"/>
+        <CollectionViewSource x:Key="OperationViewSource" Source="{Binding Path=OperationDataSource}"/>
+        <CollectionViewSource x:Key="OperationCostViewSource" Source="{Binding Path=OperationCostDataSource}"/>
+        <CollectionViewSource x:Key="OperationCostOutputViewSource" Source="{Binding Path=CostCentreOutputDataSource}"/>
+    </UserControl.Resources>
+    <Border BorderThickness="1" Margin="0,0,0,0" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*"></RowDefinition>
+                <RowDefinition Height="4.9*"></RowDefinition>
+                <RowDefinition Height="4.3*"></RowDefinition>
+                <RowDefinition Height="80*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--Grid and Button-->
+            <Border  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  >
+                <ToolBarTray >
+                    <ToolBar BandIndex="0" Height="58" >
+                        <Button Content="Edit/View F5 " Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Control:AddedProperty.Image="Images/Edit.png" ToolTip="Press F5 - Edit or View Record" Command="{Binding EditClickCommand}" IsEnabled="{Binding EditEnable,UpdateSourceTrigger=PropertyChanged}" />
+                        <Button Content="Save Ctrl+S " Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Control:AddedProperty.Image="Images/Save.png" Command="{Binding SaveClickCommand}" ToolTip="Save Record " IsEnabled="{Binding SaveEnable,UpdateSourceTrigger=PropertyChanged}" />
+                        <Button Content="  Print   " Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Control:AddedProperty.Image="Images/Print.png" ToolTip="Print Details from the Screen" IsEnabled="{Binding PrintEnable,UpdateSourceTrigger=PropertyChanged}" />
+                        <Menu ToolBar.OverflowMode="Always" >
+                            <StackPanel Background="White">
+                                <MenuItem Header="Tool Schedule" Command="{Binding PrintToolScheduleCommand}" IsEnabled="{Binding PrintEnable}" >
+                                </MenuItem>
+                                <MenuItem  Header="Auxillary Tool Schedule" Command="{Binding PrintAuxToolScheduleCommand}" IsEnabled="{Binding PrintEnable}"/>
+                            </StackPanel>
+                        </Menu>
+                    </ToolBar>
+                    <ToolBar  BandIndex="1" Height="58">
+                        <Button Content="ReNumber" Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Control:AddedProperty.Image="Images/ReNumber.png" Command="{Binding ReNumberCommand}" ToolTip="Similar Part No" />
+                        <Button Content="Copy " Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Control:AddedProperty.Image="Images/Copy.png" Command="{Binding CopyStatusCommand}" ToolTip="Copy"/>
+                        <Button Content="Show Tool Info" Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Command="{Binding ShowToolInfoCommand}" ToolTip="Show Tool Info" Visibility="Collapsed"   />
+                        <Button Content="Undo " Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Control:AddedProperty.Image="Images/Undo.png" Command="{Binding UndoToolScheduleCommand}" ToolTip="Undo"/>
+                        <Button Content="Show Related" Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Control:AddedProperty.Image="Images/ShowRelated.png" ></Button>
+                        <Menu ToolBar.OverflowMode="Always" >
+                            <StackPanel Background="White">
+                                <MenuItem Header="Process Sheet" Command="{Binding ProcessSheetCommand}" >
+                                </MenuItem>
+                                <MenuItem  Header="Control Plan" Command="{Binding ControlPlanCommand}"/>
+                                <MenuItem  Header="Drawings" Command="{Binding DrawingsCommand}" />
+                                <MenuItem  Header="Development Report" Command="{Binding DevelopmenReportCommand}" />
+                                <MenuItem  Header="Manufacturing Report" Command="{Binding MfgRptCommand}" />
+                            </StackPanel>
+                        </Menu>
+                    </ToolBar>
+                    <ToolBar  BandIndex="1" Height="58">
+                        <Button Content="Close F9 " Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" Control:AddedProperty.Image="Images/Close.png" ToolTip="Press F9 - Close Current Active Form" Command="{Binding CloseCommand}" />
+                    </ToolBar>
+                </ToolBarTray>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="30*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90"></ColumnDefinition>
+                    <ColumnDefinition Width="24*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="45*"></ColumnDefinition>
+                    <ColumnDefinition Width="40*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="0.5" Margin="0,1,0,0" Width="1000" VerticalAlignment="Top" Grid.ColumnSpan="5" ></Border>
+                <!--<Line StrokeThickness="5" Width="800" VerticalAlignment="Top" Margin="0,5,0,0" ></Line>-->
+                <TextBlock Name="lblPartNo" VerticalAlignment="Center" Text="Part No : " Grid.Row="1"  Grid.Column="0" HorizontalAlignment="Right" FontWeight="Bold"></TextBlock>
+                <Lookup:ComboBoxCus Tag="Please enter/select Part Number " FontWeight="Bold"  Width="160" IsEditable="True" CharacterCasingText="Upper" IsReadOnly="False" HorizontalAlignment="Left" MaxLength="11" Grid.Column="1" Grid.Row="1"  Margin="2,0,0,0" x:Name="cmbPartNo" 
+					DataSource="{Binding PartNoCombo,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedRowPart}"  SelectedValuePath="PART_NO" SelectedValue="{Binding ToolSchedModel.PartNo,UpdateSourceTrigger=PropertyChanged}" ColumnsHeader="{Binding DropDownItemsPart}" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectedItemChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandPartNo}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <Lookup:ComboBoxCus.InputBindings>
+                        <KeyBinding Key="Enter"  Command="{Binding EnterPartNumberCmb}"  />
+                    </Lookup:ComboBoxCus.InputBindings>
+                </Lookup:ComboBoxCus>
+                <TextBlock Name="lblDescription" Text="Description : " VerticalAlignment="Center" Grid.Row="1"  Grid.Column="2" TextAlignment="Right" FontWeight="Bold"></TextBlock>
+                <TextBlock Name="lblDescriptionDisplay"  Grid.Row="1"  Grid.Column="3" TextAlignment="Left" Text="{Binding ToolSchedModel.PartDescription}" FontWeight="Bold" Margin="2,0,0,0"></TextBlock>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90" ></ColumnDefinition>
+                    <ColumnDefinition Width="60"  ></ColumnDefinition>
+                    <ColumnDefinition Width="65" ></ColumnDefinition>
+                    <ColumnDefinition Width="70" ></ColumnDefinition>
+                    <ColumnDefinition Width="100" ></ColumnDefinition>
+                    <ColumnDefinition Width="10*" ></ColumnDefinition>
+                    <ColumnDefinition Width="13*" ></ColumnDefinition>
+                    <ColumnDefinition Width="22*"  ></ColumnDefinition>
+                    <ColumnDefinition Width="10*"  ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblProcessNo" Text="Process No : " Grid.Row="0"  Grid.Column="0" HorizontalAlignment="Right"></TextBlock>
+                <!--<bhCustCtrl:CustComboBox Grid.Column="1" Grid.Row="0" IsReadOnly="True"  x:Name="cmbProcessNo"  ToolTip="Select Process No"
+                                             IsSynchronizedWithCurrentItem="False"   
+                                             ItemsSource="{Binding ProcessNoCombo}"   
+                                             SelectedValuePath="ROUTE_NO"
+                                             DisplayMemberPath="ROUTE_NO"   
+                                             IsEditable="True"
+                                             SelectedValue="{Binding ToolSchedModel.RouteNo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"                                              
+                                              VerticalContentAlignment="Center" >
+                    <toolKit:DataGridTextColumn Width="150"  Header="Process No" Binding="{Binding ROUTE_NO}" />
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectChangeComboProcessNoCommand,UpdateSourceTrigger=PropertyChanged}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </bhCustCtrl:CustComboBox>-->
+                <Control:ComboBoxWithSearch Width="55" IsEditable="True"  IsReadOnly="False" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" DataSource="{Binding ProcessNoCombo}" DropDownWidth="200"  
+                                             SelectedValue="{Binding ToolSchedModel.RouteNo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ToolSchedModel.RouteNo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="ROUTE_NO"  DisplayValuePath="ROUTE_NO"  Margin="1,0,0,0"    
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsProcessNo}" Tag="Please select Process No" Name="cmbProcessNo">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectedItemChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectChangeComboProcessNoCommand,UpdateSourceTrigger=PropertyChanged}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <Lookup:ComboBoxWithSearch.InputBindings>
+                        <KeyBinding Key="Enter"  Command="{Binding EnterProcessNumberCmb}"  />
+                    </Lookup:ComboBoxWithSearch.InputBindings>
+                </Control:ComboBoxWithSearch>
+                <TextBlock Name="lblSeqNo"  Text="Seq No : " Grid.Row="0"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                <Control:ComboBoxWithSearch Width="55" HorizontalAlignment="Left" Grid.Row="0"  Grid.Column="3" DataSource="{Binding SequenceNoCombo}" DropDownWidth="250"  
+                                             SelectedValue="{Binding ToolSchedModel.SeqNo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ToolSchedModel.SeqNo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="SEQ_NO"  DisplayValuePath="SEQ_NO" IsEditable="True"  IsReadOnly="False"    
+                                            SelectedItem="{Binding SelectedRowSeqNo}"
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsSeqNo}" Tag="Please select Sequence Number" Name="cmbSeqNo" Margin="0,0,0,3.667" VerticalAlignment="Bottom">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectedItemChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectChangeComboSeqNoCommand,UpdateSourceTrigger=PropertyChanged}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <Lookup:ComboBoxWithSearch.InputBindings>
+                        <KeyBinding Key="Enter"  Command="{Binding EnterSeqNumberCmb}"  />
+                    </Lookup:ComboBoxWithSearch.InputBindings>
+                </Control:ComboBoxWithSearch>
+
+                <!--<bhCustCtrl:CustComboBox Grid.Row="0"  Grid.Column="3" IsReadOnly="True"  x:Name="cmbSeqNo1"  ToolTip="Select Sequence No"
+                                             IsSynchronizedWithCurrentItem="False"   
+                                             ItemsSource="{Binding SequenceNoCombo,UpdateSourceTrigger=PropertyChanged}" 
+                                             SelectedValuePath="SEQ_NO"
+                                             DisplayMemberPath="SEQ_NO"   
+                                             IsEditable="True"
+                                             SelectedItem="{Binding SelectedRowSeqNo}"
+                                             SelectedValue="{Binding ToolSchedModel.SeqNo}"
+                                              VerticalContentAlignment="Center" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectChangeComboSeqNoCommand,UpdateSourceTrigger=PropertyChanged}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <toolKit:DataGridTextColumn Width="75"  Header="Seq No" Binding="{Binding SEQ_NO}" />
+                    <toolKit:DataGridTextColumn Width="100"  Header="Description" Binding="{Binding OPN_DESC}" />
+                </bhCustCtrl:CustComboBox>-->
+
+                <TextBlock Name="lblCostCentre"  Text="{Binding TextCostCenter,UpdateSourceTrigger=PropertyChanged}" Grid.Row="0"  Grid.Column="4" TextAlignment="Right"></TextBlock>
+                <Control:ComboBoxWithSearch Grid.Row="0"  Grid.Column="5" DataSource="{Binding CostCentreCombo}" DropDownWidth="320"  
+                                             SelectedValue="{Binding ToolSchedModel.CCSno,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ToolSchedModel.CCCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="CC_SNO"  DisplayValuePath="CC_CODE" IsEditable="True"  IsReadOnly="False"  
+                                            SelectedItem="{Binding SelectedRowSeqNo}"
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsCostCentre}" Tag="Please select Cost Center" Name="cmbCostCentre">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectedItemChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectChangeComboCostCentreCommand,UpdateSourceTrigger=PropertyChanged}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <Lookup:ComboBoxWithSearch.InputBindings>
+                        <KeyBinding Key="Enter"  Command="{Binding EnterCCNumberCmb}"  />
+                    </Lookup:ComboBoxWithSearch.InputBindings>
+                </Control:ComboBoxWithSearch>
+
+                <!--<bhCustCtrl:CustComboBox Grid.Row="0"  Grid.Column="5" IsReadOnly="True"  x:Name="cmbCostCentre1"  ToolTip="Select Cost Centre"
+                                             IsSynchronizedWithCurrentItem="False"   
+                                             ItemsSource="{Binding CostCentreCombo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"   
+                                             SelectedValuePath="CC_SNO"
+                                             DisplayMemberPath="CC_CODE"   
+                                             IsEditable="True"
+                                             SelectedValue="{Binding ToolSchedModel.CCSno}"
+                                              VerticalContentAlignment="Center" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectChangeComboCostCentreCommand,UpdateSourceTrigger=PropertyChanged}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <toolKit:DataGridTextColumn Width="150"  Header="Cost Centre" Binding="{Binding CC_SNO}" />
+                    <toolKit:DataGridTextColumn Width="100"  Header="CC Code" Binding="{Binding CC_CODE}" />
+                </bhCustCtrl:CustComboBox>-->
+                <TextBlock Name="lblSeqHeading"  Text="{Binding TextSubHeading}" Grid.Row="0"  Grid.Column="6" TextAlignment="Right"></TextBlock>
+
+                <Control:ComboBoxWithSearch Grid.Row="0"  Grid.Column="7" DataSource="{Binding SubHeadingCombo}" DropDownWidth="300"  Margin="5,0,20,0"
+                                            SelectedValue="{Binding ToolSchedModel.SubHeadingNo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             SelectedText="{Binding ToolSchedModel.SubHeading,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="SUB_HEADING_NO"  DisplayValuePath="SUB_HEADING"   IsReadOnly="False"  
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsSubHeading}" Tag="Please select Sub Heading" Name="cmbSeqHeading" PreviewKeyDown="cmbSeqHeading_PreviewKeyDown">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectedItemChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectChangeComboCommand,UpdateSourceTrigger=PropertyChanged}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Control:ComboBoxWithSearch>
+
+                <!--<bhCustCtrl:CustComboBox Grid.Row="0"  Grid.Column="7" IsReadOnly="False"  x:Name="cmbSeqHeading"  ToolTip="Select Sub Heading" Margin="5,5,20,5"
+                                             IsSynchronizedWithCurrentItem="False"   
+                                             ItemsSource="{Binding SubHeadingCombo}"   
+				                             SelectedValuePath="SUB_HEADING_NO" 
+                                             DisplayMemberPath="SUB_HEADING"   
+                                             IsEditable="True" 
+                                             Text="{Binding ToolSchedModel.SubHeading,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                              VerticalContentAlignment="Center" PreviewKeyDown="cmbSeqHeading_PreviewKeyDown" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectChangeComboCommand,UpdateSourceTrigger=PropertyChanged}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <toolKit:DataGridTextColumn Width="125"  Header="Sub Heading No" Binding="{Binding SUB_HEADING_NO}" />
+                    <toolKit:DataGridTextColumn Width="100"  Header="Sub Heading" Binding="{Binding SUB_HEADING}" />
+                </bhCustCtrl:CustComboBox>-->
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="20*"></RowDefinition>
+                    <RowDefinition Height="2.5*"></RowDefinition>
+                    <RowDefinition Height="10*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="90" ></ColumnDefinition>
+                    <ColumnDefinition Width="30*" ></ColumnDefinition>
+                    <ColumnDefinition Width="20*" ></ColumnDefinition>
+                    <ColumnDefinition Width="16*" ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblTopNote"  Text="Top Note : " Grid.Row="0"  Grid.Column="0" HorizontalAlignment="Right"></TextBlock>
+                <TextBox  Name="txtTopNote" Margin="0,0,10,0" Height="22" Grid.Row="0"  Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding ToolSchedModel.TopNote,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1000" Tag="Please enter Top Note">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="LostFocus">
+                            <i:InvokeCommandAction Command="{Binding AssignNoteCommand,UpdateSourceTrigger=PropertyChanged}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+                <TextBlock Name="lblBotNote" Text="Bot Note : " Grid.Row="2"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <TextBox  Name="txtBotNote"  Height="25" Grid.Row="2"  Grid.Column="1" Margin="0,0,10,0" Grid.ColumnSpan="3" Text="{Binding ToolSchedModel.BotNote,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  MaxLength="1000" Tag="Please enter the Bot Note">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="LostFocus">
+                            <i:InvokeCommandAction Command="{Binding AssignNoteCommand,UpdateSourceTrigger=PropertyChanged}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+                <DataGrid Grid.Row="1" Grid.ColumnSpan="4" Grid.Column="0">
+                </DataGrid>
+                <GroupBox Grid.Row="1" Grid.ColumnSpan="4" Header="Tool Schedule" >
+                    <DataGrid Name="dgvToolSchedule" CanUserSortColumns="False" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0" RowHeaderWidth="25" CanUserResizeRows="False" ItemsSource="{Binding ToolScheduleDetails,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  CanUserDeleteRows="False"  SelectedItem="{Binding SelectedToolSchedSub}"  PreviewKeyDown="dgvToolSchedule_PreviewKeyDown"  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="6*"  Header="Sno" Binding="{Binding SNO,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  >
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="6"/>
+                                        <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="18*"  Header="Tool Code From" Binding="{Binding TOOL_CODE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="25"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="6*"  Header="To" Binding="{Binding TOOL_CODE_END,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  >
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="6"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="29*"  Header="Description" Binding="{Binding TOOL_DESC,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="50"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="5*"  Header="Cat" Binding="{Binding CATEGORY,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="2"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="5*"  Header="Qty" Binding="{Binding QTY,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="3"/>
+                                        <Setter Property="Control:TextBoxIntsOnly.Mask" Value="UnSignedDec"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="24*"  Header="Remarks" Binding="{Binding REMARKS,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="300"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="BeginningEdit">
+                                <i:InvokeCommandAction  Command="{Binding RowBeginningEditToolScheduleCommand}" CommandParameter="{Binding ElementName=dgvToolSchedule, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="CurrentCellChanged">
+                                <i:InvokeCommandAction  Command="{Binding RowEditEndingTypeCommand}" CommandParameter="{Binding ElementName=dgvToolSchedule, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction  Command="{Binding SelectionChangedToolScheduleCommand}" CommandParameter="{Binding ElementName=dgvToolSchedule, Path=SelectedItem}"/>
+                                <i:InvokeCommandAction  Command="{Binding MultipleSelectionChangedToolScheduleCommand}" CommandParameter="{Binding ElementName=dgvToolSchedule, Path=SelectedItems}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <i:InvokeCommandAction  Command="{Binding CellEditEndingTypeCommand}" CommandParameter="{Binding ElementName=dgvToolSchedule, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <!--<MenuItem Header="Delete" Command="{Binding DeleteOperationClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />-->
+                                <MenuItem Header="Delete" Command="{Binding DeleteToolScheduleSubCommand}"  />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.InputBindings>
+                            <KeyBinding  Key="Insert" Command="{Binding InsertToolScheduleCommand}"/>
+                            <KeyBinding Key="Delete" Command="{Binding DeleteToolScheduleSubCommand}"/>
+                        </DataGrid.InputBindings>
+                    </DataGrid>
+                </GroupBox>
+                <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" Header="Aux Tools">
+                    <DataGrid Name="dgvAuxTools" AutoGenerateColumns="False" CanUserAddRows="False" RowHeaderWidth="25" CanUserResizeRows="False" ItemsSource="{Binding AuxToolScheduleDetails}" CanUserSortColumns="False" CanUserDeleteRows="True" SelectedItem="{Binding SelectedToolSchedAux,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" IsEnabled="{Binding AuxEnable}" Margin="0,-1,-0.273,0.564" PreviewKeyDown="dgvAuxTools_PreviewKeyDown" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="29*" Header="Aux Tool Code"  Binding="{Binding TOOL_CODE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="17"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="20*"  Header="Description" Binding="{Binding TOOL_DESC,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="50"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="20*"  Header="Cat" Binding="{Binding CATEGORY,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  >
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="2"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="28*"  Header="Template" Binding="{Binding TEMPLATE_CD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="25"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="OnCellEditEndingAuxToolSchedule" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="CurrentCellChanged">
+                                <i:InvokeCommandAction  Command="{Binding RowEditEndingAuxToolScheduleCommand}" CommandParameter="{Binding ElementName=dgvAuxTools, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction  Command="{Binding MultipleSelectionChangedAuxToolScheduleCommand}" CommandParameter="{Binding ElementName=dgvAuxTools, Path=SelectedItems}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <!--<MenuItem Header="Delete" Command="{Binding DeleteOperationClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />-->
+                                <MenuItem Header="Delete" Command="{Binding DeleteToolScheduleAuxCommand}"  />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.InputBindings>
+                            <KeyBinding Key="Delete" Command="{Binding DeleteToolScheduleAuxCommand}"/>
+                        </DataGrid.InputBindings>
+                    </DataGrid>
+                </GroupBox>
+                <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="2" Header="Tool Schedule Revisions">
+                    <DataGrid Name="dgvToolsScheduleRev" AutoGenerateColumns="False" CanUserAddRows="False" RowHeaderWidth="25" CanUserResizeRows="False"  ItemsSource="{Binding ToolScheduleRevision}" CanUserSortColumns="True" CanUserDeleteRows="False" SelectedItem="{Binding SelectedToolSchedIssue}" PreviewKeyDown="dgvToolsScheduleRev_PreviewKeyDown"   >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="15*" Header="Iss. No"  Binding="{Binding TS_ISSUE_NO,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="3"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <!--<Control:DataGridDateColumn Header="Date" Binding="{Binding TS_ISSUE_DATE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" DateFormat="dd/MM/yyyy">
+                            </Control:DataGridDateColumn>-->
+                            <DataGridTemplateColumn Header="Date" Width="21*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding TS_ISSUE_DATE,Converter={StaticResource DateTimeConverter}, Mode=OneWay}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Control:DatePickerCus  Name ="txtIssueDate" ToolTip="Select Date" SelectedDate="{Binding TS_ISSUE_DATE,UpdateSourceTrigger=PropertyChanged,StringFormat=dd/MM/yyyy}">
+                                        </Control:DatePickerCus>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Width="48*"  Header="Alterations" Binding="{Binding TS_ISSUE_ALTER,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  >
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="2000"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="13*"  Header="Intl." Binding="{Binding TS_COMPILED_BY,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="10"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="CurrentCellChanged">
+                                <i:InvokeCommandAction  Command="{Binding RowEditEndingToolScheduleIssueCommand}" CommandParameter="{Binding ElementName=dgvToolsScheduleRev, Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="dgvToolsScheduleRev_CellEditEnding" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction  Command="{Binding MultipleSelectionChangedToolScheduleIssueCommand}" CommandParameter="{Binding ElementName=dgvToolsScheduleRev, Path=SelectedItems}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Sorting">
+                                <si:CallMethodAction MethodName="dgvToolsScheduleRev_Sorting" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <!--<MenuItem Header="Delete" Command="{Binding DeleteOperationClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />-->
+                                <MenuItem Header="Delete" Command="{Binding DeleteToolScheduleIssueCommand}"  />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.InputBindings>
+                            <KeyBinding Key="Delete" Command="{Binding DeleteToolScheduleIssueCommand}"/>
+                        </DataGrid.InputBindings>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+            <!--TextBox and Lables-->
+            <!--1 Set-->
+
+        </Grid>
+    </Border>
+    <UserControl.InputBindings >
+        <KeyBinding Key="F5" Command="{Binding EditClickCommand}"/>
+        <KeyBinding Key="S" Modifiers="Control"  Command="{Binding SaveClickCommand}"/>
+        <KeyBinding Key="F9"  Command="{Binding CloseCommand}"/>
+    </UserControl.InputBindings >
+</UserControl>

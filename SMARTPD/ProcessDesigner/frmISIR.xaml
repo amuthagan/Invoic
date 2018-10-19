@@ -1,0 +1,96 @@
+﻿<Window x:Class="ProcessDesigner.frmISIR"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:UICommon ="clr-namespace:ProcessDesigner.UICommon"
+        xmlns:EnterKey="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls" 
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        Icon="Images\logo.ico" Title="ISIR Requisition" Height="400" Width="600" MinWidth="800"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{StaticResource WindowBackground}">
+    <Window.Resources>
+        <UICommon:DateTimeConverter x:Key="DateTimeConverter"></UICommon:DateTimeConverter>
+    </Window.Resources>
+    <Border BorderThickness="1" BorderBrush="Black"  Margin="10,10,10,10">
+        <Grid>           
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>               
+            </Grid.RowDefinitions>            
+            <!--Grid and Button-->
+            
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="13*" ></ColumnDefinition>
+                    <ColumnDefinition Width="16*"  ></ColumnDefinition>
+                    <ColumnDefinition Width="16*" ></ColumnDefinition>
+                    <ColumnDefinition Width="16*" ></ColumnDefinition>                     
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="lblCustomer" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Customer : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <TextBlock Name="lblDescription" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Description : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <TextBox  Name="txtCustomer" IsReadOnly="True" Height="25" Grid.Row="0"  Grid.Column="1" Text="{Binding Isirmodel.CUST_NAME, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+                <TextBox  Name="txtDescription" IsReadOnly="True"  Grid.ColumnSpan="3" Height="25" Grid.Row="1"  Grid.Column="1" Margin="1,5,15,5" Text="{Binding Isirmodel.DESCRIPTION, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBlock Name="lblDate" Text="Date : "  HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                <!--<DatePicker  Name="txtDate" Grid.ColumnSpan="3" Height="25" Grid.Row="0"  Grid.Column="4" Margin="5,5,15,5" Text="{Binding Isirmodel.DATE, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateTimeConverter}}" ></DatePicker>-->
+                <EnterKey:DatePickerCus Name ="txtISIRDate" Tag ="Please select the date" Margin="5,5,50,5" Grid.Column="4" Grid.Row="0" SelectedDate="{Binding Isirmodel.DATE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                </EnterKey:DatePickerCus>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"></RowDefinition>
+                    <RowDefinition Height="30*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="13*" ></ColumnDefinition>
+                    <ColumnDefinition Width="16*"  ></ColumnDefinition>
+                    <ColumnDefinition Width="16*" ></ColumnDefinition>
+                    <ColumnDefinition Width="16*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" Name="lblNoOfSample" Text="No Of Sample : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <TextBlock HorizontalAlignment="Right" Name="lblHeatTreatmentLoadNo" Text="Heat Treatment Load No : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                <TextBlock HorizontalAlignment="Right" Name="lblSpecificRequirements" Text="Specific Requirements : " Grid.Row="0"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                <TextBlock HorizontalAlignment="Right" Name="lblOtherSpecification" Text="Other Specifications(if any) : " Grid.Row="1"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+                <TextBox  Name="txtNoOfSample" Tag="Please enter No.of Sample" Height="25" EnterKey:TextBoxIntsOnly.Mask="UnSignedInt" Grid.Row="0" MaxLength="4" Grid.Column="1" Text="{Binding Isirmodel.NOOFSAMPLE, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox  Name="txtHeatTreatmentLoadNo" Tag="Please enter Heat treatment Load No."  Height="25" Grid.Row="1" MaxLength="20" Grid.Column="1" Text="{Binding Isirmodel.HEATTREATMENT, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox  Name="txtSpecificRequirements" Tag="Please enter Specific Requirements"  Height="25" Grid.Row="0" MaxLength="250" Grid.Column="3" Text="{Binding Isirmodel.SPECIFICREQ, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox  Name="txtOtherSpecification" Tag="Please enter Other Spec." Height="25" Grid.Row="1" MaxLength="250"  Grid.Column="3" Text="{Binding Isirmodel.OTHERSPECIFICATION, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </Grid>           
+                <GroupBox Header="Details of Enclosures" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="5" >
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*"></RowDefinition>
+                        <RowDefinition Height="30*"></RowDefinition>
+                        <RowDefinition Height="30*"></RowDefinition>
+                        <RowDefinition Height="30*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="16*" ></ColumnDefinition>
+                        <ColumnDefinition Width="16*"  ></ColumnDefinition>
+                        <ColumnDefinition Width="16*" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" Grid.Row="0" IsChecked="{Binding Isirmodel.PARTSUBMISSION, UpdateSourceTrigger=PropertyChanged}" Content="Part Submission Warrant" Margin="10,0,0,0"></CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="0" IsChecked="{Binding Isirmodel.MATERIALTESTCERTIFICATE, UpdateSourceTrigger=PropertyChanged}" Content="Material Test Certificate" ></CheckBox>
+                    <CheckBox Grid.Column="0" Grid.Row="1" IsChecked="{Binding Isirmodel.DIMENSIONALTEST, UpdateSourceTrigger=PropertyChanged}" Content="Dimensional Test Result" Margin="10,0,0,0"></CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="1" IsChecked="{Binding Isirmodel.CONTROLPLAN, UpdateSourceTrigger=PropertyChanged}" Content="Control Plan"></CheckBox>
+                    <CheckBox Grid.Column="0" Grid.Row="2" IsChecked="{Binding Isirmodel.MATERIALTESTRESULTS, UpdateSourceTrigger=PropertyChanged}" Content="Material Test Results" Margin="10,0,0,0"></CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="2" IsChecked="{Binding Isirmodel.PROCESSFLOW, UpdateSourceTrigger=PropertyChanged}" Content="Process Flow Diagram"></CheckBox>
+                    <CheckBox Grid.Column="0" Grid.Row="3" IsChecked="{Binding Isirmodel.PERFORMANCETEST, UpdateSourceTrigger=PropertyChanged}" Content="Preformance Test Results" Margin="10,0,0,0"></CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="3" IsChecked="{Binding Isirmodel.PROCESSFMEA, UpdateSourceTrigger=PropertyChanged}" Content="Process FMEA"></CheckBox>
+                    <Button Name="btnPrint" KeyboardNavigation.IsTabStop="False"  Content="Print" Grid.Column="2"  Grid.RowSpan="2" Command="{Binding ISIRPrintCommand}" Width="115" Height="50" Lookup:AddedProperty.Image="Images/Print.png"></Button>
+                    <Button Name="btnClose" KeyboardNavigation.IsTabStop="False" Content="Close" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" Command="{Binding ISIRCancelCommand}" Width="115" Height="50" Lookup:AddedProperty.Image="Images/Close.png"></Button>
+                </Grid>
+            </GroupBox>
+            
+            
+
+            <!--TextBox and Lables-->
+            <!--1 Set-->
+            
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,60 @@
+﻿<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="GridTFCECN" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="PART_NO" type="xs:string"/>
+                <xs:element name="PART_NAME" type="xs:string"/>
+                <xs:element name="CUST_DWG_ISSUE_NO" type="xs:string"/>
+                <xs:element name="CUST_STD_DATE" type="xs:dateTime" minOccurs="0"/>
+                <xs:element name="CUST_NAME" type="xs:string"/>
+                <xs:element name="CUST_PARTNO" type="xs:string"/>
+                <xs:element name="PRD_ISSUE_DATE" type="xs:dateTime" minOccurs="0"/>
+                <xs:element name="PRD_ISSUE_NO" type="xs:string"/>
+                <xs:element name="CORE_TEAM_MEMBER1" type="xs:string"/>
+                <xs:element name="CORE_TEAM_MEMBER2" type="xs:string"/>
+                <xs:element name="CORE_TEAM_MEMBER3" type="xs:string"/>
+                <xs:element name="CORE_TEAM_MEMBER4" type="xs:string"/>
+                <xs:element name="CORE_TEAM_MEMBER5" type="xs:string"/>
+                <xs:element name="CORE_TEAM_MEMBER6" type="xs:string"/>
+                <xs:element name="CORE_TEAM_MEMBER7" type="xs:string"/>
+                <xs:element name="EX_NO" type="xs:string"/>
+                <xs:element name="REVISION_NO" type="xs:string"/>
+                <xs:element name="FEASIBLE_PRODUCT" type="xs:boolean"/>
+                <xs:element name="NOT_FEASIBLE" type="xs:boolean"/>
+                <xs:element name="Q1" type="xs:string"/>
+                <xs:element name="Q2" type="xs:string"/>
+                <xs:element name="Q3" type="xs:string"/>
+                <xs:element name="Q4" type="xs:string"/>
+                <xs:element name="Q5" type="xs:string"/>
+                <xs:element name="Q6" type="xs:string"/>
+                <xs:element name="Q7" type="xs:string"/>
+                <xs:element name="Q8" type="xs:string"/>
+                <xs:element name="Q9" type="xs:string"/>
+                <xs:element name="Q10" type="xs:string"/>
+                <xs:element name="Q11" type="xs:string"/>
+                <xs:element name="IMPACT1" type="xs:string"/>
+                <xs:element name="IMPACT2" type="xs:string"/>
+                <xs:element name="IMPACT3" type="xs:string"/>
+                <xs:element name="IMPACT4" type="xs:string"/>
+                <xs:element name="IMPACT5" type="xs:string"/>
+                <xs:element name="IMPACT6" type="xs:string"/>
+                <xs:element name="IMPACT7" type="xs:string"/>
+                <xs:element name="REASON1" type="xs:string"/>
+                <xs:element name="REASON2" type="xs:string"/>
+                <xs:element name="REASON3" type="xs:string"/>
+                <xs:element name="REASON4" type="xs:string"/>
+                <xs:element name="REASON5" type="xs:string"/>
+                <xs:element name="REASON6" type="xs:string"/>
+                <xs:element name="REASON7" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>

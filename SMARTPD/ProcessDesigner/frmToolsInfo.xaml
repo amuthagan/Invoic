@@ -1,0 +1,387 @@
+﻿<UserControl x:Class="ProcessDesigner.frmToolsInfo"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:Enterkey="clr-namespace:ProcessDesigner.Common" 
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+        xmlns:uc="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"       
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:local="clr-namespace:ProcessDesigner.UICommon" 
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"    
+        xmlns:Common="clr-namespace:ProcessDesigner.UICommon"
+        Height="600" Width="900" >
+    <Grid>
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="12*"></RowDefinition>
+                    <RowDefinition Height="8*"></RowDefinition>
+                    <RowDefinition Height="65*"></RowDefinition>
+                    <RowDefinition Height="8*"></RowDefinition>
+                    <RowDefinition Height="47*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ToolBar  Grid.Row="0" HorizontalAlignment="Left"  >
+                    <Button Content="Add F3" Grid.Row="0" Grid.Column="0" Width="70" Height="50" Lookup:AddedProperty.Image="Images/Add.png"   Command="{Binding AddClickCommand}"  ToolTip="Add Tool Code" ></Button>
+                    <Button Content="Save Ctrl+S" Grid.Row="0" Grid.Column="1" Width="90" Height="50" Lookup:AddedProperty.Image="Images/Save.png" Command="{Binding SaveCommand}" ToolTip="Save Tool Code"></Button>
+                    <Button Content="Show Drawing" Grid.Row="0" Grid.Column="2"  Width="100" Height="50" Command="{Binding ShowDrawingscommand}" Lookup:AddedProperty.Image="Images/Show.png" ToolTip="Show Drawing" />
+                    <Button Content="Copy" Grid.Row="0" Grid.Column="3" Width="70" Height="50" Command="{Binding CopyToolCodeCommand}" Lookup:AddedProperty.Image="Images/Copy.png" ToolTip="Copy Tool Code"></Button>
+                    <Button Content="Delete F6" Grid.Row="0" Grid.Column="4" Width="70" Height="50" Lookup:AddedProperty.Image="Images/Delete.png" Command="{Binding DeleteToolCodeCommand}" ToolTip="Delete Selected Tool Code" ></Button>
+                    <Button Content="Close F9" Grid.Row="0" Grid.Column="4" Width="70" Height="50" Lookup:AddedProperty.Image="Images/Close.png" Command="{Binding CloseCommand}" IsEnabled="{Binding ActionPermission.Close}" ToolTip="Close"></Button>
+                    <Button Content="Refresh" Grid.Row="0" Grid.Column="4" Width="70" Height="50" Command="{Binding RefreshClickCommand}" Lookup:AddedProperty.Image="Images/Refresh.png" ToolTip="Refresh" ></Button>
+                </ToolBar>
+                <Grid Grid.Row="1">
+                    <TextBlock  Text="Tool Family : "  Grid.Row="1" Grid.Column="0" TextAlignment="Left" Margin="5,0,0,0" ></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="100,0,0,0" Common:FocusExtension.IsFocused="{Binding PartNumberIsFocused,UpdateSourceTrigger=PropertyChanged}" Width="30" HorizontalAlignment="Left" Height="5" ></TextBox>
+                    <Lookup:ComboBoxCus Tag="Please enter Tool Family" Focusable="True" Width="130"  Margin="90,0,0,0"  IsReadOnly="False"  MaxLength="{Binding ComboBoxMaxLength}"   HorizontalAlignment="Left" VerticalAlignment="Center" ColumnsHeader="{Binding Columns}"  x:Name="cmbOperMaster" Mask="UnSignedInt" ButtonVisibility="{Binding ButtonEnable}"
+					DataSource="{Binding DtDataview,UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding SelectedRow}"  SelectedValuePath="FAMILY_CD" SelectedValue="{Binding FamilyCd ,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True }" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeComboCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Lookup:ComboBoxCus.InputBindings>
+                            <KeyBinding Key="Enter"  Command="{Binding SelectChangeComboCommand}"  />
+                        </Lookup:ComboBoxCus.InputBindings>
+                    </Lookup:ComboBoxCus>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400"></ColumnDefinition>
+                        <ColumnDefinition Width="500"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Border Grid.Row="1" BorderThickness="1"  Background="White">
+                            <Image Name="imgPhoto" Stretch="Uniform" HorizontalAlignment="Left" ScrollViewer.CanContentScroll="True" Margin="2"  >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PreviewMouseDown">
+                                        <i:InvokeCommandAction  Command="{Binding ParametersClick}" CommandParameter="{Binding ElementName=canParameters}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Image>
+                        </Border>
+                    </Grid>
+                    <GroupBox Header="Search Criteria" Grid.Row="2"  Grid.Column="1" Margin="0,0,0,0">
+                        <Grid Grid.Column="1" Height="243" VerticalAlignment="Bottom">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="32"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"></ColumnDefinition>
+                                <ColumnDefinition Width="30*"></ColumnDefinition>
+                                <ColumnDefinition Width="35*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Control:ComboBoxWithSearch Grid.Column="0" Grid.Row="0"  Width="200" DataSource="{Binding DtSearchCriteria1}" DropDownWidth="275"  
+                                             SelectedValue="{Binding CodeParam1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"    SelectedText="{Binding NameParam1,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="PARAMETER_CD1"  DisplayValuePath="PARAMETER_NAME1"   IsReadOnly="False" Margin="0,1,0,0"    
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsParameter}" Tag="Please Select Parameter" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <si:CallMethodAction MethodName="cmbCategory_SelectionChanged" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Lookup:ComboBoxWithSearch.InputBindings>
+                                    <KeyBinding Key="Enter"  Command="{Binding SelectChangeComboCommand}"  />
+                                </Lookup:ComboBoxWithSearch.InputBindings>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch Grid.Column="1" Grid.Row="0"  Width="100" DataSource="{Binding DtSymbols}" DropDownWidth="120"  
+                                             SelectedValue="{Binding SearchParam1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedText="{Binding SearchParam1,UpdateSourceTrigger=PropertyChanged}" 
+				                             SelectedValuePath="Search"  DisplayValuePath="Search"   IsReadOnly="False" Tag="Please Select Condition"
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsSymbol}" Margin="0,1,0,0" >
+                            </Control:ComboBoxWithSearch>
+                            <TextBox Margin="0,3,0,0" Name="txtVal1"  Text="{Binding SearchText1,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" Grid.Row="0"  Grid.Column="2" Height="25" Tag="Please enter Value to search"   >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PreviewKeyDown">
+                                        <si:CallMethodAction MethodName="txtVal1_PreviewKeyDown" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <si:CallMethodAction MethodName="txtVal1_LostFocus" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                            <Control:ComboBoxWithSearch Grid.Column="0" Grid.Row="1"  Width="200" DataSource="{Binding DtSearchCriteria1}" DropDownWidth="275"  
+                                             SelectedValue="{Binding CodeParam2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"   SelectedText="{Binding NameParam2,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="PARAMETER_CD1"  DisplayValuePath="PARAMETER_NAME1"   IsReadOnly="False"    
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsParameter1}" Tag="Please Select Parameter">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <si:CallMethodAction MethodName="cmbCategory1_SelectionChanged" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch Grid.Column="1" Grid.Row="1"  Width="100" DataSource="{Binding DtSymbols}" DropDownWidth="120"  
+                                             SelectedValue="{Binding SearchParam2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  SelectedText="{Binding SearchParam2,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="Search"  DisplayValuePath="Search"   IsReadOnly="False" Tag="Please Select Condition"  
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsSymbol}" >
+                            </Control:ComboBoxWithSearch>
+                            <TextBox Name="txtVal2"  Text="{Binding SearchText2,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" Grid.Row="1"  Grid.Column="2" Height="25" Tag="Please enter Value to search"   >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PreviewKeyDown">
+                                        <si:CallMethodAction MethodName="txtVal2_PreviewKeyDown" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <si:CallMethodAction MethodName="txtVal2_LostFocus" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                            <Control:ComboBoxWithSearch Grid.Column="0" Grid.Row="2"  Width="200" DataSource="{Binding DtSearchCriteria1}" DropDownWidth="275"  
+                                             SelectedValue="{Binding CodeParam3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  SelectedText="{Binding NameParam3,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="PARAMETER_CD1"  DisplayValuePath="PARAMETER_NAME1"   IsReadOnly="False"    
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsParameter2}" Tag="Please Select Parameter">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <si:CallMethodAction MethodName="cmbCategory2_SelectionChanged" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch Grid.Column="1" Grid.Row="2"  Width="100" DataSource="{Binding DtSymbols}" DropDownWidth="120"  
+                                             SelectedValue="{Binding SearchParam3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedText="{Binding SearchParam3,UpdateSourceTrigger=PropertyChanged}" 
+				                             SelectedValuePath="Search"  DisplayValuePath="Search"   IsReadOnly="False" Tag="Please Select Condition"   
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsSymbol}" >
+                            </Control:ComboBoxWithSearch>
+                            <TextBox Name="txtVal3"  Text="{Binding SearchText3,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" Grid.Row="2"  Grid.Column="2" Height="25" Tag="Please enter Value to search"   >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PreviewKeyDown">
+                                        <si:CallMethodAction MethodName="txtVal3_PreviewKeyDown" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <si:CallMethodAction MethodName="txtVal3_LostFocus" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                            <Control:ComboBoxWithSearch Grid.Column="0" Grid.Row="3"  Width="200" DataSource="{Binding DtSearchCriteria1}" DropDownWidth="275"  
+                                             SelectedValue="{Binding CodeParam4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  SelectedText="{Binding NameParam4,UpdateSourceTrigger=PropertyChanged}" 
+				                             SelectedValuePath="PARAMETER_CD1"  DisplayValuePath="PARAMETER_NAME1"   IsReadOnly="False"    
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsParameter3}" Tag="Please Select Parameter">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <si:CallMethodAction MethodName="cmbCategory3_SelectionChanged" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch Grid.Column="1" Grid.Row="3"  Width="100" DataSource="{Binding DtSymbols}" DropDownWidth="120"  
+                                             SelectedValue="{Binding SearchParam4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  SelectedText="{Binding SearchParam4,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="Search"  DisplayValuePath="Search"   IsReadOnly="False" Tag="Please Select Condition"   
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsSymbol}" >
+                            </Control:ComboBoxWithSearch>
+                            <TextBox Name="txtVal4"  Text="{Binding SearchText4,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }"  Grid.Row="3"  Grid.Column="2" Height="25" Tag="Please enter Value to search"   >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PreviewKeyDown">
+                                        <si:CallMethodAction MethodName="txtVal4_PreviewKeyDown" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <si:CallMethodAction MethodName="txtVal4_LostFocus" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                            <Control:ComboBoxWithSearch Grid.Column="0" Grid.Row="4"  Width="200" DataSource="{Binding DtSearchCriteria1}" DropDownWidth="275"  
+                                             SelectedValue="{Binding CodeParam5,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  SelectedText="{Binding NameParam5,UpdateSourceTrigger=PropertyChanged}" 
+				                             SelectedValuePath="PARAMETER_CD1"  DisplayValuePath="PARAMETER_NAME1"   IsReadOnly="False"    
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsParameter4}" Tag="Please Select Parameter">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <si:CallMethodAction MethodName="cmbCategory4_SelectionChanged" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch Grid.Column="1" Grid.Row="4"  Width="100" DataSource="{Binding DtSymbols}" DropDownWidth="120"  
+                                             SelectedValue="{Binding SearchParam5,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  SelectedText="{Binding SearchParam5,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="Search"  DisplayValuePath="Search"   IsReadOnly="False" Tag="Please Select Condition"   
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsSymbol}" >
+                            </Control:ComboBoxWithSearch>
+                            <TextBox Name="txtVal5"  Text="{Binding SearchText5,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" Grid.Row="4"  Grid.Column="2" Height="25" Tag="Please enter Value to search"   >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PreviewKeyDown">
+                                        <si:CallMethodAction MethodName="txtVal5_PreviewKeyDown" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <si:CallMethodAction MethodName="txtVal5_LostFocus" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                            <Control:ComboBoxWithSearch Grid.Column="0" Grid.Row="5"  Width="200" DataSource="{Binding DtSearchCriteria1}" DropDownWidth="275"  
+                                             SelectedValue="{Binding CodeParam6,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  SelectedText="{Binding NameParam6,UpdateSourceTrigger=PropertyChanged}" 
+				                             SelectedValuePath="PARAMETER_CD1"  DisplayValuePath="PARAMETER_NAME1"   IsReadOnly="False"    
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsParameter5}" Tag="Please Select Parameter">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <si:CallMethodAction MethodName="cmbCategory5_SelectionChanged" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch Grid.Column="1" Grid.Row="5"  Width="100" DataSource="{Binding DtSymbols}" DropDownWidth="120"  
+                                             SelectedValue="{Binding SearchParam6,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedText="{Binding SearchParam6,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="Search"  DisplayValuePath="Search"   IsReadOnly="False" Tag="Please Select Condition"   
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsSymbol}" >
+                            </Control:ComboBoxWithSearch>
+                            <TextBox Name="txtVal6" Text="{Binding SearchText6,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }"  Grid.Row="5"  Grid.Column="2" Height="25" Tag="Please enter Value to search"  >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PreviewKeyDown">
+                                        <si:CallMethodAction MethodName="txtVal6_PreviewKeyDown" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <si:CallMethodAction MethodName="txtVal6_LostFocus" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                            <Control:ComboBoxWithSearch Grid.Column="0" Grid.Row="6"  Width="200" DataSource="{Binding DtSearchCriteria1}" DropDownWidth="275"  
+                                             SelectedValue="{Binding CodeParam7,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  SelectedText="{Binding NameParam7,UpdateSourceTrigger=PropertyChanged}" 
+				                             SelectedValuePath="PARAMETER_CD1"  DisplayValuePath="PARAMETER_NAME1"   IsReadOnly="False"    
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsParameter6}" Tag="Please Select Parameter">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <si:CallMethodAction MethodName="cmbCategory6_SelectionChanged" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch Grid.Column="1" Grid.Row="6"  Width="100" DataSource="{Binding DtSymbols}" DropDownWidth="120"  
+                                             SelectedValue="{Binding SearchParam7,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedText="{Binding SearchParam7,UpdateSourceTrigger=PropertyChanged}" 
+				                             SelectedValuePath="Search"  DisplayValuePath="Search"   IsReadOnly="False" Tag="Please Select Condition"   
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsSymbol}" >
+                            </Control:ComboBoxWithSearch>
+                            <TextBox Name="txtVal7" Text="{Binding SearchText7,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" Grid.Row="6"  Grid.Column="2" Height="25" Tag="Please enter Value to search"  >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PreviewKeyDown">
+                                        <si:CallMethodAction MethodName="txtVal7_PreviewKeyDown" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <si:CallMethodAction MethodName="txtVal7_LostFocus" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                            <Control:ComboBoxWithSearch Grid.Column="0" Grid.Row="7"  Width="200" DataSource="{Binding DtSearchCriteria1}" DropDownWidth="275"  
+                                             SelectedValue="{Binding CodeParam8,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  SelectedText="{Binding NameParam8,UpdateSourceTrigger=PropertyChanged}" 
+				                             SelectedValuePath="PARAMETER_CD1"  DisplayValuePath="PARAMETER_NAME1"   IsReadOnly="False"    
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsParameter7}" Tag="Please Select Parameter">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <si:CallMethodAction MethodName="cmbCategory7_SelectionChanged" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch Grid.Column="1" Grid.Row="7"  Width="100" DataSource="{Binding DtSymbols}" DropDownWidth="120"  
+                                             SelectedValue="{Binding SearchParam8,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  SelectedText="{Binding SearchParam8,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="Search"  DisplayValuePath="Search"   IsReadOnly="False" Tag="Please Select Condition"    
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsSymbol}" >
+                            </Control:ComboBoxWithSearch>
+                            <TextBox Name="txtVal8" Text="{Binding SearchText8,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" Grid.Row="7"  Grid.Column="2" Height="25" Tag="Please enter Value to search"  >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PreviewKeyDown">
+                                        <si:CallMethodAction MethodName="txtVal8_PreviewKeyDown" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <si:CallMethodAction MethodName="txtVal8_LostFocus" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+
+                            <Control:ComboBoxWithSearch Grid.Column="0" Grid.Row="8"  Width="200" DataSource="{Binding DtSearchCriteria1}" DropDownWidth="275"  
+                                             SelectedValue="{Binding CodeParam9,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"   SelectedText="{Binding NameParam9,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="PARAMETER_CD1"  DisplayValuePath="PARAMETER_NAME1"   IsReadOnly="False"    
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsParameter8}" Tag="Please Select Parameter">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedItemChanged">
+                                        <si:CallMethodAction MethodName="cmbCategory8_SelectionChanged" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Control:ComboBoxWithSearch>
+                            <Control:ComboBoxWithSearch Grid.Column="1" Grid.Row="8"  Width="100" DataSource="{Binding DtSymbols}" DropDownWidth="120"  
+                                             SelectedValue="{Binding SearchParam9,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  SelectedText="{Binding SearchParam9,UpdateSourceTrigger=PropertyChanged}"
+				                             SelectedValuePath="Search"  DisplayValuePath="Search"   IsReadOnly="False" Tag="Please Select Condition"   
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownItemsSymbol}" >
+                            </Control:ComboBoxWithSearch>
+                            <TextBox Name="txtVal9"  Text="{Binding SearchText9,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }"  Grid.Row="8"  Grid.Column="2" Height="25" Tag="Please enter Value to search"  >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PreviewKeyDown">
+                                        <si:CallMethodAction MethodName="txtVal9_PreviewKeyDown" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <si:CallMethodAction MethodName="txtVal9_LostFocus" TargetObject="{Binding}"></si:CallMethodAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="12*"></ColumnDefinition>
+                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="29*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Margin="10,0,0,0" Grid.Row="0"  Grid.Column="2" Text="Tool _Code Like : "  TextAlignment="left"></TextBlock>
+                    <TextBox Grid.Row="0"  Grid.Column="3"  Name="txtToolCodeLike" TextAlignment="Left" Text="{Binding ToolCodeLike}" MaxLength="25" Margin="0,0,170,0" Tag="Please enter Tool Code"></TextBox>
+                </Grid>
+                <!--<Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="12*"></ColumnDefinition>
+                        <ColumnDefinition Width="29*"/>
+                        <ColumnDefinition Width="400*"/>
+                        <ColumnDefinition Width="500*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="90*"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal" >
+                        <TextBlock  Text="Tool _Code Like : "  TextAlignment="Right"></TextBlock>
+                       
+                    </StackPanel>
+                </Grid>-->
+                <GroupBox Header="{Binding GridTotalCount,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged }" Grid.Row="4"   Grid.Column="1" Margin="0,0,0,0">
+                    <DataGrid RowHeaderWidth="20" Grid.Row="4"   Margin="0,0,0,15" CanUserSortColumns="true" Grid.Column="0"  CanUserAddRows="False"  Grid.ColumnSpan="2" Name="rpdDataGrid"   Grid.RowSpan="2"
+                              SelectionMode="Single" ItemsSource="{Binding GridDvDisplayData}" AutoGenerateColumns="true"    SelectedItem="{Binding SelectedToolRow}" IsReadOnly="True" SelectionChanged="rpdDataGrid_SelectionChanged" >
+                        <i:Interaction.Triggers>                           
+                            <i:EventTrigger EventName="PreparingCellForEdit">
+                                <si:CallMethodAction MethodName="rpdDataGrid_PreparingCellForEdit" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewKeyDown">
+                                <si:CallMethodAction MethodName="rpdDataGrid_PreviewKeyDown" TargetObject="{Binding}"></si:CallMethodAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewTextInput">
+                                <si:CallMethodAction MethodName="rpdDataGrid_PreviewTextInput" TargetObject="{Binding}"></si:CallMethodAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="rpdDataGrid_CellEditEnding" TargetObject="{Binding}"></si:CallMethodAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding GridDoubleClickCommand}"/>
+                            </i:EventTrigger>
+                            <!--<i:EventTrigger EventName="AutoGeneratingColumn">
+                                <si:CallMethodAction MethodName="rpdDataGrid_AutoGeneratingColumn" TargetObject="{Binding}" />
+                            </i:EventTrigger>-->
+                            <i:EventTrigger EventName="Sorting">
+                                <si:CallMethodAction MethodName="dgrdProcessIssue_Sorting" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>                        
+                        <DataGrid.InputBindings>
+                            <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding DoubleClickCommand}"
+                                   CommandParameter="{Binding ElementName=rpdDataGrid, Path=SelectedItem}"></MouseBinding>                            
+                        </DataGrid.InputBindings>                        
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+        </Border>
+    </Grid>
+    <UserControl.InputBindings >
+        <KeyBinding Key="F3" Command ="{Binding AddClickCommand}"/>
+        <KeyBinding Key="S" Modifiers="Control"  Command="{Binding SaveCommand}"/>
+        <KeyBinding Key="F6"  Command="{Binding DeleteToolCodeCommand}"/>
+        <KeyBinding Key="F9"  Command="{Binding CloseCommand}"/>
+    </UserControl.InputBindings >    
+</UserControl>

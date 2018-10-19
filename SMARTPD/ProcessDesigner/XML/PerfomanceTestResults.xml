@@ -1,0 +1,29 @@
+﻿<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="GridPerfomance" msdata:CaseSensitive="False" msdata:Locale="en-US">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="PART_NO" type="xs:string"/>
+                <xs:element name="ROUTE_NO" type="xs:string"/>
+                <xs:element name="ISR_NO" type="xs:string"/>
+                <xs:element name="SPEC_MIN" type="xs:string"/>
+                <xs:element name="SPEC_MAX" type="xs:string"/>
+                <xs:element name="FEATURE" type="xs:string"/>
+                <xs:element name="EX_NO" type="xs:string"/>
+                <xs:element name="REVISION_NO" type="xs:string"/>
+                <xs:element name="CUST_STD_DATE" type="xs:string"/>
+                <xs:element name="CUST_DWG_NO" type="xs:string"/>
+                <xs:element name="PROD_DESC" type="xs:string"/>
+                <xs:element name="CUST_DWG_NO_ISSUE" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>
+

@@ -1,0 +1,74 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="OPERATOR_QUALITY_ASSURANCE_CHART_REPORT" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="OPERATOR_QUALITY_ASSURANCE_CHART_REPORT" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OPERATOR_QUALITY_ASSURANCE_CHART">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PART_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="PART_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="TODAY_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SEQ_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="SHIFT_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="CC_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="WORK_ORDER_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="CCF" type="xs:string" minOccurs="0" />
+              <xs:element name="NEXT_OPERATION_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="TS_ISSUE_ALTER" type="xs:string" minOccurs="0" />
+              <xs:element name="QUANTITY" type="xs:string" minOccurs="0" />
+              <xs:element name="RAW_MATERIAL" type="xs:string" minOccurs="0" />
+              <xs:element name="MACHINE_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="OPERATION_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="OPERATION_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="NEXT_OPERATION_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="SEQUENCE_DRAWING_ISSUE_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="ROUTE_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="SEQUENCE_DRAWING_ISSUE_DATE" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PCCS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PART_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="ROUTE_NO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SEQ_NO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SNO" type="xs:double" minOccurs="0" />
+              <xs:element name="ISR_NO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FEATURE" type="xs:string" minOccurs="0" />
+              <xs:element name="CLASS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SPEC" type="xs:string" minOccurs="0" />
+              <xs:element name="CONTROL_SPEC" type="xs:string" minOccurs="0" />
+              <xs:element name="DEPT_RESP" type="xs:string" minOccurs="0" />
+              <xs:element name="FREQ_OF_INSP" type="xs:string" minOccurs="0" />
+              <xs:element name="GAUGES_USED" type="xs:string" minOccurs="0" />
+              <xs:element name="GAUGE_RR" type="xs:string" minOccurs="0" />
+              <xs:element name="INPROCESS_CONTROL" type="xs:string" minOccurs="0" />
+              <xs:element name="METHOD_OF_STUDY" type="xs:string" minOccurs="0" />
+              <xs:element name="SAMPLE_SIZE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CPK" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PRD_PROC_COMP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FREQ_OF_STUDY" type="xs:string" minOccurs="0" />
+              <xs:element name="COMMENTS" type="xs:string" minOccurs="0" />
+              <xs:element name="SPEC_MIN" type="xs:string" minOccurs="0" />
+              <xs:element name="SPEC_MAX" type="xs:string" minOccurs="0" />
+              <xs:element name="CTRL_SPEC_MIN" type="xs:string" minOccurs="0" />
+              <xs:element name="CTRL_SPEC_MAX" type="xs:string" minOccurs="0" />
+              <xs:element name="CONTROL_METHOD" type="xs:string" minOccurs="0" />
+              <xs:element name="REACTION_PLAN" type="xs:string" minOccurs="0" />
+              <xs:element name="PROCESS_FEATURE" type="xs:string" minOccurs="0" />
+              <xs:element name="SPEC_CHAR" type="xs:string" minOccurs="0" />
+              <xs:element name="DELETE_FLAG" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ENTERED_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ENTERED_BY" type="xs:string" minOccurs="0" />
+              <xs:element name="UPDATED_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UPDATED_BY" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

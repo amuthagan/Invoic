@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="ProcessDesigner.frmSecurity"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon"
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        Height="500" Width="700" Background="{StaticResource WindowBackground}"  >
+
+
+    <Grid Margin="4,4,4,4" KeyboardNavigation.TabNavigation ="Cycle">
+        <TabControl Name="tbcManage">
+            <TabItem Header="Show Users" Name="tbiUsers" Height="30"  >
+                <Grid Margin="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="277*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="0" Name="grdUsers" RowHeaderWidth="20" AutoGenerateColumns="False"  
+                              ItemsSource="{Binding RoleUserSecurities.Users}" 
+                              SelectedItem="{Binding RoleUserSecurities.SelectedUser}"
+                              CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Grid.ColumnSpan="2"  SelectionMode="Single"  UICommon:ScrollToTopBehavior.ScrollToTop="True"
+>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Add User" Command="{Binding AddCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.ItemsSource}" />
+                                <MenuItem Header="Delete User" Command="{Binding DeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                                <MenuItem Header="Modify User" Command="{Binding ModifyCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                                <MenuItem Header="Set Roles" Command="{Binding SetRoleUserCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewMouseDoubleClick">
+                                <si:CallMethodAction MethodName="grdUsersPreviewMouseDoubleClick" TargetObject="{Binding}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="UserName" Width="*"  Binding="{Binding USER_NAME}" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Full Name" Width="*" Binding="{Binding FULL_NAME}" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Designation" Width="*" Binding="{Binding DESIGNATION}" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid  Grid.Column="0" Grid.Row="1"  Height="30" Grid.ColumnSpan="2" Margin="0,5" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="_Add User" Name="btnAddUser" ToolTip="Add User" Command="{Binding AddCommand}" 
+                                CommandParameter="{Binding ElementName=grdUsers, Path=ItemsSource}" />
+                        <Button Grid.Row="0" Grid.Column="1" Content="_Delete User" Name="btnDeleteUser" ToolTip="Delete User" Command="{Binding DeleteCommand}"
+                                CommandParameter="{Binding ElementName=grdUsers, Path=SelectedItem}" />
+                        <Button Grid.Row="0" Grid.Column="2" Content="_Modify User" Name="btnModifyUser" ToolTip="Modify User" Command="{Binding ModifyCommand}"
+                                CommandParameter="{Binding ElementName=grdUsers, Path=SelectedItem}" />
+                        <Button Grid.Row="0" Grid.Column="3" Content="_Set Roles" Name="btnSetRoles" Command="{Binding SetRoleUserCommand}" ToolTip="Set Roles" ></Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Show Roles" Name="tbiRoles" Height="30" VerticalAlignment="Bottom">
+                <Grid Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DataGrid RowHeaderWidth="20" Grid.Row="0" Grid.Column="0" Name="grdRoles" Grid.ColumnSpan="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" 
+                              ItemsSource="{Binding RoleUserSecurities.Roles}"
+                              SelectedItem="{Binding RoleUserSecurities.SelectedRole}" SelectionMode="Single"
+                              >
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Add Role" Command="{Binding AddRoleCommand}"  />
+                                <MenuItem Header="Delete Role" Command="{Binding DeleteRoleCommand}" />
+                                <MenuItem Header="Modify Role" Command="{Binding ModifyRoleCommand}" />
+                                <MenuItem Header="Set Permission" Command="{Binding OnShowPermissionCommand}" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewMouseDoubleClick">
+                                <si:CallMethodAction MethodName="grdRolePreviewMouseDoubleClick" TargetObject="{Binding}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Role Name" Width="100*" Binding="{Binding ROLE_NAME}" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Grid.Row="1" Grid.Column="0" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="0"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Row="0" Grid.Column="1" Content="_Add Role" Name="btnAddRole" Command="{Binding AddRoleCommand}" ToolTip="Add Role"  ></Button>
+                        <Button Grid.Row="0" Grid.Column="2" Content="_Delete Role" Name="btnDeleteRole" Command="{Binding DeleteRoleCommand}" ToolTip="Delete Role"></Button>
+                        <Button Grid.Row="0" Grid.Column="3" Content="_Modify Role" Name="btnModifyRole" Command="{Binding ModifyRoleCommand}" ToolTip="Modify Role"></Button>
+                        <Button Grid.Row="0" Grid.Column="4" Content="_Set Permission" Name="btnPermission" Command="{Binding OnShowPermissionCommand}" ToolTip="Set Permission" ></Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

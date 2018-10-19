@@ -1,0 +1,4212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ProcessDesigner.AddedProperty" Collapsed="true">
+    <Position X="63" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>AddedProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.App" Collapsed="true">
+    <Position X="64.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.AppException" Collapsed="true">
+    <Position X="66.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AppException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.AppSystemException" Collapsed="true">
+    <Position X="68.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AppSystemException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BootStrapper" Collapsed="true">
+    <Position X="78.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAEAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BootStrapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BooleanConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="77" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\BooleanConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.cStatusBar" Collapsed="true">
+    <Position X="85.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\cStatusBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Status" Collapsed="true">
+    <Position X="77" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAQAAAIAAAAA=</HashCode>
+      <FileName>Common\cStatusBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.CoreModule" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="77" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoreModule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.frmAddCIReference" Collapsed="true">
+    <Position X="68.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAYAACAQAAABgIAoAAgAQAAgAAAAADADBAQCAAwARAQ=</HashCode>
+      <FileName>frmAddCIReference.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmAPQP" Collapsed="true">
+    <Position X="70" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmAPQP.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmCCMaster" Collapsed="true">
+    <Position X="71.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAEsCAAACBASBAAgCAKAhgAAAASBEACQAAAACAgIM=</HashCode>
+      <FileName>frmCCMaster.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmCFTMeet" Collapsed="true">
+    <Position X="73.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmCFTMeet.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmChangePassword" Collapsed="true">
+    <Position X="75.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAEAEAAAAAAAAAEAAAAACAAAAAAAAAAEIAAA=</HashCode>
+      <FileName>frmChangePassword.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmCharacteristicMaster" Collapsed="true">
+    <Position X="77" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wEAglZAAAARgAEDAAkEAAAgAIACCSRAADAERICEACIA=</HashCode>
+      <FileName>frmCharacteristicMaster.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmChemicalComposition" Collapsed="true">
+    <Position X="78.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmChemicalComposition.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmCircularRolling" Collapsed="true">
+    <Position X="80.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmCircularRolling.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmCoatingMast" Collapsed="true">
+    <Position X="82.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmCoatingMast.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmCopyCIRefNum" Collapsed="true">
+    <Position X="84" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmCopyCIRefNum.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmCopyTurningMac" Collapsed="true">
+    <Position X="85.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmCopyTurningMac.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmCostSheetSearch" Collapsed="true">
+    <Position X="87.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmCostSheetSearch.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmCPMMaster" Collapsed="true">
+    <Position X="89.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmCPMMaster.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmCustomer" Collapsed="true">
+    <Position X="91" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmCustomer.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmDDPerformance" Collapsed="true">
+    <Position X="92.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmDDPerformance.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmDDPerformanceSummary" Collapsed="true">
+    <Position X="94.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmDDPerformanceSummary.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmDevelopmentReport" Collapsed="true">
+    <Position X="96.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAQAgAAAIAgMQAAAAhAAAABgAAAAAACBCABAIQgAA=</HashCode>
+      <FileName>frmDevelopmentReport.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmDrawings" Collapsed="true">
+    <Position X="98" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmDrawings.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmECNCFTMeet" Collapsed="true">
+    <Position X="99.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmECNCFTMeet.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmECNPCN" Collapsed="true">
+    <Position X="101.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmECNPCN.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmExhibit" Collapsed="true">
+    <Position X="59.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmExhibit.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmFeatureMaster" Collapsed="true">
+    <Position X="61.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmFeatureMaster.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmFeatureUpdationMaster" Collapsed="true">
+    <Position X="63" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmFeatureUpdationMaster.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmFinishMast" Collapsed="true">
+    <Position X="64.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmFinishMast.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmFlatRollMac" Collapsed="true">
+    <Position X="66.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmFlatRollMac.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmflxReports" Collapsed="true">
+    <Position X="68.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmflxReports.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmForging" Collapsed="true">
+    <Position X="70" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmForging.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmForgingCalc" Collapsed="true">
+    <Position X="71.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>lgAqIMYoxQ4GaCRi0GIGFQ8ASEoEaQQwDObedBDY3yI=</HashCode>
+      <FileName>frmForgingCalc.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmForm2" Collapsed="true">
+    <Position X="73.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmForm2.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmFRCS" Collapsed="true">
+    <Position X="75.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmFRCS.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmGrinmac" Collapsed="true">
+    <Position X="77" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmGrinmac.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmHardnessConversion" Collapsed="true">
+    <Position X="78.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmHardnessConversion.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmISIR" Collapsed="true">
+    <Position X="80.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmISIR.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmKaizenIdeaSheet" Collapsed="true">
+    <Position X="82.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmKaizenIdeaSheet.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmLibrarySearch" Collapsed="true">
+    <Position X="84" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmLibrarySearch.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmLogin" Collapsed="true">
+    <Position X="85.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAQAAAAEAAAgAACAAAAAAAgEAAAA=</HashCode>
+      <FileName>frmLogin.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmLogView" Collapsed="true">
+    <Position X="87.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmLogView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmLookUp" Collapsed="true">
+    <Position X="89.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQAAAAgAAAAAAgAAAEBAAAAAIQAAAAAAABAAAIAAAAA=</HashCode>
+      <FileName>frmLookUp.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmMcBookReport" Collapsed="true">
+    <Position X="91" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmMcBookReport.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmMfmDevelopment" Collapsed="true">
+    <Position X="92.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmMfmDevelopment.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmMFMPlan" Collapsed="true">
+    <Position X="94.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmMFMPlan.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmMfmPlanDetails" Collapsed="true">
+    <Position X="96.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmMfmPlanDetails.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmMOPgraph" Collapsed="true">
+    <Position X="98" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmMOPgraph.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmNylocmac" Collapsed="true">
+    <Position X="99.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmNylocmac.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmOperationMaster" Collapsed="true">
+    <Position X="101.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>frmOperationMaster.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmOptimalCondition" Collapsed="true">
+    <Position X="59.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmOptimalCondition.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmOTPMCharts" Collapsed="true">
+    <Position X="61.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmOTPMCharts.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmPartSubmissionWarrant" Collapsed="true">
+    <Position X="63" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmPartSubmissionWarrant.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmPCCS" Collapsed="true">
+    <Position X="64.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmPCCS.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmPendingPartStatus" Collapsed="true">
+    <Position X="66.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmPendingPartStatus.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmPermissions" Collapsed="true">
+    <Position X="68.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>frmPermissions.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmPointmac" Collapsed="true">
+    <Position X="70" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmPointmac.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmProcessSheet" Collapsed="true">
+    <Position X="71.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmProcessSheet.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmProductMaster" Collapsed="true">
+    <Position X="73.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmProductCategoryMaster.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmProductInformation" Collapsed="true">
+    <Position X="75.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gABAABAJAAAAQCYEAAA0BAisBARIAQAgAACAICAABgI=</HashCode>
+      <FileName>frmProductInformation.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmProductSearch" Collapsed="true">
+    <Position X="77" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmProductSearch.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmProductWeight" Collapsed="true">
+    <Position X="78.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmProductWeight.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmPSWTitleMaster" Collapsed="true">
+    <Position X="80.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmPSWTitleMaster.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmQcp" Collapsed="true">
+    <Position X="82.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmQcp.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmRawMaterial" Collapsed="true">
+    <Position X="84" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAQAAIEBAABABAgAAAAAABAABAAQAAA=</HashCode>
+      <FileName>frmRawMaterial.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmRolesInfo" Collapsed="true">
+    <Position X="85.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmRolesInfo.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmRPD" Collapsed="true">
+    <Position X="87.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmRPD.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmRptCustpartNo" Collapsed="true">
+    <Position X="89.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmRptCustpartNo.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmRptFeatureWise" Collapsed="true">
+    <Position X="91" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmRptFeatureWise.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmrptMFM" Collapsed="true">
+    <Position X="92.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmrptMFM.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmrptPartNos" Collapsed="true">
+    <Position X="94.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmrptPartNos.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSapBom" Collapsed="true">
+    <Position X="96.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSapBom.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSapFert" Collapsed="true">
+    <Position X="98" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSapFert.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSapHalb" Collapsed="true">
+    <Position X="99.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSapHalb.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSapImport" Collapsed="true">
+    <Position X="101.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSapImport.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSapProductVersion" Collapsed="true">
+    <Position X="59.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSapProductVersion.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSapRouting" Collapsed="true">
+    <Position X="61.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSapRouting.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSapSub" Collapsed="true">
+    <Position X="63" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSapSub.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSecurity" Collapsed="true">
+    <Position X="64.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSecurity.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSecurityUserRoles" Collapsed="true">
+    <Position X="66.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSecurityUserRoles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSecurityUsers" Collapsed="true">
+    <Position X="68.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSecurityUsers.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSimiliarProduct" Collapsed="true">
+    <Position X="70" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSimiliarProduct.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSNO" Collapsed="true">
+    <Position X="71.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSNO.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmStandardCondition" Collapsed="true">
+    <Position X="73.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmStandardCondition.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmSurfaceFinish" Collapsed="true">
+    <Position X="75.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmSurfaceFinish.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmTapmac" Collapsed="true">
+    <Position X="77" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmTapmac.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmTfc" Collapsed="true">
+    <Position X="78.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmTfc.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmThreadDetails" Collapsed="true">
+    <Position X="80.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmThreadDetails.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmToolAdmin" Collapsed="true">
+    <Position X="82.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmToolAdmin.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmToolSchedule_new" Collapsed="true">
+    <Position X="84" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmToolSchedule_new.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmToolsInfo" Collapsed="true">
+    <Position X="85.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmToolsInfo.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmToolsQuickView" Collapsed="true">
+    <Position X="87.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmToolsQuickView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmTrimmac" Collapsed="true">
+    <Position X="89.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmTrimmac.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.frmUnitMaster" Collapsed="true">
+    <Position X="91" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>frmUnitMaster.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MainWindow" Collapsed="true">
+    <Position X="75.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAgAAAEAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SFLPD" Collapsed="true">
+    <Position X="87.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>//9//7/////3////9/////+//////v///////8////0=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner._012BM1" Collapsed="true">
+    <Position X="59.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoAAAAAAAAAAAAAAIIBAAAAAIAAADAIAEBAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ACTIVE_PART" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAggQAABAEAAAAgAQAEEgBABiCAAgAAACAEAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.APQP_ACTIVITY" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="71.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABgAAQJACEAAQAASAUEEBIRjCAACEUACJAAggBAICA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.APQP_ACTIVITY_KPM" Collapsed="true">
+    <Position X="73.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAACAAAAAACAQAAAIAAAAAAEUAABAAgAAAICA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.AUX_TOOL_SCHED" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="75.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAoAAABQkAAwgADQAGEABAjiCAABAJAKQEAAAAEAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.CFT_MEET_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="87.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>9dotrzOHy82u9qWWxnl8737luf91z+6gm9hLvohdbWk=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.CFT_MEET_MASTER_KPM" Collapsed="true">
+    <Position X="89.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>NMANJhMHys0MtiSABigcLGykkFZUj8YAkNhJjIhJLGE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.CFT_MFG_SEQ_KPM" Collapsed="true">
+    <Position X="91" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABBAAAAAAIAAAAJAACAACAAAAAAAIAAFAAAAAAICA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.CFT_SPECIAL_CHAR" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="92.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAwBAABAAQAAAAARAEEoFABiCAADAIACRIgACAAICA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.CFT_SPECIAL_CHAR_KPM" Collapsed="true">
+    <Position X="94.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQBAAAAAAAAAAABAAAAAAAAAAAAAIACBAgACAAICA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Check" Collapsed="true">
+    <Position X="98" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAgAAAAAAQAAAAAAAIIAAABAAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.CHEMICAL_COMP_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="99.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAgAAABAAABAAAAQAEEQBBBiGAAAAACCIAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.CHEMICAL_COMPOSITION" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="101.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ulT/Fo85g+gNFi0CTSsntFHxzfKEhFjUPYBgsp/gFaA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.CKM2010" Collapsed="true">
+    <Position X="59.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAQIAAAAgCAABCIAigAAAApAAAABAQAAAMqAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.CKMList1" Collapsed="true">
+    <Position X="61.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KIAjCCoIEEHAIAAwIYIQBSEkCAOFIqaAABISIAIBoCw=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.CONTROL_PLAN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FGYhEtVBFQAAEAwAyQMXFBBRiCAAimlADBAMCEKAOgE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.CONTROL_PLAN_KPM" Collapsed="true">
+    <Position X="66.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAEIEAAAAAAAwAgAASEAAQCAAAiiEABBAECEAAMgE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.CONTROL_PLAN_MEMBER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="68.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECQggAABgCAACAAAQCkEABgBiCAAKSAgCAAAAAACBAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.ControlPlanHeader" Collapsed="true">
+    <Position X="70" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAEASgmAAAICUMAEAACABBAACAQQcAkhHAACSYcE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.COPY_MACH" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="71.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAkAAABAAAAAAAAYAEEABABiCAACAIACBAAAAAAoAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Copy_machine" Collapsed="true">
+    <Position X="73.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>2QCIFAqATQJESgQAJNoABSIAEwnIAQUQgP9/5T/+AUA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Copymachine" Collapsed="true">
+    <Position X="75.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>2QCIFAqATQJESgQAJNoABSIAEwnIAQUQgP9/5T/+AUA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Cplan_master" Collapsed="true">
+    <Position X="80.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAEASgmAAAICUMAEAACABBAACAQQcAkhHAACSYcE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.CUSTPART" Collapsed="true">
+    <Position X="87.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAIAAAAACCAAQAAAIAAAAAAAAAAAACAIAAAAAAAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Datas" Collapsed="true">
+    <Position X="91" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAgAAAAAAQAAAAAAAIIAAABAAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DD_IMAGE_AFTER" Collapsed="true">
+    <Position X="94.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAACAAgAAAAAAAABAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DD_IMAGE_BEFORE" Collapsed="true">
+    <Position X="96.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAABAAAAAAAAAAAAAAAAgAAAAAAIAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DD_KAIZENIDEA_SHEET" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="98" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBBkg0iDDBUGQAAcYccwj4gDyCjoIQBAUAjxAY6DEK0=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DD_MPSP_SHEET" Collapsed="true">
+    <Position X="99.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QABAA4AAMEQAAAAEAAAAAIAAgAAAAgEAAAAAAAACQAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DD_PCN" Collapsed="true">
+    <Position X="101.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FIgIgZBACGBAURAiAUA6AIgAAAAWKFiCARUCAIBAIGA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DD_QUOTATION" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="59.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>WIAsAKABo+JGBAAYSAnURJZRmLRndKEFqIFBnIRKIKE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDCATE_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAAoAAABAAAAQAAAQCEEABABiCAAAAAACAABAAAEAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDCC_OPER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="63" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>mAAgAAgBAIAAIIEAQAEFCBABiGIAAEAACAAAQAAAmQA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDCC_OUTPUT" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAAgAAgBAAAAIIAAUAEFABABiiAAAAAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDCI_CHAR" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="66.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBAgxEABgAAgAAAAQAEGwFAJiSFAAAIACAAAgAQAACg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDCI_INFO" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="68.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kpO5D6Bb3Mnp9SYteLG1y58d7LRVOMbzmmRb9J/4mkE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDCIR_THREAD_ROLL_MAC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="70" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>XEAkBAoDABAhqKBkQFEEIJPBiKIRAQCkKUQgAIYQCpw=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDCOATING_MAST" Collapsed="true">
+    <Position X="71.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAgAgAAAAAAABAAEDAAAACAAAEAAAAAACAgAAABAQMA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DDCOPY_TURN_MAC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="73.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>OEAgACkZCAAxpIAGQQEEALGBiSISAiAAqUBEDAWKAKA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDCOST_CENT_DWG" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="75.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQgAAgBAAAAIIABQAEAAAABiCAAACAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDCOST_CENT_MAST" Collapsed="true">
+    <Position X="77" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>0AFCigoABAAAJAEEXAAAgAACCIAkASJBAIoBAICBUcg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DDCOST_PROCESS_DATA" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="78.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>mAAkAQgBhAAUIIEAUAElBBgB2mBAOUAAKgAiyRQAiSg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDCUST_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="80.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UgAggCAxAAAAFAgETHEEABABiCQBKACAGAgAAAAIQOA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDFINISH_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="82.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UgIggCAxgAAABQgETGEEABABiCQACARAGAgAIAAAQMA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDFINISH_PROCESS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="84" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAIgAAgBBAAAYIAAQCEEABIBiCAAAAQAGAABIAACAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDFLAT_THREAD_ROLL_MAC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>WQAlyAgDQIFJppILVA2H0BEhiagGIWCUCBggAKDIAPA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDFORGING_MAC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="87.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>exetFHjti3ij9uNOYU2EgLWX6yo+/HtG/fo/bny3yrA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDGRINDING_MAC" Collapsed="true">
+    <Position X="6.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>WjigkSgxgcgA5dgEXWGGGJWhnicTCVAEOEhAYRMYQNA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProcessDesigner.DDLOC_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="89.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UgAggCAxhAAABAgETGEEABIBiCQACAAgGAgBAAAAQMA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDMODULE_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="91" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQgAgABBQBAAAAAQCEECBIBiCAAEAAAKEABAhAABAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDNYLOC_MAC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="92.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>WgAgiCixAAAApIkGTGEGgBIFiCTACAAAWAghAgAiQMA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDOPER_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="94.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>+gAkgCB1gABABEgETGG0CBApySZACpAEmkgAAAlQYMA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDOPTIMAL_COND" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="96.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GIAgAQgBQCJAIZAIQQEGARYBiKAAgAgCGAABAIAQAoA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDPOINTING_MAC" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>WgYggDixAAAApIgETGEUAJEBiCYgDAEAGAiACAAEQPA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProcessDesigner.DDRESPONSE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="98" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQCgAAABAAAAAAAAQAEEABCBiCAQBAAgCAAACAEAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDRM_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="99.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>WgAgoCh5UBQAJIgUTGEEQBEFiKQACAQEGBgAAAAQQsA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDRM_PROCESS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="101.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAAgIAgBRAAAIIAQQCEEABIBiCAAAAAACBABAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDRM_SIZE_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="59.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UgAkoCAxxAAABAkUTOMEABIBiCQACIAAGBgBAAAQQMA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDSHAPE_DETAILS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>OQEggAGFgEEkAKAAQAEEoBgRjCFIPQgATAeAggQSACA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDSHAPE_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="63" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GYEgAAABAEFAAAAAQAFEoBABiCEICAAgDAGAQgACAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDSTAND_MAIN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAApAAgBCACAYMAgRAEEQBEBiCAAAAAACAgBAAAEAKg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDSTAND_SUB" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="66.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>mIEgAQwBQIKIJZAgRCEGABAFqKCACRADGIgBAMQUBoA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDSTD_NOTES" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="68.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAAhAAAAAAAQQAEMABoBiCAAKQAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDTAPPING_MAC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="70" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>WAAgAAgBogARJIAAQAEEABABiCACIAAgKQggAARAABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDTHREAD_DETAILS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="71.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>OCHqBYghYQBAEABEQFEEQBNRmCAAACGEKABAFAQgCWE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDTRIMMING_MAC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="73.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>WEQgQBghQAQDpIEGQAEVABEDiCLgAAAACQggIwECARA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDUNIT_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="75.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UgAggCAxAAAgBAgETGEECBARiCQACAAiGAgAAAAAUcA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DDUSER_LIST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="77" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgggABAAAIGCACQBUEAJQBjKQAIgABCCAEAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DELNOW1" Collapsed="true">
+    <Position X="78.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAgAAAACAACAAAAAAAAAABAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DEPTREE_TEMPTAB" Collapsed="true">
+    <Position X="80.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAgAAAAAAAgAAAAACAAAAAAAAAQAAAAARAABAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DEV_REPORT_DESIGN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="82.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAAgDIBBAAEAQggAwUEFABgBqCIAKwAACBAABBAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DEV_REPORT_DESIGN_KPM" Collapsed="true">
+    <Position X="84" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACIBAAAAAQAAAgUAAAAgAIAAAIgAAABAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DEV_REPORT_MAIN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kuAlQAZJgHNFNA5oW4cfIDSJyqIKOyCCTL5nABMk4Ig=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DEV_REPORT_MAIN_KPM" Collapsed="true">
+    <Position X="87.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gOAFQAZIAFAEAABgAQQAADAIQgAAGwCAADwnABAAYIg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DEV_REPORT_SHORT_CLOSURE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="89.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UBmwgAgBCgBAUIAASAkMAByBiCAgKQAUCFAIAQQAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DEV_REPORT_SUB" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="91" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAgIEhBBMEBAEAgQQOMAFQBiLIECARACDQAABAIIIA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.DEV_REPORT_SUB_KPM" Collapsed="true">
+    <Position X="92.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAhAAIAAAAAAAQAAAEAAABAAAARAADQAABAIIIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DWG_MAST" Collapsed="true">
+    <Position X="94.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAEAoAQgAAAIAAQAIBEAAQQAgCAIABCChAAEAAgIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DWG_TYPE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="96.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAABAAgAAAAAQAEMABABiSCAQAAACAAAgAAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.ECN_CFT_MEET_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="98" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>9fqtv7OHy83u/6WWxnl8727nuf91z+6gm9hLvohdb2k=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.ECN_MFM_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="99.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>uwGgAAqJIIMzARYcVkONQBAJ3XGHjFQFmRAEBJYI6lA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Emp" Collapsed="true">
+    <Position X="101.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAEAAAACAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ENGG_DDRM_MAST1" Collapsed="true">
+    <Position X="59.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAQAQAIAAAAAAAQAAEAIAAAAAAABAAAAAAAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ENGG_ENGG_PCCS" Collapsed="true">
+    <Position X="61.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAkIABBEQGAAARgBAQzCAAiTAGoAoEEUCFQywSChIIQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ENGG_MFM_MAST1" Collapsed="true">
+    <Position X="63" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAKBIIAxARIARAIBAAAAEECBhEQFgBAEAJIIKFA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ENGG_PCCS" Collapsed="true">
+    <Position X="64.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAkIABBEQGAAARgBAQzCAAiTAGoAoEEUCFQywSChIIQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ENGG_PCCS_ISSUE" Collapsed="true">
+    <Position X="66.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACEAagAAAAAAhgAAAAAAIAgAEQAgAAAABAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ENGG_PCCS_ISSUE_BCK" Collapsed="true">
+    <Position X="68.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACEAagAAAAAAhgAAAAAAIAgAEQAgAAAABAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ENGG_PCCS1_A" Collapsed="true">
+    <Position X="70" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAkIABBEQGAAARgBAQzCAAiTAGoAoEEUCFQywSChIIQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ENGG_REPL_PRD_MAST" Collapsed="true">
+    <Position X="71.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CYhwSAgIABAjkoAkMiLQAIpDJBUkAiAAYBR2MKBGYCA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ENGG_VIDYA1" Collapsed="true">
+    <Position X="73.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAoFBAAAAAAhAAAAIAAAAAAAIAAgg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ERP_ACTIVE_PARTS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="77" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAABAAAAAAAAQAEEAgARiCAACAAAABAACAQAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.ERP_ACTIVE_PARTS_1" Collapsed="true">
+    <Position X="78.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAABAAAAQAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ERP_PROCESS_MAIN" Collapsed="true">
+    <Position X="80.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAaABCAAggUAAAgAAAABAAAAsRAAkQmAEBACACAAMAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ERP_PROCESS_MAST" Collapsed="true">
+    <Position X="82.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAIIQAAAAAAAgAEAACAAGACAAIoAIAABAAABAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ERP_TOOL_SCHED_MAIN" Collapsed="true">
+    <Position X="84" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAgAAAACIACAAAIAgAgAABAQIAAALAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ERP_TOOL_SCHED_SUB" Collapsed="true">
+    <Position X="85.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAQIAAAAgCAABCIAigAAAApAAAABAQAAAMqAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.EXHIBIT_DOC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="87.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgAggCAxAAAABAgETGNAAQAByCQACAAAEAgAAAAAYME=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.FASTENERS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="92.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAABIAQAAAAAQAEAAAgJiCAAKQAACAqAACAQCAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.FASTENERS_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="94.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UgAgiCAxICAJBAgETGEEABBBiGQAiAACGIoABAAQUNA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.FEATURE_DETAILS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="96.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAgCAABAEAJAAAARAEEABhBiGAAKQACKIIBAgACAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.FEATURE_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="98" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>2wBogCE1AEEIFAgETGHUBBgFuC6CKQEAGAgBAAiCQNQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.FILE_LOC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="101.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBSiBBgBRBKAIBAAQAEEABARiiAAQAgAGAACoIAFAGA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.FMEA_RISK_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="59.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAABAAAAAAAAQAEEABgBiGACAAAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.FORE_CAST" Collapsed="true">
+    <Position X="61.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAACAAAAAAACAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.FORGING_CALC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="63" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>VJkl5VERAgBDHoUJ4a8E2VAp6CdnnGE8DljGUG5hIow=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.FORGING_CHAC_MASTER" Collapsed="true">
+    <Position X="64.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAEAAAJAAAAAAAAAAgAAAAAAAAAAAACAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.FORGING_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="66.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UwAgiCAxAEAJBAhETGEEABhBiGQAKwACOIoBBgACQMA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.GR_SECOND" Collapsed="true">
+    <Position X="92.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIACBAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.GRFIRST" Collapsed="true">
+    <Position X="94.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GQCIFAoADABESgQABMIABSIAAQnIAQUQCPwf5T/+AUA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.GRIND_SECOND" Collapsed="true">
+    <Position X="96.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAhAAAAAAAAAAEgABAAAAQBAAEEACFABQSAEIAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Grinding_first" Collapsed="true">
+    <Position X="98" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgAAAAAAAAAAAAAAAAACAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Grinding_second" Collapsed="true">
+    <Position X="99.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgAAAAAAAAAAAAAAAAACAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.GRSECOND" Collapsed="true">
+    <Position X="101.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GQCIFAoADABESgQABMIABSIAAQnIAQUQCPwf4T/+AQA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.HARDCONVERSION" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="59.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAAgIYQjAAGIcwEjSDEkghIHqCDKEAEETgpEIBAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.HEAT_TREAT_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAABAAAAAAIAQAEEABgBiCEACgAICEAAAEAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.IPDT" Collapsed="true">
+    <Position X="64.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAgEAAAAAAAKEAAAAAAEAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.KAIZENS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="68.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>sBKkGp6RgAFAZCIBQycEAD1NynIk0BNQz1aMTOAAAgQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.LIBRARY" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="70" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBSghBgBgBKAABAAQCEEABARiiAAQAggGAACIIAFAGA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.LIBRARY_CI" Collapsed="true">
+    <Position X="71.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAABAAgBAAABAAACAAAAAAAgAAAAgACAAAAIAFAGA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.LOGS" Collapsed="true">
+    <Position X="73.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBAAAAAEAAAIAIAAAAAEAAgAAAAAIAAAABAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MATLSELECTIONSTD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="77" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBQoAItBgAAAAQAIQEEEARAFqCAGQQABiEAQBAAgEAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.MCSETUP" Collapsed="true">
+    <Position X="78.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAAAAAAAAAAAAACCIAAAAAAAAAAAAAIAKBAAAAAAoAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MERGE_PARTS" Collapsed="true">
+    <Position X="80.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABQAAAAAAAAAAUAAAAAAAgAAAAAAAAAACAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MFM_ISSUE" Collapsed="true">
+    <Position X="82.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAKAAAAAAAAAIAAAAABAAAAAAMAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MFM_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="84" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>uwGgAAqJIIMzARYcVkONQBAJ3XGHjFQFmRAEBJYI6lA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.MFM_MAST_VIEW" Collapsed="true">
+    <Position X="85.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQgAAAqZpIQxg5IgRLIVAAgSGECFpFSHgBAXAJJMO3g=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MFM_USER_LIST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="87.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAABQAAIEAACQBUECBABzCAAAAABCAAEAAAhQAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.MICROSOFTDTPROPERTIES" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="89.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEoCAARAAQAgAAgUBEESAABqCAAAgAEEBCBAAAEICg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.MSP_ASSIGNMENTS" Collapsed="true">
+    <Position X="91" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>aAJICHDCsH0HAyBJCEgmEC2AAgCoiAAAEs6FEER00Lc=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_ATTRIBUTE_STRINGS" Collapsed="true">
+    <Position X="92.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEIAAAIAABACCAAEACAAAAAIAAAAAgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_AVAILABILITY" Collapsed="true">
+    <Position X="94.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAggAAgAEAAAAACAAEACAAAAQIAAAAEAoAAAAEgAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_CALENDAR_DATA" Collapsed="true">
+    <Position X="96.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACBBAgAQAQQIEICAAEAKgAAEAIFGEegAAAAAUAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_CALENDARS" Collapsed="true">
+    <Position X="98" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQCAQAgACAAEACAAAAgIAAAAEAgAgAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_CODE_FIELDS" Collapsed="true">
+    <Position X="99.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAQAAAAAAEAgCAAAAAAMAgAIAAAAAAgAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_CONVERSIONS" Collapsed="true">
+    <Position X="101.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEACAAAAAAAhACEAQAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_DATE_FIELDS" Collapsed="true">
+    <Position X="59.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGAAAAAABAAAAAAICAAgAAABAAAIAAAAACAAgAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_DURATION_FIELDS" Collapsed="true">
+    <Position X="61.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAEAAAIAAAAIAAAiAAAAACAAAQIAgEAAAAAAAABAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_FIELD_ATTRIBUTES" Collapsed="true">
+    <Position X="63" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAACAABBCCAAEgGAAAgAICAAAAAAAEAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_FLAG_FIELDS" Collapsed="true">
+    <Position X="64.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAEQACAAAAAABACIAAAAAEAAAIAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_LINKS" Collapsed="true">
+    <Position X="66.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACABCMAAAAAAQACiBgEACAAAEAIABBAAAQAAAIAACA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_NUMBER_FIELDS" Collapsed="true">
+    <Position X="68.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAIAAAAAAACAAAAAAAACAIIAAQACEAAABAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_OUTLINE_CODES" Collapsed="true">
+    <Position X="70" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAAAAAACAAAAAAgCAAEACAAAAAIAIEAEAAAAAAAEEA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_PROJECTS" Collapsed="true">
+    <Position X="71.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>+8YgBbRDuNWYiLUmLrEYk6sjYA7IzJFGAqyRADKBF5A=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_RESOURCE_RATES" Collapsed="true">
+    <Position X="73.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIRAAAAgAAACBGAiEACAIAABIIAAAEAgIIQAAAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_RESOURCES" Collapsed="true">
+    <Position X="75.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YRAEh4BjMCMUMMAiCSh/QicAKCpIQEgQPIgBQKi0ATk=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_STRING_TYPES" Collapsed="true">
+    <Position X="77" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAUAAAAAAAEQAAAAAAIAAAAAgAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_TASKS" Collapsed="true">
+    <Position X="78.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>rszGWnZ6K1J9TnPh7A4EgmLn+xMdwJKPfGyCZ1YvJDg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_TEXT_FIELDS" Collapsed="true">
+    <Position X="80.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAASQAAAAAQAAgIAQAgAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.MSP_TIMEPHASED_DATA" Collapsed="true">
+    <Position X="82.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEAgACBAAAAAAPQDCAgEFCAAiAIIGAACAAAAABAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.New_vidya" Collapsed="true">
+    <Position X="84" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoAAAAAAAAAAAAAAIIBAAAAAIAAADAIAEBAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.OE_RATE_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="87.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAABgEAgAACFQAEMABIDiCAACABACBAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.ONE_FIELD_MASTER" Collapsed="true">
+    <Position X="89.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAIAgAAAAAAAAAAAAAEAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.OQA_CCF" Collapsed="true">
+    <Position X="92.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAQBAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ORD_SHEET" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="94.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAoAIABgEAggCClQCEMABIDiCgqCABACBBCAAAAICA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.ORDER_SCH" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="96.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAhEIDJAAokkQLgSGGEABGBiCQSCAACCgAQFQBAACA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PCCS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="99.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kGktBFBFQOQAUTiJQR3GYRiXiOoL6eE1ClY6wSih4JQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PCCS_COMPLAINTS_KPM" Collapsed="true">
+    <Position X="101.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAgAAAACAAiAAAAAoAAAABAAAAAIIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PCCS_CONTROL_METHOD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="59.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAAgAAABAEAAEAAAQAEEABABiCAAAAAACAAAAAAAAAQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PCCS_FEATURES" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAABAAQAAAAAQAEEABABiCAAAAAACAIAACAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PCCS_ISSUE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="63" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQGkA4gpAAAAgBgAQAEGgLAhiGQAiAAACBAIAkAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PCCS_ISSUE_KPM" Collapsed="true">
+    <Position X="64.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACEAYgAAAAAABgAAAAAAIAgAEQAgAAAABAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PCCS_KPM" Collapsed="true">
+    <Position X="66.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAkIABBEQGAAARgBAQzCAAiTAGoAoEEUCFQywSChIIQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PCCS_MASTER" Collapsed="true">
+    <Position X="68.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>mAAIABAAQEAAAAAAAADQAAgAAAoAIAAACEAwACCBAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PCCS_PROCESS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="70" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAEABAACAAAAAQAEEABABiCAAAAAAiAAAAAACAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PCCS_TMP" Collapsed="true">
+    <Position X="71.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIkIABBEQGAAARgBAQzCAAiTEGoAoEEUCFwywSChIIQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PDM_PARTS" Collapsed="true">
+    <Position X="73.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAQAAEAggAAAAAAAAgAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PDM_PLANT_PARTS" Collapsed="true">
+    <Position X="75.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAQAAEAigAAEACAACgAAAQEAAAAAAAAAACBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PG_CATEGORY" Collapsed="true">
+    <Position X="77" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAACAAAAAACAAAAAAAAAAAAQAAAAAAACAAAAABAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PGCATOGORY" Collapsed="true">
+    <Position X="78.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAAAAAAAAAAAABBAAAAADAQACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PGCATOGORY_1" Collapsed="true">
+    <Position X="80.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAAAAAAAAAAAABAAAAAABAQAAAQIAIAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PLAN_HEADER" Collapsed="true">
+    <Position X="82.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAEASgmAAAICUMAEAACABBAACAQQcAkhHAACSYcE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.POIWIP_CURMTH" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GJCggCQRRAAAAAgE4QEUABIBmTAgCAAECBAAAAAAJAw=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PRD_CIREF" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="92.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAIBAAAAAgAAUAEFAhgBiCACKQAACBAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PRD_CLASS_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="94.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAABAAAAAAIAQAGEABADiCGAAAAACAAAAAAYAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PRD_DIMN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="96.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EnkgAAADCAAAEIAnUP9lANDziSAKCPLyDBPk0/B8IgA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PRD_DRAWING" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="98" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQgAAARAAEAEIAAUAEEAADBiCAOCAAAABQAAEAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PRD_DWG_ISSUE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="99.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQWkAIgRAAAAgAAAQAEEgKBhiGQICAAACBAAAkAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PRD_DWG_ISSUE_TEMP" Collapsed="true">
+    <Position X="101.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASEAIgAAAAAAAAAAAAAAIAgAEQIAAAACBAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PRD_FAMILY" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="59.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAgAAABAFAhAAIARAEEQBJRiGAAAAAAKIQGAgAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PRD_GRP_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgBAQBAAAgAAAAQAEEABADjCAAgCAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PRD_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="63" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>n5jwXmwNlJZnt6K2dqPV5ppH7PWkiKNi6Nz2saDWeOE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PRD_MAST_KPM" Collapsed="true">
+    <Position X="64.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CYhwSAgIAJBjkoCmMiLQAIpDJBUkACBAYBT2MKBGYCA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PRD_PARAMETERS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="66.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQQgICABoBIhBEIARgEkQBBBqHAEAAAAiIcEAABAABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PRD_TEMP" Collapsed="true">
+    <Position X="68.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PRD_TEMPLATE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="70" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAABAAAAAAAAUAEEAAARiCACCAAAAJAAACAAIAQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PREM25101" Collapsed="true">
+    <Position X="71.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAgAAAACIACAAAIAgAgAABAQIAAALAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PREM25102" Collapsed="true">
+    <Position X="73.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAQIAAAAgCAABCIAigAAAApAAAABAQAAAMqAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PROC_FLOW_DGM" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="75.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAgABAIAAABgAQAEGAAABiCAAiAAAAJAIAAIAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PROC_FLOW_DGM1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="77" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAgABAIAAABgAQAEGAAABiCAAiAAAAJAIAAIAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PROCESS_CC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="78.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EiCgBIyBAoJACMySUAUvJBCRiiIIqBQAqhAIARJALBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PROCESS_CC_KPM" Collapsed="true">
+    <Position X="80.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAQAAgJAAIgAEAQiIACACAAIoBQAAhAAARAAKAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PROCESS_ISSUE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="82.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQGkA4gpAAAAgBgAQAEGgLAhiGQAiAAACBAIAkAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PROCESS_ISSUE_KPM" Collapsed="true">
+    <Position X="84" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACEAYgAAAAAABgAAAAAAIAgAEQAgAAAABAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PROCESS_ISSUE_LAST" Collapsed="true">
+    <Position X="85.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAACAAAAAAAAAgABAABAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PROCESS_LAST3_ISSUE" Collapsed="true">
+    <Position X="87.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACEAIgAAAAAAAgAAAAAAIQgAEQAgAAAABAAAAABgAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PROCESS_MAIN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="89.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kSaxBiIF5oWEABmAUEEHQRAJvXAGmY+BOBIOAaYAMAg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PROCESS_MAIN_KPM" Collapsed="true">
+    <Position X="91" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAaABCAAggUAAAgAAAABAAAAsRAAkQmAEBACACAAMAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PROCESS_SHEET" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="92.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECAnLoAJAEIIIAgAUAMnEBmByuAWqANAytIKQABgIAU=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PROCESS_SHEET_KPM" Collapsed="true">
+    <Position X="94.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACKIAAAAIAAAgAEAACAAGASIAGgAMAShAAQABgIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PROD_DRAWING" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="98" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EEQgAAARAAEAEIAAQAEEABDBiCAMCAAACBQAAEAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PROS_MAST" Collapsed="true">
+    <Position X="59.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAIIAAAAAAEAgAAAACAAmAAAAAIAIACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.PSW_APP" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAABAAAAAAAAUAEEABABiCAAAAAACQAAAAAAAAg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.PSW_WAR_TITLE" Collapsed="true">
+    <Position X="63" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAgAAAgAAAAAAAACAAAAAEAAAAAAAACAAAAAAAAGA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.QACOPYMC" Collapsed="true">
+    <Position X="64.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>2QCIFAqATQJESgQAJNoABSIAEwnIAQUQiP9/5T/+AUA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.QATHREAD" Collapsed="true">
+    <Position X="66.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GQCIFAoADABESgQABMIABSIAAQnIAQUQCPwf5T/+AUA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.RAW_MATERIAL_CLASS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="68.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgAggCAxIAAABAgETGEAAAABiCQACAAAUAoAAAAVSMA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_APQP_ACTIVITY" Collapsed="true">
+    <Position X="71.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIBAAAAAACAAAAAACAQAAAIAAAAAAkUAABACgAAAICA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_AUX_TOOL_SCHED" Collapsed="true">
+    <Position X="73.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAIAAAAQAAAggACAAAAAAAiAAAABgBAAAACAAAEAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_CFT_MEET_MASTER" Collapsed="true">
+    <Position X="75.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FMANJhMFyswIliCABigcLGykkBZED0QAkNhLiIhJLGE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_CFT_SPECIAL_CHAR" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="77" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAwBAABAAQAAAAARAEEoUABqCAADgIACTIiACAAICA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_CHEMICAL_COMP_MAST" Collapsed="true">
+    <Position X="78.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYAAAAAAAAABAAAAAAAAAABAAAAAAgACAAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_CHEMICAL_COMPOSITION" Collapsed="true">
+    <Position X="80.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>qJC/FIkwAmANBgUCDAoEhFFRRZAAAgCQKABCoJegFQA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_CONTROL_PLAN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="82.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AOYhEJVBBQAAEAgAyAMXFRBRqCAAimtAADAOCEKAOgE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_CONTROL_PLAN_MEMBER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="84" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKQgAAABACAACAAAQAkAAQgBqCAAKyIAACACAAACBAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_COPY_MACH" Collapsed="true">
+    <Position X="85.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAgIAABACAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_CUSTPART" Collapsed="true">
+    <Position X="87.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAACCAAQAAAIAAAAAAAAAwAAAAICAAAAAAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DD_EXP" Collapsed="true">
+    <Position X="89.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIUAAAAQAIACATAAAAAAAAAAAAAAAgAAAAACAIAIIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DD_QUOTATION" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="91" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SIAsAKABo+JCBAAYSAnQRZZRuLRndqMFoKFDnIRKIIE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDCATE_MAST" Collapsed="true">
+    <Position X="92.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kIAIAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAACAAAEAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDCC_OPER" Collapsed="true">
+    <Position X="94.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAgAAAAAIAEAAAEBCAAAAEAAAkAAAAACQAAAEAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDCC_OUTPUT" Collapsed="true">
+    <Position X="96.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAgAAAAAIAAAEAAAAAAACAAAAgAAAAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDCI_CHAR" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="98" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAgxEABgAAgAAAAQAECwUAJqSFAAgIAACACgAQAACg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDCI_INFO" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="99.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kpK5D6Bb3Mnp9SYteLG1y48d7LRVOsbzEmRb9J94mkE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDCIR_THREAD_ROLL_MAC" Collapsed="true">
+    <Position X="101.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BMAAAAgAABABIABEQEEAIIKAAAIQAgAkAQQiAIYQAJA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDCOATING_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="59.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMggAAABAAACBAAAQAECASABqGAAAgIAACACAABAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDCOPY_TURN_MAC" Collapsed="true">
+    <Position X="61.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIAAACgYAAAQIAAEAAAAACCAAQIQAiAAAABGDAWCACA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDCOST_PROCESS_DATA" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="63" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iIAkAQgBhAAQIIEAUAEhBQgB+mBAO0IAIiAiyRQAiQg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDCUST_MAST" Collapsed="true">
+    <Position X="64.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAABAAAAAAAAABAgCAAAACAAAAACA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDFINISH_MAST" Collapsed="true">
+    <Position X="66.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAgAAAAAAAAAAAAAABAAAAAgRAAAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDFINISH_PROCESS" Collapsed="true">
+    <Position X="68.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAgABAAAIAAAAAAAAAABAAAAAgQAEAADAAACAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDFLAT_THREAD_ROLL_MAC" Collapsed="true">
+    <Position X="70" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIAAiAgAAIFBIhALBAwBEAEhAYAAAmCQAAAiAKCIADA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDFORGING_MAC" Collapsed="true">
+    <Position X="71.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>aYasFDjIAyAD8kNEIAgEgCSXYgoWjhIGWLAvbGQBgiA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDGRINDING_MAC" Collapsed="true">
+    <Position X="73.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SJgAEAgAgIAAYRAEEQGCEASAEAMSAlAAAEACIBMQAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDLOC_MAST" Collapsed="true">
+    <Position X="75.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAhAAAAAAAACAAAAAAAAAAAgAAAAADAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDMODULE_MAST" Collapsed="true">
+    <Position X="77" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAgAABABAAAAAAAAACAAAAAAAEgAAAAADAAAABAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDNYLOC_MAC" Collapsed="true">
+    <Position X="78.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAACAgAAAAAoAECAAAAAAIFAACAAgAAAAACAAAiAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDOPER_MAST" Collapsed="true">
+    <Position X="80.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KIAAAAAAAAAAAEAAAAAQAAAIAABAAoAAAAACAAkAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDOPTIMAL_COND" Collapsed="true">
+    <Position X="82.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQgAACAAIBAAAAECAAYAAAAAAggAAAADAIAQAoA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDOPTTEMP" Collapsed="true">
+    <Position X="84" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQgAACAAIBAAAAECAAYAAAAAAggAAAADAIAQAoA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDPOINTING_MAC" Collapsed="true">
+    <Position X="85.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAABiAAAAAIAAEAAAQAAAAgAIABgEAAACCCAAAACA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDRESPONSE" Collapsed="true">
+    <Position X="87.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYCAAAAAAAAAAAAAAAAAAACAAAAAAgAAAAACAAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDRM_MAST" Collapsed="true">
+    <Position X="89.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAgAQAQAIAAAAAAAQAAEAIAAAgAAABACAAAAAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDRM_PROCESS" Collapsed="true">
+    <Position X="91" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAgARAAAIAAAAAAAAAAAAAAAAgAAABADAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDRM_SIZE_MAST" Collapsed="true">
+    <Position X="92.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAxAAAAAEABAAAAAAAAAAAAoAAABADAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDSHAPE_DETAILS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="94.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KYEgAAGFgEEgAKAAQAEAoQgRrCFIPwoARCWCggQSAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDSHAPE_MAST" Collapsed="true">
+    <Position X="96.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CYEAAAAAAAFAAAAAAABAAAAAAAAIAgAABAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDSTAND_MAIN" Collapsed="true">
+    <Position X="98" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAIAAgAAACAIAAABAAAABEAAAAAAgAAAAgDAAAEAKA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDSTAND_SUB" Collapsed="true">
+    <Position X="99.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kIEAAQwAAACIIBAABAECAAAEAAAACwAAAIgCAMAQAoA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDSTANDTEMP" Collapsed="true">
+    <Position X="101.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kIEAAQwAAACIIBAABAECAAAEAAAACwAAAIgCAMAQAoA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDSTD_NOTES" Collapsed="true">
+    <Position X="59.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAIAAoAAAAAIgAAAAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDTAPPING_MAC" Collapsed="true">
+    <Position X="61.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAgAggABIAAAAAAAAAAAgAACIgAAIAgiAAQAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDTHREAD_DETAILS" Collapsed="true">
+    <Position X="63" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIBIAQAAQAAAEABEAEAAQANQAAAAAgAEIABCFAAAASA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDTRIMMING_MAC" Collapsed="true">
+    <Position X="64.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAQBgAAAADJAEGAAABAAACgAKAAgAAAQAiAQACAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDUNIT_MAST" Collapsed="true">
+    <Position X="66.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAgAAAAAAAACAAAAAAAAgACAAACAAAAEAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DDUSER_LIST" Collapsed="true">
+    <Position X="68.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAIGAACAAQAAAQAAAAAIgAAACACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DEV_REPORT_DESIGN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="70" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QIAgDIBBAAEAQggAwUEFAQgBqCIAKwIAADACBBAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DEV_REPORT_MAIN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="71.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>guAlQAZJgHMFNAZoS4cfITSJ6qIIOyKCRD5nABIk4Ig=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DEV_REPORT_SHORT_CLOSURE" Collapsed="true">
+    <Position X="73.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QJiAAAgACAAAEIAACAAIAAyAAAAAKgAEABAKAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DEV_REPORT_SUB" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="75.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EoAgIEhBAMEBAEAgQQOMAUQBqDIECgZAADQCABAIIIA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DWG_MAST" Collapsed="true">
+    <Position X="77" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAEAoAQgAAAIAAQAIBEAAQQAgCAIgBCAhACEAAgIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_DWG_TYPE" Collapsed="true">
+    <Position X="78.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIAAAAAAAAAAAAAAAAAAAAAAAQCAAgAAAAACAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_ECN_MFM_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="80.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>qIGgAAKJIIMzARYcRkONQQAJ/XGFjkYFkTAGBJYI6FA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_FASTENERS_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="82.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgCAABICAJAAAAQAEAAQBBqGAAggICAKICBAAQEBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_FC_PART" Collapsed="true">
+    <Position X="84" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAACAAQAgP4fAAIAAAAAAIAAAgAAAAACAAAEABA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_FEATURE_DETAILS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYAgCAABAEAJAAAARAEAAQhBqGAAKwICIKIDAgACAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_FEATURE_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="87.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iYBoAAEFAEEIEAAAQAHQBQgFuCqCKwMAACADAAiCAJQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_FILE_LOC" Collapsed="true">
+    <Position X="89.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIAAABAAQBAAABAAAAAAAAAAAgAAAggAAAACAIAFAGA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_FMEA_RISK_MASTER" Collapsed="true">
+    <Position X="91" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAACAgAACAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_FORGING_CALC" Collapsed="true">
+    <Position X="92.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>VIkAhVEAAAACEgUBgAAEEFAoSAAkFkA4DlAGQCwBIIg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_FORGING_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="94.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYAgCAABAEAJAABARAEAAQhBqGAAKwICIKIDBgACAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_GR_FIRST" Collapsed="true">
+    <Position X="96.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAgIAABACAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_GR_SECOND" Collapsed="true">
+    <Position X="98" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAgIAABACAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_GRFIRST" Collapsed="true">
+    <Position X="99.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GYCIFAoADABESgQABMIABSIAAQnIAwUQAPwf5T/+AUA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_GRIND_SECOND" Collapsed="true">
+    <Position X="101.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAhAAAAAAAAAAEgABAAAAQBAAkEAAFADQSAEIAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_GRINDING_FIRST" Collapsed="true">
+    <Position X="59.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAgIAABACAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_GRINDING_SECOND" Collapsed="true">
+    <Position X="61.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAgIAABACAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_GRSECOND" Collapsed="true">
+    <Position X="63" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GYCIFAoADABESgQABMIABSIAAQnIAwUQAPwf4T/+AQA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_HARDCONVERSION" Collapsed="true">
+    <Position X="64.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QIAAAQACAAGIUwEhACAAggACAAAKAgEEAgBCABAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_HEAT_TREAT_MAST" Collapsed="true">
+    <Position X="66.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAEACgAAAEACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_LIBRARY" Collapsed="true">
+    <Position X="68.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIAAABAAgBAAABAAACAAAAAAAgAAAggAAAACAIAFAGA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_LIBRARY_CI" Collapsed="true">
+    <Position X="70" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIAAABAAgBAAABAAACAAAAAAAgAAAggAAAACAIAFAGA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_MATLSELECTIONSTD" Collapsed="true">
+    <Position X="71.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQIAItAAAAAAQAIAEAAAAAAAAAEAgABAEASAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_MCSETUP" Collapsed="true">
+    <Position X="73.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIAAAAAAAAAAAACCIAAAAAAAAAAAAgIAIBACAAAAoAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_MFM_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="75.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>qIGgAAKJIIMzARYcRkONQQAJ/XGFjkYFkTAGBJYI6FA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_MFM_USER_LIST" Collapsed="true">
+    <Position X="77" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAIEAACAAQACAAAAAAAAgAAAAACAAABAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PCCS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="78.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gMktBFBFQOQAUTiJQR3GYRiXqOoL6+M1CnY6wSih4JQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PCCS_CONTROL_METHOD" Collapsed="true">
+    <Position X="80.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIAAAAAAAEAAAAAAAAAAAAAAAAAAAgAAAAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PCCS_FEATURES" Collapsed="true">
+    <Position X="82.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAgAACAACACAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PCCS_ISSUE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="84" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYGkAYgpAAAAgBgAQAEGgaAhqGQAigIACDAKAkAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PCCS_MASTER" Collapsed="true">
+    <Position X="85.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iIAIABAAQEAAAAAAAADQAAgAAAoAIgAACEAyACCBAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PCCS_PROCESS" Collapsed="true">
+    <Position X="87.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAABAAAAAAAAAAABAAAAgAAAAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PG_" Collapsed="true">
+    <Position X="89.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAACAAAAAACAAAAAAAAAAAAQAAAAgAAAAACAABAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PLAN_HEADER" Collapsed="true">
+    <Position X="91" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EoGiACAAgAAQAQRAABEhBCoEUBAAAoSEZAMDQBCAJJg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_POIWIP_CURMTH" Collapsed="true">
+    <Position X="92.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CJCAgAQQQAAAAAAAIAAAAAAAERAgAgAEABACAAAAIAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PRD_CIREF" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="94.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgAAIBAAAAAgAAQAEFAwgBqCAAKwIAADACAAAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PRD_CLASS_MAST" Collapsed="true">
+    <Position X="96.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAACAAAAAAAGAAgAAAAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PRD_DIMN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="98" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AvkgAAADCAAAEIAnUP9lAcDzqSAICvLyBDPm0/B8IgA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PRD_DWG_ISSUE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="99.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYWkAIgRAAAAgAAAQAEEgaBhqGQICgIACDACAkAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PRD_FAMILY" Collapsed="true">
+    <Position X="101.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYAAAAAAAFABAAAABAAAAABAAAAAAgAAAAQGAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PRD_GRP_MAST" Collapsed="true">
+    <Position X="59.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAABAAAAAAgAAAAAAAAAAACAAAAAiAAAAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PRD_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iZjwXGwJkBZnk6K2dqPU44pHrHWkiqNC4Pz2sKBWeOE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PRD_PARAMETERS" Collapsed="true">
+    <Position X="63" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYQAIAAAABIBBAAAAAAgAABAABAEAgAAgAUGAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PROCESS_CC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoCgBAyBAoJACMwSUAUvIQCBqiIIqhYAijAKARBALAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PROCESS_ISSUE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="66.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYGkAYgpAAAAgBgAQAEGgaAhqGQAigIACDAKAkAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PROCESS_MAIN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="68.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gYaxBiAFpoWAABgAQAEHQQABuTAAm4+BMDAOACYAMAg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PROCESS_SHEET" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="70" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EKAjLIAJAEAAAAgAUAEHAQmBquAGqgIASLIKQAAgIAE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PSW_APP" Collapsed="true">
+    <Position X="71.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAACAAAAgAAAQACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_PSW_WAR_TITLE" Collapsed="true">
+    <Position X="73.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAgAAAAAAAAAAAAAAAAAAEAAAAAgAAAAACAAAAAGA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_QACOPYMC" Collapsed="true">
+    <Position X="75.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>2YCIFAqATQJESgQAJNoABSIAEwnIAwUQgP9/5T/+AUA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_QATHREAD" Collapsed="true">
+    <Position X="77" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GYCIFAoADABESgQABMIABSIAAQnIAwUQAPwf5T/+AUA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_SEC_OBJECTS_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="78.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgAAABAAgAAAAAQAkAAQAB6CAAAgIAACACAAAAAAE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_SEC_ROLES_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="80.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgAAABAAABCAAAQAEAAQABqCAAAgIAECACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_SEC_USER_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="82.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgIBARACEAAAACQBWABRABrCAABoICACACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_SEC_USER_ROLES" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="84" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgAAABACABCAAAQAGAARABqCAAAgIAECACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_SHELF" Collapsed="true">
+    <Position X="85.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAFAAAAAAAAAAAAAAAAAACgAAkAACAAABAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_SIM_TO_STD_MAST" Collapsed="true">
+    <Position X="87.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAABAABIQAAAAAAAAAAAAAAAAgAAAAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_SIMILAR_PRODUCT" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="89.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgAAABBACAAAAAQAEEAQgBqKAAKwIAADACAAAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_SPECIAL_CHARACTER" Collapsed="true">
+    <Position X="91" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAQAAAAAgAAAAACAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_SSB" Collapsed="true">
+    <Position X="92.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAACAAAAAAAAAAAAAAAAAAAgIAAAACAAAAAGA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_STDDATA" Collapsed="true">
+    <Position X="94.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAACAAAAgPwDAAAAAAAAAAAAAgAAAAACAAAEAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_SUBJ_MAS" Collapsed="true">
+    <Position X="96.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAEAAAAAAAAAAAAAAAAAACgAAkAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_SUGGESTIONS" Collapsed="true">
+    <Position X="98" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIAAAAABAAAAAAAAAAQAAkgAAAAAIsQBAAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_SURFACE_FINISH_STD" Collapsed="true">
+    <Position X="99.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAQAgAAAIAAIAAIAAABAgAgAQAAAkAAAAAmAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_TFCOMMIT" Collapsed="true">
+    <Position X="101.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAGAUAAAAAAAAABAAEAgEAAAAIAx4AVBCCAAAAKAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_THREAD_DIMENSION_STD" Collapsed="true">
+    <Position X="59.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAARAEAAABkgAECAChwAJQAAgAAgAAAAAiggABgiQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_TOOL_CAD_PARAM" Collapsed="true">
+    <Position X="61.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAgAAIAFAAAAAAAAAAAAQAAAgAAgAEiAACAEAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_TOOL_DIMENSION" Collapsed="true">
+    <Position X="63" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>APkDUCAgQAAA/oEnAP5hAMn/DQIAMvryRQDm0/R+AgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_TOOL_FAMILY" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64.75" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QIAgAAIhAAAAEAAAQAECgwABqKIABgIJACACAgAAIAI=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_TOOL_ISSUES" Collapsed="true">
+    <Position X="66.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gICEQAgAAAABAAAAAAAAAAAAAAQAIgAAAACCAAAABAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_TOOL_PARAMETER" Collapsed="true">
+    <Position X="68.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoQAIAAgAAIAVAAAJAEgAABACQAAAgAAgAEiAACAEAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_TOOL_SCHED_ISSUE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="70" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AICgBACBAoJACMwSQAUuIQCBqCAAihYAijAKAQBAKAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_TOOL_SCHED_MAIN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="71.75" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAgBAIBAAAAAAhAQAEGIQCBqCKAigsMKDAaIgBALAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.REPL_TOOL_SCHED_SUB" Collapsed="true">
+    <Position X="73.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAIAAAAQIAAAAgCAABCIAigAAAApgAAABASAAAMqAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_TOOL_SUBPARAM" Collapsed="true">
+    <Position X="75.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoQAIAAgAAIAVAAAJAEgAABACQAAAgAAgAEiAACAEAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPL_TRANSPORT_MAST" Collapsed="true">
+    <Position X="77" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAACAAAAAAAAAQAAAAAAAAAAAAgABAAACBAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.REPORT_PARAMETERS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="78.75" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAoABARAIAAAAIAQAEAhQgBiCCAKYIAAAABAAAAEAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.ROH_SAP_MASTER" Collapsed="true">
+    <Position X="82.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SEC_OBJECTS_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="75.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAABAAgAAAAAQAkEABAByCAAAAAACAAAAAAAAAE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.SEC_ROLE_OBJECT_PERMISSION" Collapsed="true">
+    <Position X="3.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>WiYggCSxAAgBDAgMTGkEABBByCQADAAAGBkALABAUME=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProcessDesigner.SEC_ROLE_OBJECT_PERMISSION_BCP" Collapsed="true">
+    <Position X="77" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>WAYAgAQAAAAADAAEDCAAAAAAQAAABAAAGBgACAAAUME=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SEC_ROLES_MASTER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="78.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UgAggCAxAAABDAgETGEEABABiCQACAAAGAgAAAAAQMA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.SEC_USER_MASTER" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UgAgoDAxACEABAgGTHWEBBABjCQADIACGAgAAAAAQMA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProcessDesigner.SEC_USER_ROLES" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="80.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UgAggCAxACABDAgETGGEABABiCQACAAAGAgAAAAAQMA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.SETUP" Collapsed="true">
+    <Position X="84" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAgAAAAAAAAAACAoFBAAAAAAhAAAAIAAAAAAAIAAgg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Setup1" Collapsed="true">
+    <Position X="85.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAgFBAAAAAAhIAAAAAAAAAAAIAggg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SHELF" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="89.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EMAgAAABAFCAAAAAwQUEAJABiSAACAAAmAAAIAABAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.SIM_TO_STD_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="91" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABgAIABAADIQAAAQAEEABABiCAAAACACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.SIMILAR_PRODUCT" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="92.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAABBACAAAAAUAEEABgBiKACKQAACBAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.SPECIAL_CHARACTER" Collapsed="true">
+    <Position X="94.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Srini" Collapsed="true">
+    <Position X="98" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAoFBAAAAAAhAAAAIAAAAAAAIAAgg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SRW_FIELD" Collapsed="true">
+    <Position X="99.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACERKEJChKQAABIAAgABgAACCQABBNAohEAAEgADCA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SRW_FKEY" Collapsed="true">
+    <Position X="101.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIEIAAACAABAAAAAAAAAAAIAAAIAAgAAAAAoAQI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SRW_GRANT" Collapsed="true">
+    <Position X="59.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAABBAIAAAAAAAAAAACIAAgAAAACAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SRW_GRANTED" Collapsed="true">
+    <Position X="61.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAABBAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SRW_GROUP" Collapsed="true">
+    <Position X="63" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AUCAhIEKAgAAoMBCAYAwhICACAAAABIAAhAAIggACAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SRW_PARAM" Collapsed="true">
+    <Position X="64.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQIIEIAoIwAABAAAoAAAFQIAQAAAIAghIAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SRW_QUERY" Collapsed="true">
+    <Position X="66.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIEoEAACAABAAAAAIAEAAAIAAAIAggAAAAAAAAE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SRW_REPORT" Collapsed="true">
+    <Position X="68.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCAYEAEIAIEQAFJJEEAgAmAAgACACAKIIgAgACAABQg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SRW_STE" Collapsed="true">
+    <Position X="70" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIEIAAABAABAAAAAAABAAAAAAAIAAgAAAAAAAGA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SRW_SUMMARY" Collapsed="true">
+    <Position X="71.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIEIAAIQAAhBAAgIAAAgAAQAQAJAggAgAAAAACA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SRW_TEXT" Collapsed="true">
+    <Position X="73.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AICABIEIAAARAABAAAEABABAAAQAAhIABgAAAAgACoA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SRW_TEXT_LONG" Collapsed="true">
+    <Position X="75.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIEIAAABAABAIAAAABBAAAEgAAIAAgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Stddata1" Collapsed="true">
+    <Position X="78.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAgAMAAAAAAAAAAAAEgAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.SUBJ_MAS" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="80.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EMAgAAABAEAAAAAAQQEEABABiCAACAAAmAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.SURFACE_FINISH_STD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="82.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBAwAgMBAIQAKAAIQAEFIhAhiSAAAEIBKQAkCAEIEAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.T2" Collapsed="true">
+    <Position X="84" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.T3" Collapsed="true">
+    <Position X="85.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACEAYgAAAAAABgAAAAAAIAgAEQAgAAAABAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TA" Collapsed="true">
+    <Position X="87.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAkAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TABLELIST" Collapsed="true">
+    <Position X="89.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAABAAEQAAAAAAgAAAAAAAgAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TAG_MAIN" Collapsed="true">
+    <Position X="98" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAQIBQhAoAQCAACgYAAQgABgCQQAIEYACBAAAAEAJQA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TAGS" Collapsed="true">
+    <Position X="99.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAQIBQhAoAQCAACgYAAQgABgCQQAIEYAABAAAAEAJQA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TEMP_AUDIT" Collapsed="true">
+    <Position X="59.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgDAAAAAAQAkCwAAAgIgAgggAAAgAAAABAAgAgAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TEMPCOAT1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.25" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEggAAABAAACBAAAQAECACABiGAAAAAAAAAAAABAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TEMPFINISH" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="63" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIgAAABgAAABQAAQAEAAAABiCAAAARAAAAAIAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TEMPPART" Collapsed="true">
+    <Position X="64.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TEST" Collapsed="true">
+    <Position X="66.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAgAAAAAAAAAAAAAgAAAAJAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TF_TEMP" Collapsed="true">
+    <Position X="70" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAEAAAAAAAAAAAAIIAAAAAAAAAAgAAAAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TFCOMMIT" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="71.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABgXCUBAAAABAAgRAEEIrsByCAICR5BXBGAqgDCKAg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.THREAD_DIMENSION_STD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="73.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAWyA1glQQABkgAESJGlwBJRnGgNGAAECIAoggCRgiQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_CAD_PARAM" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="75.25" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAEgAAChoAIAFAAAQAEEABABiSAEABAAiAEgAAiAMAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_DIMENSION" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="77" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UnkjWCAjSBAC/oEvUP9lBNn/jaIIMP7yTQPk0/R/IwI=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_DRWG" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="78.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAgQAABABAAAIAMQAEEAAABiCAkIgBAAAAABEAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_FAMILY" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="80.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAgAAIhAAAAEAAAQAECggABiKIABAAJAAAAAgAAIAI=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_ISSUES" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="82.25" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kQCkQAgBABABgAAMSAEERDABiCQAIAAACACAAAEABAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_LAST_ISSUE" Collapsed="true">
+    <Position X="84" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAIAgJAAIgEAAAiIACAAAACgBQAAAAAAQAACAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_PARAMETER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UgUwIAAhoAIAVEIAZgEkABBBqSAEABIAiAEgAADAMRA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_SCHED_ISSUE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="87.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACgBACBAoJICMwSQAUuIBCBiCAAiBQAihAIAQBAKAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_SCHED_ISSUE_KPM" Collapsed="true">
+    <Position X="89.25" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgJAAIgAAAQiIACAAAAAgBQAAhAAAQAAKAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_SCHED_LAST" Collapsed="true">
+    <Position X="91" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAACCIACAAAAAgABAABAAAAAAKAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_SCHED_MAIN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="92.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBAgBAIBAAAIgAhAQAEGKBCBiCKAiAkNqBAYIgRALAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_SCHED_MAIN_KPM" Collapsed="true">
+    <Position X="94.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAgAAAACIACAAAIAgAgAABAQIAAALAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_SCHED_MAIN_TMP" Collapsed="true">
+    <Position X="96.25" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAIAAAAAAAgAAAACIACAAAIAgggAABASIAAALAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_SCHED_SUB" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="98" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAoBIIBQIAAQAhDQAHGIBihiCAGrQcACBEYAABMuAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_SCHED_SUB_KPM" Collapsed="true">
+    <Position X="99.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAQIAAAAgCAABCIAigAAAApAAAABAQAAAMqAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_SCHED_SUB_TMP" Collapsed="true">
+    <Position X="101.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAIAAAAQIAAAAgCAABCIAigAAAApgAAABASAAAMqAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.TOOL_SUBPARAM" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="59.5" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UgUwIAAhoAIAVEIAZgEkABBBqSAEABIAiAEgAADAMRA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.TRANSPORT_MAST" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.25" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAASBAAAAAAAAQAEEEDABiCAAAAABGAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Ttemp" Collapsed="true">
+    <Position X="63" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAQIAAAAgCAABCIAigAAAApAAAABAQAAAMqAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.V_TABLE_DESCRIPTION" Collapsed="true">
+    <Position X="66.5" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAABAAAAEAAFAAAAAAAEAIAAhMABAIAAABAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Vidu" Collapsed="true">
+    <Position X="68.25" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAgAAAAAAQAAAAAAAIIAAABAAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Vidya2" Collapsed="true">
+    <Position X="70" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAoFBAAAAAAhAAAAIAAAAAAAIAAgg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Vidyasri" Collapsed="true">
+    <Position X="71.75" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoAAAAAAAAAAAAAAIIBAAAAAIAAADAIAEBAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.WORK_ORD_DET" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="73.5" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAwoBAtJ4AUKBACARYMEgJAprWQIL0QYCBAIAI0AJQA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.WORK_ORDER_MAIN" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="75.25" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAgAAADAARQBAAwQAFcABgBqGAADAAASBAIIAAAKAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Xxxx" Collapsed="true">
+    <Position X="77" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAgAMAAAAAAAAAAAAEgAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ExhibitViewModel" Collapsed="true">
+    <Position X="89.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgAACAAAQIAAAAAAAggBAAAABAAAAAAIEAQBIAAAAAA=</HashCode>
+      <FileName>ViewModel\ExhibitViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.ChangePassword" Collapsed="true">
+    <Position X="32.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>BLL\ChangePassword.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.CirReference" Collapsed="true">
+    <Position X="36.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAIAAAAAAABAgAAAAAAAACAAAAAAAIABAAAAABAA=</HashCode>
+      <FileName>BLL\CirReference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.CostCenterMaster" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="78.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAQ0AAIAAAAKIAAIBgwAwAQDAEAEAiBAAAAA=</HashCode>
+      <FileName>BLL\CostCenterMaster.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.BLL.CostCenterMasterDet" Collapsed="true">
+    <Position X="41.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgBAAEAIAAAABAIAAAAAAAAgQAAAgAAAAAAAAACCA=</HashCode>
+      <FileName>BLL\CostCenterMasterDet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.CrossLinkingChar" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="82.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAkBAAAQAAAAAIQAAEAAAAAIgCAIAAAgAQggAAgAAAA=</HashCode>
+      <FileName>BLL\CrossLinkingChar.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.BLL.CrossLinkingCharDet" Collapsed="true">
+    <Position X="43.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFAIAABAAAAgACAAAAAAAACAgEAggAAIEAAAAAA=</HashCode>
+      <FileName>BLL\CrossLinkingCharDet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.CrossLinkingcharGrid" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="84" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAIACAAAIQAAAAgAAAAkCAAAgAAAQAgAIAACAA=</HashCode>
+      <FileName>BLL\CrossLinkingcharGrid.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.BLL.DevelopmentReport" Collapsed="true">
+    <Position X="45.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAgABAAAAAAAA=</HashCode>
+      <FileName>BLL\DevelopmentReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.ExhitbitMaster" Collapsed="true">
+    <Position X="48" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>BLL\ExhitbitMaster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.FeatureMasterBll" Collapsed="true">
+    <Position X="50.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgACAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\FeatureMasterBll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.ForignCalc" Collapsed="true">
+    <Position X="52.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAIEAgAAAAAAAAAEAQAAAAAQACAJAIQAADAAgA=</HashCode>
+      <FileName>BLL\ForignCalc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.GrinmachineBll" Collapsed="true">
+    <Position X="54.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\GrinmachineBll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.Login" Collapsed="true">
+    <Position X="57" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.NylocmachineBll" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\NylocmachineBll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.OperationMasterBll" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAACAACAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>BLL\OperationMasterBll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.FinishMasterBll" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAQAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\OperationMasterBll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.UnitMasterBll" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAIAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\OperationMasterBll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.Coatingmaster" Collapsed="true">
+    <Position X="12" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>BLL\OperationMasterBll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.CustomerMaset" Collapsed="true">
+    <Position X="14.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAACAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\OperationMasterBll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.PermissionDet" Collapsed="true">
+    <Position X="16.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAgAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>BLL\PermissionDet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.PointMachineBll" Collapsed="true">
+    <Position X="18.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\PointMachineBll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.ProductBll" Collapsed="true">
+    <Position X="21" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\ProductBll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.ProductInformation" Collapsed="true">
+    <Position X="23.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AICQAgoBBAAAACgAAAAwAgADAAAoAAAAIEAEAAQQDIA=</HashCode>
+      <FileName>BLL\ProductInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.RawMaterial" Collapsed="true">
+    <Position X="25.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAACAAAAAAAAAAAAAgAAAAQAAAA=</HashCode>
+      <FileName>BLL\RawMaterial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.RoleUserSecurityDet" Collapsed="true">
+    <Position X="27.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>BLL\RoleUserSecurityDet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.SecurityUserRolesDet" Collapsed="true">
+    <Position X="30" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\SecurityUserRolesDet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.Tapmachine" Collapsed="true">
+    <Position X="34.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\Tapmachine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.UserInformation" Collapsed="true">
+    <Position X="64.75" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>BLL\UserInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.BLL.UserRoleDet" Collapsed="true">
+    <Position X="39" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>BLL\UserRoleDet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Common.EnteKeyTab" Collapsed="true">
+    <Position X="75.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAEAAAAAAAAAAAAABAAABAAAAAAAAQIAAAAAAAAA=</HashCode>
+      <FileName>Common\EnteKeyTab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Common.Essential" Collapsed="true">
+    <Position X="30" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gBAmioBAYAAAAQAAAAAgwEoAAAACAEAFAABgAAIAABA=</HashCode>
+      <FileName>Common\Essential.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Common.ExtendedMethods" Collapsed="true">
+    <Position X="91" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAEAgCEAAEAAAEAQIABAAAgIIYEECAAAASAAAEaAA=</HashCode>
+      <FileName>Common\ExtendedMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Common.SQLBuilder" Collapsed="true">
+    <Position X="96.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQIAAAAAAAAA=</HashCode>
+      <FileName>Common\SQLBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Common.TabOnEnterCheckBoxBehavior" Collapsed="true">
+    <Position X="91" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAFAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\TabOnEnterCheckBoxBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Common.TabOnEnterComboBoxBehavior" Collapsed="true">
+    <Position X="92.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAFAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\TabOnEnterComboBoxBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Common.TabOnEnterDatePickerBehavior" Collapsed="true">
+    <Position X="94.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAFAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\TabOnEnterDatePickerBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Common.TabOnEnterTextBoxBehavior" Collapsed="true">
+    <Position X="96.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAFAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\TabOnEnterTextBoxBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Common.TextBoxIntsOnly" Collapsed="true">
+    <Position X="68.25" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAEAAAAAAQAACMAAAIAAAAAIggAIAAAEBEAAAAAEwAA=</HashCode>
+      <FileName>Common\TextBoxIntsOnly.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.DAL.DataAccessLayer" Collapsed="true">
+    <Position X="89.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>WBA8CJABIEAAKiggBACFgUAAAAQAACAAAAAABACAgCA=</HashCode>
+      <FileName>DAL\DataAccessLayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Model.FeatureMasterModel" Collapsed="true">
+    <Position X="99.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABASACIQAAgAAAAgAACAkAAAQAAIIIASKQAABAA=</HashCode>
+      <FileName>Model\FeatureMaster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Model.GrinmachineModel" Collapsed="true">
+    <Position X="6.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\GrinmachineModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Model.NylocmacModel" Collapsed="true">
+    <Position X="85.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAgAEAAgIAAAAFAAEAAAQAAAAAAAIgAAA=</HashCode>
+      <FileName>Model\NylocmacModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Model.PermissionModel" Collapsed="true">
+    <Position X="3.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PermissionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Model.PointMachineModel" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PointMachineModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Model.ProductModel" Collapsed="true">
+    <Position X="99.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAIAAAAAAEAAAAAAAAAAAAAAAAEAAAAAAI=</HashCode>
+      <FileName>Model\ProductModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Model.RoleUserSecurityModel" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAwAAAAAAAIAAAAQABAA=</HashCode>
+      <FileName>Model\RoleUserSecurityModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Properties.Resources" Collapsed="true">
+    <Position X="80.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Properties.Settings" Collapsed="true">
+    <Position X="82.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.APQP" Collapsed="true">
+    <Position X="70" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\APQP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedAPQP" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="80.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\APQP.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CFTMeeting" Collapsed="true">
+    <Position X="96.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\CFTMeeting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedCFTMeeting" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="82.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\CFTMeeting.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.InitialSampleSubmissionReport" Collapsed="true">
+    <Position X="63" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\InitialSampleSubmissionReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedInitialSampleSubmissionReport" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="84" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\InitialSampleSubmissionReport.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.ISIR" Collapsed="true">
+    <Position X="66.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\ISIR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedISIR" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\ISIR.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.PartSubmissionWarrant" Collapsed="true">
+    <Position X="98" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\PartSubmissionWarrant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedPartSubmissionWarrant" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="87.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\PartSubmissionWarrant.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.PPApprDimensionalResult" Collapsed="true">
+    <Position X="87.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\PPApprDimensionalResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedPPApprDimensionalResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="89.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\PPApprDimensionalResult.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.PPApprMateTestResult" Collapsed="true">
+    <Position X="89.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\PPApprMateTestResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedPPApprMateTestResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="91" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\PPApprMateTestResult.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.PPApprPerfTestResult" Collapsed="true">
+    <Position X="91" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\PPApprPerfTestResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedPPApprPerfTestResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="92.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\PPApprPerfTestResult.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.ProcessControllerCapabilitySheet" Collapsed="true">
+    <Position X="96.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\ProcessControllerCapabilitySheet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedProcessControllerCapabilitySheet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="94.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\ProcessControllerCapabilitySheet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptAuxillaryToolSchedule" Collapsed="true">
+    <Position X="84" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptAuxillaryToolSchedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptAuxillaryToolSchedule" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="96.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptAuxillaryToolSchedule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptAwaitingDocumentation" Collapsed="true">
+    <Position X="85.75" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptAwaitingDocumentation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptAwaitingDocumentation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="98" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptAwaitingDocumentation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptAwaitingTools" Collapsed="true">
+    <Position X="87.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptAwaitingTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptAwaitingTools" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="99.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptAwaitingTools.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptCheckList" Collapsed="true">
+    <Position X="89.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptCheckList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptCheckList" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="101.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptCheckList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptControlPlan" Collapsed="true">
+    <Position X="91" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptControlPlan.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptControlPlan" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="59.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptControlPlan.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptCostSheet" Collapsed="true">
+    <Position X="92.75" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptCostSheet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptCostSheet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptCostSheet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptLeadTime" Collapsed="true">
+    <Position X="94.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptLeadTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptLeadTime" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="63" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptLeadTime.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptMasterSampleLabel" Collapsed="true">
+    <Position X="96.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptMasterSampleLabel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptMasterSampleLabel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptMasterSampleLabel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptPerformanceList" Collapsed="true">
+    <Position X="98" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptPerformanceList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptPerformanceList" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="66.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptPerformanceList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptProcessSheet" Collapsed="true">
+    <Position X="99.75" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptProcessSheet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptProcessSheet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="68.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptProcessSheet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptProductSearch" Collapsed="true">
+    <Position X="101.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptProductSearch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptProductSearch" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="70" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptProductSearch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptPSW" Collapsed="true">
+    <Position X="59.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptPSW.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptPSW" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="71.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptPSW.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptPswApproved" Collapsed="true">
+    <Position X="61.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptPswApproved.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptPswApproved" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="73.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptPswApproved.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptQcp" Collapsed="true">
+    <Position X="63" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptQcp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptQcp" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="75.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptQcp.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptsubFlowChart1" Collapsed="true">
+    <Position X="64.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptsubFlowChart1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptsubFlowChart1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="77" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptsubFlowChart1.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptsubFlowChart2" Collapsed="true">
+    <Position X="66.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptsubFlowChart2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptsubFlowChart2" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="78.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptsubFlowChart2.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptTfc" Collapsed="true">
+    <Position X="68.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptTfc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptTfc" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="80.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptTfc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptToolDrawing" Collapsed="true">
+    <Position X="70" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptToolDrawing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptToolDrawing" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="82.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptToolDrawing.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptToolsandShifts" Collapsed="true">
+    <Position X="71.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptToolsandShifts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptToolsandShifts" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="84" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptToolsandShifts.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.Reports.rptToolschedule" Collapsed="true">
+    <Position X="73.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAJAAAQAAAAAAAIAAAAAAAAAAAACAABAAAABAA=</HashCode>
+      <FileName>Reports\rptToolschedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.Reports.CachedrptToolschedule" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAFAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\rptToolschedule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.UserControls.ComboBoxCus" Collapsed="true">
+    <Position X="63" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEAAAAgGAQgAwgAaAAFAKAAAAAACAAAIhBCAAIIQoCA=</HashCode>
+      <FileName>UserControls\ComboBoxCus.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.UserControls.DatePickerCus" Collapsed="true">
+    <Position X="92.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAgAAIAAAAAIQAAAIAAAAAcEAAgAIIAAIEAAg=</HashCode>
+      <FileName>UserControls\DatePickerCus.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.FeatureMasterViewModel" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIQEIGAABAQAAAQgAAAAAAAAAAAABACAIAAFACAghA=</HashCode>
+      <FileName>ViewModel\FeatureMasterViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.GrinmachineViewModel" Collapsed="true">
+    <Position X="10" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAEAAEAQIAIAAEAgAAAAAAAAAAAEAUAAAAAAQAAgAQ=</HashCode>
+      <FileName>ViewModel\GrinmachineViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.NylocmacViewModel" Collapsed="true">
+    <Position X="12.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAQIAIAAEAgAAAAAAAAABAAAUAAQAEAQAAgAQ=</HashCode>
+      <FileName>ViewModel\NylocmacViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.OperationMasterViewModel" Collapsed="true">
+    <Position X="91" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEECrIAQSAgQACgCBAQElAig1WAZQ5IAOIAKMhEBJAE=</HashCode>
+      <FileName>ViewModel\OperationMasterViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.PermissionViewModel" Collapsed="true">
+    <Position X="14.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAQAAEAQAAAAAEAgABAAEAIhgQgAAgAAAAAAAAACAA=</HashCode>
+      <FileName>ViewModel\PermissionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.PointMachineViewModel" Collapsed="true">
+    <Position X="84" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAEECAAAAIAAAAAwACEEAAAAAAAAAEAAACAAAAAgAA=</HashCode>
+      <FileName>ViewModel\PointMachineViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.ProductCategoryViewModel" Collapsed="true">
+    <Position X="101.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ViewModel\ProductCategoryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="70" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.RolesInfoViewModel" Collapsed="true">
+    <Position X="1" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hEAQgAEAQAgBAAEAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\RolesInfoViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.SecurityUserRolesViewModel" Collapsed="true">
+    <Position X="3.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\SecurityUserRolesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.SecurityViewModel" Collapsed="true">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>yCgAAAAAACAAIAAIAAAAgAABBAAAEBEAAAAAABIAAAA=</HashCode>
+      <FileName>ViewModel\SecurityViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.TapmacViewModel" Collapsed="true">
+    <Position X="101.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAYAAAAECAgABEAAAAAAAAAAAAAAAAAAKAAIA=</HashCode>
+      <FileName>ViewModel\TapmacViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProcessDesigner.ViewModel.ViewModelBase" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Enum Name="ProcessDesigner.Common.OperationMode" Collapsed="true">
+    <Position X="61.25" Y="24.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAEAAAAAAAAAAAAAAAAEBAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Common\OperationMode.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ProcessDesigner.Common.MaskType" Collapsed="true">
+    <Position X="59.5" Y="24.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\TextBoxIntsOnly.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ProcessDesigner.Common.TextAlign" Collapsed="true">
+    <Position X="63" Y="24.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAIAAA=</HashCode>
+      <FileName>Common\TextBoxIntsOnly.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

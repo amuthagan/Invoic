@@ -1,0 +1,195 @@
+﻿<UserControl x:Class="ProcessDesigner.frmTfc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        xmlns:EnterKey="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        Height="550" Width="1024" Background="{StaticResource WindowBackground}" Loaded="UserControl_Loaded">
+    <Border>
+
+        <Grid Margin="2,0,2,0">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition  Width="18*"></ColumnDefinition>
+                <ColumnDefinition Width="24*" ></ColumnDefinition>
+                <ColumnDefinition Width="13*"></ColumnDefinition>
+                <ColumnDefinition Width="27*"></ColumnDefinition>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Name="lblSFLPartNo" Text="SFL Part No : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+            <Lookup:ComboBoxWithSearch  MaxLength="40" Width="160" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1"  x:Name="cmbPartNo" 
+			DataSource="{Binding TFCMODEL.PartNoDetails,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
+            SelectedItem="{Binding SelectedRowPart,UpdateSourceTrigger=PropertyChanged}" DisplayValuePath="PART_NO" VerticalContentAlignment="Center"
+            SelectedText="{Binding TFCMODEL.PartNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" IsReadOnly="False"
+            SelectedValuePath="PART_NO" SelectedValue="{Binding TFCMODEL.PartNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+            ColumnsHeader="{Binding DropDownItemsPart,UpdateSourceTrigger=PropertyChanged}" Margin="0,4" Tag="Please select the SFL Part Number" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectedItemChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandPartNo,UpdateSourceTrigger=PropertyChanged}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Lookup:ComboBoxWithSearch.InputBindings>
+                    <KeyBinding Key="Enter"  Command="{Binding SelectChangeComboCommandPartNo}"  />
+                </Lookup:ComboBoxWithSearch.InputBindings>
+            </Lookup:ComboBoxWithSearch>
+            <TextBlock Name="lblCustomerPartNo" Text="Customer Part Number : " Grid.Row="0" Grid.Column="2" TextAlignment="Right"></TextBlock>
+            <TextBox Name="txtCustomerPartNo" IsReadOnly="True"  Grid.Row="0"  Grid.Column="3" Text="{Binding TFCMODEL.CUSTOMERPARTNO,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+            <TextBlock Name="lblPartName" Text="Part Name : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+            <TextBox  Name="txtPartName" IsReadOnly="True"  Grid.Row="1"  Grid.Column="1" Text="{Binding TFCMODEL.PartDesc, UpdateSourceTrigger=PropertyChanged}">
+            </TextBox>
+            <TextBlock Name="lblCustomerName" Text="Customer Name : " Grid.Row="1"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+            <TextBox Name="txtCustomerName" IsReadOnly="True"  Grid.Row="1"  Grid.Column="3" Text="{Binding TFCMODEL.CUSTOMERNAME,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+            <StackPanel Grid.Row="2"  Grid.Column="0" Orientation="Horizontal" Margin="5,0,0,0">
+                <TextBlock Name="lblIsitAutoPart" Text="Is it Auto Part ? " TextAlignment="Left" ></TextBlock>
+                <CheckBox x:Name="chkAutoPartYes" Command="{Binding OnAvailChkYesCommand}"  IsChecked="{Binding TFCMODEL.AUTOPARTYES,UpdateSourceTrigger=PropertyChanged}"  Content ="Yes     " VerticalAlignment="Center" />
+                <CheckBox Name="chkAutoPartNo" Command="{Binding OnAvailChkNoCommand}"  IsChecked="{Binding TFCMODEL.AUTOPARTNO,UpdateSourceTrigger=PropertyChanged}" Content ="No" VerticalAlignment="Center"></CheckBox>
+            </StackPanel>
+            <TextBlock Name="lblCFTDate" Text="CFT Date : " Width="60" HorizontalAlignment="Left" Grid.Row="2"  Grid.Column="1" ></TextBlock>
+            <TextBox Name="txtCFTDate" Grid.Row="2"  Grid.Column="1" Width="155" Margin="35,0,0,0" Text="{Binding TFCMODEL.DATE, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"></TextBox>
+
+            <TextBlock Name="lblApplication" Text="Application : " Grid.Row="2"  Grid.Column="2" TextAlignment="Right"></TextBlock>
+            <TextBox  Name="txtApplication"  Grid.Row="2"  Grid.Column="3" Text="{Binding TFCMODEL.APPLICATION, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"></TextBox>
+            <GroupBox Header="Customer Programme" Grid.Row="0" Grid.Column="4" Grid.RowSpan="3" Margin="5,0,5,0">
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*"></RowDefinition>
+                        <RowDefinition Height="30*"></RowDefinition>
+                        <RowDefinition Height="30*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="16*" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Name="chkPrototype" Grid.Row="0" Grid.Column="0" Command="{Binding OnAvailChkPtCommand}" IsChecked="{Binding TFCMODEL.PROTOTYPE,UpdateSourceTrigger=PropertyChanged}"  Content =" Proto-type" VerticalAlignment="Center" Margin="0,0,0,3"></CheckBox>
+                    <CheckBox Name="chkPrelaunch" Grid.Row="1" Grid.Column="0" Command="{Binding OnAvailChkPlCommand}" IsChecked="{Binding TFCMODEL.PRELAUNCH,UpdateSourceTrigger=PropertyChanged}" Content =" Pre-launch" VerticalAlignment="Center" Margin="0,0,0,3"></CheckBox>
+                    <CheckBox Name="chkProduction" Grid.Row="2" Grid.Column="0" Command="{Binding OnAvailChkPrCommand}" IsChecked="{Binding TFCMODEL.PRODUCTION,UpdateSourceTrigger=PropertyChanged}" Content =" Production" VerticalAlignment="Center" Margin="0,0,0,3"></CheckBox>
+                </Grid>
+            </GroupBox>
+            <TabControl Grid.Row="3" Grid.ColumnSpan="4" Margin="0,5">
+                <TabItem Header="Consideration">
+                    <DataGrid IsReadOnly="True" Name="dgConsideration" RowHeaderWidth="20" AutoGenerateColumns="False" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" ItemsSource="{Binding TFCMODEL.GRIDLOAD,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedGrid,UpdateSourceTrigger=PropertyChanged}" Margin="5,0,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                <i:InvokeCommandAction Command="{Binding MouseComboCommand,UpdateSourceTrigger=PropertyChanged}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="LoadingRow">
+                                <si:CallMethodAction MethodName="dgConsideration_LoadingRow" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Loaded">
+                                <si:CallMethodAction MethodName="dgConsideration_Loaded" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="Consideration" Width="1*" Binding="{Binding Consideration, UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Y/N" Width="100" Binding="{Binding Yes_No, UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Header="Risk Analysis">
+                    <DataGrid AutoGenerateColumns="False" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" ItemsSource="{Binding TFCMODEL.GRIDLOADRISK,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedRowPart,UpdateSourceTrigger=PropertyChanged}" 
+                              Margin="5,0,0,0" CanUserAddRows="False" CanUserResizeColumns="True" CanUserDeleteRows="False" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="S.No" Width="60" Binding="{Binding S_NO, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Aspects" Width="2*" Binding="{Binding Aspects, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="If risk, then Impact of Risk" Width="1*" Binding="{Binding ImpactofRisk, UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="500"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Remarks" Width="1*" Binding="{Binding Remarks, UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="500"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+            </TabControl>
+            <TextBlock Name="lblNote" Text="Note:- If Status is Marked as 'X' then NO will be Ticked. If left Blank then Yes will be Ticked" Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center"></TextBlock>
+
+            <Grid Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="5">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition  Width="40*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*" ></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"></RowDefinition>
+                    <RowDefinition Height="20*"></RowDefinition>
+                    <RowDefinition Height="20*"></RowDefinition>
+                    <RowDefinition Height="20*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <GroupBox Header="Conclusion" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="5,0,0,0">
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30*"></RowDefinition>
+                            <RowDefinition Height="30*"></RowDefinition>
+                            <RowDefinition Height="30*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*" ></ColumnDefinition>
+                            <ColumnDefinition Width="16*"  ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Name="chkFeasibleProduct" IsChecked="{Binding TFCMODEL.FEASIBLEPRODUCT,UpdateSourceTrigger=PropertyChanged}" Command="{Binding OnAvailChkF1Command}" Content ="Feasible" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></CheckBox>
+                        <CheckBox Name="chkFeasibleChange" IsChecked="{Binding TFCMODEL.FEASIBLECHANGE, UpdateSourceTrigger=PropertyChanged}" Command="{Binding OnAvailChkF2Command}" Content ="Feasible" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></CheckBox>
+                        <CheckBox Name="chkNotFeasible" IsChecked="{Binding TFCMODEL.NOTFEASIBLE,UpdateSourceTrigger=PropertyChanged}" Command="{Binding OnAvailChkNfCommand}" Content ="Not Feasible" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></CheckBox>
+
+                        <TextBlock Name="lblFeasibleProduct" Text="Product can be produced as specified with no revisions." Grid.Row="0" Grid.Column="1"  ></TextBlock>
+                        <TextBlock Name="lblFeasibleChange" Text="Change recommended(see attached)." Grid.Row="1" Grid.Column="1"  ></TextBlock>
+                        <TextBlock Name="lblNotFeasible" Text="Design revision required to produce product within the specified requirements." Grid.Row="2" Grid.Column="1"  ></TextBlock>
+                    </Grid>
+                </GroupBox>
+                <TextBlock Name="lblProcessNo" Text="Please Enter Process no. " Grid.Row="2" Grid.Column="3" Grid.RowSpan="2"></TextBlock>
+                <TextBox Tag="Please enter the Process no" Name="txtProcessNo" Text="{Binding TFCMODEL.ROUTENO, UpdateSourceTrigger=PropertyChanged}" EnterKey:TextBoxIntsOnly.Mask="Integer" Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" HorizontalAlignment="Right" Width="40" MaxLength="2"></TextBox>
+                <Button Name="btnSave" Content="_Save" Command="{Binding SaveClickCommand}" Grid.Row="0" Grid.Column="5" Grid.RowSpan="2" Margin="2,5,10,5"></Button>
+                <Button Name="btnPrint" Content="_Print" Command="{Binding PrintClickCommand}" Grid.Row="2" Grid.Column="5" Grid.RowSpan="2" Margin="2,5,10,5"></Button>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

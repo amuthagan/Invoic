@@ -1,0 +1,623 @@
+﻿<UserControl
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"            
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+    xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls" 
+        xmlns:uc="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:t="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"           
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:xtk="http://schemas.xceed.com/wpf/xaml/toolkit"    
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="ProcessDesigner.frmManufacturingReport"
+        Height="600" Width="1000" Loaded="UserControl_Loaded" >
+    <UserControl.Resources>
+        <UICommon:DateTimeConverter x:Key="DateTimeConverter"/>
+    </UserControl.Resources>
+    <UserControl.Background>
+        <StaticResource ResourceKey="WindowBackground"/>
+    </UserControl.Background>
+
+    <UserControl.InputBindings >
+        <KeyBinding Key="F3" Command ="{Binding OnAddCommand}"/>
+        <KeyBinding Key="F5"  Command="{Binding OnEditViewCommand}"/>
+        <KeyBinding Key="S" Modifiers="Control"  Command="{Binding OnSaveCommand}"/>
+        <KeyBinding Key="F8"  Command="{Binding OnPrintCommand}"/>
+        <KeyBinding Key="F9"  Command="{Binding OnCloseCommand}"/>
+    </UserControl.InputBindings>
+    <Border Margin="5">
+        <Grid KeyboardNavigation.TabNavigation="Cycle">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="110"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <Border  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                <ToolBarTray>
+                    <ToolBar x:Name="Part1" BandIndex="0" Height="58" KeyboardNavigation.TabNavigation="None" >
+                        <Button Content="Add F3" Grid.Row="0" Grid.Column="0" Width="73" Height="50"  Command="{Binding OnAddCommand}" KeyboardNavigation.IsTabStop="False" IsEnabled="{Binding AddButtonIsEnable}" ToolTip="Add New Record" uc:AddedProperty.Image="Images/Add.png"  />
+                        <Button Content="Edit/View F5" Grid.Row="0" Grid.Column="1" Width="80" Height="50" KeyboardNavigation.IsTabStop="False" IsEnabled="{Binding EditButtonIsEnable}" Command="{Binding OnEditViewCommand}"  ToolTip="Edit or View Record" uc:AddedProperty.Image="Images/Edit.png"/>
+                        <Button Content="Save Ctrl+S" Grid.Row="0" Grid.Column="3"  Width="69" Height="50"  IsEnabled="{Binding SaveButtonIsEnable}" KeyboardNavigation.IsTabStop="False" Command="{Binding OnSaveCommand}"  ToolTip="Save Record" uc:AddedProperty.Image="Images/Save.png" />
+                        <Button Content="Print F8 " Height="50" Margin="2,0,2,0" IsEnabled="{Binding PrintButtonIsEnable, UpdateSourceTrigger=PropertyChanged}" KeyboardNavigation.IsTabStop="False" Padding ="10,0,10,0" uc:AddedProperty.Image="Images/Print.png" Command="{Binding OnPrintCommand}"/>
+                        <Button Content="Search " Height="50" Margin="2,0,2,0" Padding ="10,0,10,0" uc:AddedProperty.Image="Images/Search.png" KeyboardNavigation.IsTabStop="False"/>
+                        <Menu ToolBar.OverflowMode="Always" >
+                            <StackPanel Background="White" >
+                                <MenuItem  Header="Cost Sheet Search" Command="{Binding CostSheetSearchCommand}"/>
+                                <MenuItem  Header="Product Search" Command="{Binding ProductSearchCommand}"/>
+                                <MenuItem  Header="Tools Search" Command="{Binding ToolsSearchCommand}"/>
+                            </StackPanel>
+                        </Menu>
+                    </ToolBar>
+                    <ToolBar Height="58" KeyboardNavigation.TabNavigation="None">
+                        <Button Content="Undo " Visibility="Collapsed" Height="50" KeyboardNavigation.IsTabStop="False" Margin="2,0,2,0" Padding ="10,0,10,0" Command="{Binding OnUndoCommand}" uc:AddedProperty.Image="Images/Undo.png" />
+                        <Button Content="Show Related" Height="50" KeyboardNavigation.IsTabStop="False" Margin="2,0,2,0" Padding ="10,0,10,0"  uc:AddedProperty.Image="Images/ShowRelated.png" />
+                        <Menu ToolBar.OverflowMode="Always" >
+                            <StackPanel Background="White" >
+                                <MenuItem  Header="Process Sheet" Command="{Binding ProcessSheetCommand}" />
+                                <MenuItem Header="Control Plan" Command="{Binding ControlPlanCommandm}" />
+                                <MenuItem  Header="Drawings" Command="{Binding DrawingsCommand}" />
+                                <MenuItem  Header="Tool Schedule" Command="{Binding ToolScheduleCommand}"/>
+                                <MenuItem  Header="Development Report" Command="{Binding DevlptRptCommand}"/>
+                                <Separator />
+                                <MenuItem  Header="Product Search" Command="{Binding ProductSearchCommand}"/>
+                                <MenuItem  Header="Cost Sheet Search" Command="{Binding CostSheetSearchCommand}"/>
+                                <MenuItem  Header="Tools Search" Command="{Binding ToolsSearchCommand}"/>
+                            </StackPanel>
+                        </Menu>
+                    </ToolBar>
+                    <ToolBar  Height="58" KeyboardNavigation.TabNavigation="None">
+                        <Button Content="Close F9" KeyboardNavigation.IsTabStop="False" Grid.Row="0" Grid.Column="4" Width="65" Height="50" Command="{Binding OnCloseCommand}"  ToolTip="Close Form" uc:AddedProperty.Image="Images/Close.png"/>
+                    </ToolBar>
+                </ToolBarTray>
+            </Border>
+            <Border Grid.Row="1" BorderThickness="1" Margin="0,5">
+                <Grid Margin="20,0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*"  />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!--UICommon:FocusExtension.IsFocused="{Binding FocusButton, UpdateSourceTrigger=PropertyChanged}"-->
+                    <TextBlock x:Name="lblPartNo"  Text="Part No : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right" FontWeight="Bold"/>
+                    <TextBox Width="92" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" Margin="2,0,0,0"  />
+                    <uc:ComboBoxCus  MaxLength="11" Tag="Please enter/select Part No" FontWeight="Bold" Width="160" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" Margin="2,0,0,0" x:Name="cmbPartNo" CharacterCasingText="Upper"
+					DataSource="{Binding ManufacReport.PartNoDetails, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                                    SelectedItem="{Binding SelectedRowPart, UpdateSourceTrigger=PropertyChanged}"  SelectedValuePath="PART_NO" 
+                                    SelectedValue="{Binding ManufacReport.PartNo, UpdateSourceTrigger=PropertyChanged}" ColumnsHeader="{Binding DropDownItemsPart, UpdateSourceTrigger=PropertyChanged}"
+                                    >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding PartNoSelectionChangedCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="EnterKeyPressed">
+                                <i:InvokeCommandAction Command="{Binding PartNoSelectionChangedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </uc:ComboBoxCus>
+
+                    <TextBlock Text="Description : " Grid.Row="1" FontWeight="Bold" TextAlignment="Right"/>
+                    <TextBlock Text="{Binding ManufacReport.PartNoDesc}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" FontWeight="Bold" TextWrapping="WrapWithOverflow"  Height="40" />
+                    <TextBlock  Text="Machine : " Grid.Row="3" TextAlignment="Right"/>
+                    <uc:ComboBoxWithSearch Tag="Please select Machine" Grid.Row="3" Grid.Column="1" DataSource="{Binding CCMaster}" DropDownWidth="300" MaxLength="50"
+                                             SelectedValue="{Binding ManufacReport.MACHINE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ManufacReport.MACHINE,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="COST_CENT_DESC"  DisplayValuePath="COST_CENT_DESC"                                               
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownHeaderCCMast}">
+                    </uc:ComboBoxWithSearch>
+                    
+                    <TextBlock Text="Customer : " Grid.Row="0" Grid.Column="2" TextAlignment="Right"/>
+                    <uc:ComboBoxCus Grid.Row="0" Grid.Column="3" IsReadOnly="True" Tag="Please Select Customer"                                           
+                                         SelectedValuePath="CUST_NAME"  SelectedValue="{Binding ManufacReport.CUST_NAME,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                         DataSource="{Binding CustomersDataSource}" SelectedItem="{Binding CustomerSelectedRow,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"                                         
+                                         ColumnsHeader="{Binding CustomerDropDownItems}">
+                    </uc:ComboBoxCus>
+                    <TextBlock Text="Material : " Grid.Row="1" Grid.Column="2" TextAlignment="Right"/>
+                    <uc:ComboBoxWithSearch Tag="Please select Material"  Grid.Row="1" Grid.Column="3" DataSource="{Binding RMBasic}" DropDownWidth="300" MaxLength="50"
+                                             SelectedValue="{Binding ManufacReport.MATERIAL,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                             SelectedText="{Binding ManufacReport.MATERIAL,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+				                             SelectedValuePath="RM_DESC"  DisplayValuePath="RM_DESC"                                               
+                                              VerticalContentAlignment="Center"  ColumnsHeader="{Binding DropDownHeaderRM}" Margin="0,1.5,0,0" VerticalAlignment="Top">
+                    </uc:ComboBoxWithSearch>
+                    <TextBlock Text="RM Source : " Grid.Row="2" Grid.Column="2" TextAlignment="Right"/>
+                    <TextBox Tag="Please enter the RM Source" Width="174" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3" Text="{Binding ManufacReport.RM_CD,UpdateSourceTrigger=PropertyChanged}" MaxLength="20"/>
+                    <TextBlock  Text="Wire size : " Grid.Row="3" Grid.Column="2"  TextAlignment="Right"/>
+                    <TextBox Tag="Please enter Wire Size" Width="174" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="3" Text="{Binding ManufacReport.WIRE_SIZE,UpdateSourceTrigger=PropertyChanged}" MaxLength="20"/>
+                    
+                    <TextBlock Text="Rod dia : " Grid.Row="0" Grid.Column="4"  TextAlignment="Right"/>
+                    <TextBox Tag="Please enter Rod dia" Width="174" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="5" Text="{Binding ManufacReport.ROD_DIA,UpdateSourceTrigger=PropertyChanged}" MaxLength="20"/>
+                    <TextBlock Text="UTS/Yp found : " Grid.Row="1" Grid.Column="4"  TextAlignment="Right"/>
+                    <TextBox Tag="Please enter UTS/Yp found" Width="174" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="5" Text="{Binding ManufacReport.UTS_YP,UpdateSourceTrigger=PropertyChanged}" MaxLength="20"/>
+                    <TextBlock Text="Heat no : " Grid.Row="2" Grid.Column="4"  TextAlignment="Right"/>
+                    <TextBox Tag="Please enter Heat no" Width="174" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="5" Text="{Binding ManufacReport.HEAT_NO,UpdateSourceTrigger=PropertyChanged}" MaxLength="20"/>
+                    <!--<TextBlock Text="Coating : " Grid.Row="2" Grid.Column="4"  TextAlignment="Right"/>
+                    <TextBox Grid.Row="2" Grid.Column="5" Text="{Binding ManufacReport.COATING,UpdateSourceTrigger=PropertyChanged}"/>-->
+                </Grid>
+            </Border>
+            <Border Grid.Row="2" BorderThickness="1" Margin="0,5">
+                <Grid Margin="20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*"  />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Qty planned : " Grid.Row="0"  Grid.Column="0" TextAlignment="Right" />
+                    <TextBox Tag="Please enter Qty Planned" Grid.Row="0" Grid.Column="1" Text="{Binding ManufacReport.QTY_PLANNED,UpdateSourceTrigger=PropertyChanged}" MaxLength="50"/>
+                    <TextBlock Text="Forged qty : " Grid.Row="0"  Grid.Column="2" TextAlignment="Right" />
+                    <TextBox Tag="Please enter Forged qty"  Grid.Row="0" Grid.Column="3" Text="{Binding ManufacReport.QTY_FORGED,UpdateSourceTrigger=PropertyChanged}" MaxLength="50"/>
+                    <TextBlock Text="Setting scrap : " Grid.Row="0"  Grid.Column="4" TextAlignment="Right" />
+                    <TextBox Tag="Please enter Setting scrap" Grid.Row="0" Grid.Column="5" Text="{Binding ManufacReport.SETTING_SCRAP,UpdateSourceTrigger=PropertyChanged}" MaxLength="50"/>
+
+                    <TextBlock Text="Start date : " Grid.Row="1"  Grid.Column="0" TextAlignment="Right" />
+                    <Control:DatePickerCus Tag="Please select Start date " Width="130" HorizontalAlignment="Left" Grid.Row="1" Height="22" Grid.Column="1" SelectedDate="{Binding ManufacReport.START_DATE,UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="End date : " Grid.Row="1"  Grid.Column="2" TextAlignment="Right" />
+                    <Control:DatePickerCus Tag="Please select End date " Width="130" HorizontalAlignment="Left" Grid.Row="1" Height="22" Grid.Column="3" SelectedDate="{Binding ManufacReport.END_DATE,UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Duration : " Grid.Row="1"  Grid.Column="4" TextAlignment="Right" />
+                    <TextBox Tag="Please enter Duration" Grid.Row="1" Grid.Column="5" Text="{Binding ManufacReport.DURATION,UpdateSourceTrigger=PropertyChanged}" MaxLength="50"/>
+
+                </Grid>
+            </Border>
+            <TabControl Grid.Row="3" Margin="2">
+                <TabItem Header="At the time of design" Width="150">
+                    <DataGrid Grid.Row="3" Name="dgrdDesign" PreviewKeyDown="dgrdDesign_PreviewKeyDown" ItemsSource="{Binding ManufacReport.DVDesign,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeRows="False"  UICommon:ScrollToTopBehavior.ScrollToTop="True"
+                      CanUserDeleteRows="False" RowHeaderWidth="25" SelectionUnit="FullRow" SelectedItem="{Binding DesignSelectedItem,UpdateSourceTrigger=PropertyChanged}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="OnCellEditEndingDesign" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.InputBindings>
+                            <KeyBinding  Key="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=dgrdDesign}" />
+                        </DataGrid.InputBindings>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="S.No" Width="60" Binding="{Binding SNO,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="IsReadOnly" Value="True" />
+                                        <Setter Property="MaxLength" Value="3"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Assumptions Made" Width="200" Binding="{Binding ASSUMPTIONS,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Status" Width="150" Binding="{Binding STATUS,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Remarks" Width="*" Binding="{Binding REMARKS,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Header="Tool manufacturing" Width="150">
+                    <DataGrid Grid.Row="3" Name="dgrdDifficulties" PreviewKeyDown="dgrdDifficulties_PreviewKeyDown" ItemsSource="{Binding ManufacReport.DVDifficulties,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"
+                      CanUserDeleteRows="False" CanUserResizeRows ="False" RowHeaderWidth="25" SelectionUnit="FullRow" SelectedItem="{Binding DifficultiesSelectedItem,UpdateSourceTrigger=PropertyChanged}" >
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="OnCellEditEndingDifficulties" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.InputBindings>
+                            <KeyBinding  Key="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=dgrdDifficulties}" />
+                        </DataGrid.InputBindings>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="S.No" Width="60" Binding="{Binding SNO,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="IsReadOnly" Value="True" />
+                                        <Setter Property="MaxLength" Value="3"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Difficulties faced while manufacturing" Width="300" Binding="{Binding DIFFICULTIES,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Corrective action" Width="150" Binding="{Binding ACTION,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Status" Width="*" Binding="{Binding STATUS,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Header="Pre qualification (list issues)" Width="175">
+                    <DataGrid Grid.Row="3" Name="dgrdPreQual" PreviewKeyDown="dgrdPreQual_PreviewKeyDown" ItemsSource="{Binding ManufacReport.DVPreQual,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"
+                      CanUserDeleteRows="False" CanUserResizeRows ="False" RowHeaderWidth="25" SelectionUnit="FullRow" SelectedItem="{Binding IssuesSelectedItem,UpdateSourceTrigger=PropertyChanged}" >
+
+                        <i:Interaction.Triggers>
+
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="OnCellEditEndingPreQual" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.InputBindings>
+                            <KeyBinding  Key="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=dgrdPreQual}" />
+                        </DataGrid.InputBindings>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="S.No" Width="60" Binding="{Binding SNO,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="IsReadOnly" Value="True" />
+                                        <Setter Property="MaxLength" Value="3"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Issues" Width="*" Binding="{Binding ISSUES,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Header="Manufacturing process" Width="150">
+                    <DataGrid Grid.Row="3" Name="dgrdProcess" PreviewKeyDown="dgrdProcess_PreviewKeyDown" ItemsSource="{Binding ManufacReport.DVProcess,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"
+                      CanUserDeleteRows="False" CanUserResizeRows ="False" RowHeaderWidth="25" SelectionUnit="FullRow" SelectedItem="{Binding ProcessSelectedItem,UpdateSourceTrigger=PropertyChanged}" >
+                        <DataGrid.InputBindings>
+                            <KeyBinding  Key="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=dgrdProcess}" />
+                        </DataGrid.InputBindings>
+                        <i:Interaction.Triggers>
+
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="OnCellEditEndingProcess" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="S.No" Width="60" Binding="{Binding SNO,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="IsReadOnly" Value="True" />
+                                        <Setter Property="MaxLength" Value="3"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Process" Width="100" Binding="{Binding MFG_PROCESS_NO,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Issues faced" Width="150" Binding="{Binding ISSUES_FACED,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Root cause" Width="150" Binding="{Binding ROOT_CAUSE,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Corrective action" Width="150" Binding="{Binding CORRECTIVE_ACTION,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Status" Width="*" Binding="{Binding STATUS,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Header="Quality output (Deviations / Abnormalities if any (Permitted))" >
+                    <DataGrid Grid.Row="3" Name="dgrdOutput" PreviewKeyDown="dgrdOutput_PreviewKeyDown" ItemsSource="{Binding ManufacReport.DVOutput,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False"
+                      CanUserDeleteRows="False" CanUserResizeRows ="False" RowHeaderWidth="25" SelectionUnit="FullRow" SelectedItem="{Binding OutputSelectedItem,UpdateSourceTrigger=PropertyChanged}" >
+                        <DataGrid.InputBindings>
+                            <KeyBinding  Key="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=dgrdOutput}" />
+                        </DataGrid.InputBindings>
+                        <i:Interaction.Triggers>
+                            <!--<i:EventTrigger EventName="BeginningEdit">
+                                <si:CallMethodAction MethodName="OnBeginningEditOutput" TargetObject="{Binding}"/>
+                            </i:EventTrigger>-->
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="OnCellEditEndingOutput" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="S.No" Width="60" Binding="{Binding SNO,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="IsReadOnly" Value="True" />
+                                        <Setter Property="MaxLength" Value="3"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Mfg. Process" Width="120" Binding="{Binding MFG_PROCESS_NO,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Rejection data if any" Width="170" Binding="{Binding REJECTION,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Reason/Cause" Width="150" Binding="{Binding REASON,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Corrective action" Width="150" Binding="{Binding CORRECTIVE_ACTION,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Status" Width="*" Binding="{Binding STATUS,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MaxLength" Value="250"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+
+            </TabControl>
+            <Border Grid.Row="4" BorderThickness="1" Margin="0,5">
+                <Grid Margin="20,0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!--<TextBlock Text="Is Post approval"/>
+                    <Grid Grid.Column="1" Margin="10,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Content="Yes" IsChecked="{Binding ManufacReport.POST_APPR_YES,UpdateSourceTrigger=PropertyChanged}" />
+                        <RadioButton Content="No" Grid.Column="1" IsChecked="{Binding ManufacReport.POST_APPR_NO,UpdateSourceTrigger=PropertyChanged}" />
+                        <RadioButton Content="Not applicable" Grid.Column="2" IsChecked="{Binding ManufacReport.POST_APPR_NA,UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+                    <TextBlock Text="Can the part be handed over to manufacturing for bulk production?" Grid.Row="1" />
+                    <Grid Grid.Row="1" Grid.Column="1" Margin="10,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Content="Yes" IsChecked="{Binding ManufacReport.BULK_PROD_YES,UpdateSourceTrigger=PropertyChanged}"  />
+                        <RadioButton Content="No" Grid.Column="1" IsChecked="{Binding ManufacReport.BULK_PROD_NO,UpdateSourceTrigger=PropertyChanged}" />
+                        <RadioButton Content="Not applicable" Grid.Column="2" IsChecked="{Binding ManufacReport.BULK_PROD_NA,UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>-->
+                    <TextBlock Text="Sign off :" Grid.Row="0" FontWeight="Bold"/>
+                    <TextBox Tag="Please enter the Prepared-DD" Grid.Row="1"  Text="{Binding ManufacReport.PREPARED_DD,UpdateSourceTrigger=PropertyChanged}" Margin="5,0" MaxLength="50" />
+                    <TextBlock Text="Prepared - DD" Grid.Row="2" Grid.Column="0" TextAlignment="Center"/>
+                    <TextBox Tag="Please enter the Manufacturing - Forging" Grid.Row="1" Grid.Column="1" Text="{Binding ManufacReport.FORGING,UpdateSourceTrigger=PropertyChanged}" Margin="5,0" MaxLength="50"/>
+                    <TextBlock Text="Manufacturing - Forging" Grid.Row="2" Grid.Column="1"  TextAlignment="Center"/>
+                    <TextBox Tag="Please enter the Tool Management " Grid.Row="1" Grid.Column="2" Text="{Binding ManufacReport.TOOL_MANAGEMENT,UpdateSourceTrigger=PropertyChanged}" Margin="5,0" MaxLength="50"/>
+                    <TextBlock Text="Tool Management" Grid.Row="2" Grid.Column="2" TextAlignment="Center"/>
+                    <TextBox Tag="Please enter the Quality Assurance " Grid.Row="1" Grid.Column="3" Text="{Binding ManufacReport.QUALITY_ASSURANCE,UpdateSourceTrigger=PropertyChanged}" Margin="5,0" MaxLength="50"/>
+                    <TextBlock Text="Quality Assurance" Grid.Row="2" Grid.Column="3" TextAlignment="Center"/>
+                    <TextBox Tag="Please enter the Others If Any " Grid.Row="1" Grid.Column="4" Text="{Binding ManufacReport.OTHERS,UpdateSourceTrigger=PropertyChanged}" Margin="5,0" MaxLength="50"/>
+                    <TextBlock Text="Others If Any" Grid.Row="2" Grid.Column="4" TextAlignment="Center"/>
+                </Grid>
+            </Border>
+
+        </Grid>
+    </Border>
+
+</UserControl>

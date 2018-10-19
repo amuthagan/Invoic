@@ -1,0 +1,574 @@
+﻿<UserControl x:Class="ProcessDesigner.frmECNCFTMeet"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:bhCustCtrl="clr-namespace:BHCustCtrl;assembly=BHCustCtrl"
+        xmlns:Lookup="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"
+        xmlns:Enterkey="clr-namespace:ProcessDesigner.Common"
+        xmlns:Control="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls" 
+        xmlns:toolKit="http://schemas.microsoft.com/wpf/2008/toolkit"        
+        xmlns:vm="clr-namespace:ProcessDesigner.Model" 
+              xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+         Height="605" Width="1024" Background="{StaticResource WindowBackground}" Loaded="UserControl_Loaded">
+    <UserControl.InputBindings>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding OnSaveCommand}" />
+        <KeyBinding Key="F8"  Command="{Binding OnPrintCommand}"/>
+        <KeyBinding Key="F9" Command="{Binding OnCloseCommand}" />
+    </UserControl.InputBindings>
+    <UserControl.Resources>
+        <UICommon:DateTimeConverter x:Key="DateTimeConverter"/>
+        <UICommon:BooleanConverter x:Key="BooleanConverter"/>
+    </UserControl.Resources>
+    <Border  >
+        <Grid Margin="2,0,2,0">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition  Width="17*"></ColumnDefinition>
+                <ColumnDefinition Width="23*" ></ColumnDefinition>
+                <ColumnDefinition Width="26*"></ColumnDefinition>
+                <ColumnDefinition Width="34*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="16*"></RowDefinition>
+                <RowDefinition Height="28*"></RowDefinition>
+                <RowDefinition Height="176*"></RowDefinition>
+                <RowDefinition Height="155*"></RowDefinition>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="104*"></RowDefinition>
+                <RowDefinition Height="96*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border  Grid.Row="0"  Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="0" Margin="0,0,0,10.073" >
+                <TextBlock Name="lblHeading"   Text="ECN-CFT MEETING &amp; TIMING CHART " FontWeight="Bold" TextAlignment="Center" FontSize="18"  Margin="5,5,5,5"   ></TextBlock>
+            </Border>
+            <GroupBox Grid.Row="1" Grid.Column="0" Header="CFT Members Present:" Margin="0,16.974,0.4,0.364" Grid.RowSpan="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="12.5*"/>
+                        <RowDefinition Height="12.5*"/>
+                        <RowDefinition Height="12.5*"/>
+                        <RowDefinition Height="12.5*"/>
+                        <RowDefinition Height="12.5*"/>
+                        <RowDefinition Height="12.5*"/>
+                        <RowDefinition Height="12.5*"/>
+                    </Grid.RowDefinitions>
+                    <Lookup:ComboBoxCus MaxLength="20" IsReadOnly="False" Grid.Row="1" Tag="Please select/enter CFT Member"  Grid.Column="0"  x:Name="cbCoreTeamMember1" Margin="0,1,0,-5"
+					DataSource="{Binding EcnCftMeetingRptModel.DtCtm1,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedRowCtm1}"  SelectedValuePath="CORE_TEAM_MEMBER1" SelectedValue="{Binding EcnCftMeetingRptModel.Ctm1,UpdateSourceTrigger=PropertyChanged}" ColumnsHeader="{Binding DropDownItemsCTM1}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandCtm1}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Lookup:ComboBoxCus>
+                    <!--<ComboBox Name="cmbCFTMemberPresent2"   Height="20" Grid.Row="2"  Grid.Column="0" ></ComboBox>-->
+                    <Lookup:ComboBoxCus MaxLength="20" IsReadOnly="False" Grid.Row="2" Tag="Please select/enter CFT Member" Grid.Column="0"   x:Name="cbCoreTeamMember2" Margin="0,1,0,-5"
+					DataSource="{Binding EcnCftMeetingRptModel.DtCtm2,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedRowCtm2}"  SelectedValuePath="CORE_TEAM_MEMBER2" SelectedValue="{Binding EcnCftMeetingRptModel.Ctm2,UpdateSourceTrigger=PropertyChanged}" ColumnsHeader="{Binding DropDownItemsCTM2}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandCtm2}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Lookup:ComboBoxCus>
+                    <!--<ComboBox Name="cmbCFTMemberPresent3"   Height="20" Grid.Row="3"  Grid.Column="0" ></ComboBox>-->
+                    <Lookup:ComboBoxCus MaxLength="20" IsReadOnly="False" Tag="Please select/enter CFT Member" Grid.Row="3"  Grid.Column="0"  x:Name="cbCoreTeamMember3" Margin="0,1,0,-5"
+					DataSource="{Binding EcnCftMeetingRptModel.DtCtm3,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedRowCtm3}"  SelectedValuePath="CORE_TEAM_MEMBER3" SelectedValue="{Binding EcnCftMeetingRptModel.Ctm3,UpdateSourceTrigger=PropertyChanged}" ColumnsHeader="{Binding DropDownItemsCTM3}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandCtm3}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Lookup:ComboBoxCus>
+                    <!--<ComboBox Name="cmbCFTMemberPresent4"   Height="20" Grid.Row="4"  Grid.Column="0" ></ComboBox>-->
+                    <Lookup:ComboBoxCus MaxLength="20" IsReadOnly="False" Tag="Please select/enter CFT Member" Grid.Row="4"  Grid.Column="0"  x:Name="cbCoreTeamMember4" Margin="0,1,0,-5"
+					DataSource="{Binding EcnCftMeetingRptModel.DtCtm4,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedRowCtm4}"  SelectedValuePath="CORE_TEAM_MEMBER4" SelectedValue="{Binding EcnCftMeetingRptModel.Ctm4,UpdateSourceTrigger=PropertyChanged}" ColumnsHeader="{Binding DropDownItemsCTM4}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandCtm4}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Lookup:ComboBoxCus>
+                    <!--<ComboBox Name="cmbCFTMemberPresent5"   Height="20" Grid.Row="5"  Grid.Column="0" ></ComboBox>-->
+                    <Lookup:ComboBoxCus MaxLength="20" IsReadOnly="False" Tag="Please select/enter CFT Member" Grid.Row="5"  Grid.Column="0" x:Name="cbCoreTeamMember5" Margin="0,1,0,-5"
+					DataSource="{Binding EcnCftMeetingRptModel.DtCtm5,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedRowCtm5}"  SelectedValuePath="CORE_TEAM_MEMBER5" SelectedValue="{Binding EcnCftMeetingRptModel.Ctm5,UpdateSourceTrigger=PropertyChanged}" ColumnsHeader="{Binding DropDownItemsCTM5}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandCtm5}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Lookup:ComboBoxCus>
+                    <!--<ComboBox Name="cmbCFTMemberPresent6"   Height="20" Grid.Row="6"  Grid.Column="0" ></ComboBox>-->
+                    <Lookup:ComboBoxCus MaxLength="20"  IsReadOnly="False" Tag="Please select/enter CFT Member"  Grid.Row="6"  Grid.Column="0"  x:Name="cbCoreTeamMember6" Margin="0,1,0,-5"
+					DataSource="{Binding EcnCftMeetingRptModel.DtCtm6,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedRowCtm6}"  SelectedValuePath="CORE_TEAM_MEMBER6" SelectedValue="{Binding EcnCftMeetingRptModel.Ctm6,UpdateSourceTrigger=PropertyChanged}" ColumnsHeader="{Binding DropDownItemsCTM6}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandCtm6}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Lookup:ComboBoxCus>
+                    <!--<ComboBox Name="cmbCFTMemberPresent7"   Height="20" Grid.Row="7"  Grid.Column="0" ></ComboBox>-->
+                    <Lookup:ComboBoxCus MaxLength="20" IsReadOnly="False" Tag="Please select/enter CFT Member" Grid.Row="7"  Grid.Column="0"  x:Name="cbCoreTeamMember7" Margin="0,1,0,-5"
+					DataSource="{Binding EcnCftMeetingRptModel.DtCtm7,UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedRowCtm7}"  SelectedValuePath="CORE_TEAM_MEMBER7" SelectedValue="{Binding EcnCftMeetingRptModel.Ctm7,UpdateSourceTrigger=PropertyChanged}" ColumnsHeader="{Binding DropDownItemsCTM7}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandCtm7}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Lookup:ComboBoxCus>
+                </Grid>
+            </GroupBox>
+
+            <Border Grid.Column="0" Grid.Row="3" BorderThickness="1"  Margin="2,1.636,2.4,1.669" Grid.RowSpan="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28*"></RowDefinition>
+                        <RowDefinition Height="42*"></RowDefinition>
+                        <RowDefinition Height="34*"></RowDefinition>
+                        <RowDefinition Height="19*"></RowDefinition>
+                        <RowDefinition Height="28*"></RowDefinition>
+                        <RowDefinition Height="28*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="0,0,0,0.109">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"  Grid.Row ="0" TextAlignment="Right"  Name="lblSFLPartNo" Text="SFL Part &#x0a; No : " Margin="0,2,0,-1"></TextBlock>
+                        <!--<ComboBox Name="cmblblSFLPartNo"    Height="20" Grid.Row="0"   Margin="2,0,2,0" Grid.Column="1"></ComboBox>-->
+                        <Control:ComboBoxCus MaxLength="40"  IsReadOnly="False" Tag="Please select SFL Description" Grid.Row="0"  Grid.Column="1"  Margin="0,1,0,1" x:Name="cmbPartNo" UICommon:FocusExtension.IsFocused="{Binding FocusButton}"
+					DataSource="{Binding EcnCftMeetingRptModel.DtPartNumber,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedRowPart,UpdateSourceTrigger=PropertyChanged}"  SelectedValuePath="PART_NO" SelectedValue="{Binding EcnCftMeetingRptModel.PartNo,UpdateSourceTrigger=PropertyChanged}" ColumnsHeader="{Binding DropDownItemsPart,UpdateSourceTrigger=PropertyChanged}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedItemChanged">
+                                    <i:InvokeCommandAction Command="{Binding SelectChangeComboCommandPartNo,UpdateSourceTrigger=PropertyChanged}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <Lookup:ComboBoxCus.InputBindings>
+                                <KeyBinding Key="Enter"  Command="{Binding EnterPartNumberCmb}"  />
+                            </Lookup:ComboBoxCus.InputBindings>
+                        </Control:ComboBoxCus>
+                    </Grid>
+                    <Grid  Margin="2,25,2,33.404" Grid.RowSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Name="lblSFLDesc"  Text="SFL Description : " Grid.Row="0"  Grid.Column="0"></TextBlock>
+                        <TextBox Name="txtReferenceNo" IsReadOnly="True" Text="{Binding EcnCftMeetingRptModel.PartDesc,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True"  Grid.Column="0" Margin="0,18,0.4,-4" Height="35" Grid.RowSpan="2" />
+                    </Grid>
+                    <TextBlock Name="lblRMSpec"  Text="RM Spec : " Grid.Row="2"  Grid.Column="0" Margin="2,9.728,100,6.404" Height="15"></TextBlock>
+                    <TextBox Name="txtRMSpec" IsReadOnly="True" Text="{Binding EcnCftMeetingRptModel.RMSpec,UpdateSourceTrigger=PropertyChanged}"  Height="Auto" Grid.Row="2"  Grid.Column="0" Margin="65,6.728,2,5.404" ></TextBox>
+                    <TextBlock Name="lblPackingSpec"  Text="Packing Spec : " Grid.Row="3"  Grid.Column="0" Height="14" Margin="0,2.596,0,2.478"></TextBlock>
+                    <TextBox Name="txtPackingSpec" Tag="Please enter Packing Spec." Text="{Binding EcnCftMeetingRptModel.PackingSpec,UpdateSourceTrigger=PropertyChanged}"  Height="Auto" Grid.Row="2"  Grid.Column="0"   Margin="85,33.728,2,27.586" Grid.RowSpan="3" ></TextBox>
+                    <TextBlock Name="lblChessWt"  Text="Chess Wt.(Kg) : " Grid.Row="4"  Grid.Column="0" Margin="2,6.522,80,6.586" Height="15"></TextBlock>
+                    <TextBox Name="lblChessWtR" IsReadOnly="True" Text="{Binding EcnCftMeetingRptModel.CheesWt,UpdateSourceTrigger=PropertyChanged}" Grid.Row="4"  Grid.Column="0" Margin="90,2.522,2,3.586" Height="Auto"></TextBox>
+                    <TextBlock Name="lblFinishWt"  Text="Finish Wt.(Kg) : " Grid.Row="5"  Grid.Column="0" Margin="2,6.414,80,6.695" Height="15"></TextBlock>
+                    <TextBox Name="lblFinishWtR" IsReadOnly="True" Text="{Binding EcnCftMeetingRptModel.FinishWt,UpdateSourceTrigger=PropertyChanged}" Grid.Row="5"  Grid.Column="0" Margin="90,2.414,2,3.695" Height="Auto"></TextBox>
+
+                </Grid>
+            </Border>
+            <TextBlock Text="Special Characteristics - (If any Special Character)" Grid.Row="4" Grid.Column="0" Margin="2,26,0.4,78.841" TextWrapping="WrapWithOverflow" Grid.RowSpan="2" ></TextBlock>
+            <DataGrid  Grid.Row="5" RowHeaderWidth="20" AutoGenerateColumns="False" Grid.Column="0" Name="DgvSplChar" Margin="2,25,0,2" IsReadOnly="True"  CanUserAddRows="False"  ItemsSource="{Binding EcnCftMeetingRptModel.DtSpecialCharacteristics,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Width="169" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Width="45*" IsReadOnly="True" Header="Features" Binding="{Binding FEATURE,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    <DataGridTextColumn  Width="60.2*" IsReadOnly="True" Header="Specifications"  Binding="{Binding SPEC_MINMAX,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Border Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="4" Margin ="2,1.159,0,2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25*"></RowDefinition>
+                        <RowDefinition Height="25*"></RowDefinition>
+                        <RowDefinition Height="25*"></RowDefinition>
+                        <RowDefinition Height="25*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="14*"></ColumnDefinition>
+                        <ColumnDefinition Width="15*"></ColumnDefinition>
+                        <ColumnDefinition Width="10.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="15*"></ColumnDefinition>
+
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition  Width="30*"></ColumnDefinition>
+                        <ColumnDefinition  Width="12*"></ColumnDefinition>
+                        <ColumnDefinition  Width="12*"></ColumnDefinition>
+                        <ColumnDefinition  Width="12*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Nature Of Change : " TextAlignment="Right" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox Text="{Binding EcnCftMeetingRptModel.NatureOfChange,UpdateSourceTrigger=PropertyChanged}"  Tag="Please enter Nature of Change"  Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,10,0"></TextBox>
+
+                    <TextBlock Text="Disposition : " TextAlignment="Right" Grid.Column="4" Grid.Row="0"/>
+                    <TextBox Grid.Column="5" Tag="Please enter Disposition" Text="{Binding EcnCftMeetingRptModel.Disposition,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,-2" Grid.Row="0" Grid.ColumnSpan="4"></TextBox>
+
+                    <TextBlock Text="Stock Position FG : " TextAlignment="Right" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox Text="{Binding EcnCftMeetingRptModel.StockPositionFG,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,10,0" Grid.Column="1" Grid.Row="1" Tag="Please ener Stock Position FG" ></TextBox>
+
+                    <TextBlock Text="WIP : " TextAlignment="Right" Grid.Column="2" Grid.Row="1"/>
+                    <TextBox Grid.Column="3" Text="{Binding EcnCftMeetingRptModel.Wip,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,10,0" Grid.Row="1"></TextBox>
+
+                    <TextBlock Text="Receiving Date : " TextAlignment="Right" Grid.Column="0" Grid.Row="2"/>
+                    <!--<TextBox Text="{Binding EcnCftMeetingRptModel.ReceivingDate,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,10,0" Grid.Column="1" Grid.Row="2" ></TextBox>-->
+                    <Control:DatePickerCus Name="txtCFTMeetingReceivingDate" Tag="Please select Receiving Date" SelectedDate="{Binding EcnCftMeetingRptModel.ReceivingDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"  Margin="0,0,10,0" Grid.Column="1" Grid.Row="2"  ></Control:DatePickerCus>
+
+                    <TextBlock Text="Review Date : " TextAlignment="Right" Grid.Column="2" Grid.Row="2"/>
+                    <!--<TextBox Text="{Binding EcnCftMeetingRptModel.ReviewDate,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,10,0" Grid.Column="3" Grid.Row="2"></TextBox>-->
+                    <Control:DatePickerCus Name="txtCFTMeetingReviewDate" Tag="Please select Review Date" SelectedDate="{Binding EcnCftMeetingRptModel.ReviewDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"   Margin="0,0,10,0" Grid.Column="3" Grid.Row="2"></Control:DatePickerCus>
+                    <TextBlock Text="Cost Impact ? " TextAlignment="Right" Grid.Column="4" Grid.Row="2"/>
+                    <!--<CheckBox Content="Yes"  IsChecked="{Binding EcnCftMeetingRptModel.CostimpactYes,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0" Grid.Column="5" Grid.Row="2"></CheckBox>-->
+                    <CheckBox Name="chkCostYes" Margin="0,0,0,0" Grid.Column="5" Grid.Row="2" Content ="Yes" VerticalAlignment="Center"  IsChecked="{Binding EcnCftMeetingRptModel.CostimpactYes, Converter={StaticResource BooleanConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Checked">
+                                <i:InvokeCommandAction Command="{Binding CostIsCheckedCommand}" CommandParameter="YC"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Unchecked">
+                                <i:InvokeCommandAction Command="{Binding CostIsCheckedCommand}" CommandParameter="YU"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterCheckBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </CheckBox>
+                    <!--<CheckBox Content="No" IsChecked="{Binding EcnCftMeetingRptModel.CostimpactNo,UpdateSourceTrigger=PropertyChanged}" Margin="50,0,0,0" Grid.Column="5" Grid.Row="2"></CheckBox>-->
+                    <CheckBox Name="chkCostNo" Margin="50,0,0,0" Content ="No" Grid.Column="5" Grid.Row="2" VerticalAlignment="Center"  IsChecked="{Binding EcnCftMeetingRptModel.CostimpactNo, Converter={StaticResource BooleanConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Checked">
+                                <i:InvokeCommandAction Command="{Binding CostIsCheckedCommand}" CommandParameter="NC"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Unchecked">
+                                <i:InvokeCommandAction Command="{Binding CostIsCheckedCommand}" CommandParameter="NU"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <i:Interaction.Behaviors >
+                            <UICommon:TabOnEnterCheckBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </CheckBox>
+
+                    <TextBlock Text="Remarks : " TextAlignment="Right" Grid.Column="0" Grid.Row="3"/>
+                    <TextBox Grid.Column="1" Tag ="Please enter Remarks" Text="{Binding EcnCftMeetingRptModel.Remarks,UpdateSourceTrigger=PropertyChanged}"  Grid.Row="3" Grid.ColumnSpan="5"></TextBox>
+
+
+                    <!--<TextBlock   Name="lblRemarks" Text="Remarks:" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>-->
+                    <!--<TextBox Name="txtRemarks" VerticalContentAlignment="Top"  Text="{Binding EcnCftMeetingRptModel.Remarks,UpdateSourceTrigger=PropertyChanged}" Width="500" Height="34"  HorizontalAlignment="Left" TextWrapping="Wrap" AcceptsReturn="True" Grid.Column="1" Margin="0,0,0,0"  ></TextBox>-->
+                    <Button Name="btnSave"  Content="Save Ctrl+S" Grid.Column="6" Grid.Row="2" Height="40"  Grid.RowSpan="2" Width="80" HorizontalAlignment="Right" Command="{Binding OnSaveCommand}" Control:AddedProperty.Image="Images/Save.png" Margin="2"></Button>
+                    <Button Name="btnPrint" Content="Print F8" Grid.Column="7" Grid.Row="2" Height="40"  Grid.RowSpan="2" Width="80"  Command="{Binding OnPrintCommand}" Control:AddedProperty.Image="Images/Print.png" Margin="2" IsEnabled="{Binding IsEnabledPrint}"></Button>
+                    <Button Content="Close F9" KeyboardNavigation.IsTabStop="False" Grid.Row="2"  Grid.RowSpan="2" Grid.Column="8" Height="40" Width="80" Margin="-12,2,2,2"  Command="{Binding OnCloseCommand}"  ToolTip="Close Form" Lookup:AddedProperty.Image="Images/Close.png" ></Button>
+                </Grid>
+            </Border>
+
+
+            <!--2nd Column-->
+
+
+            <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" BorderThickness="1" Margin="1.6,16.974,2,1.669">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="6*"></RowDefinition>
+                        <RowDefinition Height="8*"></RowDefinition>
+                        <RowDefinition Height="6*"></RowDefinition>
+                        <RowDefinition Height="8*"></RowDefinition>
+                        <RowDefinition Height="6*"></RowDefinition>
+                        <RowDefinition Height="8*"></RowDefinition>
+                        <RowDefinition Height="6*"></RowDefinition>
+                        <RowDefinition Height="8*"></RowDefinition>
+                        <RowDefinition Height="52*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Name="lblCustomer" Margin="1,0,0,0" Text="Customer : " Grid.Row="0"  Grid.Column="0"></TextBlock>
+                    <TextBox Name="txtCustomer" Margin="4,0,2,0" HorizontalAlignment="Left" IsReadOnly="True" Text="{Binding EcnCftMeetingRptModel.Customer,UpdateSourceTrigger=PropertyChanged}" Width="220" Height="20" Grid.Row="1"  Grid.Column="0"  ></TextBox>
+                    <TextBlock Name="lblAnnualRequirement" Margin="1,0,0,0" Text="Annual Requirement : " Grid.Row="2"  Grid.Column="0" ></TextBlock>
+                    <TextBox Name="txtAnnualRequirement" Margin="4,0,2,0" HorizontalAlignment="Left" IsReadOnly="True" Text="{Binding EcnCftMeetingRptModel.AnnualRequirments,UpdateSourceTrigger=PropertyChanged}" Width="220" Height="20" Grid.Row="3"  Grid.Column="0"></TextBox>
+                    <TextBlock Name="lblPPAPProductionQty" Margin="1,0,0,0" Text="PPAP Production Qty : " Grid.Row="4"  Grid.Column="0"></TextBlock>
+                    <TextBox Name="txtPPAPProductionQty" Tag="Please enter PPAP Production quantity" Text="{Binding EcnCftMeetingRptModel.PPAPProductionQty,UpdateSourceTrigger=PropertyChanged}"   Height="20" Grid.Row="5"  Grid.Column="0"  TextAlignment="Right"  Margin="3,2,109,4" ></TextBox>
+                    <TextBox Name="txtPPAPProductionQtyNos" Text="Nos" Tag="Please enter PPAP Production quantity"  Height="20" Grid.Row="5"  Grid.Column="0"   Margin="120,0,2,2" ></TextBox>
+                    <TextBlock Name="lblPPAPSampleQty" Margin="1,0,0,0" Text="PPAP Sample Qty : " Grid.Row="6"  Grid.Column="0" ></TextBlock>
+                    <TextBox Name="txtPPAPSampleQty" Tag="Please enter PPAP Sample quantity"  Text="{Binding EcnCftMeetingRptModel.PPAPSampleQty,UpdateSourceTrigger=PropertyChanged}"   Height="20" Grid.Row="7"  Grid.Column="0" TextAlignment="Right" Margin="2,0,110,2" ></TextBox>
+                    <TextBox Name="txtPPAPSampleQtyNos" Tag="Please enter PPAP Sample quantity" Text="Nos"  Height="20" Grid.Row="7"  Grid.Column="0"   Margin="120,0,2,2" ></TextBox>
+                </Grid>
+            </Border>
+            <DataGrid x:Name="DGVMfg" AutoGenerateColumns="False" Margin="1.6,1.636,0,1.841" Grid.Row="3"  Grid.Column="1" Grid.RowSpan="3" IsReadOnly="True" ItemsSource="{Binding EcnCftMeetingRptModel.DtMidGrid,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" UICommon:ScrollToTopBehavior.ScrollToTop="True" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="50" IsReadOnly="True" Header="Mfg."  Binding="{Binding seq_no,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    <DataGridTextColumn  Width="*" IsReadOnly="True" Header="Sequence"  Binding="{Binding opn_desc,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    <DataGridTextColumn Width="70" IsReadOnly="True" Header="C.C"  Binding="{Binding cc_code,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!--3nd Column-->
+            <GroupBox Header="Location" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" Margin="0,0,0.2,174.364">
+                <Grid Margin="0,0,0.2,-4.048">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Name="rbtnM" Grid.Column="0" IsChecked="{Binding EcnCftMeetingRptModel.rbtnMIsChecked,UpdateSourceTrigger=PropertyChanged}" Content ="M"></RadioButton>
+                    <RadioButton Name="rbtnK"  Grid.Column="1" IsChecked="{Binding EcnCftMeetingRptModel.rbtnKIsChecked,UpdateSourceTrigger=PropertyChanged}" Content ="K"></RadioButton>
+                    <RadioButton Name="rbtnY"  Grid.Column="2" IsChecked="{Binding EcnCftMeetingRptModel.rbtnYIsChecked,UpdateSourceTrigger=PropertyChanged}" Content ="Y"></RadioButton>
+                </Grid>
+            </GroupBox>
+
+
+
+            <Border  Grid.Row="2" BorderThickness="1"  Grid.Column="2"  Margin="2,1.927,2.2,2.364" Padding="0,0,0,5" >
+                <Grid Margin="0,0,0,0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="21*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Name="lblCustomerPartNo" Margin="1,0,0,0" Text="Cust. Part No/Engg. Change Level: " Grid.Row="0"  Grid.Column="0"></TextBlock>
+                    <TextBox Name="txtCustomerPartNo" IsReadOnly="True" Text="{Binding EcnCftMeetingRptModel.CustPartNo,UpdateSourceTrigger=PropertyChanged}" Height="20" Width="240" Grid.Row="1"  Grid.Column="0" ></TextBox>
+                    <TextBlock Name="lblCustomerRequiredDate" Margin="1,0,0,0" Text="Cust. Required Date: " Grid.Row="2"  Grid.Column="0" ></TextBlock>
+                    <Control:DatePickerCus Name="txtCustomerRequiredDate" Tag="Please enter Cust. Required Date" SelectedDate="{Binding EcnCftMeetingRptModel.CustRequiredDate,UpdateSourceTrigger=PropertyChanged}" Width="240" Grid.Row="3" Margin="0,-3,0,0" Grid.Column="0"></Control:DatePickerCus>
+                    <TextBlock Name="lblCustPartNameDesc" Margin="1,0,0,0" Text="Cust. Part Name/Description: " Grid.Row="4"  Grid.Column="0" ></TextBlock>
+                    <TextBox Name="txtCustPartNameDesc" IsReadOnly="True" Text="{Binding EcnCftMeetingRptModel.CustPartName,UpdateSourceTrigger=PropertyChanged}" Height="39" VerticalAlignment="Top" VerticalContentAlignment="Top" Grid.Row="5" TextWrapping="Wrap" Margin="5" Grid.Column="0"></TextBox>
+                </Grid>
+            </Border>
+
+            <!--4th Column-->
+            <Grid Grid.Row="0"   Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="265,0,0,-3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="1" Margin="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Name="lblCFTMeetingIssueNo"  Grid.Row="0" Text="CFT Meeting Issue No : " TextAlignment="Left" Margin="10,0,10,0"></TextBlock>
+                        <TextBox Name="txtCFTMeetingIssueNo" Tag="Please enter CFT Meeting Issue No." Grid.Row="1" Text="{Binding EcnCftMeetingRptModel.CFTMeetingIssueNo,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Height="20"  Margin="5,-3,10,0" ></TextBox>
+                    </Grid>
+                </Border>
+                <Border Grid.Column="2" Grid.ColumnSpan="2" BorderThickness="1" Margin="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Name="lblCFTMeetingDate"   Text="CFT Meeting Date : " TextAlignment="Left" Margin="10,0,10,0"  Grid.Row="0" >
+                        </TextBlock>
+                        <Control:DatePickerCus Name="txtCFTMeetingDate" Tag="Please select CFT Meeting Date" SelectedDate="{Binding EcnCftMeetingRptModel.CFTMeetingDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Grid.Row="1" Margin="5,-3,10,0" Width="120" HorizontalAlignment="Left" ></Control:DatePickerCus>
+
+                    </Grid>
+                </Border>
+            </Grid>
+            <Border  Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="265,1.927,2,2.364" BorderThickness="1" >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition Height="7*"></RowDefinition>
+                        <RowDefinition Height="12*"></RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="55*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition  Width="45*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="lblApplication"  Text="Application: " Grid.Row="0"  Grid.Column="0" Margin="5,0,10,0"></TextBlock>
+                    <TextBox Name="txtApplication" Tag="Please enter Application" Text="{Binding EcnCftMeetingRptModel.Application,UpdateSourceTrigger=PropertyChanged}" Height="50" Grid.Row="1" VerticalContentAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" Grid.Column="0" Margin="5,-3,5,5" ></TextBox>
+                    <Border BorderThickness="1,0,0,0" Grid.Column="1" Grid.RowSpan="2"></Border>
+                    <TextBlock Name="lblProdCategory"  Text="Product Category " Grid.Row="0"  Grid.Column="2" TextWrapping="Wrap" Width="50" Margin="5,0,10,-15"></TextBlock>
+                    <TextBlock Name="lblPG"  Text="PG: " Grid.Row="1" Grid.Column="2"  Margin="5,0,10,0"></TextBlock>
+                    <TextBox Name="txtPG" Tag="Please enter Product Category" Text="{Binding EcnCftMeetingRptModel.PG,UpdateSourceTrigger=PropertyChanged}" Height="20" Grid.Row="1" Grid.Column="2"  Margin="26,0,3,0" ></TextBox>
+                    <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" BorderThickness="0,1,0,0">
+                        <Grid Margin="2,0,2,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35*"></RowDefinition>
+                                <RowDefinition Height="65*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="55*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Name="lblWhetherSafty" HorizontalAlignment="Left"  Text="Whether Safety part?" TextWrapping="Wrap" Width="100" Grid.Row="0"  Grid.Column="0" Margin="2,0,2,0"></TextBlock>
+                            <!--<CheckBox Name="chkSPYes" Grid.Column="0" Grid.Row="1" IsChecked="{Binding CFTMeetingModel.chkSPYesIsChecked,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  Content ="Yes" VerticalAlignment="Center" Margin="2,0,120,0">
+                               
+                            </CheckBox>-->
+                            <CheckBox Name="chkSPYes" Grid.Column="0" Grid.Row="1" Content ="Yes" VerticalAlignment="Center" Margin="2,0,120,0" IsChecked="{Binding EcnCftMeetingRptModel.ChkSPYesIsChecked, Converter={StaticResource BooleanConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding SafetyIsCheckedCommand}" CommandParameter="YC"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding SafetyIsCheckedCommand}" CommandParameter="YU"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <i:Interaction.Behaviors >
+                                    <UICommon:TabOnEnterCheckBoxBehavior />
+                                </i:Interaction.Behaviors>
+                            </CheckBox>
+                            <!--<CheckBox Name="chkSPNo"  Grid.Column="0" Grid.Row="1"  Content ="No" IsChecked="{Binding CFTMeetingModel.chkSPNoIsChecked,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center"  Margin="70,0,50,0" ></CheckBox>-->
+                            <CheckBox Name="chkSPNo" Grid.Column="0" Grid.Row="1"  Content ="No"  VerticalAlignment="Center" Margin="70,0,50,0" IsChecked="{Binding EcnCftMeetingRptModel.ChkSPNoIsChecked, Converter={StaticResource BooleanConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding SafetyIsCheckedCommand}" CommandParameter="NC"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding SafetyIsCheckedCommand}" CommandParameter="NU"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <i:Interaction.Behaviors >
+                                    <UICommon:TabOnEnterCheckBoxBehavior />
+                                </i:Interaction.Behaviors>
+                            </CheckBox>
+                            <Border Grid.Column="1" BorderThickness="1,0,0,0" Grid.RowSpan="2"></Border>
+                            <TextBlock Name="lblWhetherProtoType" HorizontalAlignment="Left"  Text="Whether for Prototype?" TextWrapping="Wrap" Width="100" Grid.Row="0"  Grid.Column="2" Margin="2,0,2,0"></TextBlock>
+                            <!--<CheckBox Name="chkPTYes" Grid.Column="2" Grid.Row="1"   Content ="Yes" IsChecked="{Binding CFTMeetingModel.chkPTYesIsChecked,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center" Margin="2,0,120,0"></CheckBox>-->
+                            <CheckBox Name="chkPTYes" Grid.Column="2" Grid.Row="1"  Content ="Yes" VerticalAlignment="Center"  Margin="2,0,120,0" IsChecked="{Binding EcnCftMeetingRptModel.ChkPTYesIsChecked, Converter={StaticResource BooleanConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding ProtoIsCheckedCommand}" CommandParameter="YC"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding ProtoIsCheckedCommand}" CommandParameter="YU"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <i:Interaction.Behaviors >
+                                    <UICommon:TabOnEnterCheckBoxBehavior />
+                                </i:Interaction.Behaviors>
+                            </CheckBox>
+                            <!--<CheckBox Name="chkPTNo"  Grid.Column="2" Grid.Row="1"  Content ="No"  IsChecked="{Binding CFTMeetingModel.chkPTNoIsChecked,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center"  Margin="70,0,50,0"></CheckBox>-->
+                            <CheckBox Name="chkPTNo" Grid.Column="2" Grid.Row="1"  Content ="No"  VerticalAlignment="Center" Margin="70,0,50,0" IsChecked="{Binding EcnCftMeetingRptModel.ChkPTNoIsChecked, Converter={StaticResource BooleanConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding ProtoIsCheckedCommand}" CommandParameter="NC"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding ProtoIsCheckedCommand}" CommandParameter="NU"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <i:Interaction.Behaviors >
+                                    <UICommon:TabOnEnterCheckBoxBehavior />
+                                </i:Interaction.Behaviors>
+                            </CheckBox>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="5" Margin="0,175.927,0,96">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="23"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border BorderThickness="1,1,1,0" Grid.Row="0" Margin="2,0,2,-2">
+                    <!--<Border.Background>
+                        <LinearGradientBrush StartPoint=".7,0" EndPoint=".7,1">
+                            <GradientStop Color="#FCFFFFFF" Offset="0.015" />
+                            <GradientStop Color="#F7FFFFFF" Offset="0.375" />
+                            <GradientStop Color="#E5FFFFFF" Offset="0.6" />
+                            <GradientStop Color="#D1FFFFFF" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>-->
+                    <TextBlock Text="Timing Chart" HorizontalAlignment="Center" Foreground="SteelBlue" FontWeight="Bold" FontSize="12"></TextBlock>
+                </Border>
+                <DataGrid RowHeaderWidth="20" Name="DGVTime" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="False" Margin="2" CanUserAddRows="False" ItemsSource="{Binding EcnCftMeetingRptModel.DtTimigChart,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" UICommon:ScrollToTopBehavior.ScrollToTop="True" >
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="RowEditEnding">
+                            <i:InvokeCommandAction  Command="{Binding RowEditEndingTypeCommand}" CommandParameter="{Binding ElementName=dgrdType, Path=SelectedItem}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectionChangedTypeCommand}" CommandParameter="{Binding ElementName=dgrdType, Path=SelectedItem}" />
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="BeginningEdit">
+                            <si:CallMethodAction MethodName="OnBeginningEdit" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="CellEditEnding">
+                            <si:CallMethodAction MethodName="OnCellEditEnding" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="13*" IsReadOnly="True"  Header="Phase"  Binding="{Binding Phase,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        <DataGridTextColumn Width="32*" IsReadOnly="True" Header="Activity"  Binding="{Binding Activity,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        <!--<DataGridTextColumn Width="18*" Header="Planned Start Data"  Binding="{Binding Planned_Start_Date,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>-->
+                        <DataGridTemplateColumn Header="Planned Start Date"  Width="18*" SortMemberPath="Planned_Start_Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Planned_Start_Date,Converter={StaticResource DateTimeConverter}, Mode=OneWay}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Lookup:DatePickerCus  Name ="txtPlannedStartDate" ToolTip="Select Date"                                     
+                                     SelectedDate="{Binding Planned_Start_Date, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </Lookup:DatePickerCus>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                        <!--<DataGridTextColumn Width="15*" Header="Planned End Data"  Binding="{Binding Planned_End_Date,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>-->
+                        <DataGridTemplateColumn Width="15*"  Header="Planned End Date" SortMemberPath="Planned_End_Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Planned_End_Date,Converter={StaticResource DateTimeConverter}, Mode=OneWay}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Control:DatePickerCus  Name ="txtPlannedEndDate" ToolTip="Select Date"                                     
+                                     SelectedDate="{Binding Planned_End_Date, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </Control:DatePickerCus>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                        <!--<DataGridTextColumn Width="15*" Header="Revised Date"  Binding="{Binding Revised_Date,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>-->
+                        <DataGridTemplateColumn Width="15*"  Header="Revised Date" SortMemberPath="Revised_Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Revised_Date,Converter={StaticResource DateTimeConverter}, Mode=OneWay}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Control:DatePickerCus  Name ="txtRevisedDate" ToolTip="Select Date"                                     
+                                     SelectedDate="{Binding Revised_Date, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </Control:DatePickerCus>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                        <!--<DataGridTextColumn Width="18*" IsReadOnly="True" Header="Actual Finish Date"  Binding="{Binding Actual_Finish_Date,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>-->
+                        <DataGridTemplateColumn Width="18*" Header="Actual Finish Date"  SortMemberPath="Actual_Finish_Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Actual_Finish_Date,Converter={StaticResource DateTimeConverter}, Mode=OneWay}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Control:DatePickerCus  Name ="txtActFinishDate" ToolTip="Select Date"                                     
+                                     SelectedDate="{Binding Actual_Finish_Date, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </Control:DatePickerCus>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                        <!--<DataGridTemplateColumn Header="Planned Start Data"  Width="18*" SortMemberPath="Planned_Start_Date">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Planned_Start_Date,Converter={StaticResource DateTimeConverter}, Mode=OneWay}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <Lookup:DatePickerCus  Name ="txtIssueDate" ToolTip="Select Date"                                     
+                                     SelectedDate="{Binding Planned_Start_Date, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                </Lookup:DatePickerCus>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Width="15*" Header="Planned End Data"  Binding="{Binding Planned_End_Date,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    <DataGridTextColumn Width="15*" Header="Revised Date"  Binding="{Binding Revised_Date,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    <DataGridTextColumn Width="18*" IsReadOnly="True" Header="Actual Finish Date"  Binding="{Binding Actual_Finish_Date,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>-->
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

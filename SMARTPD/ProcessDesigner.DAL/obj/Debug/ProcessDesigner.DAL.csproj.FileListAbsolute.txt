@@ -1,0 +1,140 @@
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.dll
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.pdb
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.dll
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.dll
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.dll
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Newtonsoft.Json.dll
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.pdb
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.pdb
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.pdb
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+E:\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+E:\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.csprojResolveAssemblyReference.cache
+E:\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.dll
+E:\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.pdb
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.pdb
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Newtonsoft.Json.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.pdb
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.pdb
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.pdb
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.csprojResolveAssemblyReference.cache
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.dll
+D:\PD 3.2\ProcessDesigner version 3.2\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.pdb
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.pdb
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Newtonsoft.Json.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.pdb
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.pdb
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.pdb
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.csprojResolveAssemblyReference.cache
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.dll
+D:\PD 3.3\ProcessDesigner version 3.3\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.pdb
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.pdb
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Newtonsoft.Json.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.pdb
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.pdb
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.pdb
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.csprojResolveAssemblyReference.cache
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.dll
+D:\PD 3.4\ProcessDesigner version 3.4\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.pdb
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.pdb
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Newtonsoft.Json.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.pdb
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.pdb
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.pdb
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.csprojResolveAssemblyReference.cache
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.dll
+D:\VSTS Cloud\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.pdb
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.pdb
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Newtonsoft.Json.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.pdb
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.pdb
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.pdb
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.csprojResolveAssemblyReference.cache
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.dll
+D:\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.pdb
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.DAL.pdb
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Newtonsoft.Json.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Common.pdb
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.Model.pdb
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\ProcessDesigner.ExceptionHandler.pdb
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.csprojResolveAssemblyReference.cache
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.dll
+D:\Vignesh\vignesh backup\vignesh\Smart-PD\Smart-PD\Process Designer\03.Coding\PD_Final\ProcessDesigner\ProcessDesigner.DAL\obj\Debug\ProcessDesigner.DAL.pdb

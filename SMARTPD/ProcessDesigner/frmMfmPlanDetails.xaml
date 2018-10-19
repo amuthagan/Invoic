@@ -1,0 +1,205 @@
+﻿<UserControl x:Class="ProcessDesigner.frmMfmPlanDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uc="clr-namespace:ProcessDesigner.UserControls;assembly=ProcessDesigner.UserControls"  
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:si="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:UICommon="clr-namespace:ProcessDesigner.UICommon" 
+        Height="600" Width="1024" Background="{StaticResource WindowBackground}" >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding WindowLoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="65"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Column="0" Grid.Row="0" Header="{Binding MFMPlanDetails.GroupHeader}" Margin="5">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding OnGroupBoxDoubleClicked}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>                    
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Name="chkDocumentation"  Content ="Documentation" Grid.Column="0" IsChecked="{Binding MFMPlanDetails.IsDocumentation,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding OnCheckBoxClicked}" CommandParameter="Documentation"/>
+                                </i:EventTrigger>                               
+                            </i:Interaction.Triggers>
+                        </CheckBox>
+                        <CheckBox Name="chkForging"   Content ="Forging" Grid.Column="1" IsChecked="{Binding MFMPlanDetails.IsForging,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding OnCheckBoxClicked}" CommandParameter="Forging"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </CheckBox>
+                        <CheckBox Name="chkPPAP"   Content ="PPAP" Grid.Column="2" IsChecked="{Binding MFMPlanDetails.IsPPAP,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding OnCheckBoxClicked}" CommandParameter="PPAP"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </CheckBox>
+                        <CheckBox Name="chkTools"   Content ="Tools" Grid.Column="3" IsChecked="{Binding MFMPlanDetails.IsTools,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding OnCheckBoxClicked}" CommandParameter="Tools"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </CheckBox>
+                        <CheckBox Name="chkSecondary"   Content ="Secondary" Grid.Column="4" IsChecked="{Binding MFMPlanDetails.IsSecondary,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding OnCheckBoxClicked}" CommandParameter="Secondary"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </CheckBox>
+                        <CheckBox Name="chkAwaitingPSW"   Content ="Awaiting PSW" Grid.Column="5" IsChecked="{Binding MFMPlanDetails.IsAwaitingPSW,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding OnCheckBoxClicked}" CommandParameter="Awaiting PSW"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </CheckBox>
+                    </Grid>
+                </GroupBox>
+
+                <Border BorderThickness="1" Grid.Row="1" Margin="5,2">
+                    <Grid >
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="115"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="110"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="No of Products :" FontWeight="Bold" Grid.Row="0"  Grid.Column="0" TextAlignment="Right"></TextBlock>
+                        <TextBlock Name="txtNoofProducts"  FontWeight="Bold" Grid.Row="0"  Grid.Column="1" Margin="10,0,0,0" Text="{Binding MFMPlanDetails.ProductCount}"></TextBlock>
+
+                        <TextBlock Text="Month :" Grid.Row="0"  Grid.Column="2" TextAlignment="Right" Visibility="{Binding MonthVisibility,Mode=OneWay}"/>
+                        <TextBox Tag="Please enter Month" Name="txtMonth"   Grid.Row="0"  Grid.Column="3" Margin="10,0,0,0" Text="{Binding MFMPlanDetails.Month,UpdateSourceTrigger=PropertyChanged}"
+                                Visibility="{Binding MonthVisibility,Mode=OneWay}" MaxLength="6" />
+
+                        <CheckBox Name="chkPSWApproved"  Grid.Column="4"  Content ="PSW Approved" Margin="10,0,0,0 "  IsChecked="{Binding MFMPlanDetails.IsApprovedPSW,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding OnCheckBoxClicked}" CommandParameter="Approved PSW"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </CheckBox>
+
+                        <Button Name="btnRefresh" Content="_Refresh"  Grid.Column="6" Height="50"  Width="100" uc:AddedProperty.Image="Images/Refresh.png" IsTabStop="False"
+                                Command="{Binding RefreshCommand}"/>
+                        <Button Name="btnEditData" Content="_Edit Data" Height="50"  Grid.Column="7"  Width="100" uc:AddedProperty.Image="Images/Edit.png" IsTabStop="False" 
+                                Command="{Binding EditDataCommand}" />
+                        <Button Name="btnPrint" Content="_Print" Height="50"  Grid.Column="8" Width="100" uc:AddedProperty.Image="Images/Print.png" IsTabStop="False" 
+                                Command="{Binding PrintCommand}" />
+                    </Grid>
+                </Border>
+
+                <Border BorderThickness="1" Grid.Row="2" Margin="5">
+                    <DataGrid Grid.Row="3" Name="dgrdMFMPlanDetails" ItemsSource="{Binding MFMPlanDetails.DVMFMPlanDetails,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False" UICommon:ScrollToTopBehavior.ScrollToTop="True"
+                      CanUserDeleteRows="False" RowHeaderWidth="20" SelectionUnit="FullRow" CanUserSortColumns="True" >
+                        <i:Interaction.Triggers>                           
+                            <i:EventTrigger EventName="BeginningEdit">
+                                <si:CallMethodAction MethodName="OnBeginningEditMFMPlan" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="ColumnDisplayIndexChanged">
+                                <si:CallMethodAction MethodName="OnColumnDisplayIndexChanged" TargetObject="{Binding}"/>
+                            </i:EventTrigger>                          
+                            <!--<i:EventTrigger EventName="CellEditEnding">
+                                <si:CallMethodAction MethodName="OnCellEditEndingProcessIssue" TargetObject="{Binding}"/>
+                            </i:EventTrigger>-->
+                        </i:Interaction.Triggers>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="Location" Width="100" Binding="{Binding LOCATION,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>                               
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Module" Width="100" Binding="{Binding MODULE,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="CC ABBR" Width="100" Binding="{Binding CC_ABBR,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Customer Name" Width="200" Binding="{Binding CUST_NAME,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Part No" Width="100" Binding="{Binding PART_NO,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Part Description" Width="250" Binding="{Binding PART_DESC,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="PG Category" Width="110" Binding="{Binding PG_CATEGORY,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Resp" Width="100" Binding="{Binding RESP,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn  Header="Remarks" Width="200" Binding="{Binding REMARKS,UpdateSourceTrigger=PropertyChanged}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
